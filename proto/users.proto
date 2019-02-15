@@ -77,6 +77,15 @@ message User {
     Sex sex = 5 [(dlg).log="hidden"];
     Avatar avatar = 8 [(dlg).log="compact"];
     google.protobuf.BoolValue is_bot = 11 [(dlg).log="visible"];
+    google.protobuf.StringValue about = 14 [(dlg).log="hidden"];
+    enum Lifecycle {
+        MISSED = 0;
+        ACTIVE = 1;
+        DELETED = 2;
+        BLOCKED = 3;
+        BLOCKED_AND_DELETED = 4;
+    }
+    Lifecycle status = 15;
 }
 
 // Full User representation - deprecated
