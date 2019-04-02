@@ -50,9 +50,9 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'io.grpc:grpc-okhttp:1.19.0'
-    compile 'io.grpc:grpc-protobuf:1.19.0'
-    compile 'io.grpc:grpc-stub:1.19.0'
+    compile 'io.grpc:grpc-okhttp:1.12.0'
+    compile 'io.grpc:grpc-protobuf:1.12.0'
+    compile 'io.grpc:grpc-stub:1.12.0'
     compile "com.google.api.grpc:proto-google-common-protos:1.0.0"
 }
 
