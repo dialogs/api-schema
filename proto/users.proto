@@ -88,11 +88,11 @@ message UserData {
         BLOCKED = 3;
         BLOCKED_AND_DELETED = 4;
     }
-    Lifecycle status = 6;
+    Lifecycle status = 6 [(dlg).log="visible"];
     UserStatus user_status = 7 [(dlg).log="visible"];
-    string time_zone = 8;
-    repeated Ext exts = 9;
-    DataClock clock = 10;
+    string time_zone = 8 [(dlg).log="visible"];
+    repeated Ext exts = 9 [(dlg).log="hidden"];
+    DataClock clock = 10 [(dlg).log="visible"];
     repeated string locales = 11;
 }
 message User {
@@ -146,6 +146,22 @@ message RequestEditUserLocalName {
     int32 uid = 1 [(dlg).log="visible"];
     int64 access_hash = 2 [(dlg).log="danger"];
     string name = 3 [(dlg).log="hidden"];
+}
+
+message RequestLoadUserData {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    message Claim {
+        Peer user_peer = 1 [(dlg).log="visible"];
+        oneof kind {
+            bool p2p = 2 [(dlg).log="visible"];
+            Peer group_member = 3 [(dlg).log="visible"];
+        }
+    }
+    repeated Claim claims = 1 [(dlg).log="visible"];
+}
+message ResponseLoadUserData {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    repeated User users = 1 [(dlg).log="visible"];
 }
 
 message UpdateUser {
@@ -258,6 +274,12 @@ service Users {
     rpc LoadFullUsers (RequestLoadFullUsers) returns (ResponseLoadFullUsers) {
         option (google.api.http) = {
             post: "/v1/grpc/Users/LoadFullUsers"
+            body: "*"
+        };
+    }
+    rpc LoadUserData (RequestLoadUserData) returns (ResponseLoadUserData) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Users/LoadUserData"
             body: "*"
         };
     }
