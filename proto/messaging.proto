@@ -841,8 +841,8 @@ message DialogIndex {
 // last_message_date date of the last message
 // receive_date date of the last received message
 // read_date date of the last read message
+// entry_clock shared clock across all datas which required for making a dialog entry
 // data data related to dialog itself
-// history_message Optional last message
 message DialogListEntry {
     Peer peer = 1 [(dlg).log="visible"]; /// Peer of conversation
     int32 unread_count = 2 [(dlg).log="visible"];
@@ -850,8 +850,9 @@ message DialogListEntry {
     int64 last_message_date = 4 [(dlg).log="visible"];
     int64 receive_date = 5 [(dlg).log="visible"];
     int64 read_date = 6 [(dlg).log="visible"];
+    int64 entry_clock = 7 [(dlg).log="visible"];
 
-    DialogData data = 7 [(dlg).log="visible"];
+    DialogData data = 8 [(dlg).log="visible"];
 }
 
 /**
@@ -868,12 +869,12 @@ message ResponseFetchDialogIndex {
 }
 
 // Loading compound difference (all dialogs after from_clock) as DialogListEntries
-// Use it to request difference in dialog list and last messages after reconnect
+// Use it to request difference in dialog list
 message RequestDialogListDifference {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
 
-    /// Last clock of the compound history and read/receives data
-    /// Conceptually you have to set this to sync the message history after reconnect
+    /// Shared clock across all states which required for making a dialog entry (e.g. max clock among those dates)
+    /// Conceptually you have to set this to sync all including datas after reconnect or authorization
     int64 from_clock = 1 [(dlg).log="visible"];
 }
 
