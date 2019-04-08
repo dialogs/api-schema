@@ -37,6 +37,7 @@ message StickerCollection {
     repeated StickerDescriptor stickers = 3 [(dlg).log="visible"];
     /// does this pack belongs to current user
     google.protobuf.BoolValue owned_by_me = 4 [(dlg).log="visible"];
+    int64 clock = 5 [(dlg).log="visible"];
 }
 
 // Stickers response
@@ -45,26 +46,37 @@ message ResponseStickersResponse {
     repeated StickerCollection collections = 1 [(dlg).log="visible"];
     int32 seq = 2 [(dlg).log="visible"]; /// deprecated
     bytes state = 3 [(dlg).log="visible"];
+    repeated StickerCollection removed_collections = 4 [(dlg).log="visible"];
+    int64 clock = 5 [(dlg).log="visible"];
+    int64 prev_clock = 6 [(dlg).log="visible"];
 }
 
 // Loading own stickers
 message RequestLoadOwnStickers {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    int64 from_clock = 1 [(dlg).log="visible"];
 }
 
 message ResponseLoadOwnStickers {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
     repeated StickerCollection own_stickers = 1;
+    repeated StickerCollection removed_collections = 2 [(dlg).log="visible"];
+    int64 clock = 3 [(dlg).log="visible"];
+    int64 prev_clock = 4 [(dlg).log="visible"];
 }
 
 // Load accessible stickers
 message RequestLoadAcesssibleStickers {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    int64 from_clock = 1 [(dlg).log="visible"];
 }
 
 message ResponseLoadAcesssibleStickers {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
     repeated StickerCollection accessible_stickers = 1;
+    repeated StickerCollection removed_collections = 2 [(dlg).log="visible"];
+    int64 clock = 3 [(dlg).log="visible"];
+    int64 prev_clock = 4 [(dlg).log="visible"];
 }
 
 // Add a reference to other user's sticker pack

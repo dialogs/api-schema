@@ -32,6 +32,7 @@ message RequestRegisterApplePush {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     int32 apns_key = 1 [(dlg).log="visible"];
     string token = 2 [(dlg).log="hidden"];
+    string apns_string_key = 3 [(dlg).log="visible"];
 }
 
 // Unregistering Apple Push
@@ -45,6 +46,7 @@ message RequestRegisterApplePushKit {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     int32 apns_key = 1 [(dlg).log="visible"];
     string token = 2 [(dlg).log="hidden"];
+    string apns_string_key = 3 [(dlg).log="visible"];
 }
 
 // Unregistering Apple Push Kit token
