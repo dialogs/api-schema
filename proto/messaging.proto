@@ -723,6 +723,7 @@ message HistoryMessage {
         ReferencedMessages reply = 14;
     }
     google.protobuf.Int64Value edited_at = 16 [(dlg).log="visible"];
+    int64 random_id = 18 [(dlg).log="visible"];
 }
 
 enum ListLoadMode {
