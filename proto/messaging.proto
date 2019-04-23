@@ -587,6 +587,7 @@ message UpdateMessage {
      google.protobuf.Int32Value counter = 12 [(dlg).log="visible"];
      /// date of my own read
      google.protobuf.Int64Value my_read_date = 13 [(dlg).log="visible"];
+     int64 random_id = 14 [(dlg).log="visible"];
 }
 
 // Update about message change
