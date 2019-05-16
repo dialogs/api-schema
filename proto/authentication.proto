@@ -213,7 +213,8 @@ message RequestSignUp {
 }
 
 enum AuthExtraInfoType {
-    NEED_CHANGE_PASSWORD = 0;
+    NONE = 0;
+    NEED_CHANGE_PASSWORD = 1;
 }
 
 // Authentication result
