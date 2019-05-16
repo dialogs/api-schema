@@ -52,7 +52,8 @@ message ResponseBool {
 
 
 enum SupportedServerMethodsType {
-    CHANGE_PASSWORD = 0;
+    NONE = 0;
+    CHANGE_PASSWORD = 1;
 }
 
 // Configuration of system
