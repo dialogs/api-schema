@@ -212,6 +212,10 @@ message RequestSignUp {
     google.protobuf.StringValue password = 4 [(dlg).log="hidden"];
 }
 
+enum AuthExtraInfoType {
+    NEED_CHANGE_PASSWORD = 0;
+}
+
 // Authentication result
 message ResponseAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
@@ -221,6 +225,7 @@ message ResponseAuth {
     Config config = 3 [(dlg).log="visible"];
     /// Hash of config to later usage
     google.protobuf.Int64Value config_hash = 4 [(dlg).log="visible"];
+    repeated AuthExtraInfoType extra_info = 5 [(dlg).log = "visible"];
 }
 
 // Authentication session
@@ -352,6 +357,12 @@ message RequestSendAuthCallObsolete {
     string sms_hash = 2 [(dlg).log="danger"];
     int32 app_id = 3 [(dlg).log="hidden"];
     string api_key = 4 [(dlg).log="hidden"];
+}
+
+message RequestChangePassword {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    string old_password = 1 [(dlg).log = "danger"];
+    string new_password = 2 [(dlg).log = "danger"];
 }
 
 service Authentication {
@@ -494,6 +505,13 @@ service Authentication {
     rpc SendAuthCallObsolete (RequestSendAuthCallObsolete) returns (ResponseVoid) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/SendAuthCallObsolete"
+            body: "*"
+        };
+    }
+
+    rpc ChangePassword (RequestChangePassword) returns (ResponseVoid) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/ChangePassword"
             body: "*"
         };
     }
