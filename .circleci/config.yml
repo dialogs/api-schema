@@ -80,17 +80,52 @@ jobs:
             curl --header "Content-Type: application/json" --request POST \
              --data '{"text":"java-api-schema release successful! Check it here: '${ARTIFACT_URL}' "}' \
               $DIALOG_HOOK_URL
+  python_release:
+    docker:
+        - image: circleci/python:3.7
+    steps:
+        - checkout
+        - setup_remote_docker
+        - run:
+            name: Install envsubst
+            command: |
+                sudo apt-get update && sudo apt-get -y install gettext-base
+        - run:
+            name: init .pypirc
+            command: |
+                echo -e "[pypi]" >> ~/.pypirc
+                echo -e "username: dialog_llc" >> ~/.pypirc
+                echo -e "password: $PYPI_PASSWORD" >> ~/.pypirc
+        - run:
+            name: Change setup.py
+            command: |
+                envsubst < ./python3/setup_unfilled.py > ./python3/setup.py
+        - run:
+            name: Install twine
+            command: |
+                python3 -m pip install twine
+
+        - run:
+            name: Build & push package
+            command: |
+                cd python3
+                python3 setup.py sdist bdist_wheel
+                python3 -m twine upload ./dist/*
 workflows:
   version: 2
   java-build-release:
     jobs:
-      - dependencies     
+      - dependencies
       - build:
           requires:
             - dependencies
       - release:
           requires:
             - build
+          filters:
+            branches:
+              only: master
+      - python_release:
           filters:
             branches:
               only: master
