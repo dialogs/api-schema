@@ -81,11 +81,20 @@ jobs:
              --data '{"text":"java-api-schema release successful! Check it here: '${ARTIFACT_URL}' "}' \
               $DIALOG_HOOK_URL
   python_release:
-    docker:
-        - image: circleci/python:3.7
+    machine:
+        image: ubuntu-1604:201903-01
     steps:
         - checkout
-        - setup_remote_docker
+        - run:
+            name: Make Python 3 bindings
+            command: |
+                pyenv global 3.7.0
+                make python3
+        - run:
+            name: Rename folders
+            command: |
+                mv python3 dialog_api
+                touch ./dialog_api/__init__.py
         - run:
             name: Install envsubst
             command: |
@@ -99,16 +108,15 @@ jobs:
         - run:
             name: Change setup.py
             command: |
-                envsubst < ./python3/setup_unfilled.py > ./python3/setup.py
+                envsubst < setup_unfilled.py > setup.py
         - run:
             name: Install twine
             command: |
-                python3 -m pip install twine
-
+                python3 -m pip install --user twine
+                python3 -m pip install --upgrade setuptools wheel
         - run:
             name: Build & push package
             command: |
-                cd python3
                 python3 setup.py sdist bdist_wheel
                 python3 -m twine upload ./dist/*
 workflows:
@@ -128,4 +136,6 @@ workflows:
       - python_release:
           filters:
             branches:
-              only: master
+              ignore: /.*/
+            tags:
+              only: /^\d+\.\d+\.\d+$/
