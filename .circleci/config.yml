@@ -133,6 +133,8 @@ workflows:
           filters:
             branches:
               only: master
+  python-build-release:
+    jobs:
       - python_release:
           filters:
             branches:
