@@ -50,6 +50,12 @@ message ResponseBool {
     bool value = 1 [(dlg).log="visible"];
 }
 
+
+enum SupportedServerMethodsType {
+    NONE_SUPPORTED_METHODS = 0;
+    CHANGE_PASSWORD = 1;
+}
+
 // Configuration of system
 // maxGroupSize Current maximum group size
 // discover Discover configuration
@@ -70,6 +76,7 @@ message Config {
     ServicePeers service_peers = 9 [(dlg).log="visible"];
     repeated Any extensions = 3;
     int64 client_keep_alive = 10 [(dlg).log = "visible"];
+    repeated SupportedServerMethodsType supported_methods = 11 [(dlg).log = "visible"];
 }
 
 // Service peers
