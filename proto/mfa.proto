@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package dialog;
+
+message MFAStatusRequest {
+    int32 user_id = 1;
+}
+
+message MFAStatusResponse {
+
+    enum FactorType {
+        PASSWORD = 0;
+    }
+
+    enum RecoveryType {
+        EMAIL = 0;
+    }
+
+    message AuthFactor {
+        FactorType type = 1;
+        RecoveryType recovery_channel = 2;
+        bool enabled = 3;
+    }
+
+    repeated AuthFactor factors = 1;
+}

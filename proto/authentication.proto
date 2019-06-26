@@ -23,6 +23,8 @@ import "miscellaneous.proto";
 import "peers.proto";
 import "users.proto";
 import "scalapb/scalapb.proto";
+import "mfa.proto";
+import "mfa_password_email.proto";
 
 option (scalapb.options) = {
     package_name: "im.dlg.grpc.services"
@@ -155,6 +157,28 @@ message ResponseStartUsernameAuth {
     /** Hash of authorization transaction **/
     string transaction_hash = 1;
     bool is_registered = 2; /// Deprecated
+}
+
+message RequestStartPasswordAuth {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    int32 user_id = 1 [(dlg).log="hidden"];
+    /** Application id, choose it by yourself and hold during authorization process **/
+    int32 app_id = 2 [(dlg).log="hidden"];
+    /** Deprecated field - keep it empty **/
+    string api_key = 3 [(dlg).log="hidden"];
+    /** Deprecated field - keep it empty **/
+    bytes device_hash = 4 [(dlg).log="visible"];
+    /** Some title, choose it by yourself and hold during authorization process **/
+    string device_title = 5 [(dlg).log="visible"];
+    google.protobuf.StringValue time_zone = 6 [(dlg).log="visible"];
+    /** First language from this array will be used for some notifications from server **/
+    repeated string preferred_languages = 7 [(dlg).log="visible"];
+}
+
+message ResponseStartPasswordAuth {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    /** Hash of authorization transaction **/
+    string transaction_hash = 1;
 }
 
 // Performing user sign in.
@@ -409,6 +433,15 @@ service Authentication {
             body: "*"
         };
     }
+
+    /// Start MFA password authorization process
+    rpc StartPasswordAuth (RequestStartPasswordAuth) returns (ResponseStartPasswordAuth) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/StartPasswordAuth"
+            body: "*"
+        };
+    }
+
     /** Validate code received by phone or email
      *  Returns error if user does not exist
      */
@@ -513,6 +546,55 @@ service Authentication {
     rpc ChangePassword (RequestChangePassword) returns (ResponseVoid) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/ChangePassword"
+            body: "*"
+        };
+    }
+
+    rpc MFAStatus(MFAStatusRequest) returns (MFAStatusResponse) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/MFAStatus"
+            body: "*"
+        };
+    }
+
+    rpc MFAEnablePasswordEmail (PasswordEmailEnableRequest) returns (ConfirmationResponse) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/MFAEnablePasswordEmail"
+            body: "*"
+        };
+    }
+
+    rpc MFAUpdateEmail (EmailUpdateRequest) returns (ConfirmationResponse) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/MFAUpdateEmail"
+            body: "*"
+        };
+    }
+
+    rpc MFARecoverPassword (PasswordRecoverRequest) returns (ConfirmationResponse) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/MFARecoverPassword"
+            body: "*"
+        };
+    }
+
+    rpc MFADisablePassword (UserPassword) returns (ResponseVoid) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/MFADisablePassword"
+            body: "*"
+        };
+    }
+
+    rpc MFAGetPasswordHint (GetUserHintRequest) returns (GetUserHintResponse) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/MFAGetPasswordHint"
+            body: "*"
+        };
+    }
+
+    rpc MFASetPasswordHint (SetUserHintRequest) returns (ResponseVoid) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/MFASetPasswordHint"
             body: "*"
         };
     }

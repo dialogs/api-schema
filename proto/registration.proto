@@ -15,6 +15,7 @@ enum AuthorizationMethod {
     phone = 2;
     email = 3;
     certificate = 4;
+    mfa_password = 5;
 }
 
 message RequestRegisterDevice {
