@@ -54,6 +54,10 @@ message SimpleUserProfileSearchCondition {
     string query_string = 1;
 }
 
+message SimpleGroupSearchCondition {
+    string query_string = 1;
+}
+
 message criterion {
 }
 
@@ -63,6 +67,7 @@ message SimpleSearchCondition {
         SimpleMessageSearchCondition message = 2;
         SimplePeerSearchCondition peer = 3;
         SimpleUserProfileSearchCondition userProfile = 4;
+        SimpleGroupSearchCondition group = 5;
     }
 }
 
