@@ -83,13 +83,12 @@ jobs:
   python_release:
     machine:
         image: ubuntu-1604:201903-01
-        environment:
-            GOPATH: $HOME/.go_project
     steps:
         - checkout
         - run:
             name: Make Python 3 bindings
             command: |
+                export GOPATH=$HOME/.go_project
                 pyenv global 3.7.0
                 make python3
         - run:
