@@ -83,8 +83,6 @@ jobs:
   python_release:
     machine:
         image: ubuntu-1604:201903-01
-        environment:
-            GOPATH: $HOME/.go_project
     steps:
         - checkout
         - run:
