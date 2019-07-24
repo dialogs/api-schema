@@ -12,7 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/dialogs/api-schema",
-    packages=['dialog-api'],
+    packages=setuptools.find_packages(),
     license='Apache License 2.0',
     keywords='dialog messenger',
     python_requires='>=3',
