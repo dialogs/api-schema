@@ -335,6 +335,19 @@ message RequestEditGroupBasePermissions {
     repeated GroupAdminPermission revoked_permissions = 4 [(dlg).log="visible"];
 }
 
+message RequestEditMemberPermissions {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    GroupOutPeer group_peer = 1 [(dlg).log="visible"];
+    UserOutPeer user_peer = 2 [(dlg).log="visible"];
+    repeated GroupAdminPermission granted_permissions = 3 [(dlg).log="visible"];
+    repeated GroupAdminPermission revoked_permissions = 4 [(dlg).log="visible"];
+}
+
+message ResponseMember {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    Member member = 1;
+}
+
 // Inviting user to group
 message RequestInviteUser {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
@@ -659,6 +672,12 @@ service Groups {
     rpc GetGroupMemberPermissions (RequestGetGroupMemberPermissions) returns (ResponseGetGroupMemberPermissions) {
         option (google.api.http) = {
             post: "/v1/grpc/Groups/GetGroupMemberPermissions"
+            body: "*"
+        };
+    }
+    rpc EditMemberPermissions (RequestEditMemberPermissions) returns (ResponseMember) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Groups/EditMemberPermissions"
             body: "*"
         };
     }
