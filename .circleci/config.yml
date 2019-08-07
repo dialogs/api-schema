@@ -7,8 +7,9 @@ version: 2.1
 git_config: &git_config
   name: configure git bot
   command: |
-      git config user.name "$GITHUB_BOT_USERNAME"
-      git config user.email "$GITHUB_BOT_EMAIL"
+    git config user.name "$GITHUB_BOT_USERNAME"
+    git config user.email "$GITHUB_BOT_EMAIL"
+    git remote set-url origin https://${GITHUB_BOT_TOKEN}@github.com/dialogs/api-schema.git
 
 executors:
   build-executor:
@@ -17,6 +18,37 @@ executors:
     working_directory: ~/code
 
 jobs:
+  build-docs:
+    docker:
+      - image: circleci/golang
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            sudo apt install protobuf-compiler
+            go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
+      - run:
+          name: Generate documentation
+          command: |
+            mkdir docs
+            protoc -I./proto -I./include --plugin=protoc-gen-doc="$GOPATH/bin/protoc-gen-doc" --doc_out=./docs --doc_opt=markdown,readme.md ./proto/*.proto
+      - persist_to_workspace:
+          root: .
+          paths:
+            - docs
+  publish-docs:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          <<: *git_config
+      - run:
+          name: Deploy gh-pages
+          command: npx gh-pages@2.0.1 -d docs
   dependencies:
     executor: build-executor
     environment:
@@ -61,10 +93,6 @@ jobs:
       - restore_cache:
           key: v1-dependencies-{{ checksum "build.gradle" }}
       - run:
-          name: Change origin to push by bot
-          command: |
-            git remote set-url origin https://${GITHUB_BOT_TOKEN}@github.com/dialogs/api-schema.git
-      - run:
           name: Release
           command: echo -ne '\n\n' | ./gradlew release
       - run:
@@ -82,46 +110,55 @@ jobs:
               $DIALOG_HOOK_URL
   python_release:
     machine:
-        image: ubuntu-1604:201903-01
+      image: ubuntu-1604:201903-01
     steps:
-        - checkout
-        - run:
-            name: Make Python 3 bindings
-            command: |
-                export GOPATH=$HOME/.go_project
-                pyenv global 3.7.0
-                make python3
-        - run:
-            name: Rename folders
-            command: |
-                mv python3 dialog_api
-                touch ./dialog_api/__init__.py
-        - run:
-            name: Install envsubst
-            command: |
-                sudo apt-get update && sudo apt-get -y install gettext-base
-        - run:
-            name: init .pypirc
-            command: |
-                echo -e "[pypi]" >> ~/.pypirc
-                echo -e "username: dialog_llc" >> ~/.pypirc
-                echo -e "password: $PYPI_PASSWORD" >> ~/.pypirc
-        - run:
-            name: Change setup.py
-            command: |
-                envsubst < setup_unfilled.py > setup.py
-        - run:
-            name: Install twine
-            command: |
-                python3 -m pip install --user twine
-                python3 -m pip install --upgrade setuptools wheel
-        - run:
-            name: Build & push package
-            command: |
-                python3 setup.py sdist bdist_wheel
-                python3 -m twine upload ./dist/*
+      - checkout
+      - run:
+          name: Make Python 3 bindings
+          command: |
+            export GOPATH=$HOME/.go_project
+            pyenv global 3.7.0
+            make python3
+      - run:
+          name: Rename folders
+          command: |
+            mv python3 dialog_api
+            touch ./dialog_api/__init__.py
+      - run:
+          name: Install envsubst
+          command: |
+            sudo apt-get update && sudo apt-get -y install gettext-base
+      - run:
+          name: init .pypirc
+          command: |
+            echo -e "[pypi]" >> ~/.pypirc
+            echo -e "username: dialog_llc" >> ~/.pypirc
+            echo -e "password: $PYPI_PASSWORD" >> ~/.pypirc
+      - run:
+          name: Change setup.py
+          command: |
+            envsubst < setup_unfilled.py > setup.py
+      - run:
+          name: Install twine
+          command: |
+            python3 -m pip install --user twine
+            python3 -m pip install --upgrade setuptools wheel
+      - run:
+          name: Build & push package
+          command: |
+            python3 setup.py sdist bdist_wheel
+            python3 -m twine upload ./dist/*
 workflows:
   version: 2
+  docs:
+    jobs:
+      - build-docs:
+          filters:
+            branches:
+              only: master
+      - publish-docs:
+          requires:
+            - build-docs
   java-build-release:
     jobs:
       - dependencies

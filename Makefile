@@ -1,10 +1,9 @@
-.PHONY: docs java swagger gateway python2 python3 php golang
+.PHONY: java swagger gateway python2 python3 php golang
 
 PROJECT_PATH   := $(shell pwd)
 PROTO_PATH     := $(PROJECT_PATH)/proto
 JAVA_GEN_PATH  := $(PROJECT_PATH)/java
 PHP_GEN_PATH   := $(PROJECT_PATH)/php
-DOCS_PATH      := $(PROJECT_PATH)/docs
 SWAGGER_PATH   := $(PROJECT_PATH)/swagger
 HTTP_GW_PATH   := $(PROJECT_PATH)/http_gateway
 GOLANG_PATH    := $(PROJECT_PATH)/golang
@@ -80,14 +79,4 @@ golang:
 	-Iinclude \
 	-I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
 	--gosdk_out=$(GOLANG_PATH) \
-	$(PROTO_PATH)/*.proto
-
-docs:
-	rm -rf $(DOCS_PATH)
-	mkdir -p $(DOCS_PATH)
-	@protoc -I$(PROTO_PATH) \
-	-Iinclude \
-	--plugin=protoc-gen-doc=$(GOPATH)/bin/protoc-gen-doc \
-	--doc_out=$(DOCS_PATH) \
-	--doc_opt=markdown,readme.md \
 	$(PROTO_PATH)/*.proto
