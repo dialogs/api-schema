@@ -8,3 +8,33 @@
     }
   }
 }
+{
+  "type": "object",
+  "properties": {
+    "isMultifactorauthActive": {
+      "type": "boolean",
+      "title": "Activates Multifactorauth",
+      "default": false
+    }
+  }
+}
+{
+  "type": "object",
+  "properties": {
+    "userProfile.nameMinLength": {
+      "type": "string",
+      "title": "MinLength Profile Name",
+      "default": 3
+    }
+  }
+}
+{
+  "type": "object",
+  "properties": {
+    "userProfile.nameMaxLength": {
+      "type": "string",
+      "title": "MaxLength Profile Name",
+      "default": 128
+    }
+  }
+}
