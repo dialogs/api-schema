@@ -82,7 +82,7 @@
   "type": "object",
   "properties": {
     "userProfile.avatarFileMaxSize": {
-      "type": "string",
+      "type": "int32",
       "title": "FileMaxSize Profile avatar",
       "default": 1048576
     }
