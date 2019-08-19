@@ -7,7 +7,7 @@
       "default": false
     }
   }
-}
+},
 {
   "type": "object",
   "properties": {
@@ -17,7 +17,7 @@
       "default": false
     }
   }
-}
+},
 {
   "type": "object",
   "properties": {
@@ -27,7 +27,7 @@
       "default": 3
     }
   }
-}
+},
 {
   "type": "object",
   "properties": {
@@ -37,4 +37,54 @@
       "default": 128
     }
   }
-}
+},
+{
+  "type": "object",
+  "properties": {
+    "userProfile.nicknameMinLength": {
+      "type": "string",
+      "title": "MinLength Profile Nickname",
+      "default": 3
+    }
+  }
+},
+{
+  "type": "object",
+  "properties": {
+    "userProfile.nicknameMaxLength": {
+      "type": "string",
+      "title": "MaxLength Profile Nickname",
+      "default": 32
+    }
+  }
+},
+{
+  "type": "object",
+  "properties": {
+    "userProfile.aboutMinLength": {
+      "type": "string",
+      "title": "MinLength Profile About",
+      "default": 0
+    }
+  }
+},
+{
+  "type": "object",
+  "properties": {
+    "userProfile.aboutMaxLength": {
+      "type": "string",
+      "title": "MaxLength Profile About",
+      "default": 3000
+    }
+  }
+},
+{
+  "type": "object",
+  "properties": {
+    "userProfile.avatarFileMaxSize": {
+      "type": "string",
+      "title": "FileMaxSize Profile avatar",
+      "default": 1048576
+    }
+  }
+},
