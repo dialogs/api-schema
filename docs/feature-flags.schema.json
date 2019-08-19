@@ -4,7 +4,7 @@
     "isDiscoverActive": {
       "type": "boolean",
       "title": "Activates discover tab",
-      "default": false
+      "default": true
     }
   }
 },
@@ -88,3 +88,113 @@
     }
   }
 },
+{
+  "type": "object",
+  "properties": {
+    "groups.titleMinLength": {
+      "type": "string",
+      "title": "MinLength Group Title",
+      "default": 5
+    }
+  }
+},
+{
+  "type": "object",
+  "properties": {
+    "groups.titleMaxLength": {
+      "type": "string",
+      "title": "MaxLength Group Title",
+      "default": 128
+    }
+  }
+},
+{
+  "type": "object",
+  "properties": {
+    "groups.aboutMaxLength": {
+      "type": "string",
+      "title": "MaxLength Group About",
+      "default": 3000
+    }
+  }
+},
+{
+  "type": "object",
+  "properties": {
+    "groups.shortNameMinLength": {
+      "type": "string",
+      "title": "MinLength Group Shortname",
+      "default": 1
+    }
+  }
+},
+{
+  "type": "object",
+  "properties": {
+    "groups.shortNameMaxLength": {
+      "type": "string",
+      "title": "MaxLength Group Shortname",
+      "default": 32
+    }
+  }
+},
+{
+  "type": "object",
+  "properties": {
+    "groups.avatarFileMaxSize": {
+      "type": "int32",
+      "title": "FileMaxSize Group avatar",
+      "default": 1048576
+    }
+  }
+},
+{
+  "type": "object",
+  "properties": {
+    "spaces.isEnabled": {
+      "type": "boolean",
+      "title": "Activates Spaces",
+      "default": true
+    }
+  }
+},
+{
+  "type": "object",
+  "properties": {
+    "spaces.aboutMaxLength": {
+      "type": "string",
+      "title": "MaxLength Space About",
+      "default": 280
+    }
+  }
+},
+{
+  "type": "object",
+  "properties": {
+    "spaces.titleMaxLength": {
+      "type": "string",
+      "title": "MaxLength Space Title",
+      "default": 64
+    }
+  }
+},
+{
+  "type": "object",
+  "properties": {
+    "spaces.shortnameMaxLength": {
+      "type": "string",
+      "title": "MaxLength Space Shortname",
+      "default": 32
+    }
+  }
+},
+{
+  "type": "object",
+  "properties": {
+    "chat.bubbles": {
+      "type": "boolean",
+      "title": "Activates bubbles in chat",
+      "default": false
+    }
+  }
+}
