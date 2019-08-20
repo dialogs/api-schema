@@ -42,27 +42,6 @@ message Group {
     GroupData data = 29;
 }
 
-// Group Full information - Deprecated
-message GroupFull {
-    int32 id = 1 [(dlg).log="visible"]; /// Group Id
-    int64 create_date = 6 [(dlg).log="visible"]; /// Date created
-    int32 owner_uid = 5 [(dlg).log="visible"]; /// Group owner
-    /// Group members. Can be empty when isAsyncMembers enabled.
-    repeated Member members = 12 [(dlg).log="visible"];
-    /// Group Theme
-    google.protobuf.StringValue theme = 2 [(dlg).log="hidden"];
-    /// Group about
-    google.protobuf.StringValue about = 3 [(dlg).log="hidden"];
-    /// Is Members need to be loaded asynchronous.
-    google.protobuf.BoolValue is_async_members = 11 [(dlg).log="visible"];
-    /// Can current user view members of the group. Default is true.
-    google.protobuf.BoolValue can_view_members = 8 [(dlg).log="visible"];
-    /// Can current user invite new people. Default is true.
-    google.protobuf.BoolValue can_invite_people = 9 [(dlg).log="visible"];
-    /// Is history shared among all users.
-    google.protobuf.BoolValue is_shared_history = 10 [(dlg).log="visible"];
-}
-
 message GroupData {
     UUIDValue space_id = 1;
     string title = 2 [(dlg).log="hidden"]; /// Title of group
@@ -85,18 +64,6 @@ message GroupData {
 message UpdateGroup {
     int32 id = 1;
     GroupData data = 2;
-}
-
-// Loading Full Groups - Deprecated
-message RequestLoadFullGroups {
-    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-    repeated GroupOutPeer groups = 1 [(dlg).log="compact"];
-}
-
-/// Deprecated
-message ResponseLoadFullGroups {
-    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
-    repeated GroupFull groups = 1;
 }
 
 // Loading group members
@@ -562,13 +529,6 @@ message UpdateGroupShortnameChanged {
 }
 
 service Groups {
-    /// deprecated
-    rpc LoadFullGroups (RequestLoadFullGroups) returns (ResponseLoadFullGroups) {
-        option (google.api.http) = {
-            post: "/v1/grpc/Groups/LoadFullGroups"
-            body: "*"
-        };
-    }
     rpc LoadMembers (RequestLoadMembers) returns (ResponseLoadMembers) {
         option (google.api.http) = {
             post: "/v1/grpc/Groups/LoadMembers"
