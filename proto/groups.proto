@@ -37,32 +37,9 @@ enum GroupType {
 // Group information
 message Group {
     int32 id = 1 [(dlg).log="visible"]; /// group id
-    UUIDValue space_id = 27;
     int64 access_hash = 2 [(dlg).log="danger"]; /// Access hash of group
-    string title = 3 [(dlg).log="hidden"]; /// Title of group
-    Avatar avatar = 4 [(dlg).log="compact"]; /// Avatar of group
-    /// Number of members
-    google.protobuf.Int32Value members_amount = 24 [(dlg).log="visible"];
-    /// Is current user a member of a group. Default is true.
-    google.protobuf.BoolValue is_member = 6 [(dlg).log="visible"];
-    /// Is group hidden (not showing it in recent list). Default is false.
-    google.protobuf.BoolValue is_hidden = 20 [(dlg).log="visible"];
-    /// Group Type. Used only for displaying information. Default is GROUP.
-    GroupType group_type = 25 [(dlg).log="visible"];
-    /// Can user send messages. Default is equals isMember for Group and false for channels.
-    google.protobuf.BoolValue can_send_message = 26 [(dlg).log="visible"];
-    google.protobuf.BoolValue is_admin = 16 [(dlg).log="visible"]; /// Deprecated
-    int32 creator_uid = 8 [(dlg).log="visible"]; /// Group creator
-    repeated Member members = 9 [(dlg).log="compact"]; /// Members of group
-    int64 create_date = 10 [(dlg).log="visible"]; /// Date of creation
-    /// Theme of group
-    google.protobuf.StringValue theme = 17 [(dlg).log="hidden"];
-    /// About of group
-    google.protobuf.StringValue about = 18 [(dlg).log="hidden"];
-    /// Group short name
-    google.protobuf.StringValue shortname = 19 [(dlg).log="visible"];
-    /// Base permissions for invited members
-    repeated GroupAdminPermission base_permissions = 28 [(dlg).log="visible"];
+    reserved 3 to 28;
+    GroupData data = 29;
 }
 
 // Group Full information - Deprecated
