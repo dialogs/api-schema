@@ -44,6 +44,8 @@ message UpdateSeqUpdate {
     bytes state = 2 [(dlg).log="compact"];
     int32 update_header = 3 [(dlg).log="visible"];
 
+    reserved 42, 45, 46, 47, 48, 49, 50, 54, 62;
+
     oneof update {
       UpdateForceReloadState updateForceReloadState = 4;
       UpdateUserAvatarChanged updateUserAvatarChanged = 5;
@@ -83,19 +85,11 @@ message UpdateSeqUpdate {
       UpdatePinnedMessagesChanged updatePinnedMessagesChanged = 39;
       UpdateGroupTitleChanged updateGroupTitleChanged = 40;
       UpdateGroupAvatarChanged updateGroupAvatarChanged = 41;
-      UpdateGroupTopicChanged updateGroupTopicChanged = 42;
       UpdateGroupAboutChanged updateGroupAboutChanged = 43;
       UpdateGroupOwnerChanged updateGroupOwnerChanged = 44;
-      UpdateGroupHistoryShared updateGroupHistoryShared = 45;
-      UpdateGroupCanSendMessagesChanged updateGroupCanSendMessagesChanged = 46;
-      UpdateGroupCanViewMembersChanged updateGroupCanViewMembersChanged = 47;
-      UpdateGroupCanInviteMembersChanged updateGroupCanInviteMembersChanged = 48;
-      UpdateGroupMemberChanged updateGroupMemberChanged = 49;
-      UpdateGroupMembersBecameAsync updateGroupMembersBecameAsync = 50;
       UpdateGroupMembersUpdated updateGroupMembersUpdated = 51;
       UpdateGroupMemberDiff updateGroupMemberDiff = 52;
       UpdateGroupMembersCountChanged updateGroupMembersCountChanged = 53;
-      UpdateGroupMemberAdminChanged updateGroupMemberAdminChanged = 54;
       UpdateGroupMemberPermissionsChanged updateGroupMemberPermissionsChanged = 55;
       UpdateGroupInviteObsolete updateGroupInviteObsolete = 56;
       UpdateGroupUserInvitedObsolete updateGroupUserInvitedObsolete = 57;
@@ -103,7 +97,6 @@ message UpdateSeqUpdate {
       UpdateGroupUserKickObsolete updateGroupUserKickObsolete = 59;
       UpdateGroupMembersUpdateObsolete updateGroupMembersUpdateObsolete = 60;
       UpdateGroupTitleChangedObsolete updateGroupTitleChangedObsolete = 61;
-      UpdateGroupTopicChangedObsolete updateGroupTopicChangedObsolete = 62;
       UpdateGroupAboutChangedObsolete updateGroupAboutChangedObsolete = 63;
       UpdateGroupAvatarChangedObsolete updateGroupAvatarChangedObsolete = 64;
       UpdateGroupShortnameChanged updateGroupShortnameChanged = 65;

@@ -93,12 +93,6 @@ message UpdateGroupAvatarChanged {
     Avatar avatar = 2 [(dlg).log="visible"];
 }
 
-// Update about topic changed
-message UpdateGroupTopicChanged {
-    int32 group_id = 1 [(dlg).log="visible"];
-    google.protobuf.StringValue topic = 2 [(dlg).log="hidden"];
-}
-
 // Update about about changed
 message UpdateGroupAboutChanged {
     int32 group_id = 1 [(dlg).log="visible"];
@@ -111,45 +105,11 @@ message UpdateGroupOwnerChanged {
     int32 user_id = 2 [(dlg).log="visible"]; /// new owner
 }
 
-// Update about history shared
-message UpdateGroupHistoryShared {
-    int32 group_id = 1 [(dlg).log="visible"];
-}
-
 // Update about base group permissions changed
 message UpdateGroupBasePermissionsChanged {
     int32 group_id = 1 [(dlg).log="visible"];
     /// new base permissions
     repeated GroupAdminPermission base_permissions = 2 [(dlg).log="visible"];
-}
-
-// Update about can send messages changed
-message UpdateGroupCanSendMessagesChanged {
-    int32 group_id = 1 [(dlg).log="visible"];
-    bool can_send_messages = 2 [(dlg).log="visible"];
-}
-
-// Update about can view members changed
-message UpdateGroupCanViewMembersChanged {
-    int32 group_id = 1 [(dlg).log="visible"];
-    bool can_view_members = 2 [(dlg).log="visible"];
-}
-
-// Update about can invite members changed
-message UpdateGroupCanInviteMembersChanged {
-    int32 group_id = 1 [(dlg).log="visible"];
-    bool can_invite_members = 2 [(dlg).log="visible"];
-}
-
-// Update about membership changed
-message UpdateGroupMemberChanged {
-    int32 group_id = 1 [(dlg).log="visible"];
-    bool is_member = 2 [(dlg).log="visible"];
-}
-
-// Update about members became async
-message UpdateGroupMembersBecameAsync {
-    int32 group_id = 1 [(dlg).log="visible"];
 }
 
 // Update about members updated
@@ -169,13 +129,6 @@ message UpdateGroupMemberDiff {
 message UpdateGroupMembersCountChanged {
     int32 group_id = 1 [(dlg).log="visible"];
     int32 members_count = 2 [(dlg).log="visible"];
-}
-
-// Update about member admin changed
-message UpdateGroupMemberAdminChanged {
-    int32 group_id = 1 [(dlg).log="visible"];
-    int32 user_id = 2 [(dlg).log="visible"];
-    bool is_admin = 3 [(dlg).log="visible"];
 }
 
 // Creating group chat
@@ -250,16 +203,6 @@ message RequestRemoveGroupAvatar {
     int64 rid = 4 [(dlg).log="visible"]; /// Id for query deduplication
     /// Optimizations drops some info from response to decrease traffic and latency
     repeated UpdateOptimization optimizations = 5 [(dlg).log="visible"];
-}
-
-// Edit group topic
-message RequestEditGroupTopic {
-    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-    GroupOutPeer group_peer = 1 [(dlg).log="visible"];
-    int64 rid = 2 [(dlg).log="visible"]; /// Id for query deduplication
-    google.protobuf.StringValue topic = 3 [(dlg).log="hidden"];
-    /// Optimizations drops some info from response to decrease traffic and latency
-    repeated UpdateOptimization optimizations = 4 [(dlg).log="visible"];
 }
 
 // Edit Group About
@@ -432,20 +375,6 @@ message RequestJoinGroupByPeer {
     GroupOutPeer peer = 1 [(dlg).log="visible"];
 }
 
-// [OBSOLETE] Make user admin
-message RequestMakeUserAdminObsolete {
-    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-    GroupOutPeer group_peer = 1 [(dlg).log="visible"];
-    UserOutPeer user_peer = 2 [(dlg).log="visible"];
-}
-
-message ResponseMakeUserAdminObsolete {
-    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
-    repeated Member members = 1;
-    int32 seq = 2; /// deprecated
-    bytes state = 3;
-}
-
 // Update about inviting current user to group
 message UpdateGroupInviteObsolete {
     int32 group_id = 1 [(dlg).log="visible"];
@@ -495,15 +424,6 @@ message UpdateGroupTitleChangedObsolete {
     int32 uid = 2 [(dlg).log="visible"];
     string title = 3 [(dlg).log="hidden"];
     int64 date = 4 [(dlg).log="visible"];
-}
-
-// Update about group topic change
-message UpdateGroupTopicChangedObsolete {
-    int32 group_id = 1 [(dlg).log="visible"];
-    int64 rid = 2 [(dlg).log="visible"]; /// deprecated
-    int32 uid = 3 [(dlg).log="visible"];
-    google.protobuf.StringValue topic = 4 [(dlg).log="hidden"];
-    int64 date = 5 [(dlg).log="visible"];
 }
 
 // Update about group about change
@@ -652,12 +572,6 @@ service Groups {
     rpc JoinGroupByPeer (RequestJoinGroupByPeer) returns (ResponseVoid) {
         option (google.api.http) = {
             post: "/v1/grpc/Groups/JoinGroupByPeer"
-            body: "*"
-        };
-    }
-    rpc MakeUserAdminObsolete (RequestMakeUserAdminObsolete) returns (ResponseMakeUserAdminObsolete) {
-        option (google.api.http) = {
-            post: "/v1/grpc/Groups/MakeUserAdminObsolete"
             body: "*"
         };
     }
