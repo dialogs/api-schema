@@ -769,6 +769,18 @@ message ResponseLoadHistory {
     int64 counter_date = 8;
 }
 
+message RequestHistoryDifference {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    int64 clock = 1;
+}
+
+message ResponseHistoryDifference {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    repeated HistoryMessage history = 1;
+    int64 from_clock = 2;
+    int64 clock = 3;
+}
+
 // Conversation from history
 // peer
 // unreadCount
@@ -1106,6 +1118,13 @@ service Messaging {
     rpc LoadHistory (RequestLoadHistory) returns (ResponseLoadHistory) {
         option (google.api.http) = {
             post: "/v1/grpc/Messaging/LoadHistory"
+            body: "*"
+        };
+    }
+    /// Load total history difference for all user's conversations
+    rpc HistoryDifference (RequestHistoryDifference) returns (ResponseHistoryDifference) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Messaging/HistoryDifference"
             body: "*"
         };
     }
