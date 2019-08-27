@@ -77,6 +77,7 @@ message Config {
     repeated Any extensions = 3;
     int64 client_keep_alive = 10 [(dlg).log = "visible"];
     repeated SupportedServerMethodsType supported_methods = 11 [(dlg).log = "visible"];
+    int32 max_channel_size = 12 [(dlg).log="visible"];
 }
 
 // Service peers
