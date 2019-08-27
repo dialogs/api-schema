@@ -2,7 +2,7 @@ organization := "im.dlg"
 
 name := "dialog-platform-services"
 
-version := "0.2.1.1"
+version := "0.2.2"
 
 scalaVersion := "2.13.0"
 
