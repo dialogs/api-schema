@@ -19,12 +19,12 @@ option (scalapb.options) = {
 
 // Member information
 message Member {
-    int32 uid = 1 [deprecated=true];
-    reserved 2, 3, 4; // inviter_uid, date, is_admin
+    int32 uid = 1 [(dlg).log="visible"];
+    reserved 2, 4; // inviter_uid, is_admin
+    int64 invited_at = 3 [(dlg).log="visible"];
     repeated GroupAdminPermission permissions = 5 [(dlg).log="visible"]; // List of member permissions
-    UserOutPeer user_peer = 6 [(dlg).log="visible"];
-    int64 clock = 7 [(dlg).log="visible"];
-    google.protobuf.Timestamp deleted_at = 8 [(dlg).log="visible"];
+    int64 clock = 6 [(dlg).log="visible"];
+    google.protobuf.Timestamp deleted_at = 7 [(dlg).log="visible"];
 }
 
 enum GroupType {
@@ -76,7 +76,6 @@ message RequestLoadMembers {
 
 message ResponseLoadMembers {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
-    repeated UserOutPeer member_peers = 1 [deprecated=true];
     google.protobuf.BytesValue next = 2 [(dlg).log="compact"];
     repeated Member members = 3 [(dlg).log="visible"];
 }
