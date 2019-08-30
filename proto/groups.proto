@@ -76,7 +76,7 @@ message RequestLoadMembers {
 
 message ResponseLoadMembers {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
-    google.protobuf.BytesValue next = 2 [(dlg).log="compact"];
+    google.protobuf.BytesValue cursor = 2 [(dlg).log="compact"];
     repeated Member members = 3 [(dlg).log="visible"];
 }
 
