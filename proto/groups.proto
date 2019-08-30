@@ -50,7 +50,7 @@ message GroupData {
     int32 members_amount = 4 [(dlg).log="visible"];
     /// Group Type. Used only for displaying information. Default is GROUP.
     GroupType group_type = 5 [(dlg).log="visible"];
-    int32 creator_user_id = 6 [(dlg).log="visible"]; /// Group creator
+    int32 owner_user_id = 6 [(dlg).log="visible"]; /// Group creator
     google.protobuf.Timestamp created_at = 7 [(dlg).log="visible"]; /// Date of creation
     /// About of group
     google.protobuf.StringValue about = 8 [(dlg).log="hidden"];
