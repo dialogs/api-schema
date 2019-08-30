@@ -104,6 +104,12 @@
       "title": "Activates bubbles in chat",
       "default": false,
       "description": "if true = bubbles in chat are enable for users"
-    }
+    },
+    "badges.menu.dialogs": {
+      "type": "boolean",
+      "title": "Activates budges in chat",
+      "default": true,
+      "description": "if true = budges in chat are enable for users"
+    },
   }
 }
