@@ -484,12 +484,6 @@ service Groups {
             body: "*"
         };
     }
-    rpc EditGroupTopic (RequestEditGroupTopic) returns (ResponseSeqDate) {
-        option (google.api.http) = {
-            post: "/v1/grpc/Groups/EditGroupTopic"
-            body: "*"
-        };
-    }
     rpc EditGroupAbout (RequestEditGroupAbout) returns (ResponseSeqDate) {
         option (google.api.http) = {
             post: "/v1/grpc/Groups/EditGroupAbout"
