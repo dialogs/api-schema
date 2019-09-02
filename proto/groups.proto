@@ -40,6 +40,7 @@ message Group {
     int64 access_hash = 2 [(dlg).log="danger"]; /// Access hash of group
     reserved 3 to 28;
     GroupData data = 29;
+    Member self_member = 30;
 }
 
 message GroupData {
