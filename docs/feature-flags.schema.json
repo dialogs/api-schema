@@ -115,7 +115,7 @@
       "type": "double",
       "title": "The ratio of file download time (in ms) to size (in bytes)",
       "default": 0.00075,
-      "description": "if true = budges in chat are enable for users"
+      "description": "Required for dynamically resizing following chunks when loading. This ratio is compared with the ratio of the previous batch of chunks, therefore it is concluded whether it is necessary to increase or decrease the size of following chunks"
     },
     "fileUploading.maximumChunkSize": {
       "type": "int32",
