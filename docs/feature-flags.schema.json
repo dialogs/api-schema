@@ -104,6 +104,28 @@
       "title": "Activates bubbles in chat",
       "default": false,
       "description": "if true = bubbles in chat are enable for users"
+    },
+    "badges.menu.dialogs": {
+      "type": "boolean",
+      "title": "Activates budges in chat",
+      "default": true,
+      "description": "if true = budges in chat are enable for users"
+    },
+    "fileUploading.perfectRatio": {
+      "type": "double",
+      "title": "The ratio of file download time (in ms) to size (in bytes)",
+      "default": 0.00075,
+      "description": "if true = budges in chat are enable for users"
+    },
+    "fileUploading.maximumChunkSize": {
+      "type": "int32",
+      "title": "Maximum size of Chunk (in bytes) for sending to server",
+      "default": 5000000
+    },
+    "fileUploading.minimumChunkSize": {
+      "type": "int32",
+      "title": "Minimum size of Chunk (in bytes) for sending to server",
+      "default": 500000
     }
   }
 }
