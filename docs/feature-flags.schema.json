@@ -222,6 +222,12 @@
       "type": "boolean",
       "title": "Enabling markdown in user profile",
       "default": false
+    },
+    "calls.isEnabled": {
+      "type": "boolean",
+      "title": "Activates Calls",
+      "default": false,
+      "description": "if true = calls are enable for users"
     }
   }
 }
