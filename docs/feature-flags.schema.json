@@ -31,7 +31,7 @@
     "userProfile.nameRegExp": {
       "type": "string",
       "title": "RegExp for name validation (only if validation enabled)",
-      "default": ",^[\\sA-Za-zа-яА-Я0-9_-]+$"
+      "default": "^[\\sA-Za-zа-яА-Я0-9_-]+$"
     },
     "userProfile.nicknameMinLength": {
       "type": "integer",
