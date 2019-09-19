@@ -23,16 +23,6 @@
       "title": "Maximum length of user's profile name",
       "default": 128
     },
-    "userProfile.nameValidationEnabled": {
-      "type": "boolean",
-      "title": "Is validation for user profile name enabled",
-      "default": true
-    },
-    "userProfile.nameRegExp": {
-      "type": "string",
-      "title": "RegExp for name validation (only if validation enabled)",
-      "default": "^[\\sA-Za-zа-яА-Я0-9_-]+$"
-    },
     "userProfile.nicknameMinLength": {
       "type": "integer",
       "title": "Minimum length of user's profile nickname",
@@ -43,30 +33,15 @@
       "title": "Maximum length of user's profile nickname",
       "default": 32
     },
-    "userProfile.nicknameValidationEnabled": {
-      "type": "boolean",
-      "title": "Is validation for user profile nickname enabled",
-      "default": true
-    },
-    "userProfile.nicknameRegExp": {
+    "userProfile.nicknameAllowedChars": {
       "type": "string",
-      "title": "RegExp for nickname validation (only if validation enabled)",
-      "default": "^[.A-Za-z0-9_-]+$"
+      "title": "List of allowed chars in nickname",
+      "default": "abcdefghijklmnopqrstuvwxyz0123456789-_."
     },
     "userProfile.aboutMaxLength": {
       "type": "integer",
       "title": "Maximum length of user's profile about",
       "default": 3000
-    },
-    "userProfile.aboutValidationEnabled": {
-      "type": "boolean",
-      "title": "Is validation for user profile about enabled",
-      "default": false
-    },
-    "userProfile.aboutRegExp": {
-      "type": "string",
-      "title": "RegExp for about validation (only if validation enabled)",
-      "default": ".*"
     },
     "userProfile.avatarFileMaxSize": {
       "type": "integer",
