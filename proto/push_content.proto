@@ -10,9 +10,9 @@ message Localizeable {
 }
 
 enum PushPeerType {
-    Private = 0;
-    Group = 1;
-    SIP = 2;
+    PTPrivate = 0;
+    PTGroup = 1;
+    PTSIP = 2;
 }
 
 message PushPeer {
