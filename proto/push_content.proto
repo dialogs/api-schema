@@ -4,15 +4,15 @@ package dialog;
 
 import "definitions.proto";
 
-message Localizeable {
+message LocalizableString {
     string loc_key = 1;
     repeated string loc_args = 2;
 }
 
 enum PushPeerType {
-    PTPrivate = 0;
-    PTGroup = 1;
-    PTSIP = 2;
+    PUSH_PEER_TYPE_PRIVATE = 0;
+    PUSH_PEER_TYPE_GROUP = 1;
+    PUSH_PEER_TYPE_SIP = 2;
 }
 
 message PushPeer {
@@ -25,23 +25,18 @@ message PushPeer {
 message EncryptedPushContent {
     // message
     oneof alert_body {
-        Localizeable loc_alert_body = 1;
+        LocalizableString loc_alert_body = 1;
         string simple_alert_body = 2;
     }
     // title
     oneof alert_title {
-        Localizeable loc_alert_title = 3;
+        LocalizableString loc_alert_title = 3;
         string simple_alert_title = 4;
     }
     string sound = 5;
-    // counter 
-    int32 badge = 6;
-    // sender peer
+    int32 unread_message_counter = 6;
     PushPeer peer = 7;
-    // old
-    reserved 8, 9;
-    // message id
-    UUIDValue mid = 10 [(dlg).log="visible"];
-    // user can respond to this message
-    bool isRespondable = 11;
+    reserved 8, 9; // mid, category
+    UUIDValue message_id = 10 [(dlg).log="visible"];
+    bool isRespondable = 11; // if true, user can respond to this push
 }
