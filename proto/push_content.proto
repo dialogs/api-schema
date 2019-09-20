@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package dialog;
+
+import "definitions.proto";
+
+message Localizeable {
+    string loc_key = 1;
+    repeated string loc_args = 2;
+}
+
+enum PeerType {
+    Private = 0;
+    Group = 1;
+    SIP = 2;
+}
+
+message Peer {
+    PeerType type = 1;
+    int32 id = 2;
+    string str_id = 3;
+}
+
+// The structure of encrypted push content
+message EncryptedPushContent {
+    // message
+    oneof alert_body {
+        Localizeable loc_alert_body = 1;
+        string simple_alert_body = 2;
+    }
+    // title
+    oneof alert_title {
+        Localizeable loc_alert_title = 3;
+        string simple_alert_title = 4;
+    }
+    string sound = 5;
+    // counter 
+    int32 badge = 6;
+    // sender peer
+    Peer peer = 7;
+    // old
+    reserved 8, 9;
+    // message id
+    UUIDValue mid = 10 [(dlg).log="visible"];
+    // user can respond to this message
+    bool isRespondable = 11;
+}
