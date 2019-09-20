@@ -9,14 +9,14 @@ message Localizeable {
     repeated string loc_args = 2;
 }
 
-enum PeerType {
+enum PushPeerType {
     Private = 0;
     Group = 1;
     SIP = 2;
 }
 
-message Peer {
-    PeerType type = 1;
+message PushPeer {
+    PushPeerType type = 1;
     int32 id = 2;
     string str_id = 3;
 }
@@ -37,7 +37,7 @@ message EncryptedPushContent {
     // counter 
     int32 badge = 6;
     // sender peer
-    Peer peer = 7;
+    PushPeer peer = 7;
     // old
     reserved 8, 9;
     // message id
