@@ -61,6 +61,17 @@ message GroupData {
     int64 clock = 11 [(dlg).log="visible"];
 }
 
+message GroupPartialInfo {
+    int32 id = 1 [(dlg).log = "visible"];
+    int64 access_hash = 2 [(dlg).log="danger"];
+    int64 clock = 3 [(dlg).log="visible"];
+    GroupType type = 4 [(dlg).log="visible"];
+    string title = 5 [(dlg).log="compact"];
+    google.protobuf.StringValue shortname = 6 [(dlg).log="visible"];
+    Avatar avatar = 7 [(dlg).log="compact"];
+    Member self_member = 8;
+}
+
 // Update about group data changed
 message UpdateGroup {
     int32 id = 1;

@@ -108,6 +108,15 @@ message User {
     UserData data = 3; // required
 }
 
+message UserPartialInfo {
+    int32 id = 1 [(dlg).log = "visible"];
+    int64 access_hash = 2 [(dlg).log="danger"];
+    int64 clock = 3 [(dlg).log="visible"];
+    string name = 4 [(dlg).log="compact"];
+    google.protobuf.StringValue nick = 5 [(dlg).log="visible"];
+    Avatar avatar = 6 [(dlg).log="compact"];
+}
+
 message UserProfile {
     User user = 1 [(dlg).log="visible"];
     repeated ContactRecord contact_info = 2 [(dlg).log="compact"];
