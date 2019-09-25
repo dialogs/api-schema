@@ -117,6 +117,12 @@
       "default": true,
       "description": "if true = swipe is enable for users"
     },
+    "isSwipeBackEnabled": {
+      "type": "boolean",
+      "title": "Activates swipe(left to right) between fragments which means back button click",
+      "default": true,
+      "description": "if true = swipe is enable for users"
+    },
     "fileUploading.perfectRatio": {
       "type": "double",
       "title": "The ratio of file download time (in ms) to size (in bytes)",
