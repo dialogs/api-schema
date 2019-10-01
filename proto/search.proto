@@ -41,7 +41,9 @@ message SimpleContactSearchCondition {
 message SimpleMessageSearchCondition {
     Peer peer = 1; /// where to search
     string text = 2; /// search term
-    SearchContentType content_type = 3; /// content message type to search
+    oneof content_type {
+        SearchContentType type = 3; /// content message type to search
+    }
 }
 
 /// Search among contacts/groups/users
