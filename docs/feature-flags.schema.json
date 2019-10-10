@@ -111,6 +111,11 @@
       "default": false,
       "description": "Show or hide sending stickers feature"
     },
+    "chat.messageMaxLength": {
+      "type": "int32",
+      "title": "Max length of chat message",
+      "default": 4096
+    },    
     "badges.menu.dialogs": {
       "type": "boolean",
       "title": "Activates budges in chat",
