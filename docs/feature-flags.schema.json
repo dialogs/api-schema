@@ -118,8 +118,8 @@
     },
     "chat.bubbleGroupingTimeGap": {
       "type": "int32",
-      "title": "Time gap to break bubble message group",
-      "default": 300
+      "title": "Time gap in milliseconds to break bubble message group",
+      "default": 300000
     },
     "badges.menu.dialogs": {
       "type": "boolean",
