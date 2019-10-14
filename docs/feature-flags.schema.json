@@ -14,32 +14,32 @@
       "description": "if true = Multifactorauth is enable for users (factors are tuned on server's config file)"
     },
     "userProfile.nameMinLength": {
-      "type": "string",
+      "type": "integer",
       "title": "Minimum length of user's profile name",
       "default": 3
     },
     "userProfile.nameMaxLength": {
-      "type": "string",
+      "type": "integer",
       "title": "Maximum length of user's profile name",
       "default": 128
     },
     "userProfile.nicknameMinLength": {
-      "type": "string",
+      "type": "integer",
       "title": "Minimum length of user's profile nickname",
       "default": 3
     },
     "userProfile.nicknameMaxLength": {
-      "type": "string",
+      "type": "integer",
       "title": "Maximum length of user's profile nickname",
       "default": 32
     },
     "userProfile.aboutMaxLength": {
-      "type": "string",
+      "type": "integer",
       "title": "Maximum length of user's profile about",
       "default": 3000
     },
     "userProfile.avatarFileMaxSize": {
-      "type": "int32",
+      "type": "integer",
       "title": "Maximum size of user's profile avatar",
       "default": 1048576
     },
@@ -49,32 +49,32 @@
       "default": true
     },
     "groups.titleMinLength": {
-      "type": "string",
+      "type": "integer",
       "title": "Minimum length of group's title",
       "default": 5
     },
     "groups.titleMaxLength": {
-      "type": "string",
+      "type": "integer",
       "title": "Maximum length of group's title",
       "default": 128
     },
     "groups.aboutMaxLength": {
-      "type": "string",
+      "type": "integer",
       "title": "Maximum length of group's about",
       "default": 3000
     },
     "groups.shortNameMinLength": {
-      "type": "string",
+      "type": "integer",
       "title": "Minimum length of group's shortname",
       "default": 1
     },
     "groups.shortNameMaxLength": {
-      "type": "string",
+      "type": "integer",
       "title": "Maximum length of group's shortname",
       "default": 32
     },
     "groups.avatarFileMaxSize": {
-      "type": "int32",
+      "type": "integer",
       "title": "Maximum size of group's avatar",
       "default": 1048576
     },
@@ -85,17 +85,17 @@
       "description": "true - for product app, false - in platform"
     },
     "spaces.aboutMaxLength": {
-      "type": "string",
+      "type": "integer",
       "title": "Maximum length of space's about",
       "default": 280
     },
     "spaces.titleMaxLength": {
-      "type": "string",
+      "type": "integer",
       "title": "Maximum length of space's title",
       "default": 64
     },
     "spaces.shortnameMaxLength": {
-      "type": "string",
+      "type": "integer",
       "title": "Maximum length of space's shortname",
       "default": 32
     },
@@ -112,7 +112,7 @@
       "description": "Show or hide sending stickers feature"
     },
     "chat.messageMaxLength": {
-      "type": "int32",
+      "type": "integer",
       "title": "Max length of chat message",
       "default": 4096
     },    
@@ -134,18 +134,18 @@
       "description": "if true = swipe is enable for users"
     },
     "fileUploading.perfectRatio": {
-      "type": "double",
+      "type": "number",
       "title": "The ratio of file download time (in ms) to size (in bytes)",
       "default": 0.00075,
       "description": "Required for dynamically resizing following chunks when loading. This ratio is compared with the ratio of the previous batch of chunks, therefore it is concluded whether it is necessary to increase or decrease the size of following chunks"
     },
     "fileUploading.maximumChunkSize": {
-      "type": "int32",
+      "type": "integer",
       "title": "Maximum size of Chunk (in bytes) for sending to server",
       "default": 5000000
     },
     "fileUploading.minimumChunkSize": {
-      "type": "int32",
+      "type": "integer",
       "title": "Minimum size of Chunk (in bytes) for sending to server",
       "default": 500000
     },
@@ -160,7 +160,7 @@
       "default": true
     },
     "search.localSearchCount": {
-      "type": "int32",
+      "type": "integer",
       "title": "Determines amount of local search results",
       "default": 10
     },
