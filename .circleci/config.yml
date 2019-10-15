@@ -20,15 +20,16 @@ executors:
   java-executor:
     docker:
       - image: circleci/openjdk:8-jdk
+    environment:
+      JVM_OPTS: -Xmx3200m
     working_directory: ~/code
   sbt-executor:
     docker:
       - image: circleci/openjdk:8-jdk
-    resource_class: large
-    working_directory: ~/code/scala
     environment:
       SBT_OPTS: -Xmx6g
-      SCALA_VERSION: 2.11.12
+      SCALA_VERSION: 2.13.1
+    working_directory: ~/code/scala
 
 jobs:
   git-version-publish:
@@ -72,65 +73,30 @@ jobs:
       - run:
           name: Deploy gh-pages
           command: npx gh-pages@2.0.1 -d docs
-  java-install-dependencies:
-    executor: java-executor
-    environment:
-      JVM_OPTS: -Xmx3200m
-    steps:
-      - checkout
-      - restore_cache:
-          key: v1-dependencies-{{ checksum "build.gradle" }}
-      - run:
-          name: Download Dependencies
-          command: ./gradlew dependencies
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
   java-build:
     executor: java-executor
-    environment:
-      JVM_OPTS: -Xmx3200m
     steps:
       - checkout
       - restore_cache:
-          key: v1-dependencies-{{ checksum "build.gradle" }}
+          key: v1-gradle-cache-{{ checksum "build.gradle" }}
       - run:
           name: Build
           command: ./gradlew build
-      - run:
-          name: Report build failure
-          when: on_fail
-          command: |
-            curl --header "Content-Type: application/json" --request POST \
-             --data '{"text":"❌ java-api-schema build failed: '${CIRCLE_BUILD_URL}'"}' \
-              $DIALOG_HOOK_URL
+      - save_cache:
+          key: v1-gradle-cache-{{ checksum "build.gradle" }}
+          paths:
+            - ~/.gradle
   java-publish:
     executor: java-executor
-    environment:
-      JVM_OPTS: -Xmx3200m
     steps:
       - checkout
       - run:
           <<: *git_config
       - restore_cache:
-          key: v1-dependencies-{{ checksum "build.gradle" }}
+          key: v1-gradle-cache-{{ checksum "build.gradle" }}
       - run:
           name: Release
           command: echo -ne '\n\n' | ./gradlew bintrayUpload
-      - run:
-          name: Report build failure
-          when: on_fail
-          command: |
-            curl --header "Content-Type: application/json" --request POST \
-             --data '{"text":"❌ java-api-schema release failed: '${CIRCLE_BUILD_URL}'"}' \
-              $DIALOG_HOOK_URL
-      - run:
-          name: Report success
-          command: |
-            curl --header "Content-Type: application/json" --request POST \
-             --data '{"text":"java-api-schema release successful! Check it here: '${ARTIFACT_URL}' "}' \
-              $DIALOG_HOOK_URL
   python-build-publish:
     machine:
       image: ubuntu-1604:201903-01
@@ -217,10 +183,7 @@ workflows:
               only: master
             tags:
               only: /.+/
-      - java-install-dependencies
-      - java-build:
-          requires:
-            - java-install-dependencies
+      - java-build
       - java-publish:
           requires:
             - java-build
