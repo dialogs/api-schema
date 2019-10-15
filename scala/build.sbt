@@ -2,8 +2,6 @@ organization := "im.dlg"
 
 name := "dialog-platform-services"
 
-version := "0.3.4"
-
 scalaVersion := "2.13.0"
 
 crossScalaVersions := List("2.11.11", "2.12.8", "2.13.0")
@@ -26,4 +24,4 @@ licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html
 
 publishMavenStyle := true
 
-enablePlugins(Publishing)
+enablePlugins(Publishing, GitVersioning)
