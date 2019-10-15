@@ -208,6 +208,8 @@ workflows:
           requires:
             - docs-build
           filters:
+            branches:
+              only: master
             tags:
               only: /.+/
       - java-install-dependencies
@@ -218,10 +220,14 @@ workflows:
           requires:
             - java-build
           filters:
+            branches:
+              only: master
             tags:
               only: /.+/
       - python-build-publish:
           filters:
+            branches:
+              only: master
             tags:
               only: /.+/
       - npm-build
@@ -230,5 +236,7 @@ workflows:
           requires:
             - sbt-build
           filters:
+            branches:
+              only: master
             tags:
               only: /.+/
