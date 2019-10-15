@@ -27,6 +27,7 @@ executors:
     resource_class: large
     working_directory: ~/code/scala
     environment:
+      SBT_OPTS: -Xmx6g
       SCALA_VERSION: 2.11.12
 
 jobs:
@@ -179,12 +180,16 @@ jobs:
       - run: npm run prepare
   sbt-build:
     executor: sbt-executor
-    environment:
-      SBT_OPTS: -Xmx6g
     steps:
       - checkout:
           path: ~/code
       - run: sbt compile
+  sbt-publish:
+    executor: sbt-executor
+    steps:
+      - checkout:
+          path: ~/code
+      - run: sbt publish
 
 workflows:
   version: 2
@@ -221,3 +226,9 @@ workflows:
               only: /.+/
       - npm-build
       - sbt-build
+      - sbt-publish:
+          requires:
+            - sbt-build
+          filters:
+            tags:
+              only: /.+/
