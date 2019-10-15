@@ -21,6 +21,13 @@ executors:
     docker:
       - image: circleci/openjdk:8-jdk
     working_directory: ~/code
+  sbt-executor:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    resource_class: large
+    working_directory: ~/code/scala
+    environment:
+      SCALA_VERSION: 2.11.12
 
 jobs:
   git-version-publish:
@@ -170,6 +177,14 @@ jobs:
       - checkout
       - run: npm ci
       - run: npm run prepare
+  sbt-build:
+    executor: sbt-executor
+    environment:
+      SBT_OPTS: -Xmx6g
+    steps:
+      - checkout:
+          path: ~/code
+      - run: sbt compile
 
 workflows:
   version: 2
@@ -205,3 +220,4 @@ workflows:
             tags:
               only: /.+/
       - npm-build
+      - sbt-build
