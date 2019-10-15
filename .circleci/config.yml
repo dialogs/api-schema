@@ -183,7 +183,12 @@ jobs:
     steps:
       - checkout:
           path: ~/code
+      - restore_cache:
+          key: v1-sbt-cache-{{ checksum "build.sbt" }}
       - run: sbt compile
+      - save_cache:
+          key: v1-sbt-cache-{{ checksum "build.sbt" }}
+          paths: ['~/.sbt', '~/.ivy2/cache', '~/.m2']
   sbt-publish:
     executor: sbt-executor
     steps:
