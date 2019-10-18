@@ -94,14 +94,27 @@ message UserData {
     UserStatus user_status = 7 [(dlg).log="visible"];
     string time_zone = 8 [(dlg).log="visible"];
     repeated Ext exts = 9 [(dlg).log="hidden"];
-    DataClock clock = 10 [(dlg).log="visible"];
+    DataClock obsoleteClock = 10 [(dlg).log="visible"]; // deprecated
     repeated string locales = 11;
     google.protobuf.StringValue about = 12 [(dlg).log="compact"];
+    repeated ContactRecord contact_info = 13 [(dlg).log="compact"];
+    repeated BotCommand bot_commands = 14 [(dlg).log="visible"];
+    google.protobuf.StringValue custom_profile = 15;
+    int64 clock = 16;
 }
 message User {
     int32 id = 1 [(dlg).log = "visible"]; /// User's id
     int64 access_hash = 2 [(dlg).log="danger"];
     UserData data = 3; // required
+}
+
+message UserPartialInfo {
+    int32 id = 1 [(dlg).log = "visible"];
+    int64 access_hash = 2 [(dlg).log="danger"];
+    int64 clock = 3 [(dlg).log="visible"];
+    string name = 4 [(dlg).log="compact"];
+    google.protobuf.StringValue nick = 5 [(dlg).log="visible"];
+    Avatar avatar = 6 [(dlg).log="compact"];
 }
 
 message UserProfile {
