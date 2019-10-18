@@ -267,6 +267,19 @@ message ResponseGetReferencedEntitites {
     repeated HistoryMessage messages = 3;
 }
 
+message RequestGetPartialPeerInfo {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    repeated UserOutPeer users = 1 [(dlg).log="visible"];
+    repeated GroupOutPeer groups = 2 [(dlg).log="visible"];
+    repeated GroupMembersSubset group_members = 3 [(dlg).log="visible"];
+}
+
+message ResponseGetPartialPeerInfo {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    repeated UserPartialInfo users = 1 [(dlg).log="visible"];
+    repeated GroupPartialInfo groups = 2 [(dlg).log="visible"];
+}
+
 // Custom Raw Update
 message UpdateRawUpdate {
     google.protobuf.StringValue type = 1 [(dlg).log="visible"];
@@ -338,6 +351,9 @@ service SequenceAndUpdates {
             body: "*"
         };
     }
+
+    rpc GetPartialPeerInfo (RequestGetPartialPeerInfo) returns (ResponseGetPartialPeerInfo) {}
+
     rpc SubscribeToOnline (RequestSubscribeToOnline) returns (ResponseVoid) {
         option (google.api.http) = {
             post: "/v1/grpc/SequenceAndUpdates/SubscribeToOnline"
