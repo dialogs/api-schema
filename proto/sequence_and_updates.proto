@@ -314,6 +314,16 @@ message RequestSubscribeFromGroupOnline {
     repeated GroupOutPeer groups = 1 [(dlg).log="compact"];
 }
 
+message RequestGetReferencedMessages {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    repeated UUIDValue reference_ids = 1 [(dlg).log="visible"];
+}
+
+message ResponseGetReferencedMessages {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    repeated ReferencedMessageContent messages = 1 [(dlg).log="compact"];
+}
+
 /// Container which contains UpdateSeqUpdate
 message SeqUpdateBox {
   int32 seq = 1;
@@ -385,4 +395,8 @@ service SequenceAndUpdates {
             body: "*"
         };
     }
+
+    // Get content of referenced messages
+    // Represents state of message at the moment of reference creation
+    rpc GeReferencedMessages(RequestGetReferencedMessages) returns (ResponseGetReferencedMessages) {}
 }

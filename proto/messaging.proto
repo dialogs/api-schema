@@ -738,6 +738,16 @@ message HistoryMessage {
     int64 random_id = 18 [(dlg).log="visible"];
 }
 
+// Content from referenced messages
+message ReferencedMessageContent {
+    UUIDValue reference_id = 1 [(dlg).log="visible"];
+    UUIDValue mid = 2 [(dlg).log="visible"];
+    int64 date = 3 [(dlg).log="visible"];
+    OutPeer sender_peer = 4;
+    OutPeer host_peer = 5 [(dlg).log="visible"];
+    MessageContent message = 6 [(dlg).log="hidden"];
+}
+
 enum ListLoadMode {
     LISTLOADMODE_UNKNOWN = 0;
     LISTLOADMODE_FORWARD = 1;
