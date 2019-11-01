@@ -176,6 +176,8 @@ message MessageSearchResult {
     int64 date = 3 [(dlg).log="visible"];
     int32 sender_id = 4 [(dlg).log="visible"];
     MessageContent content = 5 [(dlg).log="visible"];
+    /// Proper id for query deduplication
+    UUIDValue correlation_id = 6 [(dlg).log="visible"];
 }
 
 // Message Search result container

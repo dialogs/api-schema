@@ -170,7 +170,7 @@ message UpdateGroupMembersCountChanged {
 // Creating group chat
 message RequestCreateGroup {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-    int64 rid = 1 [(dlg).log="visible"]; /// Id for query deduplication
+    int64 rid = 1 [(dlg).log="visible"]; /// deprecated Id for query deduplication
     UUIDValue space_id = 9;
     string title = 2 [(dlg).log="hidden"];
     repeated UserOutPeer users = 3 [(dlg).log="visible"]; /// members
@@ -184,6 +184,9 @@ message RequestCreateGroup {
 
     /// Base permissions for invited members
     repeated GroupAdminPermission base_permissions = 10 [(dlg).log="visible"];
+
+    /// Proper id for query deduplication
+    UUIDValue correlation_id = 11 [(dlg).log="visible"]; /// Proper id for query deduplication
 }
 
 message ResponseCreateGroup {
@@ -200,10 +203,12 @@ message ResponseCreateGroup {
 message RequestEditGroupTitle {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     GroupOutPeer group_peer = 1 [(dlg).log="visible"];
-    int64 rid = 4 [(dlg).log="visible"]; /// Id for query deduplication
+    int64 rid = 4 [(dlg).log="visible"]; /// deprecated Id for query deduplication
     string title = 3 [(dlg).log="hidden"];
     /// Optimizations drops some info from response to decrease traffic and latency
     repeated UpdateOptimization optimizations = 5 [(dlg).log="visible"];
+    /// Proper id for query deduplication
+    UUIDValue correlation_id = 6 [(dlg).log="visible"];
 }
 
 // Sets group short name
@@ -218,10 +223,12 @@ message RequestSetGroupShortname {
 message RequestEditGroupAvatar {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     GroupOutPeer group_peer = 1 [(dlg).log="visible"];
-    int64 rid = 4 [(dlg).log="visible"]; /// Id for query deduplication
+    int64 rid = 4 [(dlg).log="visible"]; /// deprecated Id for query deduplication
     FileLocation file_location = 3 [(dlg).log="compact"];
     /// Optimizations drops some info from response to decrease traffic and latency
     repeated UpdateOptimization optimizations = 5 [(dlg).log="visible"];
+    /// Proper id for query deduplication
+    UUIDValue correlation_id = 6 [(dlg).log="visible"];
 }
 
 message ResponseEditGroupAvatar {
@@ -237,27 +244,33 @@ message ResponseEditGroupAvatar {
 message RequestRemoveGroupAvatar {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     GroupOutPeer group_peer = 1 [(dlg).log="visible"];
-    int64 rid = 4 [(dlg).log="visible"]; /// Id for query deduplication
+    int64 rid = 4 [(dlg).log="visible"]; /// deprecated Id for query deduplication
     /// Optimizations drops some info from response to decrease traffic and latency
     repeated UpdateOptimization optimizations = 5 [(dlg).log="visible"];
+    /// Proper id for query deduplication
+    UUIDValue correlation_id = 6 [(dlg).log="visible"];
 }
 
 // Edit Group About
 message RequestEditGroupAbout {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     GroupOutPeer group_peer = 1 [(dlg).log="visible"];
-    int64 rid = 2 [(dlg).log="visible"]; /// Id for query deduplication
+    int64 rid = 2 [(dlg).log="visible"]; /// deprecated Id for query deduplication
     google.protobuf.StringValue about = 3 [(dlg).log="hidden"];
     /// Optimizations drops some info from response to decrease traffic and latency
     repeated UpdateOptimization optimizations = 5 [(dlg).log="visible"];
+    /// Proper id for query deduplication
+    UUIDValue correlation_id = 6 [(dlg).log="visible"];
 }
 
 message RequestEditGroupBasePermissions {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     GroupOutPeer group_peer = 1 [(dlg).log="visible"];
-    int64 random_id = 2 [(dlg).log="visible"]; /// Id for query deduplication
+    int64 random_id = 2 [(dlg).log="visible"]; /// deprecated Id for query deduplication
     repeated GroupAdminPermission granted_permissions = 3 [(dlg).log="visible"];
     repeated GroupAdminPermission revoked_permissions = 4 [(dlg).log="visible"];
+    /// Proper id for query deduplication
+    UUIDValue correlation_id = 5 [(dlg).log="visible"];
 }
 
 message RequestEditMemberPermissions {
@@ -277,29 +290,35 @@ message ResponseMember {
 message RequestInviteUser {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     GroupOutPeer group_peer = 1 [(dlg).log="visible"];
-    int64 rid = 4 [(dlg).log="visible"]; /// Id for query deduplication
+    int64 rid = 4 [(dlg).log="visible"]; /// deprecated Id for query deduplication
     UserOutPeer user = 3 [(dlg).log="visible"];
     /// Optimizations drops some info from response to decrease traffic and latency
     repeated UpdateOptimization optimizations = 5 [(dlg).log="visible"];
+    /// Proper id for query deduplication
+    UUIDValue correlation_id = 6 [(dlg).log="visible"];
 }
 
 // Leaving group
 message RequestLeaveGroup {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     GroupOutPeer group_peer = 1 [(dlg).log="visible"];
-    int64 rid = 2 [(dlg).log="visible"]; /// Id for query deduplication
+    int64 rid = 2 [(dlg).log="visible"]; /// deprecated Id for query deduplication
     /// Optimizations drops some info from response to decrease traffic and latency
     repeated UpdateOptimization optimizations = 3 [(dlg).log="visible"];
+    /// Proper id for query deduplication
+    UUIDValue correlation_id = 4 [(dlg).log="visible"];
 }
 
 // Kicking user from group
 message RequestKickUser {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     GroupOutPeer group_peer = 1 [(dlg).log="visible"];
-    int64 rid = 4 [(dlg).log="visible"]; /// Id for query deduplication
+    int64 rid = 4 [(dlg).log="visible"]; /// deprecated Id for query deduplication
     UserOutPeer user = 3 [(dlg).log="visible"];
     /// Optimizations drops some info from response to decrease traffic and latency
     repeated UpdateOptimization optimizations = 5 [(dlg).log="visible"];
+    /// Proper id for query deduplication
+    UUIDValue correlation_id = 6 [(dlg).log="visible"];
 }
 
 /// Possible permissions on a group
@@ -427,10 +446,13 @@ message RequestJoinGroupByPeer {
  */
 message UpdateGroupInviteObsolete {
     int32 group_id = 1 [(dlg).log="visible"];
-    int64 rid = 9 [(dlg).log="visible"]; /// deprecated
-    UUIDValue mid = 10; /// deprecated
     int32 invite_uid = 5 [(dlg).log="visible"];
     int64 date = 8 [(dlg).log="visible"];
+    /// Proper id for query deduplication
+    int64 rid = 9 [(dlg).log="visible"]; /// deprecated
+    UUIDValue mid = 10; /// deprecated
+    /// Proper id for query deduplication
+    UUIDValue correlation_id = 11 [(dlg).log="visible"];
 }
 
 /**
@@ -439,11 +461,13 @@ message UpdateGroupInviteObsolete {
  */
 message UpdateGroupUserInvitedObsolete {
     int32 group_id = 1 [(dlg).log="visible"];
-    int64 rid = 5 [(dlg).log="visible"]; // / Id for deduplication
-    UUIDValue mid = 6 [(dlg).log="visible"]; /// deprecated
     int32 uid = 2 [(dlg).log="visible"];
     int32 inviter_uid = 3 [(dlg).log="visible"];
     int64 date = 4 [(dlg).log="visible"];
+    int64 rid = 5 [(dlg).log="visible"]; /// deprecated Id for deduplication
+    UUIDValue mid = 6 [(dlg).log="visible"]; /// deprecated
+    /// Proper id for query deduplication
+    UUIDValue correlation_id = 7 [(dlg).log="visible"];
 }
 
 // Update about leaving user

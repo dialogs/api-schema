@@ -29,12 +29,14 @@ message RequestCreateThread {
         THREAD_MEMBERS = 1;
     }
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-    int64 random_id = 1 [(dlg).log="visible"]; // random request id for query deduplication
+    int64 random_id = 1 [(dlg).log="visible"];  /// deprecated random request id for query deduplication
     GroupOutPeer parent_group_peer = 2 [(dlg).log="visible"]; // parent group where thread is created
     UUIDValue start_message_id = 3 [(dlg).log="visible"]; // message from where thread starts
     string title = 4; //thread title
     JoinPolicy join_policy = 5; // thread join policy: for all group members or invite only
     repeated UserOutPeer members = 6 [(dlg).log="visible"]; /// members
+    /// Proper id for query deduplication
+    UUIDValue correlation_id = 7 [(dlg).log="visible"];
 }
 
 // Thread creation response
@@ -48,10 +50,12 @@ message ResponseCreateThread {
 // Converts thread into a group
 message RequestLiftThread {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-    int64 random_id = 1 [(dlg).log="visible"]; // Id for query deduplication
+    int64 random_id = 1 [(dlg).log="visible"]; /// deprecated Id for query deduplication
     GroupOutPeer parent_group_peer = 2 [(dlg).log="visible"]; // parent group where thread is created
     GroupOutPeer thread_group_peer = 3 [(dlg).log="visible"]; // group representing thread about to be lifted
     google.protobuf.StringValue title = 4; // lifted group title
+    /// Proper id for query deduplication
+    UUIDValue correlation_id = 5 [(dlg).log="visible"];
 }
 
 // Thread lift response
