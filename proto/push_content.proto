@@ -39,4 +39,5 @@ message EncryptedPushContent {
     reserved 8, 9; // mid, category
     UUIDValue message_id = 10 [(dlg).log="visible"];
     bool isRespondable = 11; // if true, user can respond to this push
+    int32 sender_user_id = 12; // if sender is group or channel so value eq 0
 }
