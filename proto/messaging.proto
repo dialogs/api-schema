@@ -581,6 +581,11 @@ message UpdateMessage {
          ReferencedMessages forward = 9 [(dlg).log="visible"];
          ReferencedMessages reply = 10 [(dlg).log="visible"];
      }
+     //reference to exact copy of original forwarded/replied message
+     oneof attachRef {
+         ReferencedMessages forwardRef = 15 [(dlg).log="visible"];
+         ReferencedMessages replyRef = 16 [(dlg).log="visible"];
+     }
      /// Message id of previos message from current conversation
      UUIDValue previous_mid = 11 [(dlg).log="visible"];
      /// counter of the unread messages
