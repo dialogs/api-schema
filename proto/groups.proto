@@ -446,11 +446,10 @@ message RequestJoinGroupByPeer {
  */
 message UpdateGroupInviteObsolete {
     int32 group_id = 1 [(dlg).log="visible"];
-    int32 invite_uid = 5 [(dlg).log="visible"];
-    int64 date = 8 [(dlg).log="visible"];
-    /// Proper id for query deduplication
     int64 rid = 9 [(dlg).log="visible"]; /// deprecated
     UUIDValue mid = 10; /// deprecated
+    int32 invite_uid = 5 [(dlg).log="visible"];
+    int64 date = 8 [(dlg).log="visible"];
     /// Proper id for query deduplication
     UUIDValue correlation_id = 11 [(dlg).log="visible"];
 }
@@ -461,11 +460,11 @@ message UpdateGroupInviteObsolete {
  */
 message UpdateGroupUserInvitedObsolete {
     int32 group_id = 1 [(dlg).log="visible"];
+    int64 rid = 5 [(dlg).log="visible"]; /// deprecated Id for deduplication
+    UUIDValue mid = 6 [(dlg).log="visible"]; /// deprecated
     int32 uid = 2 [(dlg).log="visible"];
     int32 inviter_uid = 3 [(dlg).log="visible"];
     int64 date = 4 [(dlg).log="visible"];
-    int64 rid = 5 [(dlg).log="visible"]; /// deprecated Id for deduplication
-    UUIDValue mid = 6 [(dlg).log="visible"]; /// deprecated
     /// Proper id for query deduplication
     UUIDValue correlation_id = 7 [(dlg).log="visible"];
 }
