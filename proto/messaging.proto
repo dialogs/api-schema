@@ -581,11 +581,6 @@ message UpdateMessage {
          ReferencedMessages forward = 9 [(dlg).log="visible"];
          ReferencedMessages reply = 10 [(dlg).log="visible"];
      }
-     //reference to exact copy of original forwarded/replied message
-     oneof attachRef {
-         ReferencedMessages forwardRef = 15 [(dlg).log="visible"];
-         ReferencedMessages replyRef = 16 [(dlg).log="visible"];
-     }
      /// Message id of previos message from current conversation
      UUIDValue previous_mid = 11 [(dlg).log="visible"];
      /// counter of the unread messages
@@ -615,6 +610,10 @@ message UpdateMessageSent {
     /// counter of unread messages
     google.protobuf.Int32Value unread_counter = 6 [(dlg).log="visible"];
     google.protobuf.Int64Value myReadDate = 7 [(dlg).log="visible"];
+    oneof attach {
+         ReferencedMessages forward = 8 [(dlg).log="visible"];
+         ReferencedMessages reply = 9 [(dlg).log="visible"];
+     }
 }
 
 // Update about message received
@@ -738,11 +737,6 @@ message HistoryMessage {
     oneof attach {
         ReferencedMessages forward = 13;
         ReferencedMessages reply = 14;
-    }
-    //reference to exact copy of original forwarded/replied message
-    oneof attachRef {
-        ReferencedMessages forwardRef = 19;
-        ReferencedMessages replyRef = 20;
     }
     google.protobuf.Int64Value edited_at = 16 [(dlg).log="visible"];
     int64 random_id = 18 [(dlg).log="visible"];

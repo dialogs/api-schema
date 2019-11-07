@@ -258,9 +258,6 @@ message RequestGetReferencedEntitites {
     repeated GroupMembersSubset group_members = 4 [(dlg).log="visible"];
     /// groups needed
     repeated GroupOutPeer groups = 5 [(dlg).log="visible"];
-
-    //reference to exact copy of original forwarded/replied message
-    repeated UUIDValue refs = 6 [(dlg).log="visible"];
 }
 
 message ResponseGetReferencedEntitites {
