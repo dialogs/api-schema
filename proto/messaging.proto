@@ -610,6 +610,10 @@ message UpdateMessageSent {
     /// counter of unread messages
     google.protobuf.Int32Value unread_counter = 6 [(dlg).log="visible"];
     google.protobuf.Int64Value myReadDate = 7 [(dlg).log="visible"];
+    oneof attach {
+         ReferencedMessages forward = 8 [(dlg).log="visible"];
+         ReferencedMessages reply = 9 [(dlg).log="visible"];
+     }
 }
 
 // Update about message received
