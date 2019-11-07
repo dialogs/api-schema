@@ -19,11 +19,13 @@ option (scalapb.options) = {
 message Parameter {
     string key = 1 [(dlg).log="visible"]; /// Key of parameter
     string value = 2 [(dlg).log="hidden"]; /// Value of parameter
+    int64 clock = 3 [(dlg).log="visible"]; /// last modification date
 }
 
 // Getting Parameters
 message RequestGetParameters {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    int64 from_clock = 1;
 }
 
 message ResponseGetParameters {
@@ -36,6 +38,7 @@ message RequestEditParameter {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     string key = 1 [(dlg).log="visible"];
     google.protobuf.StringValue value = 2 [(dlg).log="hidden"];
+    int64 clock = 3 [(dlg).log="visible"]; /// current known clock
 }
 
 message FeatureFlag {
@@ -46,7 +49,7 @@ message FeatureFlag {
 
 message RequestFeatureFlags {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-    int64 clock = 1;
+    int64 from_clock = 1;
 }
 
 message ResponseFeatureFlags {
@@ -62,6 +65,7 @@ message UpdateFeatureFlagChanged {
 message UpdateParameterChanged {
     string key = 1 [(dlg).log="visible"];
     google.protobuf.StringValue value = 2 [(dlg).log="hidden"];
+    Parameter parameter = 3; /// changed parameter
 }
 
 service ConfigSync {
