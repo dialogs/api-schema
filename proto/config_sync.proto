@@ -63,8 +63,8 @@ message UpdateFeatureFlagChanged {
 
 // Update about parameter change
 message UpdateParameterChanged {
-    string key = 1 [(dlg).log="visible"];
-    google.protobuf.StringValue value = 2 [(dlg).log="hidden"];
+    string key = 1 [(dlg).log="visible"]; /// deprecated use this field from parameter
+    google.protobuf.StringValue value = 2 [(dlg).log="hidden"]; /// deprecated use this field from parameter
     Parameter parameter = 3; /// changed parameter
 }
 
