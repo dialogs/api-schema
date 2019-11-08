@@ -21,6 +21,7 @@ executors:
   sbt-executor:
     docker:
       - image: circleci/openjdk:8-jdk
+    resource_class: large
     environment:
       SBT_OPTS: -Xmx6g
       SCALA_VERSION: 2.13.1
