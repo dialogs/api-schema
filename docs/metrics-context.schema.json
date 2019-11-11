@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "properties": {
+    "uid": {
+      "type": "string",
+      "title": "The application user id"
+    },
+    "appName": {
+      "type": "string",
+      "title": "The application name"
+    },
+    "appVersion": {
+      "type": "string",
+      "title": "The application version"
+    },
+    "osName": {
+      "type": "string",
+      "title": "The operation system name"
+    },
+    "osVersion": {
+      "type": "string",
+      "title": "The operation system version"
+    },
+    "userAgent": {
+      "type": "string",
+      "title": "The device info"
+    },
+    "timeZone": {
+      "type": "string",
+      "title": "The device time zone"
+    }
+  }
+}
