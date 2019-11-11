@@ -173,12 +173,6 @@ message ObsoleteWeakUpdateBox {
   UpdateSeqUpdate update_any = 13;
 }
 
-// message EventBusUpdate {
-//   oneof update {
-//     google.protobuf.BytesValue obsoleteUpdate = 1;
-//   }
-// }
-
 message ObsoleteServiceUpdate {
   oneof update {
     google.protobuf.BytesValue obsoleteUpdate = 1;
