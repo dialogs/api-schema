@@ -17,7 +17,7 @@
       "type": "boolean",
       "title": "Hide app content in task manager",
       "default": true,
-      "description": "if true = app content will be hidden in task manager"
+      "description": "if true = app content will be hidden in task manager, disabled screenshot, video record program cant catch UI"
     },
     "failedAttemptsTillBlocking": {
       "type": "integer",
