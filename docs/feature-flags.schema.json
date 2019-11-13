@@ -7,6 +7,28 @@
       "default": true,
       "description": "if true = discover tab is enable for users"
     },
+    "isContactsActive": {
+      "type": "boolean",
+      "title": "Contacts tab",
+      "default": true,
+      "description": "if true = contacts tab is enable for users"
+    },
+    "isHidingContentInTaskManagerEnabled": {
+      "type": "boolean",
+      "title": "Hide app content in task manager",
+      "default": true,
+      "description": "if true = app content will be hidden in task manager"
+    },
+    "failedAttemptsTillBlocking": {
+      "type": "integer",
+      "title": "Wrong unlocks count before disabling pass code input",
+      "default": 3
+    },
+    "failedAttemptsTimeoutMillis": {
+      "type": "integer",
+      "title": "Default incremental timeout after each wrong pass code unlock",
+      "default": 5000
+    },
     "isMultifactorauthActive": {
       "type": "boolean",
       "title": "Activates Multifactorauth",
