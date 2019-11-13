@@ -7,7 +7,7 @@
       "default": true,
       "description": "if true = discover tab is enable for users"
     },
-    "isContactsActive": {
+    "tabs.isContactsActive": {
       "type": "boolean",
       "title": "Contacts tab",
       "default": true,
@@ -19,12 +19,12 @@
       "default": true,
       "description": "if true = app content will be hidden in task manager, disabled screenshot, video record program cant catch UI"
     },
-    "failedAttemptsTillBlocking": {
+    "passcode.failedAttemptsTillBlocking": {
       "type": "integer",
       "title": "Wrong unlocks count before disabling pass code input",
       "default": 3
     },
-    "failedAttemptsTimeoutMillis": {
+    "passcode.failedAttemptsTimeoutMillis": {
       "type": "integer",
       "title": "Default incremental timeout after each wrong pass code unlock",
       "default": 5000
