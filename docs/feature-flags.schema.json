@@ -238,12 +238,12 @@
     "markdown.inChatsEnabled": {
       "type": "boolean",
       "title": "Enabling markdown in chats",
-      "default": true
+      "default": false
     },
     "markdown.inLastMessagesEnabled": {
       "type": "boolean",
       "title": "Enabling markdown in last messages",
-      "default": true
+      "default": false
     },
     "markdown.inProfileEnabled": {
       "type": "boolean",
