@@ -108,7 +108,7 @@
     "spaces.isEnabled": {
       "type": "boolean",
       "title": "Activates Spaces",
-      "default": true,
+      "default": false,
       "description": "true - for product app, false - in platform"
     },
     "spaces.aboutMaxLength": {
