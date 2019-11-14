@@ -129,13 +129,13 @@
     "chat.bubbles": {
       "type": "boolean",
       "title": "Activates bubbles in chat",
-      "default": false,
+      "default": true,
       "description": "if true = bubbles in chat are enable for users"
     },
     "chat.stickersEnabled": {
       "type": "boolean",
       "title": "Activates stickers in chat",
-      "default": false,
+      "default": true,
       "description": "Show or hide sending stickers feature"
     },
     "chat.messageMaxLength": {
@@ -238,12 +238,12 @@
     "markdown.inChatsEnabled": {
       "type": "boolean",
       "title": "Enabling markdown in chats",
-      "default": false
+      "default": true
     },
     "markdown.inLastMessagesEnabled": {
       "type": "boolean",
       "title": "Enabling markdown in last messages",
-      "default": false
+      "default": true
     },
     "markdown.inProfileEnabled": {
       "type": "boolean",
