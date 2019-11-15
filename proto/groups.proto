@@ -84,6 +84,15 @@ message GroupData {
     google.protobuf.StringValue shortname = 9 [(dlg).log="visible"];
     repeated GroupAdminPermission base_permissions = 10 [(dlg).log="visible"];
     int64 clock = 11 [(dlg).log="visible"];
+    GroupExt ext = 12;
+}
+
+message GroupExt {
+    string key = 1;
+    oneof value {
+        string string_value = 2;
+        bool bool_value = 3;
+    }
 }
 
 message GroupPartialInfo {
@@ -316,6 +325,8 @@ enum GroupAdminPermission {
     GROUPADMINPERMISSION_SENDMESSAGE = 9;
     GROUPADMINPERMISSION_PINMESSAGE = 10;
     GROUPADMINPERMISSION_VIEWMEMBERS = 11;
+    GROUPADMINPERMISSION_LEAVE = 12;
+    GROUPADMINPERMISSION_TARGETING = 13;
 }
 
 // Make user admin
