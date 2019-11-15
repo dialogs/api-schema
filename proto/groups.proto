@@ -66,6 +66,7 @@ message Group {
     google.protobuf.StringValue shortname = 19 [(dlg).log="visible"];
     /// Base permissions for invited members
     reserved 28;
+    int64 pinned_at = 31;
 }
 
 message GroupData {
@@ -84,6 +85,7 @@ message GroupData {
     google.protobuf.StringValue shortname = 9 [(dlg).log="visible"];
     repeated GroupAdminPermission base_permissions = 10 [(dlg).log="visible"];
     int64 clock = 11 [(dlg).log="visible"];
+    int64 pinned_at = 12;
 }
 
 message GroupPartialInfo {
@@ -95,6 +97,7 @@ message GroupPartialInfo {
     google.protobuf.StringValue shortname = 6 [(dlg).log="visible"];
     Avatar avatar = 7 [(dlg).log="compact"];
     Member self_member = 8;
+    int64 pinned_at = 9;
 }
 
 // Update about group data changed
@@ -316,6 +319,8 @@ enum GroupAdminPermission {
     GROUPADMINPERMISSION_SENDMESSAGE = 9;
     GROUPADMINPERMISSION_PINMESSAGE = 10;
     GROUPADMINPERMISSION_VIEWMEMBERS = 11;
+    GROUPADMINPERMISSION_LEAVE = 12; /// read only permission
+    GROUPADMINPERMISSION_TARGETING = 13;
 }
 
 // Make user admin
