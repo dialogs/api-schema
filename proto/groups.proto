@@ -66,7 +66,6 @@ message Group {
     google.protobuf.StringValue shortname = 19 [(dlg).log="visible"];
     /// Base permissions for invited members
     reserved 28;
-    int64 pinned_at = 31;
 }
 
 message GroupData {
