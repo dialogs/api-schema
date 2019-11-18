@@ -176,6 +176,11 @@
       "title": "Maximum size of Chunk (in bytes) for sending to server",
       "default": 5000000
     },
+    "fileUploading.maxFileSizeBytes": {
+      "type": "integer",
+      "title": "Maximum file size (in bytes) for sending to server",
+      "default": 2147483647
+    },
     "fileUploading.minimumChunkSize": {
       "type": "integer",
       "title": "Minimum size of Chunk (in bytes) for sending to server",
@@ -255,6 +260,18 @@
       "title": "Activates Calls",
       "default": false,
       "description": "if true = calls are enable for users"
+    },
+    "calls.video.isEnabled": {
+      "type": "boolean",
+      "title": "Activates Video Calls",
+      "default": false,
+      "description": "if true = video calls are enable for users"
+    },
+    "calls.isExtPhoneCallEnabled": {
+      "type": "boolean",
+      "title": "Activates external phone calls",
+      "default": false,
+      "description": "Enables external phone calls feature"
     },
     "global.confidentialPolicy.URL": {
       "type": "string",
