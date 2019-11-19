@@ -211,6 +211,12 @@
       "title": "Defines the order for global search results. (If true -  users first)",
       "default": false
     },
+    "search.users.secondaryInfo.customProfileKey": {
+      "type": "string",
+      "title": "Defines key for user data custom profile.",
+      "default": null,
+      "description": "if installed, value from custom profile with the key will be displayed in search user cell"
+    },
     "isCertAuthActive": {
       "type": "boolean",
       "title": "Activates selecting a certificate for authorization",
