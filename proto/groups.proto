@@ -84,7 +84,7 @@ message GroupData {
     google.protobuf.StringValue shortname = 9 [(dlg).log="visible"];
     repeated GroupAdminPermission base_permissions = 10 [(dlg).log="visible"];
     int64 clock = 11 [(dlg).log="visible"];
-    int64 pinned_at = 12;
+    google.protobuf.Int64Value pinned_at = 12;
 }
 
 message GroupPartialInfo {
@@ -96,7 +96,7 @@ message GroupPartialInfo {
     google.protobuf.StringValue shortname = 6 [(dlg).log="visible"];
     Avatar avatar = 7 [(dlg).log="compact"];
     Member self_member = 8;
-    int64 pinned_at = 9;
+    google.protobuf.Int64Value pinned_at = 9;
 }
 
 // Update about group data changed
