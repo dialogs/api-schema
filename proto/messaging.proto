@@ -279,6 +279,7 @@ message ServiceEx {
         ServiceExUserKicked userKicked = 3;
         ServiceExUserLeft userLeft = 4;
         ServiceExGroupCreated groupCreated = 5;
+        ServiceExChangedShortname changedShortname = 16;
         ServiceExChangedTitle changedTitle = 6;
         ServiceExChangedTopic changedTopic = 7;
         ServiceExChangedAbout changedAbout = 8;
@@ -312,6 +313,11 @@ message ServiceExUserLeft {
 
 // Service message about group creating
 message ServiceExGroupCreated {
+}
+
+// Service message about group shortname change
+message ServiceExChangedShortname {
+    string shortname = 1 [(dlg).log="hidden"]; /// New group shortname
 }
 
 // Service message about group title change
