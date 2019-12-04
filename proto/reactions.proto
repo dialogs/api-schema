@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package dialog.reactions;
+
+import "google/api/annotations.proto";
+import "peers.proto";
+import "definitions.proto";
+import "scalapb/scalapb.proto";
+
+option (scalapb.options) = {
+    package_name: "im.dlg.grpc.services"
+};
+
+message MessageReaction {
+    string code = 1;
+    repeated int32 users = 2;
+    int32 users_amount = 3;
+}
+
+message MessageReactionsUpdate {
+    Peer peer = 1;
+    UUIDValue mid = 2;
+    repeated MessageReaction reactions = 3;
+    int64 peer_clock = 4;
+    int64 prev_peer_clock = 5;
+}
+
+message GetReactionsRequest {
+    message GetReactionsPeer {
+        int64 from_clock = 1;
+        Peer peer = 2;
+    }
+
+    repeated GetReactionsPeer peers = 1; // limited by 'reactions.maxPeersPerRequest' feature-flag value
+}
+
+message GetReactionsResponse {
+    repeated MessageReactionsUpdate reactions = 1;
+    bool next_available = 2;
+}
+
+message RequestSetMessageReaction {
+    Peer peer = 1;
+    UUIDValue mid = 2;
+    string code = 3;
+}
+
+message RequestRemoveMessageReaction {
+    Peer peer = 1;
+    UUIDValue mid = 2;
+    string code = 3;
+}
+
+service Reactions {
+    rpc GetReactions (GetReactionsRequest) returns (GetReactionsResponse) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Reactions/GetReactions"
+            body: "*"
+        };
+    }
+
+    rpc MessageSetReaction (RequestSetMessageReaction) returns (MessageReaction) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Reactions/MessageSetReaction"
+            body: "*"
+        };
+    }
+
+    rpc MessageRemoveReaction (RequestRemoveMessageReaction) returns (MessageReaction) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Reactions/MessageRemoveReaction"
+            body: "*"
+        };
+    }
+}
