@@ -4,7 +4,6 @@ package dialog;
 
 
 import "google/protobuf/wrappers.proto";
-import "google/api/annotations.proto";
 import "definitions.proto";
 import "peers.proto";
 import "scalapb/scalapb.proto";

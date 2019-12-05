@@ -6,10 +6,8 @@ import "google/protobuf/wrappers.proto";
 import "google/api/annotations.proto";
 import "definitions.proto";
 import "miscellaneous.proto";
-import "groups.proto";
 import "peers.proto";
 import "media_and_files.proto";
-import "users.proto";
 import "scalapb/scalapb.proto";
 
 option (scalapb.options) = {

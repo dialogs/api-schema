@@ -3,9 +3,6 @@ syntax = "proto3";
 package dialog;
 
 import "google/protobuf/wrappers.proto";
-import "google/protobuf/empty.proto";
-
-import "obsolete.proto";
 
 option objc_class_prefix = "API";
 option swift_prefix="API";

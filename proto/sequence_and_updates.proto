@@ -31,7 +31,6 @@ import "peers.proto";
 import "messaging.proto";
 import "users.proto";
 import "spaces.proto";
-import "threads.proto";
 import "scalapb/scalapb.proto";
 
 option (scalapb.options) = {

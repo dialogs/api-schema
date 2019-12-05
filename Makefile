@@ -54,14 +54,25 @@ php:
 	$(PROTO_PATH)/*.proto
 
 swagger:
-	mkdir -p $(SWAGGER_PATH)
-	@protoc -I$(PROTO_PATH) \
-	-Iinclude \
-	-I/usr/local/include \
-	-I$(GOPATH)/src \
-	-I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-	--swagger_out=logtostderr=true:$(SWAGGER_PATH) \
-	$(PROTO_PATH)/*.proto
+	rm -f ${SWAGGER_PATH}/*.json
+	mkdir -p ${SWAGGER_PATH}
+
+	docker run -it --rm \
+	-v "$(shell pwd):/go/src/github.com/dialogs/api-schema" \
+	-v "$(SWAGGER_PATH):/out" \
+	-w "/go/src/github.com/dialogs/api-schema" \
+	dialogs/go-tools-protoc:1.0.0 \
+	sh -c '\
+	rm -rf /go/src/github.com/grpc-ecosystem/grpc-gateway && \
+	mkdir -p /go/src/github.com/grpc-ecosystem/grpc-gateway && \
+	git clone -b v1.12.1 https://github.com/grpc-ecosystem/grpc-gateway /go/src/github.com/grpc-ecosystem/grpc-gateway && \
+	(cd /go/src/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger; go install) && \
+	protoc \
+	-I=proto \
+	-I=include/ \
+	-I=/go/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+	--swagger_out=logtostderr=true:\
+	/out proto/*.proto'
 
 golang:
 	mkdir -p $(GOLANG_PATH)

@@ -114,6 +114,18 @@ message RequestStartAnonymousAuth {
     repeated string preferred_languages = 7 [(dlg).log="visible"];
 }
 
+// Starting authentication by certificate
+message RequestStartCertificateAuth {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    string name = 1 [(dlg).log="visible"];
+    int32 app_id = 2 [(dlg).log="hidden"];
+    string api_key = 3 [(dlg).log="hidden"];
+    bytes device_hash = 4 [(dlg).log="visible"];
+    string device_title = 5 [(dlg).log="visible"];
+    google.protobuf.StringValue time_zone = 6 [(dlg).log="visible"];
+    repeated string preferred_languages = 7 [(dlg).log="visible"];
+}
+
 // Starting token-based login - to authorize bot
 message RequestStartTokenAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
@@ -193,11 +205,29 @@ message ResponseGetOAuth2Params {
     string auth_url = 1;
 }
 
+// Starting OAuth2 authentication
+message RequestStartOAuth2Auth {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    string redirect_url = 1 [(dlg).log="visible"];
+}
+
+message ResponseStartOAuth2Auth {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    string auth_url = 1;
+}
+
 // Complete OAuth2 Authentication - deprecated
 message RequestCompleteOAuth2 {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     string transaction_hash = 1 [(dlg).log="danger"];
     string code = 2 [(dlg).log="danger"];
+}
+
+// Validate oauth2 authentication code (state is protection for CSRF attacks)
+message RequestValidateOAuth2Code {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    string code = 1 [(dlg).log="danger"];
+    string state = 2 [(dlg).log="danger"];
 }
 
 // Perform user SignUp
@@ -395,6 +425,13 @@ service Authentication {
             body: "*"
         };
     }
+    // Start certificate authorization process
+    rpc StartCertificateAuth (RequestStartCertificateAuth) returns (ResponseAuth) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/StartCertificateAuth"
+            body: "*"
+        };
+    }
     /// Start token auth authorization (actual for bots)
     rpc StartTokenAuth (RequestStartTokenAuth) returns (ResponseAuth) {
         option (google.api.http) = {
@@ -443,6 +480,20 @@ service Authentication {
     rpc CompleteOAuth2 (RequestCompleteOAuth2) returns (ResponseAuth) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/CompleteOAuth2"
+            body: "*"
+        };
+    }
+    /// Start OAuth2 authorization process
+    rpc StartOAuth2Auth (RequestStartOAuth2Auth) returns (ResponseStartOAuth2Auth) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/StartOAuth2Auth"
+            body: "*"
+        };
+    }
+    /// Validate OAuth2 authentication code
+    rpc ValidateOAuth2Code (RequestValidateOAuth2Code) returns (ResponseAuth) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/ValidateOAuth2Code"
             body: "*"
         };
     }

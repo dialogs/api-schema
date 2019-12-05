@@ -5,6 +5,8 @@ package clickroad;
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
 
+option go_package = "dialog";
+
 message TrackContext {
   map<string, string> context = 1;
 }

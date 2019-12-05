@@ -4,7 +4,6 @@ package dialog;
 
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
-import "google/api/annotations.proto";
 import "definitions.proto";
 import "peers.proto";
 import "media_and_files.proto";
