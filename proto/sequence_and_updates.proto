@@ -32,6 +32,7 @@ import "messaging.proto";
 import "users.proto";
 import "spaces.proto";
 import "threads.proto";
+import "reactions.proto";
 import "scalapb/scalapb.proto";
 
 option (scalapb.options) = {
@@ -135,6 +136,7 @@ message UpdateSeqUpdate {
       UpdateThreadLifted updateThreadLifted = 97;
       UpdateGroup updateGroup = 98;
       UpdateGroupMemberInvited updateGroupMemberInvited = 99;
+      reactions.MessageReactionsUpdate messageReactionsUpdate = 100;
     }
 }
 
