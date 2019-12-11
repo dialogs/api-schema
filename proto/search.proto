@@ -31,7 +31,8 @@ enum SearchContentType {
     SEARCHCONTENTTYPE_TEXT = 2;
     SEARCHCONTENTTYPE_LINKS = 3;
     SEARCHCONTENTTYPE_DOCUMENTS = 4;
-    SEARCHCONTENTTYPE_PHOTOS = 5;
+    SEARCHCONTENTTYPE_MEDIA = 5; // photo and video
+    SEARCHCONTENTTYPE_AUDIO = 6; // voice
 }
 
 message SimpleContactSearchCondition {
