@@ -6,37 +6,39 @@ import "google/api/annotations.proto";
 import "peers.proto";
 import "definitions.proto";
 import "scalapb/scalapb.proto";
+import "google/protobuf/empty.proto";
 
 option (scalapb.options) = {
     package_name: "im.dlg.grpc.services"
 };
 
-message MessageReaction {
+message Reaction {
     string code = 1;
     repeated int32 users = 2;
     int32 users_amount = 3;
 }
 
+message MessageReactions {
+    UUIDValue mid = 1;
+    repeated Reaction reactions = 2;
+}
+
 message MessageReactionsUpdate {
     Peer peer = 1;
-    UUIDValue mid = 2;
-    repeated MessageReaction reactions = 3;
-    int64 peer_clock = 4;
-    int64 prev_peer_clock = 5;
+    MessageReactions messageReaction = 2;
+    int64 peer_clock = 3;
+    int64 prev_peer_clock = 4;
 }
 
 message GetReactionsRequest {
-    message GetReactionsPeer {
-        int64 from_clock = 1;
-        Peer peer = 2;
-    }
-
-    repeated GetReactionsPeer peers = 1; // limited by 'reactions.maxPeersPerRequest' feature-flag value
+    int64 from_clock = 1;
+    Peer peer = 2;
 }
 
 message GetReactionsResponse {
-    repeated MessageReactionsUpdate reactions = 1;
-    bool next_available = 2;
+    repeated MessageReactions messageReactions = 1;
+    int64 peer_clock = 2;
+    bool next_available = 3;
 }
 
 message RequestSetMessageReaction {
@@ -59,14 +61,14 @@ service Reactions {
         };
     }
 
-    rpc MessageSetReaction (RequestSetMessageReaction) returns (MessageReaction) {
+    rpc MessageSetReaction (RequestSetMessageReaction) returns (google.protobuf.Empty) {
         option (google.api.http) = {
             post: "/v1/grpc/Reactions/MessageSetReaction"
             body: "*"
         };
     }
 
-    rpc MessageRemoveReaction (RequestRemoveMessageReaction) returns (MessageReaction) {
+    rpc MessageRemoveReaction (RequestRemoveMessageReaction) returns (google.protobuf.Empty) {
         option (google.api.http) = {
             post: "/v1/grpc/Reactions/MessageRemoveReaction"
             body: "*"
