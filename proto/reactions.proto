@@ -11,47 +11,72 @@ option (scalapb.options) = {
     package_name: "im.dlg.grpc.services"
 };
 
+/**
+ * Объект с информацией об обновлённом счётчике реакций, который приходит после обновления счётчика пользователем либо в weak updates (основной объект — <a href="#MessageReactionsUpdate">MessageReactionsUpdate</a>.
+ * Объекты данного типа, приходящие в ответы на вызовы методов <a href="#MessageSetReaction">MessageSetReaction</a> и <a href="#MessageRemoveReaction">MessageRemoveReaction</a> рекомендуется игнорировать и использовать weak updates для обновления счётчика реакций
+*/
 message MessageReaction {
-    string code = 1;
-    repeated int32 users = 2;
-    int32 users_amount = 3;
+    string code = 1;    /// Unicode поставленной реакции
+    repeated int32 users = 2;   /// Уникальные идентификаторы пользователей (id из объекта <a href="#User>User</a>, поставивших данную реакцию. Может не совпадать с общим количество пользователей, проставивших данную реакцию
+    int32 users_amount = 3; /// Количество пользователей, поставивших данную реакцию
 }
 
+/// Апдейты списка реакций, приходящие в weak updates. Рекомендуется использовать только их для обновления счётчиков реакций у сообщений
 message MessageReactionsUpdate {
-    Peer peer = 1;
-    UUIDValue mid = 2;
-    repeated MessageReaction reactions = 3;
-    int64 peer_clock = 4;
-    int64 prev_peer_clock = 5;
+    Peer peer = 1;  /// Пир
+    UUIDValue mid = 2;  /// Уникальный идентификатор сообщения
+    repeated MessageReaction reactions = 3; /// Список апдейтов по реакциями
+    int64 peer_clock = 4;   /// Время, на которое список обновлений является актуальным, unix-timestamp. Данное значение нужно кешировать на клиенте и сверять с prev_peer_clock при получении следующего апдейта. В случае, если значения не совпадают, нужно вызвать <a href="#GetReactions">GetReactions</a> с закешированным peer_clock
+    int64 prev_peer_clock = 5;  /// Последнее известное серверу время получения клиентом обновления счётчиков реакций
 }
 
 message GetReactionsRequest {
     message GetReactionsPeer {
-        int64 from_clock = 1;
-        Peer peer = 2;
+        int64 from_clock = 1; /// Время, начиная с которого нужно получить обновления, unix-timestamp
+        Peer peer = 2; /// Пир
     }
 
-    repeated GetReactionsPeer peers = 1; // limited by 'reactions.maxPeersPerRequest' feature-flag value
+    repeated GetReactionsPeer peers = 1; /// Набор пиров для обновления. Максимальное количество пиров ограничено значением в feature-flag 'reactions.maxPeersPerRequest'
 }
 
 message GetReactionsResponse {
-    repeated MessageReactionsUpdate reactions = 1;
-    bool next_available = 2;
+    repeated MessageReactionsUpdate reactions = 1; /// Апдейты по счётчикам реакций для указанных пиров
+    bool next_available = 2; /// Если true — апдейты по всем переданным пирам прогрузились не полностью, нужно вызвать метод ещё раз
 }
 
 message RequestSetMessageReaction {
-    Peer peer = 1;
-    UUIDValue mid = 2;
-    string code = 3;
+    Peer peer = 1;  /// Пир
+    UUIDValue mid = 2;  /// Уникальный идентификатор сообщения
+    string code = 3;    /// Код реакции
 }
 
 message RequestRemoveMessageReaction {
-    Peer peer = 1;
-    UUIDValue mid = 2;
-    string code = 3;
+    Peer peer = 1;  /// Пир
+    UUIDValue mid = 2;  /// Уникальный идентификатор сообщения
+    string code = 3;    /// Код реакции
 }
 
+/**
+ * API реакций используется для получения списка проставленных реакций к сообщениям, постановки и удаления реакций к сообщениям пользователями.
+ * Функциональные возможности:
+ * <ol>
+ *   <li> Запрос списка поставленных реакций: </li>
+ *   <ol>
+ *       <li> Для запроса списка реакций при старте приложения используется метод <a href="#GetReactions">GetReactions</a> </li>
+ *       <li> В дальнейшем для обновления списка реакций во время жизненного цикла приложения используются weak updates c структурой данных, аналогичной <a href="#MessageReactionsUpdate">MessageReactionsUpdate</a> </li>
+ *       <li> В полученном объекте приходят два поля: prev_peer_clock — время предыдущего обновления реакций для пира, peer_clock — время, на которое актуальны пришедшие обновления </li>
+ *       <li> С каждым апдейтом нужно кешировать значение peer_clock. При получении апдейта нужно сверять закешированный peer_clock с пришедшим в апдейте prev_peer_clock </li>
+ *       <li> В случае, если значения отличаются, нужно проигнорировать пришедший апдейт и вручную засинхронизироваться с сервером, вызвав <a href="#GetReactions">GetReactions</a> вручную с последним закешированным peer_clock </li>
+ *   </ol>
+ *   <li> Добавление и удаление реакций: </li>
+ *   <ol>
+ *       <li> Для добавления и удаления реакций используются методы <a href="#MessageSetReaction">MessageSetReaction</a> и <a href="#MessageRemoveReaction">MessageRemoveReaction</a> </li>
+ *       <li> В ответ на вызов данных методов приходят объекты с информацией по количеству пользователей, которые также поставили данную реакцию: <a href="#MessageReaction">MessageReaction</a> </li>
+ *       <li> Несмотря на наличие данных объектов в ответах, их рекомендуется не использовать для обновления счётчика реакций — нужно дождаться weak update и обновлять счётчики реакций на основе данных из него </li>
+ *   </ol>
+*/
 service Reactions {
+    /// Метод ручного запроса изменений в списке реакций к сообщениям. Используется при старте приложения, либо в случае несовпадения prev_peer_clock c значением, закешированном в клиентском приложении
     rpc GetReactions (GetReactionsRequest) returns (GetReactionsResponse) {
         option (google.api.http) = {
             post: "/v1/grpc/Reactions/GetReactions"
@@ -59,6 +84,7 @@ service Reactions {
         };
     }
 
+    /// Запрос на добавление реакции к сообщению
     rpc MessageSetReaction (RequestSetMessageReaction) returns (MessageReaction) {
         option (google.api.http) = {
             post: "/v1/grpc/Reactions/MessageSetReaction"
@@ -66,6 +92,7 @@ service Reactions {
         };
     }
 
+    /// Запрос на удаление своей реакции с сообщения
     rpc MessageRemoveReaction (RequestRemoveMessageReaction) returns (MessageReaction) {
         option (google.api.http) = {
             post: "/v1/grpc/Reactions/MessageRemoveReaction"

@@ -203,17 +203,17 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
             <ul>
               {{range .Services}}
                 <li>
-                  <a href="#{{.FullName}}"><span class="badge">S</span>{{.Name}}</a>
+                  <a href="#{{.Name}}"><span class="badge">S</span>{{.Name}}</a>
                 </li>
               {{end}}
               {{range .Messages}}
                 <li>
-                  <a href="#{{.FullName}}"><span class="badge">M</span>{{.LongName}}</a>
+                  <a href="#{{.Name}}"><span class="badge">M</span>{{.LongName}}</a>
                 </li>
               {{end}}
               {{range .Enums}}
                 <li>
-                  <a href="#{{.FullName}}"><span class="badge">E</span>{{.LongName}}</a>
+                  <a href="#{{.Name}}"><span class="badge">E</span>{{.LongName}}</a>
                 </li>
               {{end}}
               {{range .Extensions}}
@@ -255,7 +255,7 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
       {{end}}
 
       {{range .Services}}
-        <h3 id="{{.FullName}}">{{.Name}}</h3>
+        <h3 id="{{.Name}}">{{.Name}}</h3>
         {{p .Description}}
         <table class="enum-table">
           <thead>
@@ -275,7 +275,7 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
       {{end}}
 
       {{range .Messages}}
-        <h3 id="{{.FullName}}">{{.LongName}}</h3>
+        <h3 id="{{.Name}}">{{.LongName}}</h3>
         {{p .Description}}
 
         {{if .HasFields}}
@@ -318,7 +318,7 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
       {{end}}
 
       {{range .Enums}}
-        <h3 id="{{.FullName}}">{{.LongName}}</h3>
+        <h3 id="{{.Name}}">{{.LongName}}</h3>
         {{p .Description}}
         <table class="enum-table">
           <thead>
@@ -336,7 +336,7 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
         </table>
       {{end}}
 
-  
+
     {{end}}
 
     <h2 id="scalar-value-types">Scalar Value Types</h2>
