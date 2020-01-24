@@ -54,28 +54,46 @@ php:
 	$(PROTO_PATH)/*.proto
 
 swagger:
-	mkdir -p $(SWAGGER_PATH)
-	@protoc -I$(PROTO_PATH) \
-	-Iinclude \
-	-I/usr/local/include \
-	-I$(GOPATH)/src \
-	-I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-	--swagger_out=logtostderr=true:$(SWAGGER_PATH) \
-	$(PROTO_PATH)/*.proto
+	rm -f ${SWAGGER_PATH}/*.json
+	mkdir -p ${SWAGGER_PATH}
+
+	docker run -it --rm \
+	-v "$(shell pwd):/go/src/github.com/dialogs/api-schema" \
+	-v "$(SWAGGER_PATH):/out" \
+	-w "/go/src/github.com/dialogs/api-schema" \
+	dialogs/go-tools-protoc:1.0.1 \
+	sh -c '\
+	rm -rf /go/src/github.com/grpc-ecosystem/grpc-gateway && \
+	mkdir -p /go/src/github.com/grpc-ecosystem/grpc-gateway && \
+	git clone -b v1.12.2 https://github.com/grpc-ecosystem/grpc-gateway /go/src/github.com/grpc-ecosystem/grpc-gateway && \
+	(cd /go/src/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger; go install) && \
+	protoc \
+	-I=proto \
+	-I=include/ \
+	-I=/go/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+	--swagger_out=logtostderr=true:\
+	/out proto/*.proto'
 
 golang:
-	mkdir -p $(GOLANG_PATH)
-	@protoc -I$(PROTO_PATH) \
-	-Iinclude \
-	-I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-	--go_out=\
-	Mgoogle/protobuf/descriptor.proto=github.com/golang/protobuf/protoc-gen-go/descriptor,\
-	Mscalapb/scalapb.proto=github.com/gogo/protobuf/types,\
-	plugins=grpc:$(GOLANG_PATH) \
-	$(PROTO_PATH)/*.proto
+	# build API
+	rm -rf ${GOLANG_PATH}
+	mkdir -p ${GOLANG_PATH}
 
-	@PATH=$(PATH):$(CWD) protoc -I$(PROTO_PATH) \
-	-Iinclude \
-	-I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-	--gosdk_out=$(GOLANG_PATH) \
-	$(PROTO_PATH)/*.proto
+	docker run -it --rm \
+	-v "$(shell pwd):/go/src/github.com/dialogs/api-schema" \
+	-w "/go/src/github.com/dialogs/api-schema" \
+	dialogs/go-tools-protoc:1.0.1 \
+	protoc \
+	-I=proto \
+	-I=include/ \
+	--gogoslick_out=plugins=grpc,\
+	Mgoogle/protobuf/any.proto=github.com/gogo/protobuf/types,\
+	Mgoogle/protobuf/empty.proto=github.com/gogo/protobuf/types,\
+	Mgoogle/protobuf/duration.proto=github.com/gogo/protobuf/types,\
+	Mgoogle/protobuf/struct.proto=github.com/gogo/protobuf/types,\
+	Mgoogle/protobuf/timestamp.proto=github.com/gogo/protobuf/types,\
+	Mgoogle/protobuf/descriptor.proto=github.com/gogo/protobuf/protoc-gen-gogo/descriptor,\
+	Mscalapb/scalapb.proto=github.com/gogo/protobuf/types,\
+	Mgoogle/api/annotations.proto=google.golang.org/genproto/googleapis/api/annotations,\
+	Mgoogle/protobuf/wrappers.proto=github.com/gogo/protobuf/types:\
+	./golang proto/*.proto

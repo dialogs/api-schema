@@ -30,6 +30,12 @@ executors:
     docker:
       - image: circleci/python:3.7
     working_directory: ~/code
+  golang-executor:
+    docker:
+      - image: dialogs/go-tools-protoc:1.0.1
+        environment:
+          - GO111MODULE=on
+    working_directory: /go/src/github.com/dialogs/api-schema
 
 jobs:
   git-version-publish:
@@ -181,6 +187,83 @@ jobs:
       - checkout:
           path: ~/code
       - run: sbt publish
+  golang-build:
+    executor: golang-executor
+    steps:
+      - checkout
+      - run:
+          name: build proto
+          command: |
+            export SDK_DIR=/tmp/sdk
+            rm -rf $SDK_DIR
+            git clone -b master https://github.com/dialogs/golang-bot-sdk $SDK_DIR
+
+            protoc \
+            -I=proto \
+            -I=include/ \
+            --gogoslick_out=plugins=grpc,\
+            Mgoogle/protobuf/any.proto=github.com/gogo/protobuf/types,\
+            Mgoogle/protobuf/empty.proto=github.com/gogo/protobuf/types,\
+            Mgoogle/protobuf/duration.proto=github.com/gogo/protobuf/types,\
+            Mgoogle/protobuf/struct.proto=github.com/gogo/protobuf/types,\
+            Mgoogle/protobuf/timestamp.proto=github.com/gogo/protobuf/types,\
+            Mgoogle/protobuf/descriptor.proto=github.com/gogo/protobuf/protoc-gen-gogo/descriptor,\
+            Mscalapb/scalapb.proto=github.com/gogo/protobuf/types,\
+            Mgoogle/api/annotations.proto=google.golang.org/genproto/googleapis/api/annotations,\
+            Mgoogle/protobuf/wrappers.proto=github.com/gogo/protobuf/types:\
+            $SDK_DIR/ proto/*.proto
+      - run: echo $(find proto -type f -print0 | sort -z | xargs -r0 sha1sum)  > CACHE_KEY1
+      - run: cat CACHE_KEY1
+      - save_cache:
+          key: v1-golang-cache-{{ checksum "CACHE_KEY1" }}
+          paths:
+            - /tmp/sdk
+  golang-publish:
+    executor: golang-executor
+    steps:
+      - checkout
+      - run: echo $(find proto -type f -print0 | sort -z | xargs -r0 sha1sum)  > CACHE_KEY1
+      - run: cat CACHE_KEY1
+      - restore_cache:
+          key: v1-golang-cache-{{ checksum "CACHE_KEY1" }}
+      - run:
+          name: publish SDK
+          command: |
+            export SDK_DIR=/tmp/sdk
+            export TAG=$(git describe --tags --exact-match head~1)
+            export COMMIT=$(git log --pretty=format:"%s (source commit: %H)")
+
+            cd $SDK_DIR
+            git config user.name "$GITHUB_BOT_USERNAME"
+            git config user.email "$GITHUB_BOT_EMAIL"
+            git remote set-url origin https://${GITHUB_BOT_TOKEN}@github.com/dialogs/golang-dialog-api.git
+            git add .
+            git commit -m "$COMMIT"
+            if [ ! -z "$TAG" ]; then
+              git tag $TAG
+            fi
+            git push origin master
+            git push origin --tags
+  swagger-build:
+    executor: golang-executor
+    steps:
+      - checkout
+      - run:
+          name: build proto
+          command: |
+            export SWAGGER_DIR=swagger
+            rm -rf $SWAGGER_DIR
+            mkdir -p $SWAGGER_DIR
+            rm -rf /go/src/github.com/grpc-ecosystem/grpc-gateway
+            mkdir -p /go/src/github.com/grpc-ecosystem/grpc-gateway
+            git clone -b v1.12.2 https://github.com/grpc-ecosystem/grpc-gateway /go/src/github.com/grpc-ecosystem/grpc-gateway
+            go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
+            protoc \
+            -I=proto \
+            -I=include/ \
+            -I=/go/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+            --swagger_out=logtostderr=true:\
+            $SWAGGER_DIR proto/*.proto
 
 workflows:
   version: 2
@@ -191,6 +274,16 @@ workflows:
       - docs-build
       - java-build
       - python-build
+      - golang-build
+      - swagger-build
+      - golang-publish:
+          requires:
+            - golang-build
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: master
       - git-version-publish:
           requires:
             - npm-build
@@ -198,6 +291,7 @@ workflows:
             - docs-build
             - java-build
             - python-build
+            - golang-build
           filters:
             tags:
               ignore: /.*/
@@ -263,6 +357,20 @@ workflows:
       - docs-publish:
           requires:
             - docs-build
+          filters:
+            tags:
+              only: /^v.+$/
+            branches:
+              ignore: /.*/
+      - golang-build:
+          filters:
+            tags:
+              only: /^v.+$/
+            branches:
+              ignore: /.*/
+      - golang-publish:
+          requires:
+            - golang-build
           filters:
             tags:
               only: /^v.+$/

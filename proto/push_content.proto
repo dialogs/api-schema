@@ -4,6 +4,8 @@ package dialog;
 
 import "definitions.proto";
 
+option go_package = "dialog";
+
 message LocalizableString {
     string loc_key = 1;
     repeated string loc_args = 2;
