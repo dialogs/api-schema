@@ -101,6 +101,9 @@ message UserData {
     repeated ContactRecord contact_info = 13 [(dlg).log="compact"];
     repeated BotCommand bot_commands = 14 [(dlg).log="visible"];
     google.protobuf.StringValue custom_profile = 15;
+    /// way user was register (ldap, bot-father, graphql, etc.)
+    /// some sources could be considered as "external"
+    google.protobuf.StringValue registration_source = 17;
     int64 clock = 16;
 }
 message User {
