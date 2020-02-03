@@ -11,27 +11,30 @@ option (scalapb.options) = {
 };
 
 enum AuthorizationMethod {
-    nothing = 0;
-    login_password = 1;
-    phone = 2;
-    email = 3;
-    certificate = 4;
+    nothing = 0; /// Нет обязательных способов аутентификации, которые нужно пройти
+    login_password = 1; /// Пара «логин-пароль»
+    phone = 2; /// С помощью номера телефона
+    email = 3; /// С помощью адреса электронной почты
+    certificate = 4; /// С помощью сертификата
 }
 
+
+/// <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">app_id: <span style="color: #0000DD; font-weight: bold">10</span> app_title: <span style="background-color: #fff0f0">&quot;ServerTestSuites&quot;</span> device_title: <span style="background-color: #fff0f0">&quot;ServerTestSuites&quot;</span> </pre></div>
 message RequestRegisterDevice {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-    bytes client_pk = 1;
-    int32 app_id = 2;
-    string app_title = 3;
-    string device_title = 4;
+    bytes client_pk = 1; /// Публичный код клиента для шифрования данных, можно не передавать
+    int32 app_id = 2; /// Числовой идентификатор клиентского приложения, выставляется пользователем API и используется на протяжении всего процесса аутентификации при вызове других методов
+    string app_title = 3; /// Название клиентского приложения, выставляется пользователем API, не используется при вызове других методов
+    string device_title = 4; /// Название девайса, выставляется пользователем API и используется на протяжении всего процесса аутентификации при вызове других методов
 }
 
+/// <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">auth_id: <span style="color: #0000DD; font-weight: bold">4026670773249323070</span> token: <span style="background-color: #fff0f0">&quot;OT+_odQO+Iff+UE</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\\</span><span style="background-color: #fff0f0">iPn,+,]x&quot;</span> </pre></div>
 message ResponseDeviceRequest {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
-    bytes server_pk = 1;
-    int64 auth_id = 2;
-    string token = 3;
-    repeated AuthorizationMethod auth_method_seq = 4; /// Sequence of the required authorization methods
+    bytes server_pk = 1; /// Публичный ключ сервера для шифрования данных. Не передаётся, если серверу не был передан публичный ключ клиента
+    int64 auth_id = 2; /// Уникальный идентификатор сессии аутентификации
+    string token = 3; /// Токен, используется в заголовке Authorizarionдля авторизации всех запросов, вызываемых в дальнейшем
+    repeated AuthorizationMethod auth_method_seq = 4; /// Набор способов аутентификации, которые необходимо пройти клиенту для использования других методов API. Отсутствие значений аналогично значению nothing
 }
 
 message RegisterDeprecatedDeviceRequest {}
@@ -48,7 +51,7 @@ service Registration {
         body: "*"
     };
   }
-  /// register device to get auth token
+  /// Метод используется для регистрации пользовательского устройства на сервере и используется для начала процесса аутентификации
   rpc RegisterDevice (RequestRegisterDevice) returns (ResponseDeviceRequest) {
       option (google.api.http) = {
           post: "/v1/grpc/Registration/RegisterDevice"

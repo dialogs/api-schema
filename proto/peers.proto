@@ -14,25 +14,25 @@ option (scalapb.options) = {
 };
 
 enum PeerType {
-    PEERTYPE_UNKNOWN = 0;
-    PEERTYPE_PRIVATE = 1;
-    PEERTYPE_GROUP = 2;
-    PEERTYPE_ENCRYPTEDPRIVATE = 3;
-    PEERTYPE_SIP = 4;
+    PEERTYPE_UNKNOWN = 0; /// Неизвестный
+    PEERTYPE_PRIVATE = 1; /// Приватный (Deprecated)
+    PEERTYPE_GROUP = 2; /// Групповой (Deprecated)
+    PEERTYPE_ENCRYPTEDPRIVATE = 3; /// Зашифрованный приватный (Deprecated)
+    PEERTYPE_SIP = 4; /// SIP (Deprecated)
 }
 
 // Peer
 message Peer {
-    PeerType type = 1 [(dlg).log="visible"];
+    PeerType type = 1 [(dlg).log="visible"]; /// Тип пира
     int32 id = 2 [(dlg).log="visible"];
-    google.protobuf.StringValue str_id = 3 [(dlg).log="visible"];
+    google.protobuf.StringValue str_id = 3 [(dlg).log="visible"]; /// Идентификатор пира
 }
 
 // Out peer with access hash
 message OutPeer {
-    PeerType type = 1 [(dlg).log="visible"];
-    int32 id = 2 [(dlg).log="visible"];
-    int64 access_hash = 3 [(dlg).log="danger"];
+    PeerType type = 1 [(dlg).log="visible"]; /// Тип пира
+    int32 id = 2 [(dlg).log="visible"]; /// Уникальный идентификатор пира
+    int64 access_hash = 3 [(dlg).log="danger"]; /// Хэш для доступа к пиру
     google.protobuf.StringValue str_id = 4 [(dlg).log="visible"];
 }
 

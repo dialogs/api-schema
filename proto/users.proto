@@ -25,17 +25,17 @@ option (scalapb.options) = {
 };
 
 enum Sex {
-    SEX_UNKNOWN = 0;
-    SEX_MALE = 2;
-    SEX_FEMALE = 3;
+    SEX_UNKNOWN = 0; /// Пол не указан
+    SEX_MALE = 2; /// Мужской пол
+    SEX_FEMALE = 3; /// Женский пол
 }
 
 enum ContactType {
-    CONTACTTYPE_UNKNOWN = 0;
-    CONTACTTYPE_PHONE = 1;
-    CONTACTTYPE_EMAIL = 2;
-    CONTACTTYPE_WEB = 3;
-    CONTACTTYPE_SOCIAL = 4;
+    CONTACTTYPE_UNKNOWN = 0; /// Неизвестный
+    CONTACTTYPE_PHONE = 1; /// Телефон
+    CONTACTTYPE_EMAIL = 2; /// Адрес почты
+    CONTACTTYPE_WEB = 3; /// Веб-ссылка
+    CONTACTTYPE_SOCIAL = 4; /// Ссылка на социальные сети
 }
 
 // Contact information record
@@ -54,20 +54,19 @@ message ContactRecord {
 }
 
 enum UserStatusType {
-    USERSTATUSTYPE_UNKNOWN = 0;
-    USERSTATUSTYPE_UNSET = 1;
-    USERSTATUSTYPE_AWAY = 2;
-    USERSTATUSTYPE_DONOTDISTURB = 3;
-    USERSTATUSTYPE_INVISIBLE = 4;
-    USERSTATUSTYPE_BUSY = 5;
+    USERSTATUSTYPE_UNKNOWN = 0; /// Неизвестен
+    USERSTATUSTYPE_UNSET = 1; /// Не выставлен
+    USERSTATUSTYPE_AWAY = 2; /// Ушёл
+    USERSTATUSTYPE_DONOTDISTURB = 3; /// Не беспокоить
+    USERSTATUSTYPE_INVISIBLE = 4; /// Невидимый
+    USERSTATUSTYPE_BUSY = 5; /// Занят
 }
 
 // User's status
 message UserStatus {
-    UserStatusType type = 1 [(dlg).log="visible"];
-    /// Text supplied by user
-    google.protobuf.StringValue text = 2 [(dlg).log="visible"];
-    int64 clock = 3 [(dlg).log="visible"];
+    UserStatusType type = 1 [(dlg).log="visible"]; /// Тип статуса
+    google.protobuf.StringValue text = 2 [(dlg).log="visible"]; /// Текст статуса
+    int64 clock = 3 [(dlg).log="visible"]; /// Время изменения статуса
 }
 
 // Main user object
@@ -79,34 +78,34 @@ message UserData {
             bool b = 3;
         }
     }
-    string name = 1 [(dlg).log="hidden"];
-    google.protobuf.StringValue nick = 2 [(dlg).log="visible"];
-    Sex sex = 3 [(dlg).log="hidden"];
-    Avatar avatar = 4 [(dlg).log="compact"];
-    google.protobuf.BoolValue is_bot = 5 [(dlg).log="visible"];
+    string name = 1 [(dlg).log="hidden"]; /// Имя пользователя
+    google.protobuf.StringValue nick = 2 [(dlg).log="visible"]; /// Юзернейм пользователя
+    Sex sex = 3 [(dlg).log="hidden"]; /// Пол пользователя
+    Avatar avatar = 4 [(dlg).log="compact"]; /// Объект типа Avatar с информацией о аватаре пользователя
+    google.protobuf.BoolValue is_bot = 5 [(dlg).log="visible"]; /// Флаг о том, является ли пользователь ботом
     enum Lifecycle {
-        MISSED = 0;
-        ACTIVE = 1;
-        DELETED = 2;
-        BLOCKED = 3;
-        BLOCKED_AND_DELETED = 4;
+        MISSED = 0; /// Пользователь не найден
+        ACTIVE = 1; /// Пользователь активен
+        DELETED = 2; /// Пользователь удалён
+        BLOCKED = 3; /// Пользователь заблокирован
+        BLOCKED_AND_DELETED = 4; /// Пользователь заблокирован и удалён
     }
-    Lifecycle status = 6 [(dlg).log="visible"];
-    UserStatus user_status = 7 [(dlg).log="visible"];
-    string time_zone = 8 [(dlg).log="visible"];
-    repeated Ext exts = 9 [(dlg).log="hidden"];
-    DataClock obsoleteClock = 10 [(dlg).log="visible"]; // deprecated
-    repeated string locales = 11;
-    google.protobuf.StringValue about = 12 [(dlg).log="compact"];
-    repeated ContactRecord contact_info = 13 [(dlg).log="compact"];
-    repeated BotCommand bot_commands = 14 [(dlg).log="visible"];
-    google.protobuf.StringValue custom_profile = 15;
-    int64 clock = 16;
+    Lifecycle status = 6 [(dlg).log="visible"]; /// Статус пользователя
+    UserStatus user_status = 7 [(dlg).log="visible"]; /// Объект типа UserStatus с информацией о кастомном статусе пользователя
+    string time_zone = 8 [(dlg).log="visible"]; /// Таймзона пользователя в формате ISO 8601
+    repeated Ext exts = 9 [(dlg).log="hidden"]; /// Объект типа Ext с произвольной информацией из Extensions, не рекомендуется к использованию
+    DataClock obsoleteClock = 10 [(dlg).log="visible"]; /// Deprecated
+    repeated string locales = 11; /// Набор предпочитаемых языков пользователя
+    google.protobuf.StringValue about = 12 [(dlg).log="compact"]; /// Описание профиля пользователя
+    repeated ContactRecord contact_info = 13 [(dlg).log="compact"]; /// Контакты пользователя
+    repeated BotCommand bot_commands = 14 [(dlg).log="visible"]; /// Доступные команды (для ботов)
+    google.protobuf.StringValue custom_profile = 15; /// Кастомный профиль пользователя в json
+    int64 clock = 16; /// Время последнего изменения сущности пользователя
 }
 message User {
-    int32 id = 1 [(dlg).log = "visible"]; /// User's id
-    int64 access_hash = 2 [(dlg).log="danger"];
-    UserData data = 3; // required
+    int32 id = 1 [(dlg).log = "visible"]; /// Уникальный идентификатор пользователя
+    int64 access_hash = 2 [(dlg).log="danger"]; /// Хэш доступа
+    UserData data = 3; ///  Объект типа UserData с информацией о пользователе
 }
 
 message UserPartialInfo {

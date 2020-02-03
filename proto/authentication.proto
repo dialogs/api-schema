@@ -30,43 +30,36 @@ option (scalapb.options) = {
 };
 
 enum PhoneActivationType {
-    PHONEACTIVATIONTYPE_UNKNOWN = 0;
-    PHONEACTIVATIONTYPE_CODE = 1;
-    PHONEACTIVATIONTYPE_PASSWORD = 2;
+    PHONEACTIVATIONTYPE_UNKNOWN = 0; /// Неизвестный тип завершения аутентификации
+    PHONEACTIVATIONTYPE_CODE = 1; /// Завершение аутентификации с помощью одноразового кода
+    PHONEACTIVATIONTYPE_PASSWORD = 2; /// Завершение аутентификации с помощью одноразового пароля
 }
 
 enum EmailActivationType {
-    EMAILACTIVATIONTYPE_UNKNOWN = 0;
-    EMAILACTIVATIONTYPE_CODE = 1;
-    EMAILACTIVATIONTYPE_OAUTH2 = 2;
-    EMAILACTIVATIONTYPE_PASSWORD = 3;
+    EMAILACTIVATIONTYPE_UNKNOWN = 0; /// Нет обязательных способов аутентификации, которые нужно пройти
+    EMAILACTIVATIONTYPE_CODE = 1; /// С помощью одноразового кода
+    EMAILACTIVATIONTYPE_OAUTH2 = 2; /// OAuth2
+    EMAILACTIVATIONTYPE_PASSWORD = 3; /// С помощью пароля
 }
 
-// Start Phone Activation
+/// <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">phone: <span style="color: #0000DD; font-weight: bold">79997558600</span> app_id: <span style="color: #0000DD; font-weight: bold">10</span> device_title: <span style="background-color: #fff0f0">&quot;ServerTestSuites&quot;</span> preferred_languages: <span style="background-color: #fff0f0">&quot;EN-US&quot;</span> </pre></div>
 message RequestStartPhoneAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-    int64 phone_number = 1 [(dlg).log="visible"];
-    /** Application id, choose it by yourself and hold during authorization process **/
-    int32 app_id = 2 [(dlg).log="hidden"];
-    /** Deprecated field - keep it empty **/
-    string api_key = 3 [(dlg).log="hidden"];
-    /** Deprecated field - keep it empty **/
-    bytes device_hash = 4 [(dlg).log="visible"];
-    /** Some title, choose it by yourself and hold during authorization process **/
-    string device_title = 5 [(dlg).log="visible"];
-    /** Your timezone **/
-    google.protobuf.StringValue time_zone = 6 [(dlg).log="visible"];
-    /** First language from this array will be used for some notifications from server **/
-    repeated string preferred_languages = 7 [(dlg).log="visible"];
+    int64 phone_number = 1 [(dlg).log="visible"];  /// Номер телефона пользователя пользователя
+    int32 app_id = 2 [(dlg).log="hidden"]; /// Уникальный идентификатор клиентского приложения, указанный при вызове RequestRеgisterDevice
+    string api_key = 3 [(dlg).log="hidden"]; /// Deprecated
+    bytes device_hash = 4 [(dlg).log="visible"]; /// Deprecated
+    string device_title = 5 [(dlg).log="visible"]; /// Название девайса, указанное при вызове <a href="#dialog.RegisterDevice>RеgisterDevice</a>
+    google.protobuf.StringValue time_zone = 6 [(dlg).log="visible"]; /// Опциональное поле — временная зона пользователя
+    repeated string preferred_languages = 7 [(dlg).log="visible"]; /// Набор предпочитаемых языков. Первый элемент в наборе будет использоваться для некоторых серверных уведомлений
 }
 
+/// <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">transaction_hash: <span style="background-color: #fff0f0">&quot;bb0ee6a977272d09cbb25464e631a3d76efa4df0&quot;</span> is_registered: true activation_type: PHONEACTIVATIONTYPE_CODE </pre></div>
 message ResponseStartPhoneAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
-    /** Hash of authorization transaction **/
-    string transaction_hash = 1;
-    bool is_registered = 2; /// Deprecated
-    /** Code or password - call ValidateCode if code **/
-    PhoneActivationType activation_type = 3;
+    string transaction_hash = 1; /// Хэш аутентификационной транзакции
+    bool is_registered = 2; /// Deprecated. Флаг, указывающий на то, зарегистрирован ли в системе пользователь с указанным юзернеймом
+    PhoneActivationType activation_type = 3; /// Тип завершения аутентификации. В зависимости от значения в дальнейшем вызывается либо <a href="#dialog.ValidateCode>ValidateCode</a>, либо <a href="ValidatePassword">ValidatePassword</a>
 }
 
 // Dial phone and dictate auth code
@@ -76,31 +69,24 @@ message RequestSendCodeByPhoneCall {
     string transaction_hash = 1 [(dlg).log="danger"];
 }
 
-// Start EMail Activation
+/// <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">email: <span style="background-color: #fff0f0">&quot;tester1@test.ru&quot;</span> app_id: <span style="color: #0000DD; font-weight: bold">10</span> device_title: <span style="background-color: #fff0f0">&quot;ServerTestSuites&quot;</span> preferred_languages: <span style="background-color: #fff0f0">&quot;EN-US&quot;</span> </pre></div>
 message RequestStartEmailAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-    string email = 1 [(dlg).log="visible"];
-    /** Application id, choose it by yourself and hold during authorization process **/
-    int32 app_id = 2 [(dlg).log="hidden"];
-    /** Deprecated field - keep it empty **/
-    string api_key = 3 [(dlg).log="hidden"];
-    /** Deprecated field - keep it empty **/
-    bytes device_hash = 4 [(dlg).log="visible"];
-    /** Some title, choose it by yourself and hold during authorization process **/
-    string device_title = 5 [(dlg).log="visible"];
-    /** Your timezone **/
-    google.protobuf.StringValue time_zone = 6 [(dlg).log="visible"];
-    /** First language from this array will be used for some notifications from server **/
-    repeated string preferred_languages = 7 [(dlg).log="visible"];
+    string email = 1 [(dlg).log="visible"]; /// Адрес электронной почты пользователя пользователя
+    int32 app_id = 2 [(dlg).log="hidden"]; /// Уникальный идентификатор клиентского приложения, указанный при вызове RequestRеgisterDevice
+    string api_key = 3 [(dlg).log="hidden"]; /// Deprecated
+    bytes device_hash = 4 [(dlg).log="visible"]; /// Deprecated
+    string device_title = 5 [(dlg).log="visible"]; /// Название девайса, указанное при вызове <a href="#dialog.RegisterDevice>RеgisterDevice</a>
+    google.protobuf.StringValue time_zone = 6 [(dlg).log="visible"]; /// Опциональное поле — временная зона пользователя
+    repeated string preferred_languages = 7 [(dlg).log="visible"]; ///  Набор предпочитаемых языков. Первый элемент в наборе будет использоваться для некоторых серверных уведомлений
 }
 
+/// <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">transaction_hash: <span style="background-color: #fff0f0">&quot;bb0ee6a977272d09cbb25464e631a3d76efa4df0&quot;</span> is_registered: true activation_type: EMAILACTIVATIONTYPE_CODE </pre></div>
 message ResponseStartEmailAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
-    /** Hash of authorization transaction **/
-    string transaction_hash = 1;
-    bool is_registered = 2; /// Deprecated
-    /** Code or password - call ValidateCode if code **/
-    EmailActivationType activation_type = 3;
+    string transaction_hash = 1; /// Хэш транзакции
+    bool is_registered = 2; /// Deprecated. Флаг, указывающий на то, зарегистрирован ли в системепользователь с указанным юзернеймом
+    EmailActivationType activation_type = 3; /// Тип завершения аутентификации. В зависимости от значения в дальнейшем вызывается либо <a href="#dialog.ValidateCode>ValidateCode</a>, либо <a href="#dialog.ValidatePassword>ValidatePassword</a>
 }
 
 // Starting Anonymous login - deprecated
@@ -134,36 +120,30 @@ message RequestStartTokenAuth {
     repeated string preferred_languages = 7 [(dlg).log="visible"];
 }
 
-// Starting Login Authentication
+/// <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">username: <span style="background-color: #fff0f0">&quot;tester1&quot;</span> app_id: <span style="color: #0000DD; font-weight: bold">10</span> device_title: <span style="background-color: #fff0f0">&quot;ServerTestSuites&quot;</span> preferred_languages: <span style="background-color: #fff0f0">&quot;EN-US&quot;</span> </pre></div>
 message RequestStartUsernameAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-    string username = 1 [(dlg).log="visible"];
-    /** Application id, choose it by yourself and hold during authorization process **/
-    int32 app_id = 2 [(dlg).log="hidden"];
-    /** Deprecated field - keep it empty **/
-    string api_key = 3 [(dlg).log="hidden"];
-    /** Deprecated field - keep it empty **/
-    bytes device_hash = 4 [(dlg).log="visible"];
-    /** Some title, choose it by yourself and hold during authorization process **/
-    string device_title = 5 [(dlg).log="visible"];
-    google.protobuf.StringValue time_zone = 6 [(dlg).log="visible"];
-    /** First language from this array will be used for some notifications from server **/
-    repeated string preferred_languages = 7 [(dlg).log="visible"];
+    string username = 1 [(dlg).log="visible"]; /// Юзернейм пользователя
+    int32 app_id = 2 [(dlg).log="hidden"]; /// Уникальный идентификатор клиентского приложения, указанный при вызове <a href="#dialog.RegisterDevice>RеgisterDevice</a>
+    string api_key = 3 [(dlg).log="hidden"]; /// Deprecated
+    bytes device_hash = 4 [(dlg).log="visible"]; /// Deprecated
+    string device_title = 5 [(dlg).log="visible"]; /// Название девайса, указанное при вызове <a href="#dialog.RegisterDevice>RеgisterDevice</a>
+    google.protobuf.StringValue time_zone = 6 [(dlg).log="visible"]; /// Набор предпочитаемых языков. Первый элемент в наборе будет использоваться для некоторых серверных уведомлений
+    repeated string preferred_languages = 7 [(dlg).log="visible"]; /// Опциональное поле — временная зона пользователя
 }
 
+/// <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">transaction_hash: <span style="background-color: #fff0f0">&quot;bb0ee6a977272d09cbb25464e631a3d76efa4df0&quot;</span> is_registered: true </pre></div>
 message ResponseStartUsernameAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
-    /** Hash of authorization transaction **/
-    string transaction_hash = 1;
-    bool is_registered = 2; /// Deprecated
+    string transaction_hash = 1; /// Хэш аутентификационной транзакции
+    bool is_registered = 2; /// Deprecated. Флаг, указывающий на то, зарегистрирован ли в системе пользователь с указанным юзернеймом
 }
 
-// Performing user sign in.
+/// <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">transaction_hash: <span style="background-color: #fff0f0">&quot;bb0ee6a977272d09cbb25464e631a3d76efa4df0&quot;</span> code: F29KA1 </pre></div>
 message RequestValidateCode {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-    /** Hash of the authorization transaction **/
-    string transaction_hash = 1 [(dlg).log="danger"];
-    string code = 2 [(dlg).log="hidden"]; /// Authorization code
+    string transaction_hash = 1 [(dlg).log="danger"]; /// Хэш аутентификационной транзакции, полученный в ответе на вызов RequestStartPhoneAuth или RequestStartEmailAuth
+    string code = 2 [(dlg).log="hidden"]; /// Одноразовый код подтверждения
 }
 
 // Performs code resend
@@ -173,12 +153,11 @@ message RequestResendCode {
     string transaction_hash = 1 [(dlg).log="danger"];
 }
 
-// Validation of account password
+/// <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">transaction_hash: <span style="background-color: #fff0f0">&quot;bb0ee6a977272d09cbb25464e631a3d76efa4df0&quot;</span> password: <span style="background-color: #fff0f0">&quot;password123&quot;</span> </pre></div>
 message RequestValidatePassword {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-    /** Hash of the authorization transaction **/
-    string transaction_hash = 1 [(dlg).log="danger"];
-    string password = 2 [(dlg).log="danger"];
+    string transaction_hash = 1 [(dlg).log="danger"]; /// Хэш аутентификационной транзакции, полученный в ответе на вызов <a href="#dialog.StartUsernameAuth">StartUsernameAuth или <a href="#dialog.StartEmailAuth>RequestStartEmailAuth</a>
+    string password = 2 [(dlg).log="danger"]; /// Пароль пользователя
 }
 
 // Loading OAuth2 Parameters - deprecated
@@ -214,20 +193,17 @@ message RequestSignUp {
 }
 
 enum AuthExtraInfoType {
-    NONE_EXTRA_INFO = 0;
-    NEED_CHANGE_PASSWORD = 1;
+    NONE_EXTRA_INFO = 0; /// Нет дополнительной информации
+    NEED_CHANGE_PASSWORD = 1; /// Необходимо сменить пароль
 }
 
-// Authentication result
+/// <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">user { <span style="color: #007020">id</span>: <span style="color: #0000DD; font-weight: bold">816025893</span> access_hash: <span style="color: #0000DD; font-weight: bold">1381559799363038247</span> data { name: <span style="background-color: #fff0f0">&quot;tester2&quot;</span> nick { value: <span style="background-color: #fff0f0">&quot;tester2&quot;</span> } is_bot { } locales: <span style="background-color: #fff0f0">&quot;en-US&quot;</span> locales: <span style="background-color: #fff0f0">&quot;en&quot;</span> } } config { max_group_size: <span style="color: #0000DD; font-weight: bold">10000</span> discover { } share_endpoint { value: <span style="background-color: #fff0f0">&quot;https://stage-01.transmit.im/v1/messaging&quot;</span> } calls_config { calls_enabled { value: true } video_calls_enabled { value: true } group_calls_enabled { value: true } group_calls_max_members { value: <span style="color: #0000DD; font-weight: bold">5</span> } rtcp_mux_policy: RTCPMUXPOLICY_NEGOTIATE emoji_security_enabled { value: true } screen_sharing_enabled { value: true } } group_invite_config { base_url { value: <span style="background-color: #fff0f0">&quot;https://stage-01.transmit.im&quot;</span> } group_invite_url_prefix { value: <span style="background-color: #fff0f0">&quot;/@/joinchat/&quot;</span> } resolve_url_prefix { value: <span style="background-color: #fff0f0">&quot;/@&quot;</span> } share_invite_url { value: <span style="background-color: #fff0f0">&quot;https:/dlg.im/dl/ee&quot;</span> } } server_meta_info { api_version { value: <span style="color: #0000DD; font-weight: bold">1</span> } } custom_profile_schema: <span style="background-color: #fff0f0">&quot;{</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">properties</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:{</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">email</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:{</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">title</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;\320\240\320\260\320\261\320\276\321\207\320\260\321\217</span><span style="background-color: #fff0f0"> </span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\320\277\320\276\321\207\321\202\320\260\&quot;</span><span style="background-color: #fff0f0">,</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">format</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:null,</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">type</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">string</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">},</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">position</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:{</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">title</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;\320\224\320\276\320\273\320\266\320\275\320\276\321\201\321\202\321\214\&quot;</span><span style="background-color: #fff0f0">,</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">format</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:null,</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">type</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">string</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">},</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">sn</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:{</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">title</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;\320\244\320\260\320\274\320\270\320\273\320\270\321\217\&quot;</span><span style="background-color: #fff0f0">,</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">format</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:null,</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">type</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">string</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">},</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">givenName</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:{</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">title</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;\320\230\320\274\321\217\&quot;</span><span style="background-color: #fff0f0">,</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">format</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:null,</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">type</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">:</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">string</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&quot;</span><span style="background-color: #fff0f0">}}}&quot;</span> } config_hash { value: <span style="color: #0000DD; font-weight: bold">958362159</span> } </pre></div>
 message ResponseAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
-    /// Registered/authorized user
-    User user = 2 [(dlg).log="compact"];
-    /// Config for that user
-    Config config = 3 [(dlg).log="visible"];
-    /// Hash of config to later usage
-    google.protobuf.Int64Value config_hash = 4 [(dlg).log="visible"];
-    repeated AuthExtraInfoType extra_info = 5 [(dlg).log = "visible"];
+    User user = 2 [(dlg).log="compact"]; /// Объект типа User с информацией о пользователе
+    Config config = 3 [(dlg).log="visible"]; /// Объект типа Config с информацией о конфиге пользователя, deprecated для SDK 2.0 (в качестве замены используются feature flags)
+    google.protobuf.Int64Value config_hash = 4 [(dlg).log="visible"]; /// Хэш конфига
+    repeated AuthExtraInfoType extra_info = 5 [(dlg).log = "visible"]; /// Флаги дополнительной информации, нужной после аутентификации
 }
 
 // Authentication session
@@ -367,22 +343,42 @@ message RequestChangePassword {
     string new_password = 2 [(dlg).log = "danger"];
 }
 
+/**
+ * <img src="" id="auth_img_1">
+ * <p>Аутентификация пользователей проходит в три этапа:</p>
+ * <ol>
+ *  <li>Регистация пользовательского устройства в системе путём вызова метода <a href = "#dialog.RegisterDeivce">RegisterDevice</a>. После успешной регистрации устройства откроется аутентификационная сессия и выдаётся токен, которым в дальнейшем нужно подписывать каждый запрос к системе в заголовке Authorization</li>
+ *  <li>Начало аутентификации, на текущий момент доступно три способа проведения:</li>
+ *  <ol>
+ *      <li>С помощью пары «логин-пароль» — метод <a href = "#dialog.StartUsernameAuth">StartUsernameAuth</a></li>
+ *      <li>С помощью номера мобильного телефона — метод <a href = "#dialog.StartPhoneAuth">StartPhoneAuth</a></li>
+ *      <li>С помощью адреса электронной почты — метод <a href = "#dialog.StartEmailAuth">StartEmailAuth</a></li>
+ *  </ol>
+ *  <li>Валидация кода / одноразового пароля. В зависимости от выбранного способа аутентификации выбирается один из следующих методов:</li>
+ *  <ol>
+ *      <li><a href = "#dialog.ValidatePassword">ValidatePassword</a> — всегда для аутентификации с помощью пары «логин-пароль», а также может использоваться для аутентификации с помощью адреса электронной почты в зависимости от ответа на вызов метода <a href = "#dialog.StartEmailAuth">StartEmailAuth</a></li>
+ *      <li>ValidateCode — всегда для аутентификации с мощью номера телефона, а также может использоваться для аутентификации с помощью адреса электронной почты в зависимости от ответа на вызов метода <a href = "#dialog.StartEmailAuth">StartEmailAuth</a></li>
+ *  </ol>
+ *  <li>После успешного прохождения аутентификации пользователю становятся доступны остальные методы (в пределах его скоупа доступа). Для запроса каждого метода нужно его подписывать ранее полученным токеном доступа в заголовке Authorization</li>
+ *  <li>Также пользователю доступны два метода для прекращения сессии: <a href = "#dialog.SignOut">SignOut</a> — прекращает текущую сессию, <a href = "#dialog.TerminateAllSessions">TerminateAllSessions</a> — прекращает все сессии текущего пользователя.</li>
+ * </ol>
+*/
 service Authentication {
-    /// Start authorization by phone
+    /// Метод предназначен для старта процесса аутентификации c помощью номера мобильного телефона пользователя и вызывается после <a href = "#dialog.RegisterDevice">RеgisterDevice</a>
     rpc StartPhoneAuth (RequestStartPhoneAuth) returns (ResponseStartPhoneAuth) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/StartPhoneAuth"
             body: "*"
         };
     }
-    /// Resend code by transaction hash
+    /// Метод предназначен для отправки одноразового кода подтверждения с помощью звонка на номер телефона пользователя
     rpc SendCodeByPhoneCall (RequestSendCodeByPhoneCall) returns (ResponseVoid) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/SendCodeByPhoneCall"
             body: "*"
         };
     }
-    /// Start email authorization process
+    /// Метод предназначен для старта процесса аутентификации с помощью адреса электронной почты пользователя и вызывается после <a href = "#dialog.RegisterDevice>RеgisterDevice</a>
     rpc StartEmailAuth (RequestStartEmailAuth) returns (ResponseStartEmailAuth) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/StartEmailAuth"
@@ -396,37 +392,35 @@ service Authentication {
             body: "*"
         };
     }
-    /// Start token auth authorization (actual for bots)
+    /// Метод предназначен для старта процесса аутентификации с помощью токена доступа (используется только для аутентификации ботов)
     rpc StartTokenAuth (RequestStartTokenAuth) returns (ResponseAuth) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/StartTokenAuth"
             body: "*"
         };
     }
-    /// Start login/password authorization process
+    /// Метод предназначен для старта процесса аутентификации через пару «логин-пароль» и вызывается после <a href="#dialog.RegisterDevice>RеgisterDevice</a>
     rpc StartUsernameAuth (RequestStartUsernameAuth) returns (ResponseStartUsernameAuth) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/StartUsernameAuth"
             body: "*"
         };
     }
-    /** Validate code received by phone or email
-     *  Returns error if user does not exist
-     */
+    /// Метод используется для проверки кода при аутентификации с помощью номера телефона или адреса почты пользователя в случае, если требуется вход с одноразовым кодом подтверждения, и завершает процесс аутентификации
     rpc ValidateCode (RequestValidateCode) returns (ResponseAuth) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/ValidateCode"
             body: "*"
         };
     }
-    /// Resend code if you don't receive it with first attempt
+    /// Повторная отправка кода подтвеждения в случае, если при первой отправке  код не был отправлен
     rpc ResendCode (RequestResendCode) returns (ResponseVoid) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/ResendCode"
             body: "*"
         };
     }
-    /// Validate your passwword
+    /// Метод используется для проверки пароля при выборе способа аутентификации через пару «логин-пароль» и завершает процесс аутентификации
     rpc ValidatePassword (RequestValidatePassword) returns (ResponseAuth) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/ValidatePassword"
@@ -454,7 +448,7 @@ service Authentication {
             body: "*"
         };
     }
-    /// Returns all authorized user's sessions
+    /// Метод предназначен для получения всех аутентификационных сессий текущего пользователя
     rpc GetAuthSessions (RequestGetAuthSessions) returns (ResponseGetAuthSessions) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/GetAuthSessions"
@@ -468,14 +462,14 @@ service Authentication {
             body: "*"
         };
     }
-    /// Log out user
+    /// Метод используется для прекращения всех сессий текущего пользователя
     rpc TerminateAllSessions (RequestTerminateAllSessions) returns (ResponseVoid) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/TerminateAllSessions"
             body: "*"
         };
     }
-    /// Log out current session
+    /// Метод используется для прекращения текущей сессии пользователя
     rpc SignOut (RequestSignOut) returns (ResponseVoid) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/SignOut"
@@ -510,7 +504,7 @@ service Authentication {
             body: "*"
         };
     }
-
+    /// Метод используется для смены постоянного пароля пользователя
     rpc ChangePassword (RequestChangePassword) returns (ResponseVoid) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/ChangePassword"

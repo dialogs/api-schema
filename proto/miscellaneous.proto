@@ -56,28 +56,19 @@ enum SupportedServerMethodsType {
     CHANGE_PASSWORD = 1;
 }
 
-// Configuration of system
-// maxGroupSize Current maximum group size
-// discover Discover configuration
-// shareEndpoint Share endpoint
-// callsConfig Calls configuration
-// groupInviteConfig Group invite configuration
-// serverMetaInfo Server meta information (version, etc.)
-// customProfileSchema Custom profile JSON Schema
-// servicePeers Service peers supported interpreted by the client
 message Config {
-    int32 max_group_size = 1 [(dlg).log="visible"];
+    int32 max_group_size = 1 [(dlg).log="visible"]; /// Максимальный размер группы
     Discover discover = 2 [(dlg).log="visible"];
-    google.protobuf.StringValue share_endpoint = 4 [(dlg).log="visible"];
-    CallsConfig calls_config = 5 [(dlg).log="visible"];
-    InvitesConfig group_invite_config = 6 [(dlg).log="visible"];
-    ServerMetaInfo server_meta_info = 7 [(dlg).log="visible"];
-    string custom_profile_schema = 8 [(dlg).log="visible"];
-    ServicePeers service_peers = 9 [(dlg).log="visible"];
-    repeated Any extensions = 3;
-    int64 client_keep_alive = 10 [(dlg).log = "visible"];
-    repeated SupportedServerMethodsType supported_methods = 11 [(dlg).log = "visible"];
-    int32 max_channel_size = 12 [(dlg).log="visible"];
+    google.protobuf.StringValue share_endpoint = 4 [(dlg).log="visible"]; /// Эндпоинт для шаринга файлов по HTTP
+    CallsConfig calls_config = 5 [(dlg).log="visible"]; /// Настройки звонков
+    InvitesConfig group_invite_config = 6 [(dlg).log="visible"]; /// Настройки инвайта в группы
+    ServerMetaInfo server_meta_info = 7 [(dlg).log="visible"]; /// Мета-информация о сервере
+    string custom_profile_schema = 8 [(dlg).log="visible"]; /// Кастомный профиль пользователя в JSON
+    ServicePeers service_peers = 9 [(dlg).log="visible"]; /// Сервисные пиры
+    repeated Any extensions = 3; /// Расширения для информации из приложений, которые используют SDK, не рекомендуется к использованию
+    int64 client_keep_alive = 10 [(dlg).log = "visible"]; /// ClientKeepAlive
+    repeated SupportedServerMethodsType supported_methods = 11 [(dlg).log = "visible"]; /// Доступные серверные методы
+    int32 max_channel_size = 12 [(dlg).log="visible"]; /// Максимальный размер канала
 }
 
 // Service peers
@@ -91,8 +82,8 @@ message ServicePeers {
 // releaseDate Server release date in milliseconds
 // apiVersion Server api version
 message ServerMetaInfo {
-    int64 release_date = 1 [(dlg).log="visible"];
-    google.protobuf.Int64Value api_version = 2 [(dlg).log="visible"];
+    int64 release_date = 1 [(dlg).log="visible"]; /// Дата релиза сервера
+    google.protobuf.Int64Value api_version = 2 [(dlg).log="visible"]; /// Версия API
 }
 
 enum RtcpMuxPolicy {
@@ -101,34 +92,21 @@ enum RtcpMuxPolicy {
     RTCPMUXPOLICY_REQUIRE = 2;
 }
 
-// Calls configuration
-// callsEnabled If true then client should enable calls
-// videoCallsEnabled If true then client should enable video calls
-// groupCallsEnabled If true then client should enable group calls
-// groupCallsMaxMembers Determines how many members may participate in call
-// rtcpMuxPolicy The RTCP mux policy to use when gathering ICE candidates
-// emojiSecurityEnabled If true then client should send and render emoji security
-// screenSharingEnabled If true then client should enable screen sharing
 message CallsConfig {
-    google.protobuf.BoolValue calls_enabled = 1 [(dlg).log="visible"];
-    google.protobuf.BoolValue video_calls_enabled = 2 [(dlg).log="visible"];
-    google.protobuf.BoolValue group_calls_enabled = 3 [(dlg).log="visible"];
-    google.protobuf.Int32Value group_calls_max_members = 4 [(dlg).log="visible"];
-    RtcpMuxPolicy rtcp_mux_policy = 5 [(dlg).log="visible"];
-    google.protobuf.BoolValue emoji_security_enabled = 6 [(dlg).log="visible"];
-    google.protobuf.BoolValue screen_sharing_enabled = 7 [(dlg).log="visible"];
+    google.protobuf.BoolValue calls_enabled = 1 [(dlg).log="visible"]; /// Включены ли звонки
+    google.protobuf.BoolValue video_calls_enabled = 2 [(dlg).log="visible"]; /// Включены ли видеозвонки
+    google.protobuf.BoolValue group_calls_enabled = 3 [(dlg).log="visible"]; /// Включены ли групповые звонки
+    google.protobuf.Int32Value group_calls_max_members = 4 [(dlg).log="visible"]; /// Максимальное количество участников для групповых звонков
+    RtcpMuxPolicy rtcp_mux_policy = 5 [(dlg).log="visible"]; /// RTCPMuxPolicy
+    google.protobuf.BoolValue emoji_security_enabled = 6 [(dlg).log="visible"]; /// Emoji security
+    google.protobuf.BoolValue screen_sharing_enabled = 7 [(dlg).log="visible"]; // Включен ли скриншэринг
 }
 
-// Group invites configuration
-// baseUrl Base URL part
-// groupInviteUrlPrefix Prefix for private group invite detection
-// resolveUrlPrefix Prefix for public groups and users link detection
-// shareInviteUrl Independent URL for external app sharing
 message InvitesConfig {
-    google.protobuf.StringValue base_url = 1 [(dlg).log="visible"];
-    google.protobuf.StringValue group_invite_url_prefix = 2 [(dlg).log="visible"];
-    google.protobuf.StringValue resolve_url_prefix = 3 [(dlg).log="visible"];
-    google.protobuf.StringValue share_invite_url = 4 [(dlg).log="visible"];
+    google.protobuf.StringValue base_url = 1 [(dlg).log="visible"]; /// Базовый URL
+    google.protobuf.StringValue group_invite_url_prefix = 2 [(dlg).log="visible"]; /// Префикс для инвайта пользователей в группы
+    google.protobuf.StringValue resolve_url_prefix = 3 [(dlg).log="visible"]; /// Префикс URL
+    google.protobuf.StringValue share_invite_url = 4 [(dlg).log="visible"]; /// Ссылка для шэринга
 }
 
 // Discover description

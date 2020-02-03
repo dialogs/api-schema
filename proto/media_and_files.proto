@@ -15,8 +15,8 @@ option (scalapb.options) = {
 
 // Location of file on server
 message FileLocation {
-    int64 file_id = 1 [(dlg).log="visible"]; /// Unique Id of file
-    int64 access_hash = 2 [(dlg).log="danger"]; /// Access hash of file
+    int64 file_id = 1 [(dlg).log="visible"]; /// Идентификатор файла
+    int64 access_hash = 2 [(dlg).log="danger"]; /// Хэш для доступа к файлу
 }
 
 // Image location
@@ -37,20 +37,17 @@ message AudioLocation {
 
 // Avatar Image
 message AvatarImage {
-    FileLocation file_location = 1 [(dlg).log="visible"]; /// Location of file
-    int32 width = 2 [(dlg).log="visible"]; /// Width of avatar image
-    int32 height = 3 [(dlg).log="visible"]; /// Height of avatar image
-    int32 file_size = 4 [(dlg).log="visible"]; /// Size of file
+    FileLocation file_location = 1 [(dlg).log="visible"]; /// Расположение файла
+    int32 width = 2 [(dlg).log="visible"]; /// Ширина аватара в пикселях
+    int32 height = 3 [(dlg).log="visible"]; /// Высота аватара в пикселях
+    int32 file_size = 4 [(dlg).log="visible"]; /// Размер файла в байтах
 }
 
 // Avatar of User or Group
 message Avatar {
-    /// Optional small image of avatar box in 100x100
-    AvatarImage small_image = 1 [(dlg).log="compact"];
-    /// Optional large image of avatar box in 200x200
-    AvatarImage large_image = 2 [(dlg).log="compact"];
-    /// Optional full screen image of avatar
-    AvatarImage full_image = 3 [(dlg).log="compact"];
+    AvatarImage small_image = 1 [(dlg).log="compact"]; /// Аватар 100х100px
+    AvatarImage large_image = 2 [(dlg).log="compact"]; /// Аватар 200х200px
+    AvatarImage full_image = 3 [(dlg).log="compact"]; /// Полноразмерный аватар
 }
 
 // Fast thumb of media messages. Less than 90x90 and compressed by JPEG with low quality
