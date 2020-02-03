@@ -243,13 +243,23 @@ jobs:
             git config user.name "$GITHUB_BOT_USERNAME"
             git config user.email "$GITHUB_BOT_EMAIL"
             git remote set-url origin https://${GITHUB_BOT_TOKEN}@github.com/dialogs/golang-dialog-api.git
-            git add .
-            git commit -m "$COMMIT"
-            if [ ! -z "$TAG" ]; then
-              git tag $TAG
+
+            export CHANGES=$(git status -s)
+            if [ -z "$CHANGES" ]; then
+              echo "nothing to commit"
+            else
+              git add .
+              echo $CHANGES
+              git commit -m "$COMMIT"
+              git push origin master
             fi
-            git push origin master
-            git push origin --tags
+
+            if [ -z "$TAG" ]; then
+              echo "tag is empty"
+            else
+              git tag $TAG
+              git push origin --tags
+            fi
   swagger-build:
     executor: golang-executor
     steps:
