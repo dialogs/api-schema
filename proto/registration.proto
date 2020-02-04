@@ -5,6 +5,7 @@ package dialog;
 import "scalapb/scalapb.proto";
 import "google/api/annotations.proto";
 
+option go_package = "dialog";
 option (scalapb.options) = {
     package_name: "im.dlg.grpc.services"
 };

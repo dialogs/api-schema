@@ -5,10 +5,10 @@ package dialog;
 // Peer is an identificator of specific conversation.
 
 import "google/protobuf/wrappers.proto";
-import "google/api/annotations.proto";
 import "definitions.proto";
 import "scalapb/scalapb.proto";
 
+option go_package = "dialog";
 option (scalapb.options) = {
     package_name: "im.dlg.grpc.services"
 };
