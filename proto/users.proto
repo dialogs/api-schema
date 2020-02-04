@@ -101,7 +101,12 @@ message UserData {
     repeated ContactRecord contact_info = 13 [(dlg).log="compact"];
     repeated BotCommand bot_commands = 14 [(dlg).log="visible"];
     google.protobuf.StringValue custom_profile = 15;
-    bool is_guest = 17; /// This parameter intended just to show in UI (client shouldn't base any logic on that)
+    enum Hint {
+        user_hint_regular = 0;
+        user_hint_guest = 1;
+    }
+    /// This parameter intended just to show in UI (client shouldn't base any logic on that)
+    Hint hint = 17;
     int64 clock = 16;
 }
 message User {
