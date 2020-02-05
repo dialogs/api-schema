@@ -104,10 +104,9 @@ message FileUrlDescription {
 // Error, that describes failure of concrete file
 message FileUrlError {
     int64 fileId = 1 [(dlg).log="visible"]; /// the id of file 
-    int32 code = 2 [(dlg).log="visible"]; /// Error code: 404 - not found, 403 - forbidden 
-    string tag = 3 [(dlg).log="visible"]; /// Error tag: FILE_STORAGE_ERROR - unknown error storage, FILE_STORAGE_FORBIDDEN - has no access to this file storage
-    string reason = 4 [(dlg).log="visible"]; /// fallback error text
-    bool retryable = 5 [(dlg).log="visible"]; /// whether try again or not
+    string tag = 2 [(dlg).log="visible"]; /// Error tag: FILE_STORAGE_ERROR - unknown error storage, FILE_STORAGE_FORBIDDEN - has no access to this file storage
+    string reason = 3 [(dlg).log="visible"]; /// fallback error text
+    bool retryable = 4 [(dlg).log="visible"]; /// whether try again or not
 }
 
 // Requesting file URL for downloading
