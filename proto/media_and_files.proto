@@ -110,7 +110,8 @@ message FileUrlError {
         FILEURLERROR_STORAGE_FORBIDDEN_ERROR = 2;
     }
     ErrorTag tag = 2 [(dlg).log="visible"]; /// error to handle on client
-    string reason = 3 [(dlg).log="visible"]; /// text fallback 
+    string reason = 3 [(dlg).log="visible"]; /// text fallback
+    bool retryable = 4 [(dlg).log="visible"]; /// client should retry or not
 }
 
 // Requesting file URL for downloading
