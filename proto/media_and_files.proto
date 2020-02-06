@@ -126,7 +126,6 @@ message ResponseGetFileUrl {
     int32 timeout = 2;
     google.protobuf.StringValue unsigned_url = 3;
     repeated HTTPHeader unsigned_url_headers = 4;
-    FileUrlError error = 5;
 }
 
 // Requesting multiple fle URL for downloading
