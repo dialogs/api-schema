@@ -101,20 +101,16 @@ message FileUrlDescription {
     repeated HTTPHeader unsigned_url_headers = 5 [(dlg).log="hidden"];
 }
 
-// Error, that describes failure of concrete file
+// Error, that describes failure of specific file
 message FileUrlError {
-    int64 fileId = 1 [(dlg).log="visible"]; /// the id of file 
-message Error {
-  enum ErrorTag {
-     FILEURLERROR_UNKNOWN = 0;
-     FILEURLERROR_STORAGE_ERROR = 1;
-     ...
-  }
-  ErrorTag tag = 1;
-  string reason = 2;
-}
-    string reason = 3 [(dlg).log="visible"]; /// fallback error text
-    bool retryable = 4 [(dlg).log="visible"]; /// whether try again or not
+    int64 file_id = 1 [(dlg).log="visible"]; /// the id of file 
+    enum ErrorTag {
+        FILEURLERROR_UNKNOWN = 0;
+        FILEURLERROR_STORAGE_ERROR = 1;
+        FILEURLERROR_STORAGE_FORBIDDEN_ERROR = 2;
+    }
+    ErrorTag tag = 2 [(dlg).log="visible"]; /// error to handle on client
+    string reason = 3 [(dlg).log="visible"]; /// text fallback 
 }
 
 // Requesting file URL for downloading
