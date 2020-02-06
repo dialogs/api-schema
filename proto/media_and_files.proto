@@ -104,7 +104,15 @@ message FileUrlDescription {
 // Error, that describes failure of concrete file
 message FileUrlError {
     int64 fileId = 1 [(dlg).log="visible"]; /// the id of file 
-    string tag = 2 [(dlg).log="visible"]; /// Error tag: FILE_STORAGE_ERROR - unknown error storage, FILE_STORAGE_FORBIDDEN - has no access to this file storage
+message Error {
+  enum ErrorTag {
+     FILEURLERROR_UNKNOWN = 0;
+     FILEURLERROR_STORAGE_ERROR = 1;
+     ...
+  }
+  ErrorTag tag = 1;
+  string reason = 2;
+}
     string reason = 3 [(dlg).log="visible"]; /// fallback error text
     bool retryable = 4 [(dlg).log="visible"]; /// whether try again or not
 }
