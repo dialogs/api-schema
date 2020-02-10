@@ -779,10 +779,10 @@ message ResponseLoadHistory {
     /// date, related to this unread counter
     int64 counter_date = 8;
 
-    /// last message in conversation
-    HistoryMessage last_conversation_message = 9;
+    /// last conversation message date
+    google.protobuf.Int64Value last_conversation_message_date = 9;
     /// counter of the messages between last conversation message (including it) and last returned in this response
-    int64 count_after_last_returned = 10;
+    int32 count_foreign_after_last_returned = 10;
 }
 
 message RequestHistoryDifference {
