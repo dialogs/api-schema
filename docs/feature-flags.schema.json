@@ -400,36 +400,41 @@
       "title": "Version of confidential policy",
       "default": null
     },
-    "targeting.enabled" : {
+    "targeting.enabled": {
       "type": "boolean",
       "title": "Enable ability of target messages",
       "default": false
     },
-    "targeting.schema" : {
+    "targeting.schema": {
       "type": "string",
       "title": "Schema of targeting form",
       "description": "JSON with description of UI schema for targeting form",
       "default": null
     },
-      "chat.media.interactiveElement.maxCount": {
+    "chat.media.interactiveElements.maxWidgetCount": {
       "type": "integer",
-      "title": "Maximum count of Interactive Elements in 1 message",
+      "title": "Maximum count of interactive widgets in one group",
       "default": 10
     },
-      "chat.media.interactiveElement.maxGroupCount": {
+    "chat.media.interactiveElements.maxGroupCount": {
       "type": "integer",
-      "title": "Maximum count of Group of Interactive Elements in 1 message",
+      "title": "Maximum count of interactive media groups in one message",
       "default": 10
     },
-      "chat.media.interactiveElement.maxCharCount": {
+    "chat.media.interactiveElements.maxWidgetCharCount": {
       "type": "integer",
-      "title": "Maximum count of characters in 1 Interactive Element",
+      "title": "Maximum count of characters in one interactive widget",
       "default": 32
     },
-      "chat.media.interactiveElement.maxCharGroupCount": {
+    "chat.media.interactiveElements.maxGroupTitleCharCount": {
       "type": "integer",
-      "title": "Maximum count of characters in Title of Group of Interactive Element",
+      "title": "Maximum count of characters in title of interactive media group",
       "default": 128
+    },
+    "chat.media.interactiveElements.maxGroupDescCharCount": {
+      "type": "integer",
+      "title": "Maximum count of characters in description of interactive media group",
+      "default": 256
     }
   }
 }
