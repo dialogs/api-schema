@@ -410,6 +410,26 @@
       "title": "Schema of targeting form",
       "description": "JSON with description of UI schema for targeting form",
       "default": null
+    },
+      "chat.IE.MaxCount": {
+      "type": "integer",
+      "title": "maximum count of Interactive Elements in 1 message",
+      "default": 10
+    },
+      "chat.IE.MaxGroupCount": {
+      "type": "integer",
+      "title": "maximum count of Group of Interactive Elements in 1 message",
+      "default": 10
+    },
+      "chat.IE.MaxCharCount": {
+      "type": "integer",
+      "title": "maximum count of characters in 1 Interactive Element",
+      "default": 32
+    },
+      "chat.IE.MaxCharGroupCount": {
+      "type": "integer",
+      "title": "maximum count of characters in Title of Group of Interactive Element",
+      "default": 128
     }
   }
 }
