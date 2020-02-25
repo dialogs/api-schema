@@ -411,22 +411,22 @@
       "description": "JSON with description of UI schema for targeting form",
       "default": null
     },
-      "chat.IE.MaxCount": {
+      "chat.media.interactiveElement.maxCount": {
       "type": "integer",
       "title": "Maximum count of Interactive Elements in 1 message",
       "default": 10
     },
-      "chat.IE.MaxGroupCount": {
+      "chat.media.interactiveElement.maxGroupCount": {
       "type": "integer",
       "title": "Maximum count of Group of Interactive Elements in 1 message",
       "default": 10
     },
-      "chat.IE.MaxCharCount": {
+      "chat.media.interactiveElement.maxCharCount": {
       "type": "integer",
       "title": "Maximum count of characters in 1 Interactive Element",
       "default": 32
     },
-      "chat.IE.MaxCharGroupCount": {
+      "chat.media.interactiveElement.maxCharGroupCount": {
       "type": "integer",
       "title": "Maximum count of characters in Title of Group of Interactive Element",
       "default": 128
