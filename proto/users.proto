@@ -108,6 +108,8 @@ message UserData {
     /// This parameter intended just to show in UI (client shouldn't base any logic on that)
     Hint hint = 17;
     int64 clock = 16;
+    google.protobuf.UInt64Value blocked_at = 18;
+    google.protobuf.UInt64Value deleted_at = 19;
 }
 message User {
     int32 id = 1 [(dlg).log = "visible"]; /// User's id
