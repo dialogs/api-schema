@@ -475,6 +475,6 @@
       "type": "boolean",
       "title": "Activates deletion for messages",
       "default": false
-    },
+    }
   }
 }
