@@ -256,6 +256,11 @@
       "title": "Activates swipe to reply on message",
       "default": true
     },
+    "messaging.deleteMessages": {
+      "type": "boolean",
+      "title": "Activates deletion for messages",
+      "default": false
+    },
     "isSwipeBackEnabled": {
       "type": "boolean",
       "title": "Activates swipe(left to right) between fragments which means back button click",
