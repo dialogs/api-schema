@@ -320,6 +320,7 @@ enum GroupAdminPermission {
     GROUPADMINPERMISSION_VIEWMEMBERS = 11;
     GROUPADMINPERMISSION_LEAVE = 12; /// read only permission
     GROUPADMINPERMISSION_TARGETING = 13;
+    GROUPADMINPERMISSION_DELETE = 14;
 }
 
 // Make user admin
@@ -415,6 +416,11 @@ message ResponseJoinGroup {
 message RequestJoinGroupByPeer {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     GroupOutPeer peer = 1 [(dlg).log="visible"];
+}
+
+message RequestDelete {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    int32 group_id = 1 [(dlg).log="visible"];
 }
 
 /**
@@ -622,6 +628,12 @@ service Groups {
     rpc JoinGroupByPeer (RequestJoinGroupByPeer) returns (ResponseVoid) {
         option (google.api.http) = {
             post: "/v1/grpc/Groups/JoinGroupByPeer"
+            body: "*"
+        };
+    }
+    rpc Delete (RequestDelete) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Groups/RequestDelete"
             body: "*"
         };
     }
