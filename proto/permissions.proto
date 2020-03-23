@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package dialog;
+
+import "definitions.proto";
+import "google/api/annotations.proto";
+import "scalapb/scalapb.proto";
+
+option go_package = "dialog";
+option (scalapb.options) = {
+    package_name: "im.dlg.grpc.services"
+};
+
+// Permissions definition
+enum Permission {
+    PERMISSION_UNKNOWN = 0;
+    PERMISSION_SEARCH = 1;
+    PERMISSION_CREATE_GROUPS = 2;
+}
+
+message RequestGetPermissions {}
+
+message ResponseGetPermissions {
+    repeated Permission permissions = 1 [(dlg).log="visible"];
+    repeated Permission all_known_permissions = 2 [(dlg).log="visible"];
+    int64 clock = 3 [(dlg).log="visible"];
+}
+
+message UpdatePermissionsChange {
+    repeated Permission permissions = 1 [(dlg).log="visible"];
+    int64 clock = 2 [(dlg).log="visible"];
+}
+
+service Permissions {
+    rpc GetPermissions (RequestGetPermissions) returns (ResponseGetPermissions) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Permissions/GetPermissions"
+            body: "*"
+        };
+    }
+}

@@ -9,10 +9,10 @@ import "google/api/annotations.proto";
 import "definitions.proto";
 import "miscellaneous.proto";
 import "scalapb/scalapb.proto";
-import "users.proto";
 import "peers.proto";
 import "groups.proto";
 
+option go_package = "dialog";
 option (scalapb.options) = {
     package_name: "im.dlg.grpc.services"
 };

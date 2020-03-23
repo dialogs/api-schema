@@ -5,7 +5,7 @@ Dialog API Schema
 
 [![npm](https://img.shields.io/npm/v/@dlghq/dialog-api)](https://www.npmjs.com/package/@dlghq/dialog-api)
 [![Maven](https://img.shields.io/bintray/v/dialog/maven/java-api-schema?label=Maven)](https://bintray.com/dialog/maven/java-api-schema)
-[![PyPI](https://img.shields.io/pypi/v/dialog-api)](https://pypi.org/project/dialog-api/1.2.2)
+[![PyPI](https://img.shields.io/pypi/v/dialog-api)](https://pypi.org/project/dialog-api/1.2.2) 
 
 Dialog gRPC API Schema.
 
@@ -14,12 +14,13 @@ Dialog gRPC API Schema.
 Usage
 -----
 
-| Project      | Link                                      |
-| ------------ | ----------------------------------------- |
-| Java Bot SDK | https://github.com/dialogs/java-bot-sdk   |
-| JS Bot SDK   | https://github.com/dialogs/js-bot-sdk     |
-| Python       | https://github.com/dialogs/python-bot-sdk |
-| Go (Example) | https://github.com/dialogs/stressbot      |
+| Project      | Link                                         |
+| ------------ | -------------------------------------------- |
+| Java Bot SDK | https://github.com/dialogs/java-bot-sdk      |
+| JS Bot SDK   | https://github.com/dialogs/js-bot-sdk        |
+| Python       | https://github.com/dialogs/python-bot-sdk    |
+| Go API       | https://github.com/dialogs/golang-dialog-api |
+| Go (Example) | https://github.com/dialogs/stressbot         |
 
 License
 -------

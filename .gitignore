@@ -14,3 +14,8 @@ build/
 node_modules/
 local.properties
 *.iml
+
+/.classpath
+/.project
+/.settings
+/golang

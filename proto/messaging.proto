@@ -6,12 +6,11 @@ import "google/protobuf/wrappers.proto";
 import "google/api/annotations.proto";
 import "definitions.proto";
 import "miscellaneous.proto";
-import "groups.proto";
 import "peers.proto";
 import "media_and_files.proto";
-import "users.proto";
 import "scalapb/scalapb.proto";
 
+option go_package = "dialog";
 option (scalapb.options) = {
     package_name: "im.dlg.grpc.services"
 };
@@ -604,6 +603,7 @@ message UpdateMessageContentChanged {
     UUIDValue mid = 4 [(dlg).log="visible"]; /// Message id
     MessageContent message = 3 [(dlg).log="visible"];
     int64 edited_at = 5 [(dlg).log="visible"];
+    int64 prev_edit_in_peer_at = 6;
 }
 
 // Update about message sent
@@ -779,6 +779,11 @@ message ResponseLoadHistory {
     google.protobuf.Int32Value counter = 7;
     /// date, related to this unread counter
     int64 counter_date = 8;
+
+    /// last conversation message date
+    google.protobuf.Int64Value last_conversation_message_date = 9;
+    /// counter of the messages between last conversation message (including it) and last returned in this response
+    int32 count_foreign_after_last_returned = 10;
 }
 
 message RequestHistoryDifference {
@@ -890,6 +895,7 @@ message DialogListEntry {
     int64 receive_date = 5 [(dlg).log="visible"];
     int64 read_date = 6 [(dlg).log="visible"];
     int64 entry_clock = 7 [(dlg).log="visible"];
+    int64 last_update_of_message_date = 9;
 
     DialogData data = 8 [(dlg).log="visible"];
 }
@@ -1050,6 +1056,23 @@ message UpdatePinnedMessagesChanged {
     Peer peer = 1 [(dlg).log="visible"];
     PinnedMessages pinned_messages = 2 [(dlg).log="visible"];
     int64 action_date = 3 [(dlg).log="visible"];
+}
+
+message RequestGetUpdatedMessages {
+    Peer peer = 1;
+    int64 from_clock = 2;
+}
+
+message ResponseGetUpdatedMessages {
+    message UpdatedMessage {
+        UUIDValue mid = 1;
+        MessageContent message = 2;
+        int64 modified_at = 3;
+    }
+
+    repeated UpdatedMessage messages = 1;
+    int64 peer_clock = 2;
+    bool next_available = 3;
 }
 
 service Messaging {
@@ -1225,6 +1248,12 @@ service Messaging {
     rpc UnpinMessage (RequestUnpinMessage) returns (ResponseSeqDate) {
         option (google.api.http) = {
             post: "/v1/grpc/Messaging/UnpinMessage"
+            body: "*"
+        };
+    }
+    rpc GetUpdatedMessages (RequestGetUpdatedMessages) returns (ResponseGetUpdatedMessages) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Messaging/GetUpdatedMessages"
             body: "*"
         };
     }

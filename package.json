@@ -22,19 +22,19 @@
   },
   "homepage": "https://dialogs.github.io/api-schema",
   "peerDependencies": {
-    "grpc": "^1.15.1"
+    "grpc": "^1.24.2"
   },
   "dependencies": {
-    "@grpc/proto-loader": "^0.3.0",
+    "@grpc/proto-loader": "^0.5.3",
     "protobufjs": "^6.8.8"
   },
   "devDependencies": {
-    "@semantic-release/commit-analyzer": "6.3.0",
-    "@semantic-release/exec": "3.3.7",
-    "@semantic-release/git": "7.0.16",
-    "@semantic-release/github": "5.5.3",
-    "@semantic-release/npm": "5.2.0",
-    "@semantic-release/release-notes-generator": "7.3.0",
+    "@semantic-release/commit-analyzer": "7.0.0",
+    "@semantic-release/exec": "4.0.0",
+    "@semantic-release/git": "8.0.0",
+    "@semantic-release/github": "6.0.1",
+    "@semantic-release/npm": "6.0.0",
+    "@semantic-release/release-notes-generator": "7.3.5",
     "mkdirp": "0.5.1"
   },
   "release": {

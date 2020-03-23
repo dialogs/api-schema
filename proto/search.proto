@@ -14,6 +14,7 @@ import "users.proto";
 import "miscellaneous.proto";
 import "scalapb/scalapb.proto";
 
+option go_package = "dialog";
 option (scalapb.options) = {
     package_name: "im.dlg.grpc.services"
 };
@@ -177,6 +178,7 @@ message MessageSearchResult {
     int64 date = 3 [(dlg).log="visible"];
     int32 sender_id = 4 [(dlg).log="visible"];
     MessageContent content = 5 [(dlg).log="visible"];
+    UUIDValue mid = 6 [(dlg).log="visible"];
 }
 
 // Message Search result container

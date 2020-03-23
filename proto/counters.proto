@@ -5,11 +5,11 @@ package dialog;
 // Application Counters, used to display various counters in application
 
 import "google/protobuf/wrappers.proto";
-import "google/api/annotations.proto";
 import "definitions.proto";
 import "peers.proto";
 import "scalapb/scalapb.proto";
 
+option go_package = "dialog";
 option (scalapb.options) = {
     package_name: "im.dlg.grpc.services"
 };

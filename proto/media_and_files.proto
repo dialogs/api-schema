@@ -8,6 +8,7 @@ import "google/api/annotations.proto";
 import "definitions.proto";
 import "scalapb/scalapb.proto";
 
+option go_package = "dialog";
 option (scalapb.options) = {
     package_name: "im.dlg.grpc.services"
 };
@@ -100,6 +101,19 @@ message FileUrlDescription {
     repeated HTTPHeader unsigned_url_headers = 5 [(dlg).log="hidden"];
 }
 
+// Error, that describes failure of specific file
+message FileUrlError {
+    int64 file_id = 1 [(dlg).log="visible"]; /// the id of file 
+    enum ErrorTag {
+        FILEURLERROR_UNKNOWN = 0;
+        FILEURLERROR_STORAGE_ERROR = 1;
+        FILEURLERROR_STORAGE_FORBIDDEN_ERROR = 2;
+    }
+    ErrorTag tag = 2 [(dlg).log="visible"]; /// error to handle on client
+    string reason = 3 [(dlg).log="visible"]; /// text fallback
+    bool retryable = 4 [(dlg).log="visible"]; /// client should retry or not
+}
+
 // Requesting file URL for downloading
 message RequestGetFileUrl {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
@@ -123,6 +137,7 @@ message RequestGetFileUrls {
 message ResponseGetFileUrls {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
     repeated FileUrlDescription file_urls = 1;
+    repeated FileUrlError errors = 2;
 }
 
 // Get File URL Builder that allows to build file urls from client side
