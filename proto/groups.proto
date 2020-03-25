@@ -418,7 +418,7 @@ message RequestJoinGroupByPeer {
     GroupOutPeer peer = 1 [(dlg).log="visible"];
 }
 
-message RequestDelete {
+message RequestDeleteGroup {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     int32 group_id = 1 [(dlg).log="visible"];
 }
