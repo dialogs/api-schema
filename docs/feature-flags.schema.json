@@ -261,6 +261,17 @@
       "title": "Activates swipe to reply on message",
       "default": true
     },
+    "messaging.isReactionsEnabled": {
+      "type": "boolean",
+      "title": "Activates reactions visibility",
+      "default": true,
+      "description": "if true = reaction in chat are visible/editable for users"
+    },
+    "messaging.listAvailableReactions": {
+      "type": "string",
+      "title": "List of available reaction to set on message. Separated with ':'.",
+      "default": "\uD83D\uDE0A:\uD83D\uDE41:\uD83D\uDE00:\uD83D\uDE21:\uD83D\uDC4C:\uD83D\uDC4D:\uD83D\uDC4E"
+    },
     "isSwipeBackEnabled": {
       "type": "boolean",
       "title": "Activates swipe(left to right) between fragments which means back button click",
@@ -465,7 +476,7 @@
       "type": "boolean",
       "title": "Enable SberDisk integration",
       "default": "false"
-    },    
+    },
     "chat.audioMessages.isEnabled": {
       "type": "boolean",
       "title": "Enable audio messages",
