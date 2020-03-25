@@ -631,7 +631,7 @@ service Groups {
             body: "*"
         };
     }
-    rpc Delete (RequestDeleteGroup) returns (google.protobuf.Empty) {
+    rpc DeleteGroup (RequestDeleteGroup) returns (google.protobuf.Empty) {
         option (google.api.http) = {
             post: "/v1/grpc/Groups/RequestDeleteGroup"
             body: "*"
