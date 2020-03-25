@@ -39,6 +39,11 @@
       "title": "Default incremental timeout after each wrong pass code unlock",
       "default": 5000
     },
+    "passcode.obligatorySetup": {
+      "type": "boolean",
+      "title": "User must obligatory setup pass code after resume app or success authorization",
+      "default": false
+    },
     "isMultifactorauthActive": {
       "type": "boolean",
       "title": "Activates Multifactorauth",
@@ -469,6 +474,11 @@
     "chat.audioMessages.isTranscribingEnabled": {
       "type": "boolean",
       "title": "Enable transcribing",
+      "default": false
+    },
+    "chat.messages.delete.isEnabled": {
+      "type": "boolean",
+      "title": "Activates deletion for messages",
       "default": false
     }
   }

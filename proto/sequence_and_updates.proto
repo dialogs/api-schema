@@ -138,8 +138,6 @@ message UpdateSeqUpdate {
       UpdateGroup updateGroup = 98;
       UpdateGroupMemberInvited updateGroupMemberInvited = 99;
       reactions.MessageReactionsUpdate messageReactionsUpdate = 100;
-
-      UpdatePermissionsChange updatePermissionsChange = 101;
     }
 }
 
@@ -327,6 +325,61 @@ message SeqUpdateBox {
   UpdateSeqUpdate unboxed_update = 4;
 }
 
+message PeersList {
+    repeated Peer peers = 1;
+}
+
+message WeakUpdateCommand {
+    message ChangeMyOnline {
+        bool online = 1;
+    }
+
+    message ChangeMyTyping {
+        Peer peer       = 1;
+        TypingType type = 2;
+        bool start      = 3;
+    }
+
+    oneof command {
+        ChangeMyOnline change_my_online                    = 1;
+        PeersList subscribe_to_onlines                     = 2;
+        PeersList unsubscribe_from_onlines                 = 3;
+        google.protobuf.Empty unsubscribe_from_all_onlines = 4;
+        ChangeMyTyping change_my_typing                    = 5;
+        PeersList subscribe_to_typings                     = 6;
+        PeersList unsubscribe_from_typings                 = 7;
+        google.protobuf.Empty unsubscribe_from_all_typings = 8;
+    }
+}
+
+message WeakUpdateBox {
+    message UpdateForceReloadState {
+        message ForceReloadField {
+            oneof field {
+                google.protobuf.Empty reload_dialogs  = 1;
+                google.protobuf.Empty reload_contacts = 2;
+                PeersList reload_history              = 3;
+            }
+        }
+        repeated ForceReloadField fields = 1;
+    }
+
+    oneof updatebox {
+        UpdateTyping typing_start                                = 1;
+        UpdateTypingStop typing_stop                             = 2;
+        UpdateUserLastSeen user_last_seen                        = 3;
+        UpdateGroupOnline group_online                           = 4;
+        UpdateForceReloadState force_reload                      = 5;
+        UpdatePermissionsChange permissions_change               = 6;
+        UpdateUserStatusChanged user_status_change               = 7;
+        reactions.MessageReactionsUpdate message_reaction_update = 8;
+        UpdateMessage message                                    = 9;
+        UpdateMessageContentChanged message_content_change       = 10;
+        UpdateMessageRead message_read                           = 11;
+        UpdateMessageReceived message_received                   = 12;
+    }
+}
+
 service SequenceAndUpdates {
     /// Get last seq number
     rpc GetState (RequestGetState) returns (ResponseSeq) {
@@ -387,6 +440,12 @@ service SequenceAndUpdates {
     rpc SeqUpdates (google.protobuf.Empty) returns (stream SeqUpdateBox) {
         option (google.api.http) = {
             post: "/v1/grpc/SequenceAndUpdates/SeqUpdates"
+            body: "*"
+        };
+    }
+    rpc WeakUpdates (stream WeakUpdateCommand) returns (stream WeakUpdateBox) {
+        option (google.api.http) = {
+            post: "/v1/grpc/SequenceAndUpdates/WeakUpdates"
             body: "*"
         };
     }
