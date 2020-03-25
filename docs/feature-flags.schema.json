@@ -27,7 +27,7 @@
     "passCode.isEnabled": {
       "type": "boolean",
       "title": "User can or cann`t setup pass code in his profile",
-      "default": false
+      "default": true
     },
     "passcode.failedAttemptsTillBlocking": {
       "type": "integer",
@@ -38,11 +38,6 @@
       "type": "integer",
       "title": "Default incremental timeout after each wrong pass code unlock",
       "default": 5000
-    },
-    "passcode.obligatorySetup": {
-      "type": "boolean",
-      "title": "User must obligatory setup pass code after resume app or success authorization",
-      "default": false
     },
     "isMultifactorauthActive": {
       "type": "boolean",
@@ -93,7 +88,7 @@
     "userProfile.isEnabledEditProfile": {
       "type": "boolean",
       "title": "User can edit his profile or not",
-      "default": false
+      "default": true
     },
     "userProfile.isShowProfilePhone": {
       "type": "boolean",
@@ -103,12 +98,12 @@
     "userProfile.isFullNameEditable": {
       "type": "boolean",
       "title": "User can edit his full name or not",
-      "default": false
+      "default": true
     },
     "userProfile.isNickNameEditable": {
       "type": "boolean",
       "title": "User can edit his nick name or not",
-      "default": false
+      "default": true
     },
     "userProfile.isGlobalSettingsNotificationEnabled": {
       "type": "boolean",
@@ -129,11 +124,6 @@
       "type": "string",
       "title": "Custom profile schema",
       "default": null
-    },
-    "groups.isProfileEditEnabled": {
-      "type": "boolean",
-      "title": "User can edit group profile or not",
-      "default": true
     },
     "groups.publicUrlPrefix": {
       "type": "string",
@@ -172,17 +162,7 @@
     },
     "groups.permissions.canLeaveEnabled": {
       "type": "boolean",
-      "title": "false - user can leave from any Group/Channel even official, true - user can leave only if has LEAVE permission",
-      "default": false
-    },
-    "groups.isInviteLinkEnabled": {
-      "type": "boolean",
-      "title": "Enables invite link in group profile",
-      "default": false
-    },
-    "groups.isIntegrationLinkEnabled": {
-      "type": "boolean",
-      "title": "Enables integration link in group profile",
+      "title": "Activates CAN_LEAVE permission for groups",
       "default": false
     },
     "spaces.isEnabled": {
@@ -230,11 +210,6 @@
       "default": true,
       "description": "Show or hide sending stickers feature"
     },
-    "chat.sharedMedia.isEnabled": {
-      "type": "boolean",
-      "title": "Activates shared media scene for chat",
-      "default": false
-    },
     "chat.messageMaxLength": {
       "type": "integer",
       "title": "Max length of chat message",
@@ -260,6 +235,17 @@
       "type": "boolean",
       "title": "Activates swipe to reply on message",
       "default": true
+    },
+    "messaging.isReactionsEnabled": {
+      "type": "boolean",
+      "title": "Activates reactions visibility",
+      "default": true,
+      "description": "if true = reaction in chat are visible/editable for users"
+    },
+    "messaging.listAvailableReactions": {
+      "type": "string",
+      "title": "List of available sticker to set on message. Separated with ':'.",
+      "default": "&#128522;:&#128577;:&#128512;:&#128545;:&#128076;:&#128077;:&#128078;"
     },
     "isSwipeBackEnabled": {
       "type": "boolean",
@@ -299,16 +285,6 @@
       "type": "integer",
       "title": "Minimum size of Chunk (in bytes) for sending to server",
       "default": 500000
-    },
-    "fileUploading.image.resolution": {
-      "type": "integer",
-      "title": "Maximum image resolution",
-      "default": 1280
-    },
-    "fileUploading.image.qualityPercents": {
-      "type": "integer",
-      "title": "Image quality in percents",
-      "default": 87
     },
     "upload.uploadEnabled": {
       "type": "boolean",
@@ -367,17 +343,17 @@
     "markdown.inChatsEnabled": {
       "type": "boolean",
       "title": "Enabling markdown in chats",
-      "default": true
+      "default": false
     },
     "markdown.inLastMessagesEnabled": {
       "type": "boolean",
       "title": "Enabling markdown in last messages",
-      "default": true
+      "default": false
     },
     "markdown.inProfileEnabled": {
       "type": "boolean",
       "title": "Enabling markdown in user profile",
-      "default": true
+      "default": false
     },
     "calls.isEnabled": {
       "type": "boolean",
@@ -389,31 +365,19 @@
       "type": "boolean",
       "title": "Enable audio calls",
       "description": "if true = audio calls are enable for users",
-      "default": true
+      "default": false
     },
     "calls.isVideoCallsEnabled": {
       "type": "boolean",
       "title": "Enable video calls",
       "description": "if true = video calls are enable for users",
-      "default": true
+      "default": false
     },
     "calls.isExternalCallsEnabled": {
       "type": "boolean",
       "title": "Enable external phone calls",
       "description": "if true = external phone calls are enable for users",
       "default": false
-    },
-    "calls.history.isFeatureEnabled": {
-      "type": "boolean",
-      "title": "Enable calls history feature",
-      "description": "if true = the call history feature is enabled for users, otherwise it is hidden at all",
-      "default": true
-    },
-    "calls.history.isAvailable": {
-      "type": "boolean",
-      "title": "Enable calls history screen",
-      "description": "if true = the call history screen is enabled for users, otherwise the placeholder will be shown",
-      "default": true
     },
     "global.confidentialPolicy.URL": {
       "type": "string",
@@ -424,62 +388,6 @@
       "type": "string",
       "title": "Version of confidential policy",
       "default": null
-    },
-    "targeting.enabled": {
-      "type": "boolean",
-      "title": "Enable ability of target messages",
-      "default": false
-    },
-    "targeting.schema": {
-      "type": "string",
-      "title": "Schema of targeting form",
-      "description": "JSON with description of UI schema for targeting form",
-      "default": null
-    },
-    "chat.media.interactiveElements.maxWidgetCount": {
-      "type": "integer",
-      "title": "Maximum count of interactive widgets in one group",
-      "default": 10
-    },
-    "chat.media.interactiveElements.maxGroupCount": {
-      "type": "integer",
-      "title": "Maximum count of interactive media groups in one message",
-      "default": 10
-    },
-    "chat.media.interactiveElements.maxWidgetCharCount": {
-      "type": "integer",
-      "title": "Maximum count of characters in one interactive widget",
-      "default": 32
-    },
-    "chat.media.interactiveElements.maxGroupTitleCharCount": {
-      "type": "integer",
-      "title": "Maximum count of characters in title of interactive media group",
-      "default": 128
-    },
-    "chat.media.interactiveElements.maxGroupDescCharCount": {
-      "type": "integer",
-      "title": "Maximum count of characters in description of interactive media group",
-      "default": 256
-    },
-    "sberdisk.isEnabled": {
-      "type": "boolean",
-      "title": "Enable SberDisk integration",
-      "default": "false"
-    },    
-    "chat.audioMessages.isEnabled": {
-      "type": "boolean",
-      "title": "Enable audio messages",
-      "default": false
-    },
-    "chat.audioMessages.isTranscribingEnabled": {
-      "type": "boolean",
-      "title": "Enable transcribing",
-      "default": false
-    },
-    "chat.messages.delete.isEnabled": {
-      "type": "boolean",
-      "title": "Activates deletion for messages",
-      "default": false
     }
   }
 }
