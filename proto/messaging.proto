@@ -833,6 +833,7 @@ message Dialog {
     HistoryMessage history_message = 15 [(dlg).log="visible"];
     int64 last_receive = 16 [(dlg).log="visible"];
     int64 last_read = 17 [(dlg).log="visible"];
+    int64 last_reaction_at = 18;
 }
 
 enum DialogsFilter {
