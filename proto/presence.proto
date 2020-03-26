@@ -43,10 +43,6 @@ message RequestSetOnline {
     bool online = 2 [(dlg).log="visible"];
 }
 
-message RequestUpdateLastSeen {
-    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-}
-
 // To receive online/typing user need to subscribe. Subscribes are permanent.
 message RequestChangeSubscribes {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
@@ -113,13 +109,6 @@ service PresenceService {
     rpc SetOnline (RequestSetOnline) returns (ResponseVoid) {
         option (google.api.http) = {
             post: "/v1/grpc/Presence/SetOnline"
-            body: "*"
-        };
-    }
-
-    rpc UpdateLastSeen (RequestUpdateLastSeen) returns (ResponseVoid) {
-        option (google.api.http) = {
-            post: "/v1/grpc/Presence/UpdateLastSeen"
             body: "*"
         };
     }
