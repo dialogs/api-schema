@@ -1,0 +1,154 @@
+syntax = "proto3";
+
+import "miscellaneous.proto";
+import "google/protobuf/wrappers.proto";
+import "scalapb/scalapb.proto";
+
+package dialog;
+
+option go_package = "dialog";
+option (scalapb.options) = {
+    package_name: "im.dlg.grpc.services"
+};
+
+enum TypingType {
+    TYPING_TYPE_UNKNOWN = 0;
+    TYPING_TYPE_TEXT = 1;
+    TYPING_TYPE_VOICE = 2;
+}
+
+enum DeviceType {
+    DEVICE_TYPE_UNKNOWN = 0;
+    DEVICE_TYPE_GENERIC = 1;
+    DEVICE_TYPE_PC = 2;
+    DEVICE_TYPE_MOBILE = 3;
+    DEVICE_TYPE_TABLET = 4;
+    DEVICE_TYPE_WATCH = 5;
+    DEVICE_TYPE_MIRROR = 6;
+    DEVICE_TYPE_CAR = 7;
+    DEVICE_TYPE_TABLE = 8;
+}
+
+message RequestSetTyping {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    google.protobuf.Int32Value typing_user_id = 1 [(dlg).log="visible"]; // User to which client are typing.
+    google.protobuf.Int32Value typing_group_id = 2 [(dlg).log="visible"]; // Group to which client are typing.
+    TypingType typing_type = 3 [(dlg).log="visible"];
+    bool typing = 4 [(dlg).log="visible"];
+}
+
+message RequestSetOnline {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    DeviceType device_type = 1 [(dlg).log="visible"];
+    bool online = 2 [(dlg).log="visible"];
+}
+
+message RequestUpdateLastSeen {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+}
+
+// To receive online/typing user need to subscribe. Subscribes are permanent.
+message RequestChangeSubscribes {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    repeated int32 add_users_id = 1 [(dlg).log="visible"];
+    repeated int32 remove_users_id = 2 [(dlg).log="visible"];
+    repeated int32 add_groups_id = 3 [(dlg).log="visible"];
+    repeated int32 remove_groups_id = 4 [(dlg).log="visible"];
+}
+
+message ResponseGetSubscribes {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    repeated int32 users_id = 1 [(dlg).log="visible"];
+    repeated int32 groups_id = 2 [(dlg).log="visible"];
+}
+
+message RequestCleanSubscribes {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+}
+
+message RequestGetSubscribes {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+}
+
+message RequestGetPresences {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    repeated int32 users_id = 1 [(dlg).log="visible"];
+    repeated int32 groups_id = 2 [(dlg).log="visible"];
+}
+
+message ResponseGetPresences {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    repeated Presence presence = 1 [(dlg).log="visible"];
+}
+
+message Presence {
+    oneof payload {
+        UserPresence user_presence = 1 [(dlg).log="visible"];
+        GroupPresence group_presence = 2 [(dlg).log="visible"];
+    }
+}
+
+message UserPresence {
+    int32 user_id = 1 [(dlg).log="visible"];
+    bool online = 2 [(dlg).log="visible"];
+    TypingType typing_type = 3 [(dlg).log="visible"];
+    DeviceType device_type = 4 [(dlg).log="visible"]; // If user are online from multiple devices will be chosen the most recent.
+    int32 last_seen = 5 [(dlg).log="visible"]; // Unix timestamp in seconds.
+}
+
+message GroupPresence {
+    int32 group_id = 1 [(dlg).log="visible"];
+    int32 count = 2 [(dlg).log="visible"];
+    repeated UserPresence user_presences = 3 [(dlg).log="visible"];
+}
+
+service PresenceService {
+    rpc SetTyping (RequestSetTyping) returns (ResponseVoid) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Presence/SetTyping"
+            body: "*"
+        };
+    }
+
+    rpc SetOnline (RequestSetOnline) returns (ResponseVoid) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Presence/SetOnline"
+            body: "*"
+        };
+    }
+
+    rpc UpdateLastSeen (RequestUpdateLastSeen) returns (ResponseVoid) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Presence/UpdateLastSeen"
+            body: "*"
+        };
+    }
+
+    rpc ChangeSubscribes (RequestChangeSubscribes) returns (ResponseVoid) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Presence/ChangeSubscribes"
+            body: "*"
+        };
+    }
+
+    rpc CleanSubscribes (RequestCleanSubscribes) returns (ResponseVoid) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Presence/CleanSubscribes"
+            body: "*"
+        };
+    }
+
+    rpc GetSubscribes (RequestGetSubscribes) returns (ResponseGetSubscribes) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Presence/GetSubscribes"
+            body: "*"
+        };
+    }
+
+    rpc GetPresences (RequestGetPresences) returns (ResponseGetPresences) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Presence/GetPresences"
+            body: "*"
+        };
+    }
+}
