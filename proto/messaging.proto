@@ -1076,6 +1076,43 @@ message ResponseGetUpdatedMessages {
     bool next_available = 3;
 }
 
+// The model describing when a user received or read a message
+message MessageStatus {
+    int64 clock = 1 [(dlg).log="visible"]; // time when message was read or received
+    int32 user_id = 2 [(dlg).log="visible"];
+}
+
+// Load message statuses for every user in conversation reads
+message RequestMessageReads {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    UUIDValue mid = 1 [(dlg).log="visible"]; /// Message id
+    int32 limit = 2 [(dlg).log="visible"]; // limit of selection
+    int64 timestamp_from = 3 [(dlg).log="visible"]; // time selection starts from
+}
+
+// Load message statuses for every user in conversation receives
+message RequestMessageReceives {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    UUIDValue mid = 1 [(dlg).log="visible"]; /// Message id
+    int32 limit = 2 [(dlg).log="visible"]; // limit of selection
+    int64 timestamp_from = 3 [(dlg).log="visible"]; // time selection starts from
+}
+
+// Response with the list of message statuses reads
+message ResponseMessageReads{
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    repeated MessageStatus status = 1;
+    int64 timestamp_till = 2 [(dlg).log="visible"]; // max time of returned entries, or requested time if empty
+}
+
+// Response with the list of message statuses receives
+message ResponseMessageReceives {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    repeated MessageStatus status = 1;
+    int64 timestamp_till = 2 [(dlg).log="visible"]; // max time of returned entries, or requested time if empty
+}
+
+
 service Messaging {
     /// Interact with a message media (click on button for example)
     rpc DoInteractiveMediaAction (RequestDoInteractiveMediaAction) returns (ResponseVoid) {
@@ -1256,6 +1293,22 @@ service Messaging {
         option (google.api.http) = {
             post: "/v1/grpc/Messaging/GetUpdatedMessages"
             body: "*"
+        };
+    }
+
+    // Returns read status of the message per user
+    rpc GetMessageReads (RequestMessageReads) returns (ResponseMessageReads) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Messaging/GetMessageReads"
+            body: "*"
+        };
+    }
+
+    // Returns receive status of the message per user
+    rpc GetMessageReceives (RequestMessageReceives) returns (ResponseMessageReceives) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Messaging/GetMessageReceives"
+              body: "*"
         };
     }
 }

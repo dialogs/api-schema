@@ -170,6 +170,11 @@
       "title": "Maximum size of group's avatar",
       "default": 1048576
     },
+    "groups.isGroupPermissionsEditingEnabled": {
+      "type": "boolean",
+      "title": "Ability to edit group members permissions",
+      "default": false
+    },
     "groups.permissions.canLeaveEnabled": {
       "type": "boolean",
       "title": "false - user can leave from any Group/Channel even official, true - user can leave only if has LEAVE permission",
@@ -260,6 +265,17 @@
       "type": "boolean",
       "title": "Activates swipe to reply on message",
       "default": true
+    },
+    "messaging.isReactionsEnabled": {
+      "type": "boolean",
+      "title": "Activates reactions visibility",
+      "default": true,
+      "description": "if true = reaction in chat are visible/editable for users"
+    },
+    "messaging.listAvailableReactions": {
+      "type": "string",
+      "title": "List of available reaction to set on message. Separated with ':'.",
+      "default": "\uD83D\uDE0A:\uD83D\uDE41:\uD83D\uDE00:\uD83D\uDE21:\uD83D\uDC4C:\uD83D\uDC4D:\uD83D\uDC4E"
     },
     "isSwipeBackEnabled": {
       "type": "boolean",
@@ -465,7 +481,7 @@
       "type": "boolean",
       "title": "Enable SberDisk integration",
       "default": "false"
-    },    
+    },
     "chat.audioMessages.isEnabled": {
       "type": "boolean",
       "title": "Enable audio messages",
