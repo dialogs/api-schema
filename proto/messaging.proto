@@ -814,8 +814,7 @@ message ResponseHistoryDifference {
 // historyMessage Optional last messages
 message Dialog {
     Peer peer = 1 [(dlg).log="visible"]; /// Peer of conversation
-    /// counter of unread messages
-    int32 unread_count = 3 [(dlg).log="visible"];
+    int32 unread_count = 3 [(dlg).log="visible"]; /// counter of unread messages
     int64 sort_date = 4 [(dlg).log="visible"]; /// deprecated
     int32 sender_uid = 5 [(dlg).log="visible"];
     google.protobuf.BoolValue is_favourite = 13 [(dlg).log="visible"];
