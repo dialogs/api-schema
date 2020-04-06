@@ -357,6 +357,16 @@
       "default": null,
       "description": "if installed, value from custom profile with the key will be displayed in search user cell"
     },
+    ⁣"search.users.noResultLocalSearchToGlobalSwitchCount": {
+ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣"type": "integer",
+ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣"title": "Determines amount of symbols required to switch to global profile search in case if local search gave no result",
+ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣"default": 1
+ ⁣ ⁣ ⁣ ⁣},
+ ⁣ ⁣ ⁣ ⁣"search.users.localSearchToGlobalSwitchCount": {
+ ⁣ ⁣ ⁣ ⁣  ⁣"type": "integer",
+ ⁣ ⁣ ⁣   ⁣⁣"title": "Determines amount of symbols required to switch to global profile search in case if local search gave results",
+ ⁣ ⁣ ⁣   ⁣"default": 3
+ ⁣ ⁣ ⁣ ⁣},
     "notifications.android.isEnable": {
       "type": "boolean",
       "title": "Toggle switch to enable / disable the display of push notifications",
