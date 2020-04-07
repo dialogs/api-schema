@@ -299,6 +299,7 @@ message ServiceExUserInvited {
 
 // Service message about user join to group
 message ServiceExUserJoined {
+    int32 joined_user_id = 1;
 }
 
 // Service message about kicking user from group
@@ -308,6 +309,7 @@ message ServiceExUserKicked {
 
 // Service message about user left group
 message ServiceExUserLeft {
+    int32 left_user_id = 1;
 }
 
 // Service message about group creating
