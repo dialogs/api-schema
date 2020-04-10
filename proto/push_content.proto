@@ -44,3 +44,9 @@ message EncryptedPushContent {
     int32 sender_user_id = 12; // if sender is channel so value eq 0
     int64 date = 13; // date of the event (usually message)
 }
+
+message DeleteMessageEncryptedPushContent {
+    PushPeer peer = 1;
+    UUIDValue message_id = 2;
+    int64 date = 3;
+}
