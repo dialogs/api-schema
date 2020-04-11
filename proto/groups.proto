@@ -85,6 +85,7 @@ message GroupData {
     repeated GroupAdminPermission base_permissions = 10 [(dlg).log="visible"];
     int64 clock = 11 [(dlg).log="visible"];
     google.protobuf.Int64Value pinned_at = 12;
+    google.protobuf.StringValue conference_link = 13;
 }
 
 message GroupPartialInfo {
@@ -321,6 +322,7 @@ enum GroupAdminPermission {
     GROUPADMINPERMISSION_LEAVE = 12; /// read only permission
     GROUPADMINPERMISSION_TARGETING = 13;
     GROUPADMINPERMISSION_DELETE = 14;
+    GROUPADMINPERMISSION_MANAGE_CONFERENCE = 15;
 }
 
 // Make user admin
