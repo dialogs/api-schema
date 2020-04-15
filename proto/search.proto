@@ -38,8 +38,8 @@ enum SearchContentType {
 
 enum SearchDirection {
     SEARCHDIRECTION_UNKNOWN = 0;
-    SEARCHDIRECTION_FORWARD = 1; // gte
-    SEARCHDIRECTION_BACKWARD = 2; // lte
+    SEARCHDIRECTION_FORWARD = 1; // gt
+    SEARCHDIRECTION_BACKWARD = 2; // lt
 }
 
 message SimpleContactSearchCondition {
@@ -49,11 +49,9 @@ message SimpleContactSearchCondition {
 message SimpleMessageSearchCondition {
     Peer peer = 1; // where to search
     string text = 2; // search term
-    oneof content_type {
-        SearchContentType type = 3; // content message type to search
-    }
-    SearchDirection search_direction = 4; // search direction gte/lte
-    google.protobuf.Int64Value date = 5; // search message from
+    SearchContentType type = 3; // content message type to search
+    SearchDirection search_direction = 4; // search direction gt/lt
+    google.protobuf.Timestamp date_from = 5; // search message from
 }
 
 /// Search among contacts/groups/users
