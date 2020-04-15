@@ -377,6 +377,7 @@ message WeakUpdateBox {
         UpdateMessageContentChanged message_content_change       = 10;
         UpdateMessageRead message_read                           = 11;
         UpdateMessageReceived message_received                   = 12;
+        UpdateMessageReadByMe message_read_by_me                 = 13;
     }
 }
 
