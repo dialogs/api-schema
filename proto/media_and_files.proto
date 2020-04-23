@@ -9,9 +9,7 @@ import "definitions.proto";
 import "scalapb/scalapb.proto";
 
 option go_package = "dialog";
-option (scalapb.options) = {
-    package_name: "im.dlg.grpc.services"
-};
+option java_package = "im.dlg.grpc.services";
 
 // Location of file on server
 message FileLocation {
@@ -103,7 +101,7 @@ message FileUrlDescription {
 
 // Error, that describes failure of specific file
 message FileUrlError {
-    int64 file_id = 1 [(dlg).log="visible"]; /// the id of file 
+    int64 file_id = 1 [(dlg).log="visible"]; /// the id of file
     enum ErrorTag {
         FILEURLERROR_UNKNOWN = 0;
         FILEURLERROR_STORAGE_ERROR = 1;

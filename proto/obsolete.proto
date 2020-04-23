@@ -9,9 +9,7 @@ import "google/api/annotations.proto";
 import "sequence_and_updates.proto";
 
 option go_package = "dialog";
-option (scalapb.options) = {
-    package_name: "im.dlg.grpc.services"
-};
+option java_package = "im.dlg.grpc.services";
 
 /// deprecated
 service Obsolete {

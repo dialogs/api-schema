@@ -25,9 +25,7 @@ import "users.proto";
 import "scalapb/scalapb.proto";
 
 option go_package = "dialog";
-option (scalapb.options) = {
-    package_name: "im.dlg.grpc.services"
-};
+option java_package = "im.dlg.grpc.services";
 
 // Phone for import
 message PhoneToImport {
