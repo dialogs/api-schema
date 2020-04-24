@@ -512,6 +512,11 @@
       "type": "boolean",
       "title": "Activates editing for messages",
       "default": false
+    },
+    "storageEncryption.isEnabled": {
+      "type": "boolean",
+      "title": "Activates local storage encryption",
+      "default": false
     }
   }
 }
