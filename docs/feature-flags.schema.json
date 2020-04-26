@@ -512,6 +512,16 @@
       "type": "boolean",
       "title": "Activates editing for messages",
       "default": false
+    },
+    "conference.isAnnounced": {
+      "type": "boolean",
+      "title": "Toggle switch to enable/disable conference TBA",
+      "default": false
+    },
+    "conference.isEnabled": {
+      "type": "boolean",
+      "title": "Enables conference service",
+      "default": false
     }
   }
 }
