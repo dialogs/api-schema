@@ -84,6 +84,7 @@ message GroupData {
     int64 clock = 11 [(dlg).log="visible"];
     google.protobuf.Int64Value pinned_at = 12;
     google.protobuf.StringValue conference_link = 13;
+    google.protobuf.Int32Value members_count_limit = 14;
 }
 
 message GroupPartialInfo {
