@@ -97,6 +97,7 @@ message FileUrlDescription {
     google.protobuf.StringValue unsigned_url = 4 [(dlg).log="hidden"];
     /// Headers that is required to download files with unsigned url
     repeated HTTPHeader unsigned_url_headers = 5 [(dlg).log="hidden"];
+    bytes md5_hash = 6;
 }
 
 // Error, that describes failure of specific file
@@ -124,6 +125,7 @@ message ResponseGetFileUrl {
     int32 timeout = 2;
     google.protobuf.StringValue unsigned_url = 3;
     repeated HTTPHeader unsigned_url_headers = 4;
+    bytes md5_hash = 5;
 }
 
 // Requesting multiple fle URL for downloading
@@ -170,6 +172,7 @@ message RequestCommitFileUpload {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     bytes upload_key = 1;
     string file_name = 2;
+    bytes md5_hash = 3;
 }
 
 message ResponseCommitFileUpload {
