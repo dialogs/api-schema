@@ -190,6 +190,16 @@
       "title": "Enables integration link in group profile",
       "default": false
     },
+    "groups.membersCountLimit": {
+      "type": "integer",
+      "title": "Maximum number of members that can be joined/invited to a group",
+      "default": 10000
+    },
+    "channels.membersCountLimit": {
+      "type": "integer",
+      "title": "Maximum number of members that can be joined/invited to a channel",
+      "default": 1000000
+    },
     "spaces.isEnabled": {
       "type": "boolean",
       "title": "Activates Spaces",
