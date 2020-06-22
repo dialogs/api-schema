@@ -340,7 +340,7 @@ message FileOptions {
   optional bool java_multiple_files = 10 [default=false];
 
   // This option does nothing.
-  optional bool java_generate_equals_and_hash = 20 [deprecated=true];
+  optional bool java_generate_equals_and_hash = 20 [deprecated=false];
 
   // If set true, then the Java2 code generator will generate code that
   // throws an exception whenever an attempt is made to assign a non-UTF-8
