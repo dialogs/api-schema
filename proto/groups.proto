@@ -85,6 +85,7 @@ message GroupData {
     google.protobuf.Int64Value pinned_at = 12;
     google.protobuf.StringValue conference_link = 13;
     google.protobuf.Int32Value members_count_limit = 14;
+    google.protobuf.Int64Value deleted_at = 15;
 }
 
 message GroupPartialInfo {
