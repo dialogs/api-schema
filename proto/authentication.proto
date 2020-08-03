@@ -44,14 +44,7 @@ enum EmailActivationType {
 message RequestStartPhoneAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     int64 phone_number = 1 [(dlg).log="visible"];
-    /** Application id, choose it by yourself and hold during authorization process **/
-    int32 app_id = 2 [(dlg).log="hidden"];
-    /** Deprecated field - keep it empty **/
-    string api_key = 3 [(dlg).log="hidden"];
-    /** Deprecated field - keep it empty **/
-    bytes device_hash = 4 [(dlg).log="visible"];
-    /** Some title, choose it by yourself and hold during authorization process **/
-    string device_title = 5 [(dlg).log="visible"];
+    reserved 2,3,4,5;
     /** Your timezone **/
     google.protobuf.StringValue time_zone = 6 [(dlg).log="visible"];
     /** First language from this array will be used for some notifications from server **/
@@ -78,14 +71,7 @@ message RequestSendCodeByPhoneCall {
 message RequestStartEmailAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     string email = 1 [(dlg).log="visible"];
-    /** Application id, choose it by yourself and hold during authorization process **/
-    int32 app_id = 2 [(dlg).log="hidden"];
-    /** Deprecated field - keep it empty **/
-    string api_key = 3 [(dlg).log="hidden"];
-    /** Deprecated field - keep it empty **/
-    bytes device_hash = 4 [(dlg).log="visible"];
-    /** Some title, choose it by yourself and hold during authorization process **/
-    string device_title = 5 [(dlg).log="visible"];
+    reserved 2,3,4,5;
     /** Your timezone **/
     google.protobuf.StringValue time_zone = 6 [(dlg).log="visible"];
     /** First language from this array will be used for some notifications from server **/
@@ -105,10 +91,7 @@ message ResponseStartEmailAuth {
 message RequestStartAnonymousAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     string name = 1 [(dlg).log="visible"];
-    int32 app_id = 2 [(dlg).log="hidden"];
-    string api_key = 3 [(dlg).log="hidden"];
-    bytes device_hash = 4 [(dlg).log="visible"];
-    string device_title = 5 [(dlg).log="visible"];
+    reserved 2,3,4,5;
     google.protobuf.StringValue time_zone = 6 [(dlg).log="visible"];
     repeated string preferred_languages = 7 [(dlg).log="visible"];
 }
@@ -118,14 +101,7 @@ message RequestStartTokenAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     /** Token received from BotFather **/
     string token = 1 [(dlg).log="visible"];
-    /** Application id, choose it by yourself and hold during authorization process **/
-    int32 app_id = 2 [(dlg).log="hidden"];
-    /** Deprecated field - keep it empty **/
-    string api_key = 3 [(dlg).log="hidden"];
-    /** Deprecated field - keep it empty **/
-    bytes device_hash = 4 [(dlg).log="visible"];
-    /** Some title, choose it by yourself and hold during authorization process **/
-    string device_title = 5 [(dlg).log="visible"];
+    reserved 2,3,4,5;
     /** Your timezone **/
     google.protobuf.StringValue time_zone = 6 [(dlg).log="visible"];
     /** First language from this array will be used for some notifications from server **/
@@ -136,14 +112,7 @@ message RequestStartTokenAuth {
 message RequestStartUsernameAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     string username = 1 [(dlg).log="visible"];
-    /** Application id, choose it by yourself and hold during authorization process **/
-    int32 app_id = 2 [(dlg).log="hidden"];
-    /** Deprecated field - keep it empty **/
-    string api_key = 3 [(dlg).log="hidden"];
-    /** Deprecated field - keep it empty **/
-    bytes device_hash = 4 [(dlg).log="visible"];
-    /** Some title, choose it by yourself and hold during authorization process **/
-    string device_title = 5 [(dlg).log="visible"];
+    reserved 2,3,4,5;
     google.protobuf.StringValue time_zone = 6 [(dlg).log="visible"];
     /** First language from this array will be used for some notifications from server **/
     repeated string preferred_languages = 7 [(dlg).log="visible"];
