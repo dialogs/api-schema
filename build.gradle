@@ -37,7 +37,6 @@ sourceSets {
 jar {
     exclude '**.proto'
     exclude 'google'
-    exclude 'scalapb'
     exclude 'com/google'
 }
 
