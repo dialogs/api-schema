@@ -593,7 +593,7 @@ message ResponseSendMessage {
 message UpdateMessage {
      Peer peer = 1 [(dlg).log="visible"];
      int32 sender_uid = 2 [(dlg).log="visible"];
-     int64 date = 3 [(dlg).log="visible"]; // message creation date
+     int64 date = 3 [(dlg).log="visible"]; // message creation date (interval end)
      UUIDValue mid = 8 [(dlg).log="visible"]; /// Message id
      MessageContent message = 5 [(dlg).log="visible"];
      /// attributes to help reasoning about message
@@ -604,11 +604,14 @@ message UpdateMessage {
      }
      /// Message id of previos message from current conversation
      UUIDValue previous_mid = 11 [(dlg).log="visible"];
+     google.protobuf.Int64Value prev_message_date = 15; // interval start
      /// counter of the unread messages
      google.protobuf.Int32Value counter = 12 [(dlg).log="visible"];
      /// date of my own read
      google.protobuf.Int64Value my_read_date = 13 [(dlg).log="visible"];
      int64 random_id = 14 [(dlg).log="visible"];
+     // when greater than date, then message is edited
+     int64 modified_at = 16 [(dlg).log="visible"];
 }
 
 // Update about message change
