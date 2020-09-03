@@ -612,6 +612,8 @@ message UpdateMessage {
      int64 random_id = 14 [(dlg).log="visible"];
      // when greater than date, then message is edited
      int64 modified_at = 16 [(dlg).log="visible"];
+     // make sense for edited message only (modified_at > date)
+     google.protobuf.Int64Value prev_edit_in_peer_at = 17 [(dlg).log="visible"];
 }
 
 // Update about message change
