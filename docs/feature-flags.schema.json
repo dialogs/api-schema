@@ -543,6 +543,11 @@
       "type": "integer",
       "title": "The maximum number of mentions per message",
       "default": 5
+    },
+    "metrics.isEnabled": {
+      "type": "boolean",
+      "title": "Enables gathering and sending metrics",
+      "default": false
     }
   }
 }
