@@ -543,6 +543,17 @@
       "type": "integer",
       "title": "The maximum number of mentions per message",
       "default": 5
+    },
+    "typing.isEnabled": {
+      "type": "boolean",
+      "title": "Activates processing/emitting typingStates",
+      "default": true
+    },
+    "typing.timeout": {
+      "type": "boolean",
+      "title": "UpdateStopTypingTimeout",
+      "description": "Timeout for StartTyping, after that time server send StopTyping",
+      "default": true
     }
   }
 }
