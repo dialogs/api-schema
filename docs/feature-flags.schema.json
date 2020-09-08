@@ -543,6 +543,11 @@
       "type": "integer",
       "title": "The maximum number of mentions per message",
       "default": 5
+    },
+    "messaging.localDrafts.isEnabled": {
+      "type": "boolean",
+      "title": "Enable drafts without remote synchronization",
+      "default": true
     }
   }
 }
