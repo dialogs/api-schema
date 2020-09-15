@@ -136,6 +136,7 @@ message UpdateSeqUpdate {
       reactions.MessageReactionsUpdate messageReactionsUpdate = 100;
       UpdatePermissionsChange updatePermissionsChange = 101;
       UpdateGroupTyping updateGroupTyping = 102;
+      UpdateDialogReadLaterChanged updateDialogReadLaterChanged = 103;
     }
 }
 
