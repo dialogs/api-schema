@@ -332,6 +332,7 @@ message PeersList {
 message WeakUpdateCommand {
     message ChangeMyOnline {
         bool online = 1;
+        DeviceType device_type = 2;
     }
 
     message SubscribeToOnlines {
