@@ -333,6 +333,8 @@ message PeersList {
 message WeakUpdateCommand {
     message ChangeMyOnline {
         bool online = 1;
+        int64 timeout = 2; /// offline after timeout
+        DeviceType device_type = 3;
     }
 
     message SubscribeToOnlines {

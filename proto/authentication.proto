@@ -126,6 +126,21 @@ message ResponseStartUsernameAuth {
     bool is_registered = 2; /// Deprecated
 }
 
+// Start Authentication/Authorization via external oAuth2/OpenID SSO Provider
+message RequestStartAuthTransaction {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+     /** Client timezone **/
+    google.protobuf.StringValue time_zone = 1 [(dlg).log="visible"];
+    /** First language from this array will be used for some notifications from server **/
+    repeated string preferred_languages = 2 [(dlg).log="visible"];
+}
+
+message ResponseStartAuthTransaction {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    /** Hash of authorization transaction **/
+    string transaction_hash = 1;
+}
+
 // Performing user sign in.
 message RequestValidateCode {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
@@ -381,6 +396,12 @@ service Authentication {
     rpc StartUsernameAuth (RequestStartUsernameAuth) returns (ResponseStartUsernameAuth) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/StartUsernameAuth"
+            body: "*"
+        };
+    }
+    rpc StartAuthTransaction (RequestStartAuthTransaction) returns (ResponseStartAuthTransaction) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/RequestStartAuthTransaction"
             body: "*"
         };
     }
