@@ -1143,7 +1143,7 @@ message RequestReadDialogLater {
 // Update about dialog read later changed
 message UpdateDialogReadLaterChanged {
     Peer peer = 1 [(dlg).log="visible"];
-    google.protobuf.BoolValue read_later = 2 [(dlg).log="visible"];
+    bool read_later = 2 [(dlg).log="visible"];
 }
 
 
@@ -1353,7 +1353,7 @@ service Messaging {
         };
     }
 
-    rpc ReadDialogLater (RequestReadDialogLater) returns (ResponseSeq) {
+    rpc ReadDialogLater (RequestReadDialogLater) returns (ResponseVoid) {
         option (google.api.http) = {
             post: "/v1/grpc/Messaging/ReadDialogLater"
             body: "*"
