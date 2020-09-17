@@ -548,6 +548,7 @@
       "type": "boolean",
       "title": "Enables gathering and sending metrics",
       "default": false
+    },
     "typing.isEnabled": {
       "type": "boolean",
       "title": "Activates processing/emitting typingStates",
