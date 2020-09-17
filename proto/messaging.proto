@@ -198,7 +198,8 @@ message MessageContent {
 // Text message
 message TextMessage {
     string text = 1 [(dlg).log="hidden"];
-    reserved 2;
+    /// Field is deprecated since server 2.6 version.
+    repeated int32 obsolete_mentions = 2 [(dlg).log="visible"];
     /// Optional bytes of extension
     TextMessageEx ext = 3 [(dlg).log="visible"];
     repeated MessageMedia media = 4 [(dlg).log="visible"];

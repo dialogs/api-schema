@@ -548,6 +548,27 @@
       "type": "boolean",
       "title": "Enables gathering and sending metrics",
       "default": false
+    "typing.isEnabled": {
+      "type": "boolean",
+      "title": "Activates processing/emitting typingStates",
+      "default": true
+    },
+    "onlineStatus.isEnabled": {
+      "type": "boolean",
+      "title": "Activates processing/emitting onlineStates",
+      "default": true
+    },
+    "typing.timeout": {
+      "type": "integer",
+      "title": "UpdateStopTypingTimeout in MS",
+      "description": "Timeout in milliseconds for StartTyping, after that time server send StopTyping",
+      "default": 10000
+    },
+    "onlineStatus.timeout": {
+      "type": "integer",
+      "title": "UpdateUserLastSeen in MS",
+      "description": "Timeout in milliseconds for UserLastSeen, after that time server send UpdateUserLastSeen",
+      "default": 60000
     }
   }
 }

@@ -21,10 +21,12 @@ enum TypingType {
 }
 
 // Sending typing notification
-message RequestTyping {
+message RequestStartTyping {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     OutPeer peer = 1 [(dlg).log="visible"];
+    reserved 2;
     TypingType typing_type = 3 [(dlg).log="visible"];
+    reserved 4;
 }
 
 // Stop typing
@@ -52,70 +54,63 @@ message RequestSetOnline {
     bool is_online = 1 [(dlg).log="visible"];
     int64 timeout = 2 [(dlg).log="visible"]; /// offline after timeout
     DeviceType device_type = 3 [(dlg).log="visible"];
-    google.protobuf.StringValue device_category = 4 [(dlg).log="visible"];
-}
-
-// Update about pausing notifications
-message UpdatePauseNotifications {
-    int32 timeout = 1 [(dlg).log="visible"];
-}
-
-// Update about restoring notifications
-message UpdateRestoreNotifications {
-}
-
-// Pause notifications
-message RequestPauseNotifications {
-    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
-    int32 timeout = 1 [(dlg).log="hidden"];
-}
-
-// Restoring notifications
-message RequestRestoreNotifications {
-    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    reserved 4;
 }
 
 // Update about user's typing
 message UpdateTyping {
     Peer peer = 1 [(dlg).log="visible"];
-    int32 uid = 2 [(dlg).log="visible"];
+    int32 user_id = 2 [(dlg).log="visible"];
     TypingType typing_type = 3 [(dlg).log="visible"];
 }
 
 // Update about user's typing stop
 message UpdateTypingStop {
     Peer peer = 1 [(dlg).log="visible"];
-    int32 uid = 2 [(dlg).log="visible"];
+    int32 user_id = 2 [(dlg).log="visible"];
     TypingType typing_type = 3 [(dlg).log="hidden"];
 }
 
 // Update about user became online
 message UpdateUserOnline {
-    int32 uid = 1 [(dlg).log="visible"];
+    int32 user_id = 1 [(dlg).log="visible"];
     DeviceType device_type = 2;
-    google.protobuf.StringValue device_category = 3;
+    reserved 3;
 }
 
 // Update about user became offline
 message UpdateUserOffline {
     int32 uid = 1 [(dlg).log="visible"];
     DeviceType device_type = 2;
-    google.protobuf.StringValue device_category = 3;
+    reserved 3;
 }
 
 // Update about user's last seen state
 message UpdateUserLastSeen {
     int32 uid = 1 [(dlg).log="visible"];
-    int64 date = 2 [(dlg).log="visible"];
+    int64 last_seen_at = 2 [(dlg).log="visible"];
     DeviceType device_type = 3;
-    google.protobuf.StringValue device_category = 4;
+    reserved 4;
+    int64 current_time = 5 [(dlg).log="visible"];
 }
 
 // Update about group online change
 message UpdateGroupOnline {
     int32 group_id = 1 [(dlg).log="visible"];
-    /// amount of online users
+    /// amount of online users.
     int32 count = 2 [(dlg).log="visible"];
+    /// The list of online users will only be sent if the flag was set during the subscription.
+    repeated int32 users_id = 3 [(dlg).log="visible"];
+}
+
+message UpdateGroupTyping {
+    message UserTyping {
+        int32 user_id = 1 [(dlg).log="visible"];
+        TypingType typing_type = 2 [(dlg).log="visible"];
+    }
+
+    int32 group_id = 1 [(dlg).log="visible"];
+    repeated UserTyping users_typing = 2 [(dlg).log="visible"];
 }
 
 // Request for last user online timestamp
@@ -134,40 +129,28 @@ message ResponseUserLastPresence {
     }
 }
 
-service TypingAndOnline {
-    rpc Typing (RequestTyping) returns (ResponseVoid) {
+service Presence {
+    rpc StartTyping (RequestStartTyping) returns (ResponseVoid) {
         option (google.api.http) = {
-            post: "/v1/grpc/TypingAndOnline/Typing"
+            post: "/v1/grpc/Presence/StartTyping"
             body: "*"
         };
     }
     rpc StopTyping (RequestStopTyping) returns (ResponseVoid) {
         option (google.api.http) = {
-            post: "/v1/grpc/TypingAndOnline/StopTyping"
+            post: "/v1/grpc/Presence/StopTyping"
             body: "*"
         };
     }
     rpc SetOnline (RequestSetOnline) returns (ResponseVoid) {
         option (google.api.http) = {
-            post: "/v1/grpc/TypingAndOnline/SetOnline"
-            body: "*"
-        };
-    }
-    rpc PauseNotifications (RequestPauseNotifications) returns (ResponseVoid) {
-        option (google.api.http) = {
-            post: "/v1/grpc/TypingAndOnline/PauseNotifications"
-            body: "*"
-        };
-    }
-    rpc RestoreNotifications (RequestRestoreNotifications) returns (ResponseVoid) {
-        option (google.api.http) = {
-            post: "/v1/grpc/TypingAndOnline/RestoreNotifications"
+            post: "/v1/grpc/Presence/SetOnline"
             body: "*"
         };
     }
     rpc GetUserLastPresence (RequestGetUserLastPresence) returns (ResponseUserLastPresence) {
         option (google.api.http) = {
-            post: "/v1/grpc/TypingAndOnline/GetUserLastPresence"
+            post: "/v1/grpc/Presence/GetUserLastPresence"
             body: "*"
         };
     }

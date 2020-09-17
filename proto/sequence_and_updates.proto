@@ -20,7 +20,7 @@ import "miscellaneous.proto";
 import "authentication.proto";
 import "groups.proto";
 import "stickers.proto";
-import "typing_and_online.proto";
+import "presence.proto";
 import "event_bus.proto";
 import "web_rtc.proto";
 import "config_sync.proto";
@@ -44,7 +44,7 @@ message UpdateSeqUpdate {
     bytes state = 2 [(dlg).log="compact"];
     int32 update_header = 3 [(dlg).log="visible"];
 
-    reserved 42, 45, 46, 47, 48, 49, 50, 54, 62;
+    reserved 42, 45, 46, 47, 48, 49, 50, 54, 62, 69, 70;
 
     oneof update {
       UpdateForceReloadState updateForceReloadState = 4;
@@ -103,8 +103,6 @@ message UpdateSeqUpdate {
       UpdateStickerCollectionsChanged updateStickerCollectionsChanged = 66;
       UpdateStickerPackRemoved updateStickerPackRemoved = 67;
       UpdateStickerPackAdded updateStickerPackAdded = 68;
-      UpdatePauseNotifications updatePauseNotifications = 69;
-      UpdateRestoreNotifications updateRestoreNotifications = 70;
       UpdateTyping updateTyping = 71;
       UpdateTypingStop updateTypingStop = 72;
       UpdateUserOnline updateUserOnline = 73;
@@ -137,6 +135,7 @@ message UpdateSeqUpdate {
       UpdateGroupMemberInvited updateGroupMemberInvited = 99;
       reactions.MessageReactionsUpdate messageReactionsUpdate = 100;
       UpdatePermissionsChange updatePermissionsChange = 101;
+      UpdateGroupTyping updateGroupTyping = 102;
     }
 }
 
@@ -308,6 +307,8 @@ message RequestSubscribeFromOnline {
 message RequestSubscribeToGroupOnline {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     repeated GroupOutPeer groups = 1 [(dlg).log="compact"];
+    // If set to true UpdateGroupOnline will return list of online users id.
+    bool send_users_id = 2;
 }
 
 // Removing subscription for groups online
@@ -331,6 +332,13 @@ message PeersList {
 message WeakUpdateCommand {
     message ChangeMyOnline {
         bool online = 1;
+        int64 timeout = 2; /// offline after timeout
+        DeviceType device_type = 3;
+    }
+
+    message SubscribeToOnlines {
+        PeersList peers = 1;
+        bool send_users_id = 2;
     }
 
     message ChangeMyTyping {
@@ -341,7 +349,7 @@ message WeakUpdateCommand {
 
     oneof command {
         ChangeMyOnline change_my_online                    = 1;
-        PeersList subscribe_to_onlines                     = 2;
+        SubscribeToOnlines subscribe_to_onlines            = 2;
         PeersList unsubscribe_from_onlines                 = 3;
         google.protobuf.Empty unsubscribe_from_all_onlines = 4;
         ChangeMyTyping change_my_typing                    = 5;
@@ -364,7 +372,7 @@ message WeakUpdateBox {
     }
 
     oneof updatebox {
-        UpdateTyping typing_start                                = 1;
+        UpdateTyping typing                                      = 1;
         UpdateTypingStop typing_stop                             = 2;
         UpdateUserLastSeen user_last_seen                        = 3;
         UpdateGroupOnline group_online                           = 4;
@@ -377,6 +385,8 @@ message WeakUpdateBox {
         UpdateMessageRead message_read                           = 11;
         UpdateMessageReceived message_received                   = 12;
         UpdateMessageReadByMe message_read_by_me                 = 13;
+        UpdateUserOnline user_online                             = 14;
+        UpdateGroupTyping group_typing                           = 15;
     }
 }
 

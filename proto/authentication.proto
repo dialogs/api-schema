@@ -16,6 +16,7 @@ package dialog;
 // If on any step API return PHONE_CODE_EXPIRED than application MUST start
 // authorization process from begining.<br/>
 
+import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 import "google/api/annotations.proto";
 import "definitions.proto";
@@ -123,6 +124,21 @@ message ResponseStartUsernameAuth {
     /** Hash of authorization transaction **/
     string transaction_hash = 1;
     bool is_registered = 2; /// Deprecated
+}
+
+// Start Authentication/Authorization via external oAuth2/OpenID SSO Provider
+message RequestStartAuthTransaction {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+     /** Client timezone **/
+    google.protobuf.StringValue time_zone = 1 [(dlg).log="visible"];
+    /** First language from this array will be used for some notifications from server **/
+    repeated string preferred_languages = 2 [(dlg).log="visible"];
+}
+
+message ResponseStartAuthTransaction {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    /** Hash of authorization transaction **/
+    string transaction_hash = 1;
 }
 
 // Performing user sign in.
@@ -334,6 +350,12 @@ message RequestChangePassword {
     string new_password = 2 [(dlg).log = "danger"];
 }
 
+message ResponseGetSelf {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    /// Registered/authorized user
+    User user = 1 [(dlg).log="compact"];
+}
+
 service Authentication {
     /// Start authorization by phone
     rpc StartPhoneAuth (RequestStartPhoneAuth) returns (ResponseStartPhoneAuth) {
@@ -374,6 +396,12 @@ service Authentication {
     rpc StartUsernameAuth (RequestStartUsernameAuth) returns (ResponseStartUsernameAuth) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/StartUsernameAuth"
+            body: "*"
+        };
+    }
+    rpc StartAuthTransaction (RequestStartAuthTransaction) returns (ResponseStartAuthTransaction) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/RequestStartAuthTransaction"
             body: "*"
         };
     }
@@ -481,6 +509,13 @@ service Authentication {
     rpc ChangePassword (RequestChangePassword) returns (ResponseVoid) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/ChangePassword"
+            body: "*"
+        };
+    }
+
+    rpc GetSelf(google.protobuf.Empty) returns (ResponseGetSelf) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/GetSelf"
             body: "*"
         };
     }
