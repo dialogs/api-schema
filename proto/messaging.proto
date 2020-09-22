@@ -853,6 +853,7 @@ message Dialog {
     int64 last_receive = 16 [(dlg).log="visible"];
     int64 last_read = 17 [(dlg).log="visible"];
     int64 last_reaction_at = 18;
+    bool read_later = 19;
 }
 
 enum DialogsFilter {
@@ -917,6 +918,7 @@ message DialogListEntry {
     int64 entry_clock = 7 [(dlg).log="visible"];
     int64 last_update_of_message_date = 9;
     int64 last_reaction_date = 10;
+    bool read_later = 11;
 
     DialogData data = 8 [(dlg).log="visible"];
 }
@@ -1132,6 +1134,18 @@ message ResponseMessageReceives {
     int64 timestamp_till = 2 [(dlg).log="visible"]; // max time of returned entries, or requested time if empty
 }
 
+message RequestReadDialogLater {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    OutPeer peer = 1 [(dlg).log="visible"];
+    bool read_later = 2 [(dlg).log="visible"];
+}
+
+// Update about dialog read later changed
+message UpdateDialogReadLaterChanged {
+    Peer peer = 1 [(dlg).log="visible"];
+    bool read_later = 2 [(dlg).log="visible"];
+}
+
 
 service Messaging {
     /// Interact with a message media (click on button for example)
@@ -1336,6 +1350,13 @@ service Messaging {
         option (google.api.http) = {
             post: "/v1/grpc/Messaging/GetMessageReceives"
               body: "*"
+        };
+    }
+
+    rpc ReadDialogLater (RequestReadDialogLater) returns (ResponseVoid) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Messaging/ReadDialogLater"
+            body: "*"
         };
     }
 }
