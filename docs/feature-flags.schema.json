@@ -570,6 +570,11 @@
       "title": "UpdateUserLastSeen in MS",
       "description": "Timeout in milliseconds for UserLastSeen, after that time server send UpdateUserLastSeen",
       "default": 60000
+    },
+    "enricher.isEnabled": {
+      "type": "boolean",
+      "title": "Enables link enrichment",
+      "default": true
     }
   }
 }
