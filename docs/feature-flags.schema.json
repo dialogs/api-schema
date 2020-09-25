@@ -534,6 +534,16 @@
       "title": "Activates editing for messages",
       "default": false
     },
+    "conference.isAnnounced": {
+      "type": "boolean",
+      "title": "Activates Video conference call promo view",
+      "default": false
+    },
+    "conference.isEnabled": {
+      "type": "boolean",
+      "title": "Activates Video Conference Call creation, joining",
+      "default": false
+    },
     "releaseNotes.isEnabled": {
       "type": "boolean",
       "title": "Enable release notes",
