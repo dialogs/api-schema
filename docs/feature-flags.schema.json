@@ -463,6 +463,12 @@
       "description": "if true = user can show screen in modern browsers",
       "default": true
     },
+    "calls.metricsInterval": {
+      "type": "integer",
+      "title": "An interval for WebRtc metrics collecting",
+      "description": "An interval in ms at which metrics from WebRtc will be collected. 0 value means that metrics will be collected only at the call end.",
+      "default": 10000
+    },
     "global.confidentialPolicy.URL": {
       "type": "string",
       "title": "URL of confidential policy webpage",
