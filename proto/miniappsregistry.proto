@@ -37,10 +37,23 @@ message MiniApp {
     bool is_enabled = 11;
 }
 
+// App update
+message UpdateMiniApp {
+    enum AppLifecycle {
+        APPLIFECYCLE_CREATED  = 0;
+        APPLIFECYCLE_UPDATED  = 1;
+        APPLIFECYCLE_ENABLED  = 2;
+        APPLIFECYCLE_DISABLED = 3;
+        APPLIFECYCLE_DELETED  = 4;
+    }
+    AppLifecycle app_lifecycle = 1;
+    dialog.MiniApp app_data = 2;
+}
+
 // Request to get list of mini-apps
 message GetAppsRequest {
-    // if present then return only apps created/modified since given clock
-    google.protobuf.Int64Value from_clock = 1;
+    // return only apps created/modified since given clock
+    int64 from_clock = 1;
 }
 
 // List of the mini-app
@@ -59,7 +72,17 @@ message FindAppResponse {
     MiniApp app = 1;
 }
 
+// Issue JWT token for third-party applications
+message IssueAccessTokenRequest {
+    UUIDValue app_id = 1;
+}
+
+message AccessTokenResponse {
+    string access_token = 1;
+}
+
 service ClientsMiniAppsRegistry {
     rpc FindApp (FindAppRequest) returns (FindAppResponse);
     rpc GetApps (GetAppsRequest) returns (GetAppsResponse);
+    rpc IssueAccessToken (IssueAccessTokenRequest) returns (AccessTokenResponse);
 }
