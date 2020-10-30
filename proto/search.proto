@@ -177,12 +177,12 @@ message ResponseResolvePeer {
 }
 
 message HLToken {
-    int32 position = 1;
-    int32 length = 2;
+    int32 position = 1 [(dlg).log="visible"];
+    int32 length = 2 [(dlg).log="visible"];
 }
 
 message MessageHighlight {
-    repeated HLToken tokens = 1;
+    repeated HLToken tokens = 1 [(dlg).log="visible"];
 }
 
 // Message container
@@ -195,7 +195,7 @@ message MessageSearchResult {
     UUIDValue mid = 6 [(dlg).log="visible"];
 
     // -----------------------------
-    MessageHighlight highlight = 7;
+    MessageHighlight highlight = 7 [(dlg).log="visible"];
 }
 
 // Message Search result container
