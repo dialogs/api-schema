@@ -184,6 +184,7 @@ message MessageSearchResult {
     int32 sender_id = 4 [(dlg).log="visible"];
     MessageContent content = 5 [(dlg).log="visible"];
     UUIDValue mid = 6 [(dlg).log="visible"];
+    repeated string highlight_tokens = 7 [(dlg).log="visible"];
 }
 
 // Message Search result container
