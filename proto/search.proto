@@ -177,8 +177,7 @@ message ResponseResolvePeer {
 }
 
 message HLToken {
-    int32 position = 1 [(dlg).log="visible"];
-    int32 length = 2 [(dlg).log="visible"];
+    string value = 1 [(dlg).log="visible"];
 }
 
 message MessageHighlight {
