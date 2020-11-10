@@ -176,14 +176,6 @@ message ResponseResolvePeer {
     OutPeer peer = 1;
 }
 
-//message HLToken {
-//    string value = 1 [(dlg).log="visible"];
-//}
-//
-//message MessageHighlight {
-//    repeated HLToken tokens = 1 [(dlg).log="visible"];
-//}
-
 // Message container
 message MessageSearchResult {
     Peer peer = 1 [(dlg).log="visible"];
@@ -192,8 +184,6 @@ message MessageSearchResult {
     int32 sender_id = 4 [(dlg).log="visible"];
     MessageContent content = 5 [(dlg).log="visible"];
     UUIDValue mid = 6 [(dlg).log="visible"];
-
-    // -----------------------------
     repeated string highlight_tokens = 7 [(dlg).log="visible"];
 }
 
