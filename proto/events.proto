@@ -11,51 +11,69 @@ option go_package = "dialog";
 option java_package = "im.dlg.grpc.services";
 
 message Event {
-    int64 clock = 1;
-    UUIDValue id = 2;
+    int64 clock = 1; // time when event happened
+    string id = 2; // unique id of event (no more than 50 symbols)
 
     message Mention {
-        Peer peer = 1;
-        UUIDValue mid = 2;
-        int32 user = 3;
+        Peer peer = 1; // dialog where mentioned
+        UUIDValue mid = 2; // id of message where mentioned
+        int32 user = 3; // mention author
     }
     message Reactions {
         message Reaction {
-            string code = 1;
-            map<int32, int64> users = 2;
+            string code = 1; //emoji
+            map<int32, int64> users = 2; // userId to time when reaction is set by user
         }
 
-        Peer peer = 1;
-        UUIDValue mid = 2;
+        Peer peer = 1; // dialog where mentioned
+        UUIDValue mid = 2; // id of message that has reactions
         repeated Reaction reactions = 3;
     }
+    message Reply {
+        Peer peer = 1; // dialog where replied
+        UUIDValue mid = 2; // id of message where replied
+        int32 user = 3; // message author
+    }
+    message Invite {
+        Peer peer = 1; // group
+        int32 user = 2; // inviter userId
+    }
+    message Kick {
+        Peer peer = 1; // group
+        int32 user = 2; // kicker userId
+    }
+
     oneof event {
         Mention mention = 3;
         Reactions reactions = 4;
+        Reply reply = 5;
+        Invite invite = 6;
+        Kick kick = 7;
     }
 }
 
 message UpdateEvent {
     Event event = 1;
-    int64 prev_clock = 2;
+    int64 prev_clock = 2; // time of previous event
 }
 
 enum LoadMode {
     LOADMODE_UNKNOWN = 0;
-    LOADMODE_FORWARD = 1;
-    LOADMODE_BACKWARD = 2;
+    LOADMODE_FORWARD = 1; // load from clock to future
+    LOADMODE_BACKWARD = 2; // load from clock to past
 }
 
 message LoadEventsRequest {
-    int64 from_clock = 1;
+    int64 from_clock = 1; // clock to load from
     LoadMode load_mode = 2;
+    int32 limit = 3; // how much to load
 }
 
 message LoadEventsResponse {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
     repeated Event events = 1;
-    int64 clock = 2;
-    bool next_available = 3;
+    int64 clock = 2; // clock of last event
+    bool next_available = 3; // is there more to load to requested direction
 }
 
 service Events {
