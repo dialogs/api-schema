@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package dialog.events;
+
+import "google/api/annotations.proto";
+import "peers.proto";
+import "definitions.proto";
+import "scalapb/scalapb.proto";
+
+option go_package = "dialog";
+option java_package = "im.dlg.grpc.services";
+
+message Event {
+    int64 clock = 1;
+    UUIDValue id = 2;
+
+    message Mention {
+        Peer peer = 1;
+        UUIDValue mid = 2;
+        int32 user = 3;
+    }
+    message Reactions {
+        message Reaction {
+            string code = 1;
+            map<int32, int64> users = 2;
+        }
+
+        Peer peer = 1;
+        UUIDValue mid = 2;
+        repeated Reaction reactions = 3;
+    }
+    oneof event {
+        Mention mention = 3;
+        Reactions reactions = 4;
+    }
+}
+
+message UpdateEvent {
+    Event event = 1;
+    int64 prev_clock = 2;
+}
+
+enum LoadMode {
+    LOADMODE_UNKNOWN = 0;
+    LOADMODE_FORWARD = 1;
+    LOADMODE_BACKWARD = 2;
+}
+
+message LoadEventsRequest {
+    int64 from_clock = 1;
+    LoadMode load_mode = 2;
+}
+
+message LoadEventsResponse {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    repeated Event events = 1;
+    int64 clock = 2;
+    bool next_available = 3;
+}
+
+service Events {
+    rpc LoadEvents (LoadEventsRequest) returns (LoadEventsResponse) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Events/LoadEvents"
+            body: "*"
+        };
+    }
+}

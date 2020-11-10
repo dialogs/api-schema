@@ -48,6 +48,7 @@ message UpdateMiniApp {
     }
     AppLifecycle app_lifecycle = 1;
     dialog.MiniApp app_data = 2;
+    int64 prev_clock = 3;
 }
 
 // Request to get list of mini-apps
