@@ -592,17 +592,17 @@
       "title": "Activates processing weakMessaging",
       "default": false
     },
-    "feedback.send_to_peer": {
+    "feedback.sendToPeer": {
       "type": "boolean",
       "title": "Activates dispatchment of logs to specialized сhat",
       "default": false
     },
-    "feedback.max_logs.size": {
+    "feedback.maxLogs.size": {
       "type": "integer",
       "title": "Maximum size of chat-sent logs (in bytes)",
       "default": 1048576
     },
-    "feedback.support_peerid_and_accesshash": {
+    "feedback.supportPeeridAndAccesshash": {
       "type": "string",
       "title": "Id and access hash of feedback chat",
       "default": null
