@@ -565,6 +565,11 @@
       "title": "Enables gathering and sending metrics",
       "default": false
     },
+    "metrics.countLimit": {
+      "type": "integer",
+      "title": "Maximum number of metrics that can be stored on the client",
+      "default": 5000
+    },
     "typing.isEnabled": {
       "type": "boolean",
       "title": "Activates processing/emitting typingStates",
