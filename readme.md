@@ -23,6 +23,7 @@
     - [RequestSignUpObsolete](#dialog.RequestSignUpObsolete)
     - [RequestStartAnonymousAuth](#dialog.RequestStartAnonymousAuth)
     - [RequestStartAuthTransaction](#dialog.RequestStartAuthTransaction)
+    - [RequestStartCertificateAuth](#dialog.RequestStartCertificateAuth)
     - [RequestStartEmailAuth](#dialog.RequestStartEmailAuth)
     - [RequestStartPhoneAuth](#dialog.RequestStartPhoneAuth)
     - [RequestStartTokenAuth](#dialog.RequestStartTokenAuth)
@@ -1138,6 +1139,23 @@ Start Authentication/Authorization via external oAuth2/OpenID SSO Provider
 
 
 
+<a name="dialog.RequestStartCertificateAuth"></a>
+
+### RequestStartCertificateAuth
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| time_zone | [google.protobuf.StringValue](#google.protobuf.StringValue) |  |  |
+| preferred_languages | [string](#string) | repeated |  |
+
+
+
+
+
+
 <a name="dialog.RequestStartEmailAuth"></a>
 
 ### RequestStartEmailAuth
@@ -1491,6 +1509,7 @@ Holder of session
 | SendCodeByPhoneCall | [RequestSendCodeByPhoneCall](#dialog.RequestSendCodeByPhoneCall) | [ResponseVoid](#dialog.ResponseVoid) | Resend code by transaction hash |
 | StartEmailAuth | [RequestStartEmailAuth](#dialog.RequestStartEmailAuth) | [ResponseStartEmailAuth](#dialog.ResponseStartEmailAuth) | Start email authorization process |
 | StartAnonymousAuth | [RequestStartAnonymousAuth](#dialog.RequestStartAnonymousAuth) | [ResponseAuth](#dialog.ResponseAuth) | Deprecated |
+| StartCertificateAuth | [RequestStartCertificateAuth](#dialog.RequestStartCertificateAuth) | [ResponseAuth](#dialog.ResponseAuth) |  |
 | StartTokenAuth | [RequestStartTokenAuth](#dialog.RequestStartTokenAuth) | [ResponseAuth](#dialog.ResponseAuth) | Start token auth authorization (actual for bots) |
 | StartUsernameAuth | [RequestStartUsernameAuth](#dialog.RequestStartUsernameAuth) | [ResponseStartUsernameAuth](#dialog.ResponseStartUsernameAuth) | Start login/password authorization process |
 | StartAuthTransaction | [RequestStartAuthTransaction](#dialog.RequestStartAuthTransaction) | [ResponseStartAuthTransaction](#dialog.ResponseStartAuthTransaction) |  |

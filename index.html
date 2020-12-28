@@ -284,6 +284,10 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
                 </li>
               
                 <li>
+                  <a href="#dialog.RequestStartCertificateAuth"><span class="badge">M</span>RequestStartCertificateAuth</a>
+                </li>
+              
+                <li>
                   <a href="#dialog.RequestStartEmailAuth"><span class="badge">M</span>RequestStartEmailAuth</a>
                 </li>
               
@@ -3432,6 +3436,13 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
               </tr>
             
               <tr>
+                <td>StartCertificateAuth</td>
+                <td><a href="#dialog.RequestStartCertificateAuth">RequestStartCertificateAuth</a></td>
+                <td><a href="#dialog.ResponseAuth">ResponseAuth</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
                 <td>StartTokenAuth</td>
                 <td><a href="#dialog.RequestStartTokenAuth">RequestStartTokenAuth</a></td>
                 <td><a href="#dialog.ResponseAuth">ResponseAuth</a></td>
@@ -4201,6 +4212,43 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
                   <td><p>First language from this array will be used for some notifications from server * </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dialog.RequestStartCertificateAuth">RequestStartCertificateAuth</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>time_zone</td>
+                  <td><a href="#google.protobuf.StringValue">google.protobuf.StringValue</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>preferred_languages</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
                 </tr>
               
             </tbody>
