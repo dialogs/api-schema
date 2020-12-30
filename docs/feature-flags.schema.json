@@ -173,7 +173,7 @@
     "group.isGroupPermissionsEditingEnabled": {
       "type": "boolean",
       "title": "Ability to edit group members permissions",
-      "default": false
+      "default": true
     },
     "groups.permissions.canLeaveEnabled": {
       "type": "boolean",
