@@ -170,7 +170,7 @@
       "title": "Maximum size of group's avatar",
       "default": 1048576
     },
-    "groups.isGroupPermissionsEditingEnabled": {
+    "group.isGroupPermissionsEditingEnabled": {
       "type": "boolean",
       "title": "Ability to edit group members permissions",
       "default": false
