@@ -596,6 +596,16 @@
       "type": "boolean",
       "title": "Activates processing weakMessaging",
       "default": false
+    },
+     "attachments.voiceMessages.isEnabled": {
+      "type": "boolean",
+      "title": "Activates voice messages in attachments",
+      "default": false
+    },
+    "links.preview.isEnabled": {
+      "type": "boolean",
+      "title": "Activates links preview",
+      "default": false
     }
   }
 }
