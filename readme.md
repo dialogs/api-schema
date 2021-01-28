@@ -4637,6 +4637,7 @@ data data related to dialog itself
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | peer | [Peer](#dialog.Peer) |  | Peer of conversation |
+| unread_counter_clock | [int64](#int64) |  |  |
 | unread_count | [int32](#int32) |  |  |
 | my_read_date | [int64](#int64) |  |  |
 | last_message_date | [int64](#int64) |  |  |
@@ -6496,6 +6497,7 @@ Update about plain message
 | reply | [ReferencedMessages](#dialog.ReferencedMessages) |  |  |
 | previous_mid | [UUIDValue](#dialog.UUIDValue) |  | Message id of previos message from current conversation |
 | prev_message_date | [google.protobuf.Int64Value](#google.protobuf.Int64Value) |  | interval start |
+| unread_counter_clock | [int64](#int64) |  | counter clock of the unread messages |
 | counter | [google.protobuf.Int32Value](#google.protobuf.Int32Value) |  | counter of the unread messages |
 | my_read_date | [google.protobuf.Int64Value](#google.protobuf.Int64Value) |  | date of my own read |
 | random_id | [int64](#int64) |  |  |
@@ -6590,7 +6592,8 @@ Update about message read by me
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | peer | [Peer](#dialog.Peer) |  |  |
-| start_date | [int64](#int64) |  | when message was read |
+| start_date | [int64](#int64) |  | date of the read message |
+| unread_counter_clock | [int64](#int64) |  | when message was read |
 | unread_counter | [google.protobuf.Int32Value](#google.protobuf.Int32Value) |  | counter of unread messages |
 
 
@@ -6647,7 +6650,8 @@ Update about message sent
 | date | [int64](#int64) |  |  |
 | mid | [UUIDValue](#dialog.UUIDValue) |  | Message id |
 | prev_mid | [UUIDValue](#dialog.UUIDValue) |  | Previous message id in current conversation |
-| unread_counter | [google.protobuf.Int32Value](#google.protobuf.Int32Value) |  | counter of unread messages |
+| unread_counter_clock | [int64](#int64) |  | counter of unread messages |
+| unread_counter | [google.protobuf.Int32Value](#google.protobuf.Int32Value) |  |  |
 | myReadDate | [google.protobuf.Int64Value](#google.protobuf.Int64Value) |  |  |
 | forward | [ReferencedMessages](#dialog.ReferencedMessages) |  |  |
 | reply | [ReferencedMessages](#dialog.ReferencedMessages) |  |  |
