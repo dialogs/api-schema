@@ -304,6 +304,11 @@
       "default": false,
       "description": "if true = discover is opened in sidebar and can activate mini-apps"
     },
+    "miniApps.discoverUrl": {
+      "type": "string",
+      "default": "",
+      "title": "Discover URL for mini apps"
+    },
     "isSwipeBackEnabled": {
       "type": "boolean",
       "title": "Activates swipe(left to right) between fragments which means back button click",
