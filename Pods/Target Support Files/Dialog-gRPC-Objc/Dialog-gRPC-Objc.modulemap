@@ -1,6 +1,0 @@
-framework module Dialog_gRPC_Objc {
-  umbrella header "Dialog-gRPC-Objc-umbrella.h"
-
-  export *
-  module * { export * }
-}
