@@ -9,12 +9,26 @@
 /* Begin PBXBuildFile section */
 		81A3ADCC019EAFDBF02EEF78 /* libPods-DialogGRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C56F398917E5D49146973476 /* libPods-DialogGRPC.a */; };
 		8D5BA12A25CADA8200755F7D /* DialogGRPC.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA12825CADA8200755F7D /* DialogGRPC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8D5BA17525CAF67800755F7D /* libabseil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5BA16E25CAF67800755F7D /* libabseil.a */; };
+		8D5BA17625CAF67800755F7D /* libBoringSSL-GRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5BA16F25CAF67800755F7D /* libBoringSSL-GRPC.a */; };
+		8D5BA17725CAF67800755F7D /* libDialog-gRPC-Objc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5BA17025CAF67800755F7D /* libDialog-gRPC-Objc.a */; };
+		8D5BA17825CAF67800755F7D /* libgRPC-Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5BA17125CAF67800755F7D /* libgRPC-Core.a */; };
+		8D5BA17925CAF67800755F7D /* libgRPC-ProtoRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5BA17225CAF67800755F7D /* libgRPC-ProtoRPC.a */; };
+		8D5BA17A25CAF67800755F7D /* libgRPC-RxLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5BA17325CAF67800755F7D /* libgRPC-RxLibrary.a */; };
+		8D5BA17B25CAF67800755F7D /* libgRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5BA17425CAF67800755F7D /* libgRPC.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8D5BA12525CADA8200755F7D /* DialogGRPC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DialogGRPC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5BA12825CADA8200755F7D /* DialogGRPC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DialogGRPC.h; sourceTree = "<group>"; };
 		8D5BA12925CADA8200755F7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D5BA16E25CAF67800755F7D /* libabseil.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libabseil.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5BA16F25CAF67800755F7D /* libBoringSSL-GRPC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libBoringSSL-GRPC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5BA17025CAF67800755F7D /* libDialog-gRPC-Objc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libDialog-gRPC-Objc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5BA17125CAF67800755F7D /* libgRPC-Core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libgRPC-Core.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5BA17225CAF67800755F7D /* libgRPC-ProtoRPC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libgRPC-ProtoRPC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5BA17325CAF67800755F7D /* libgRPC-RxLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libgRPC-RxLibrary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5BA17425CAF67800755F7D /* libgRPC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgRPC.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA79644B5313ECB40F83C754 /* Pods-DialogGRPC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DialogGRPC.debug.xcconfig"; path = "Target Support Files/Pods-DialogGRPC/Pods-DialogGRPC.debug.xcconfig"; sourceTree = "<group>"; };
 		C56F398917E5D49146973476 /* libPods-DialogGRPC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DialogGRPC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1B771A7D9852EACD3183446 /* Pods-DialogGRPC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DialogGRPC.release.xcconfig"; path = "Target Support Files/Pods-DialogGRPC/Pods-DialogGRPC.release.xcconfig"; sourceTree = "<group>"; };
@@ -25,7 +39,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D5BA17925CAF67800755F7D /* libgRPC-ProtoRPC.a in Frameworks */,
 				81A3ADCC019EAFDBF02EEF78 /* libPods-DialogGRPC.a in Frameworks */,
+				8D5BA17625CAF67800755F7D /* libBoringSSL-GRPC.a in Frameworks */,
+				8D5BA17B25CAF67800755F7D /* libgRPC.a in Frameworks */,
+				8D5BA17525CAF67800755F7D /* libabseil.a in Frameworks */,
+				8D5BA17725CAF67800755F7D /* libDialog-gRPC-Objc.a in Frameworks */,
+				8D5BA17A25CAF67800755F7D /* libgRPC-RxLibrary.a in Frameworks */,
+				8D5BA17825CAF67800755F7D /* libgRPC-Core.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -35,6 +56,13 @@
 		41572C0CCF368E287FF92C9C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8D5BA16E25CAF67800755F7D /* libabseil.a */,
+				8D5BA16F25CAF67800755F7D /* libBoringSSL-GRPC.a */,
+				8D5BA17025CAF67800755F7D /* libDialog-gRPC-Objc.a */,
+				8D5BA17125CAF67800755F7D /* libgRPC-Core.a */,
+				8D5BA17225CAF67800755F7D /* libgRPC-ProtoRPC.a */,
+				8D5BA17325CAF67800755F7D /* libgRPC-RxLibrary.a */,
+				8D5BA17425CAF67800755F7D /* libgRPC.a */,
 				C56F398917E5D49146973476 /* libPods-DialogGRPC.a */,
 			);
 			name = Frameworks;
