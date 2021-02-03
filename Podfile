@@ -2,9 +2,10 @@
 platform :ios, '11.0'
 
 target 'DialogGRPC' do
+    use_frameworks!
 
-  pod 'gRPC-ProtoRPC'
-  pod 'Protobuf'
+  pod 'Dialog-gRPC-Objc', :git => 'https://github.com/dialogs/api-schema.git', :branch => 'feature/objc_support', :inhibit_warnings => true
+
 
 end
 

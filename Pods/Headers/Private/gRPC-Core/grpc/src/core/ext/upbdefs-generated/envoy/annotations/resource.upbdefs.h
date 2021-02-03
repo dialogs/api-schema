@@ -1,1 +1,0 @@
-../../../../../../../../../../gRPC-Core/src/core/ext/upbdefs-generated/envoy/annotations/resource.upbdefs.h

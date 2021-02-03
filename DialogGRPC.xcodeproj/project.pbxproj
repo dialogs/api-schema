@@ -7,143 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		81A3ADCC019EAFDBF02EEF78 /* libPods-DialogGRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C56F398917E5D49146973476 /* libPods-DialogGRPC.a */; };
 		8D5BA12A25CADA8200755F7D /* DialogGRPC.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA12825CADA8200755F7D /* DialogGRPC.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8D5BA33B25CB08B800755F7D /* MediaAndFiles.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2B725CB08B700755F7D /* MediaAndFiles.pbrpc.m */; };
-		8D5BA33C25CB08B800755F7D /* Messaging.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2B825CB08B700755F7D /* Messaging.pbobjc.h */; };
-		8D5BA33D25CB08B800755F7D /* Miscellaneous.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2B925CB08B700755F7D /* Miscellaneous.pbobjc.m */; };
-		8D5BA33E25CB08B800755F7D /* ConfigSync.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2BA25CB08B700755F7D /* ConfigSync.pbrpc.h */; };
-		8D5BA33F25CB08B800755F7D /* Clickroad.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2BB25CB08B700755F7D /* Clickroad.pbrpc.h */; };
-		8D5BA34025CB08B800755F7D /* RawApi.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2BC25CB08B700755F7D /* RawApi.pbrpc.h */; };
-		8D5BA34125CB08B800755F7D /* EventBus.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2BD25CB08B700755F7D /* EventBus.pbobjc.m */; };
-		8D5BA34225CB08B800755F7D /* EventBus.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2BE25CB08B700755F7D /* EventBus.pbrpc.h */; };
-		8D5BA34325CB08B800755F7D /* Reactions.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2BF25CB08B700755F7D /* Reactions.pbrpc.m */; };
-		8D5BA34425CB08B800755F7D /* Registration.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2C025CB08B700755F7D /* Registration.pbobjc.h */; };
-		8D5BA34525CB08B800755F7D /* Push.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2C125CB08B700755F7D /* Push.pbobjc.h */; };
-		8D5BA34625CB08B800755F7D /* Privacy.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2C225CB08B700755F7D /* Privacy.pbobjc.h */; };
-		8D5BA34725CB08B800755F7D /* Stickers.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2C325CB08B700755F7D /* Stickers.pbobjc.m */; };
-		8D5BA34825CB08B800755F7D /* Users.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2C425CB08B700755F7D /* Users.pbobjc.m */; };
-		8D5BA34925CB08B800755F7D /* WebRtc.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2C525CB08B700755F7D /* WebRtc.pbrpc.h */; };
-		8D5BA34A25CB08B800755F7D /* RawApi.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2C625CB08B700755F7D /* RawApi.pbobjc.h */; };
-		8D5BA34B25CB08B800755F7D /* Search.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2C725CB08B700755F7D /* Search.pbobjc.h */; };
-		8D5BA34C25CB08B800755F7D /* SequenceAndUpdates.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2C825CB08B700755F7D /* SequenceAndUpdates.pbrpc.m */; };
-		8D5BA34D25CB08B800755F7D /* Threads.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2C925CB08B700755F7D /* Threads.pbrpc.m */; };
-		8D5BA34E25CB08B800755F7D /* MediaAndFiles.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2CA25CB08B700755F7D /* MediaAndFiles.pbobjc.m */; };
-		8D5BA34F25CB08B800755F7D /* Counters.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2CB25CB08B700755F7D /* Counters.pbobjc.m */; };
-		8D5BA35025CB08B800755F7D /* Scalapb.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2CC25CB08B700755F7D /* Scalapb.pbobjc.h */; };
-		8D5BA35125CB08B800755F7D /* Permissions.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2CD25CB08B700755F7D /* Permissions.pbrpc.m */; };
-		8D5BA35225CB08B800755F7D /* ConfigSync.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2CE25CB08B700755F7D /* ConfigSync.pbobjc.h */; };
-		8D5BA35325CB08B800755F7D /* Authentication.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2CF25CB08B700755F7D /* Authentication.pbobjc.m */; };
-		8D5BA35425CB08B800755F7D /* Integrations.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2D025CB08B700755F7D /* Integrations.pbobjc.h */; };
-		8D5BA35525CB08B800755F7D /* Authentication.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2D125CB08B700755F7D /* Authentication.pbrpc.m */; };
-		8D5BA35625CB08B800755F7D /* Contacts.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2D225CB08B700755F7D /* Contacts.pbobjc.m */; };
-		8D5BA35725CB08B800755F7D /* Presence.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2D325CB08B700755F7D /* Presence.pbobjc.h */; };
-		8D5BA35825CB08B800755F7D /* Groups.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2D425CB08B700755F7D /* Groups.pbobjc.h */; };
-		8D5BA35925CB08B800755F7D /* Crypto.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2D525CB08B700755F7D /* Crypto.pbrpc.m */; };
-		8D5BA35A25CB08B800755F7D /* Integrations.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2D625CB08B700755F7D /* Integrations.pbrpc.m */; };
-		8D5BA35B25CB08B800755F7D /* GatewayService.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2D725CB08B700755F7D /* GatewayService.pbobjc.h */; };
-		8D5BA35C25CB08B800755F7D /* Stickers.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2D825CB08B700755F7D /* Stickers.pbrpc.h */; };
-		8D5BA35D25CB08B800755F7D /* Crypto.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2D925CB08B700755F7D /* Crypto.pbobjc.h */; };
-		8D5BA35E25CB08B800755F7D /* Threads.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2DA25CB08B700755F7D /* Threads.pbobjc.h */; };
-		8D5BA35F25CB08B800755F7D /* DeviceInfo.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2DB25CB08B700755F7D /* DeviceInfo.pbobjc.h */; };
-		8D5BA36025CB08B800755F7D /* Miniappsregistry.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2DC25CB08B700755F7D /* Miniappsregistry.pbobjc.h */; };
-		8D5BA36125CB08B800755F7D /* Push.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2DD25CB08B700755F7D /* Push.pbrpc.h */; };
-		8D5BA36225CB08B800755F7D /* Search.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2DE25CB08B700755F7D /* Search.pbrpc.m */; };
-		8D5BA36325CB08B800755F7D /* Registration.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2DF25CB08B700755F7D /* Registration.pbrpc.h */; };
-		8D5BA36425CB08B800755F7D /* DeviceInfo.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2E025CB08B700755F7D /* DeviceInfo.pbrpc.m */; };
-		8D5BA36525CB08B800755F7D /* Obsolete.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2E125CB08B700755F7D /* Obsolete.pbobjc.m */; };
-		8D5BA36625CB08B800755F7D /* Reactions.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2E225CB08B700755F7D /* Reactions.pbobjc.h */; };
-		8D5BA36725CB08B800755F7D /* PushContent.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2E325CB08B700755F7D /* PushContent.pbobjc.h */; };
-		8D5BA36825CB08B800755F7D /* SequenceAndUpdates.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2E425CB08B700755F7D /* SequenceAndUpdates.pbobjc.h */; };
-		8D5BA36925CB08B800755F7D /* Miniappsregistry.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2E525CB08B700755F7D /* Miniappsregistry.pbrpc.m */; };
-		8D5BA36A25CB08B800755F7D /* Users.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2E625CB08B700755F7D /* Users.pbrpc.h */; };
-		8D5BA36B25CB08B800755F7D /* Presence.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2E725CB08B700755F7D /* Presence.pbrpc.m */; };
-		8D5BA36C25CB08B800755F7D /* Profile.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2E825CB08B700755F7D /* Profile.pbrpc.h */; };
-		8D5BA36D25CB08B800755F7D /* Privacy.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2E925CB08B700755F7D /* Privacy.pbrpc.m */; };
-		8D5BA36E25CB08B800755F7D /* Messaging.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2EA25CB08B700755F7D /* Messaging.pbrpc.h */; };
-		8D5BA36F25CB08B800755F7D /* Permissions.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2EB25CB08B700755F7D /* Permissions.pbobjc.h */; };
-		8D5BA37025CB08B800755F7D /* Profile.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2EC25CB08B700755F7D /* Profile.pbobjc.h */; };
-		8D5BA37125CB08B800755F7D /* Definitions.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2ED25CB08B700755F7D /* Definitions.pbobjc.h */; };
-		8D5BA37225CB08B800755F7D /* WebRtc.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2EE25CB08B700755F7D /* WebRtc.pbobjc.m */; };
-		8D5BA37325CB08B800755F7D /* Spaces.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2EF25CB08B700755F7D /* Spaces.pbrpc.m */; };
-		8D5BA37425CB08B800755F7D /* Groups.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2F025CB08B700755F7D /* Groups.pbrpc.h */; };
-		8D5BA37525CB08B800755F7D /* Descriptor.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2F125CB08B700755F7D /* Descriptor.pbobjc.h */; };
-		8D5BA37625CB08B800755F7D /* Obsolete.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2F225CB08B700755F7D /* Obsolete.pbrpc.h */; };
-		8D5BA37725CB08B800755F7D /* Peers.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2F325CB08B700755F7D /* Peers.pbobjc.h */; };
-		8D5BA37825CB08B800755F7D /* Annotations.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2F425CB08B700755F7D /* Annotations.pbobjc.h */; };
-		8D5BA37925CB08B800755F7D /* Clickroad.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2F525CB08B800755F7D /* Clickroad.pbobjc.m */; };
-		8D5BA37A25CB08B800755F7D /* Spaces.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2F625CB08B800755F7D /* Spaces.pbobjc.m */; };
-		8D5BA37B25CB08B800755F7D /* Contacts.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2F725CB08B800755F7D /* Contacts.pbrpc.h */; };
-		8D5BA37C25CB08B800755F7D /* HTTP.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2F825CB08B800755F7D /* HTTP.pbobjc.h */; };
-		8D5BA37D25CB08B800755F7D /* SequenceAndUpdates.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2F925CB08B800755F7D /* SequenceAndUpdates.pbrpc.h */; };
-		8D5BA37E25CB08B800755F7D /* Threads.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA2FA25CB08B800755F7D /* Threads.pbrpc.h */; };
-		8D5BA37F25CB08B800755F7D /* Search.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2FB25CB08B800755F7D /* Search.pbobjc.m */; };
-		8D5BA38025CB08B800755F7D /* RawApi.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2FC25CB08B800755F7D /* RawApi.pbobjc.m */; };
-		8D5BA38125CB08B800755F7D /* WebRtc.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2FD25CB08B800755F7D /* WebRtc.pbrpc.m */; };
-		8D5BA38225CB08B800755F7D /* Push.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2FE25CB08B800755F7D /* Push.pbobjc.m */; };
-		8D5BA38325CB08B800755F7D /* Privacy.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA2FF25CB08B800755F7D /* Privacy.pbobjc.m */; };
-		8D5BA38425CB08B800755F7D /* Users.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA30025CB08B800755F7D /* Users.pbobjc.h */; };
-		8D5BA38525CB08B800755F7D /* Stickers.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA30125CB08B800755F7D /* Stickers.pbobjc.h */; };
-		8D5BA38625CB08B800755F7D /* Registration.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA30225CB08B800755F7D /* Registration.pbobjc.m */; };
-		8D5BA38725CB08B800755F7D /* EventBus.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA30325CB08B800755F7D /* EventBus.pbrpc.m */; };
-		8D5BA38825CB08B800755F7D /* Reactions.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA30425CB08B800755F7D /* Reactions.pbrpc.h */; };
-		8D5BA38925CB08B800755F7D /* EventBus.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA30525CB08B800755F7D /* EventBus.pbobjc.h */; };
-		8D5BA38A25CB08B800755F7D /* RawApi.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA30625CB08B800755F7D /* RawApi.pbrpc.m */; };
-		8D5BA38B25CB08B800755F7D /* Clickroad.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA30725CB08B800755F7D /* Clickroad.pbrpc.m */; };
-		8D5BA38C25CB08B900755F7D /* ConfigSync.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA30825CB08B800755F7D /* ConfigSync.pbrpc.m */; };
-		8D5BA38D25CB08B900755F7D /* Miscellaneous.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA30925CB08B800755F7D /* Miscellaneous.pbobjc.h */; };
-		8D5BA38E25CB08B900755F7D /* MediaAndFiles.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA30A25CB08B800755F7D /* MediaAndFiles.pbrpc.h */; };
-		8D5BA38F25CB08B900755F7D /* Messaging.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA30B25CB08B800755F7D /* Messaging.pbobjc.m */; };
-		8D5BA39025CB08B900755F7D /* Crypto.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA30C25CB08B800755F7D /* Crypto.pbobjc.m */; };
-		8D5BA39125CB08B900755F7D /* Stickers.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA30D25CB08B800755F7D /* Stickers.pbrpc.m */; };
-		8D5BA39225CB08B900755F7D /* GatewayService.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA30E25CB08B800755F7D /* GatewayService.pbobjc.m */; };
-		8D5BA39325CB08B900755F7D /* Integrations.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA30F25CB08B800755F7D /* Integrations.pbrpc.h */; };
-		8D5BA39425CB08B900755F7D /* Crypto.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA31025CB08B800755F7D /* Crypto.pbrpc.h */; };
-		8D5BA39525CB08B900755F7D /* Presence.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA31125CB08B800755F7D /* Presence.pbobjc.m */; };
-		8D5BA39625CB08B900755F7D /* Groups.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA31225CB08B800755F7D /* Groups.pbobjc.m */; };
-		8D5BA39725CB08B900755F7D /* Contacts.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA31325CB08B800755F7D /* Contacts.pbobjc.h */; };
-		8D5BA39825CB08B900755F7D /* Integrations.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA31425CB08B800755F7D /* Integrations.pbobjc.m */; };
-		8D5BA39925CB08B900755F7D /* Authentication.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA31525CB08B800755F7D /* Authentication.pbrpc.h */; };
-		8D5BA39A25CB08B900755F7D /* ConfigSync.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA31625CB08B800755F7D /* ConfigSync.pbobjc.m */; };
-		8D5BA39B25CB08B900755F7D /* Scalapb.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA31725CB08B800755F7D /* Scalapb.pbobjc.m */; };
-		8D5BA39C25CB08B900755F7D /* Permissions.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA31825CB08B800755F7D /* Permissions.pbrpc.h */; };
-		8D5BA39D25CB08B900755F7D /* Authentication.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA31925CB08B800755F7D /* Authentication.pbobjc.h */; };
-		8D5BA39E25CB08B900755F7D /* Counters.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA31A25CB08B800755F7D /* Counters.pbobjc.h */; };
-		8D5BA39F25CB08B900755F7D /* MediaAndFiles.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA31B25CB08B800755F7D /* MediaAndFiles.pbobjc.h */; };
-		8D5BA3A025CB08B900755F7D /* Profile.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA31C25CB08B800755F7D /* Profile.pbobjc.m */; };
-		8D5BA3A125CB08B900755F7D /* Permissions.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA31D25CB08B800755F7D /* Permissions.pbobjc.m */; };
-		8D5BA3A225CB08B900755F7D /* Messaging.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA31E25CB08B800755F7D /* Messaging.pbrpc.m */; };
-		8D5BA3A325CB08B900755F7D /* Profile.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA31F25CB08B800755F7D /* Profile.pbrpc.m */; };
-		8D5BA3A425CB08B900755F7D /* Privacy.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA32025CB08B800755F7D /* Privacy.pbrpc.h */; };
-		8D5BA3A525CB08B900755F7D /* Users.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA32125CB08B800755F7D /* Users.pbrpc.m */; };
-		8D5BA3A625CB08B900755F7D /* Presence.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA32225CB08B800755F7D /* Presence.pbrpc.h */; };
-		8D5BA3A725CB08B900755F7D /* SequenceAndUpdates.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA32325CB08B800755F7D /* SequenceAndUpdates.pbobjc.m */; };
-		8D5BA3A825CB08B900755F7D /* Miniappsregistry.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA32425CB08B800755F7D /* Miniappsregistry.pbrpc.h */; };
-		8D5BA3A925CB08B900755F7D /* PushContent.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA32525CB08B800755F7D /* PushContent.pbobjc.m */; };
-		8D5BA3AA25CB08B900755F7D /* Obsolete.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA32625CB08B800755F7D /* Obsolete.pbobjc.h */; };
-		8D5BA3AB25CB08B900755F7D /* Reactions.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA32725CB08B800755F7D /* Reactions.pbobjc.m */; };
-		8D5BA3AC25CB08B900755F7D /* DeviceInfo.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA32825CB08B800755F7D /* DeviceInfo.pbrpc.h */; };
-		8D5BA3AD25CB08B900755F7D /* Push.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA32925CB08B800755F7D /* Push.pbrpc.m */; };
-		8D5BA3AE25CB08B900755F7D /* Search.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA32A25CB08B800755F7D /* Search.pbrpc.h */; };
-		8D5BA3AF25CB08B900755F7D /* Registration.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA32B25CB08B800755F7D /* Registration.pbrpc.m */; };
-		8D5BA3B025CB08B900755F7D /* Miniappsregistry.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA32C25CB08B800755F7D /* Miniappsregistry.pbobjc.m */; };
-		8D5BA3B125CB08B900755F7D /* Threads.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA32D25CB08B800755F7D /* Threads.pbobjc.m */; };
-		8D5BA3B225CB08B900755F7D /* DeviceInfo.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA32E25CB08B800755F7D /* DeviceInfo.pbobjc.m */; };
-		8D5BA3B325CB08B900755F7D /* HTTP.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA32F25CB08B800755F7D /* HTTP.pbobjc.m */; };
-		8D5BA3B425CB08B900755F7D /* Contacts.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA33025CB08B800755F7D /* Contacts.pbrpc.m */; };
-		8D5BA3B525CB08B900755F7D /* Clickroad.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA33125CB08B800755F7D /* Clickroad.pbobjc.h */; };
-		8D5BA3B625CB08B900755F7D /* Spaces.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA33225CB08B800755F7D /* Spaces.pbobjc.h */; };
-		8D5BA3B725CB08B900755F7D /* Annotations.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA33325CB08B800755F7D /* Annotations.pbobjc.m */; };
-		8D5BA3B825CB08B900755F7D /* Peers.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA33425CB08B800755F7D /* Peers.pbobjc.m */; };
-		8D5BA3B925CB08B900755F7D /* Obsolete.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA33525CB08B800755F7D /* Obsolete.pbrpc.m */; };
-		8D5BA3BA25CB08B900755F7D /* Descriptor.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA33625CB08B800755F7D /* Descriptor.pbobjc.m */; };
-		8D5BA3BB25CB08B900755F7D /* Groups.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA33725CB08B800755F7D /* Groups.pbrpc.m */; };
-		8D5BA3BC25CB08B900755F7D /* Spaces.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA33825CB08B800755F7D /* Spaces.pbrpc.h */; };
-		8D5BA3BD25CB08B900755F7D /* WebRtc.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA33925CB08B800755F7D /* WebRtc.pbobjc.h */; };
-		8D5BA3BE25CB08B900755F7D /* Definitions.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA33A25CB08B800755F7D /* Definitions.pbobjc.m */; };
+		A05D92E1443AC674AEA194C6 /* Pods_DialogGRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B2FE4B8107371DDED54CE77 /* Pods_DialogGRPC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B2FE4B8107371DDED54CE77 /* Pods_DialogGRPC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DialogGRPC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5BA12525CADA8200755F7D /* DialogGRPC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DialogGRPC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5BA12825CADA8200755F7D /* DialogGRPC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DialogGRPC.h; sourceTree = "<group>"; };
 		8D5BA12925CADA8200755F7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -154,140 +23,7 @@
 		8D5BA17225CAF67800755F7D /* libgRPC-ProtoRPC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libgRPC-ProtoRPC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5BA17325CAF67800755F7D /* libgRPC-RxLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libgRPC-RxLibrary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5BA17425CAF67800755F7D /* libgRPC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgRPC.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D5BA2B725CB08B700755F7D /* MediaAndFiles.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaAndFiles.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2B825CB08B700755F7D /* Messaging.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Messaging.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2B925CB08B700755F7D /* Miscellaneous.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Miscellaneous.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2BA25CB08B700755F7D /* ConfigSync.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigSync.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2BB25CB08B700755F7D /* Clickroad.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clickroad.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2BC25CB08B700755F7D /* RawApi.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RawApi.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2BD25CB08B700755F7D /* EventBus.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventBus.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2BE25CB08B700755F7D /* EventBus.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventBus.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2BF25CB08B700755F7D /* Reactions.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reactions.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2C025CB08B700755F7D /* Registration.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Registration.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2C125CB08B700755F7D /* Push.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Push.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2C225CB08B700755F7D /* Privacy.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Privacy.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2C325CB08B700755F7D /* Stickers.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stickers.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2C425CB08B700755F7D /* Users.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Users.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2C525CB08B700755F7D /* WebRtc.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebRtc.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2C625CB08B700755F7D /* RawApi.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RawApi.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2C725CB08B700755F7D /* Search.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Search.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2C825CB08B700755F7D /* SequenceAndUpdates.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequenceAndUpdates.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2C925CB08B700755F7D /* Threads.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Threads.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2CA25CB08B700755F7D /* MediaAndFiles.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaAndFiles.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2CB25CB08B700755F7D /* Counters.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Counters.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2CC25CB08B700755F7D /* Scalapb.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scalapb.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2CD25CB08B700755F7D /* Permissions.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Permissions.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2CE25CB08B700755F7D /* ConfigSync.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigSync.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2CF25CB08B700755F7D /* Authentication.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Authentication.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2D025CB08B700755F7D /* Integrations.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Integrations.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2D125CB08B700755F7D /* Authentication.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Authentication.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2D225CB08B700755F7D /* Contacts.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contacts.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2D325CB08B700755F7D /* Presence.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Presence.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2D425CB08B700755F7D /* Groups.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Groups.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2D525CB08B700755F7D /* Crypto.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Crypto.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2D625CB08B700755F7D /* Integrations.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Integrations.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2D725CB08B700755F7D /* GatewayService.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GatewayService.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2D825CB08B700755F7D /* Stickers.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stickers.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2D925CB08B700755F7D /* Crypto.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crypto.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2DA25CB08B700755F7D /* Threads.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Threads.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2DB25CB08B700755F7D /* DeviceInfo.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInfo.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2DC25CB08B700755F7D /* Miniappsregistry.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Miniappsregistry.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2DD25CB08B700755F7D /* Push.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Push.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2DE25CB08B700755F7D /* Search.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Search.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2DF25CB08B700755F7D /* Registration.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Registration.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2E025CB08B700755F7D /* DeviceInfo.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceInfo.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2E125CB08B700755F7D /* Obsolete.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Obsolete.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2E225CB08B700755F7D /* Reactions.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reactions.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2E325CB08B700755F7D /* PushContent.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushContent.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2E425CB08B700755F7D /* SequenceAndUpdates.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequenceAndUpdates.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2E525CB08B700755F7D /* Miniappsregistry.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Miniappsregistry.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2E625CB08B700755F7D /* Users.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Users.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2E725CB08B700755F7D /* Presence.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Presence.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2E825CB08B700755F7D /* Profile.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2E925CB08B700755F7D /* Privacy.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Privacy.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2EA25CB08B700755F7D /* Messaging.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Messaging.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2EB25CB08B700755F7D /* Permissions.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Permissions.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2EC25CB08B700755F7D /* Profile.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2ED25CB08B700755F7D /* Definitions.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definitions.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2EE25CB08B700755F7D /* WebRtc.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebRtc.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2EF25CB08B700755F7D /* Spaces.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spaces.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2F025CB08B700755F7D /* Groups.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Groups.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2F125CB08B700755F7D /* Descriptor.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Descriptor.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2F225CB08B700755F7D /* Obsolete.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obsolete.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2F325CB08B700755F7D /* Peers.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peers.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2F425CB08B700755F7D /* Annotations.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotations.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2F525CB08B800755F7D /* Clickroad.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clickroad.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2F625CB08B800755F7D /* Spaces.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spaces.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2F725CB08B800755F7D /* Contacts.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contacts.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2F825CB08B800755F7D /* HTTP.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTP.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA2F925CB08B800755F7D /* SequenceAndUpdates.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequenceAndUpdates.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2FA25CB08B800755F7D /* Threads.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Threads.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA2FB25CB08B800755F7D /* Search.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Search.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2FC25CB08B800755F7D /* RawApi.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RawApi.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2FD25CB08B800755F7D /* WebRtc.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebRtc.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA2FE25CB08B800755F7D /* Push.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Push.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA2FF25CB08B800755F7D /* Privacy.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Privacy.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA30025CB08B800755F7D /* Users.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Users.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA30125CB08B800755F7D /* Stickers.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stickers.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA30225CB08B800755F7D /* Registration.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Registration.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA30325CB08B800755F7D /* EventBus.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventBus.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA30425CB08B800755F7D /* Reactions.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reactions.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA30525CB08B800755F7D /* EventBus.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventBus.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA30625CB08B800755F7D /* RawApi.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RawApi.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA30725CB08B800755F7D /* Clickroad.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clickroad.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA30825CB08B800755F7D /* ConfigSync.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigSync.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA30925CB08B800755F7D /* Miscellaneous.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Miscellaneous.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA30A25CB08B800755F7D /* MediaAndFiles.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaAndFiles.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA30B25CB08B800755F7D /* Messaging.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Messaging.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA30C25CB08B800755F7D /* Crypto.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Crypto.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA30D25CB08B800755F7D /* Stickers.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stickers.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA30E25CB08B800755F7D /* GatewayService.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatewayService.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA30F25CB08B800755F7D /* Integrations.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Integrations.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA31025CB08B800755F7D /* Crypto.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crypto.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA31125CB08B800755F7D /* Presence.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Presence.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA31225CB08B800755F7D /* Groups.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Groups.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA31325CB08B800755F7D /* Contacts.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contacts.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA31425CB08B800755F7D /* Integrations.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Integrations.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA31525CB08B800755F7D /* Authentication.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Authentication.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA31625CB08B800755F7D /* ConfigSync.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigSync.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA31725CB08B800755F7D /* Scalapb.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scalapb.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA31825CB08B800755F7D /* Permissions.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Permissions.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA31925CB08B800755F7D /* Authentication.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Authentication.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA31A25CB08B800755F7D /* Counters.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Counters.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA31B25CB08B800755F7D /* MediaAndFiles.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaAndFiles.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA31C25CB08B800755F7D /* Profile.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA31D25CB08B800755F7D /* Permissions.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Permissions.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA31E25CB08B800755F7D /* Messaging.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Messaging.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA31F25CB08B800755F7D /* Profile.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA32025CB08B800755F7D /* Privacy.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Privacy.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA32125CB08B800755F7D /* Users.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Users.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA32225CB08B800755F7D /* Presence.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Presence.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA32325CB08B800755F7D /* SequenceAndUpdates.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequenceAndUpdates.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA32425CB08B800755F7D /* Miniappsregistry.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Miniappsregistry.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA32525CB08B800755F7D /* PushContent.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushContent.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA32625CB08B800755F7D /* Obsolete.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obsolete.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA32725CB08B800755F7D /* Reactions.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reactions.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA32825CB08B800755F7D /* DeviceInfo.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInfo.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA32925CB08B800755F7D /* Push.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Push.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA32A25CB08B800755F7D /* Search.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Search.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA32B25CB08B800755F7D /* Registration.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Registration.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA32C25CB08B800755F7D /* Miniappsregistry.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Miniappsregistry.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA32D25CB08B800755F7D /* Threads.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Threads.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA32E25CB08B800755F7D /* DeviceInfo.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceInfo.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA32F25CB08B800755F7D /* HTTP.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTP.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA33025CB08B800755F7D /* Contacts.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contacts.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA33125CB08B800755F7D /* Clickroad.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clickroad.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA33225CB08B800755F7D /* Spaces.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spaces.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA33325CB08B800755F7D /* Annotations.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotations.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA33425CB08B800755F7D /* Peers.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Peers.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA33525CB08B800755F7D /* Obsolete.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Obsolete.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA33625CB08B800755F7D /* Descriptor.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Descriptor.pbobjc.m; sourceTree = "<group>"; };
-		8D5BA33725CB08B800755F7D /* Groups.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Groups.pbrpc.m; sourceTree = "<group>"; };
-		8D5BA33825CB08B800755F7D /* Spaces.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spaces.pbrpc.h; sourceTree = "<group>"; };
-		8D5BA33925CB08B800755F7D /* WebRtc.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebRtc.pbobjc.h; sourceTree = "<group>"; };
-		8D5BA33A25CB08B800755F7D /* Definitions.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Definitions.pbobjc.m; sourceTree = "<group>"; };
 		BA79644B5313ECB40F83C754 /* Pods-DialogGRPC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DialogGRPC.debug.xcconfig"; path = "Target Support Files/Pods-DialogGRPC/Pods-DialogGRPC.debug.xcconfig"; sourceTree = "<group>"; };
-		C56F398917E5D49146973476 /* libPods-DialogGRPC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DialogGRPC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1B771A7D9852EACD3183446 /* Pods-DialogGRPC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DialogGRPC.release.xcconfig"; path = "Target Support Files/Pods-DialogGRPC/Pods-DialogGRPC.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -296,7 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81A3ADCC019EAFDBF02EEF78 /* libPods-DialogGRPC.a in Frameworks */,
+				A05D92E1443AC674AEA194C6 /* Pods_DialogGRPC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +49,7 @@
 				8D5BA17225CAF67800755F7D /* libgRPC-ProtoRPC.a */,
 				8D5BA17325CAF67800755F7D /* libgRPC-RxLibrary.a */,
 				8D5BA17425CAF67800755F7D /* libgRPC.a */,
-				C56F398917E5D49146973476 /* libPods-DialogGRPC.a */,
+				4B2FE4B8107371DDED54CE77 /* Pods_DialogGRPC.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -339,150 +75,10 @@
 		8D5BA12725CADA8200755F7D /* DialogGRPC */ = {
 			isa = PBXGroup;
 			children = (
-				8D5BA2B625CB08B700755F7D /* Sources */,
 				8D5BA12825CADA8200755F7D /* DialogGRPC.h */,
 				8D5BA12925CADA8200755F7D /* Info.plist */,
 			);
 			path = DialogGRPC;
-			sourceTree = "<group>";
-		};
-		8D5BA2B625CB08B700755F7D /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				8D5BA2B725CB08B700755F7D /* MediaAndFiles.pbrpc.m */,
-				8D5BA2B825CB08B700755F7D /* Messaging.pbobjc.h */,
-				8D5BA2B925CB08B700755F7D /* Miscellaneous.pbobjc.m */,
-				8D5BA2BA25CB08B700755F7D /* ConfigSync.pbrpc.h */,
-				8D5BA2BB25CB08B700755F7D /* Clickroad.pbrpc.h */,
-				8D5BA2BC25CB08B700755F7D /* RawApi.pbrpc.h */,
-				8D5BA2BD25CB08B700755F7D /* EventBus.pbobjc.m */,
-				8D5BA2BE25CB08B700755F7D /* EventBus.pbrpc.h */,
-				8D5BA2BF25CB08B700755F7D /* Reactions.pbrpc.m */,
-				8D5BA2C025CB08B700755F7D /* Registration.pbobjc.h */,
-				8D5BA2C125CB08B700755F7D /* Push.pbobjc.h */,
-				8D5BA2C225CB08B700755F7D /* Privacy.pbobjc.h */,
-				8D5BA2C325CB08B700755F7D /* Stickers.pbobjc.m */,
-				8D5BA2C425CB08B700755F7D /* Users.pbobjc.m */,
-				8D5BA2C525CB08B700755F7D /* WebRtc.pbrpc.h */,
-				8D5BA2C625CB08B700755F7D /* RawApi.pbobjc.h */,
-				8D5BA2C725CB08B700755F7D /* Search.pbobjc.h */,
-				8D5BA2C825CB08B700755F7D /* SequenceAndUpdates.pbrpc.m */,
-				8D5BA2C925CB08B700755F7D /* Threads.pbrpc.m */,
-				8D5BA2CA25CB08B700755F7D /* MediaAndFiles.pbobjc.m */,
-				8D5BA2CB25CB08B700755F7D /* Counters.pbobjc.m */,
-				8D5BA2CC25CB08B700755F7D /* Scalapb.pbobjc.h */,
-				8D5BA2CD25CB08B700755F7D /* Permissions.pbrpc.m */,
-				8D5BA2CE25CB08B700755F7D /* ConfigSync.pbobjc.h */,
-				8D5BA2CF25CB08B700755F7D /* Authentication.pbobjc.m */,
-				8D5BA2D025CB08B700755F7D /* Integrations.pbobjc.h */,
-				8D5BA2D125CB08B700755F7D /* Authentication.pbrpc.m */,
-				8D5BA2D225CB08B700755F7D /* Contacts.pbobjc.m */,
-				8D5BA2D325CB08B700755F7D /* Presence.pbobjc.h */,
-				8D5BA2D425CB08B700755F7D /* Groups.pbobjc.h */,
-				8D5BA2D525CB08B700755F7D /* Crypto.pbrpc.m */,
-				8D5BA2D625CB08B700755F7D /* Integrations.pbrpc.m */,
-				8D5BA2D725CB08B700755F7D /* GatewayService.pbobjc.h */,
-				8D5BA2D825CB08B700755F7D /* Stickers.pbrpc.h */,
-				8D5BA2D925CB08B700755F7D /* Crypto.pbobjc.h */,
-				8D5BA2DA25CB08B700755F7D /* Threads.pbobjc.h */,
-				8D5BA2DB25CB08B700755F7D /* DeviceInfo.pbobjc.h */,
-				8D5BA2DC25CB08B700755F7D /* Miniappsregistry.pbobjc.h */,
-				8D5BA2DD25CB08B700755F7D /* Push.pbrpc.h */,
-				8D5BA2DE25CB08B700755F7D /* Search.pbrpc.m */,
-				8D5BA2DF25CB08B700755F7D /* Registration.pbrpc.h */,
-				8D5BA2E025CB08B700755F7D /* DeviceInfo.pbrpc.m */,
-				8D5BA2E125CB08B700755F7D /* Obsolete.pbobjc.m */,
-				8D5BA2E225CB08B700755F7D /* Reactions.pbobjc.h */,
-				8D5BA2E325CB08B700755F7D /* PushContent.pbobjc.h */,
-				8D5BA2E425CB08B700755F7D /* SequenceAndUpdates.pbobjc.h */,
-				8D5BA2E525CB08B700755F7D /* Miniappsregistry.pbrpc.m */,
-				8D5BA2E625CB08B700755F7D /* Users.pbrpc.h */,
-				8D5BA2E725CB08B700755F7D /* Presence.pbrpc.m */,
-				8D5BA2E825CB08B700755F7D /* Profile.pbrpc.h */,
-				8D5BA2E925CB08B700755F7D /* Privacy.pbrpc.m */,
-				8D5BA2EA25CB08B700755F7D /* Messaging.pbrpc.h */,
-				8D5BA2EB25CB08B700755F7D /* Permissions.pbobjc.h */,
-				8D5BA2EC25CB08B700755F7D /* Profile.pbobjc.h */,
-				8D5BA2ED25CB08B700755F7D /* Definitions.pbobjc.h */,
-				8D5BA2EE25CB08B700755F7D /* WebRtc.pbobjc.m */,
-				8D5BA2EF25CB08B700755F7D /* Spaces.pbrpc.m */,
-				8D5BA2F025CB08B700755F7D /* Groups.pbrpc.h */,
-				8D5BA2F125CB08B700755F7D /* Descriptor.pbobjc.h */,
-				8D5BA2F225CB08B700755F7D /* Obsolete.pbrpc.h */,
-				8D5BA2F325CB08B700755F7D /* Peers.pbobjc.h */,
-				8D5BA2F425CB08B700755F7D /* Annotations.pbobjc.h */,
-				8D5BA2F525CB08B800755F7D /* Clickroad.pbobjc.m */,
-				8D5BA2F625CB08B800755F7D /* Spaces.pbobjc.m */,
-				8D5BA2F725CB08B800755F7D /* Contacts.pbrpc.h */,
-				8D5BA2F825CB08B800755F7D /* HTTP.pbobjc.h */,
-				8D5BA2F925CB08B800755F7D /* SequenceAndUpdates.pbrpc.h */,
-				8D5BA2FA25CB08B800755F7D /* Threads.pbrpc.h */,
-				8D5BA2FB25CB08B800755F7D /* Search.pbobjc.m */,
-				8D5BA2FC25CB08B800755F7D /* RawApi.pbobjc.m */,
-				8D5BA2FD25CB08B800755F7D /* WebRtc.pbrpc.m */,
-				8D5BA2FE25CB08B800755F7D /* Push.pbobjc.m */,
-				8D5BA2FF25CB08B800755F7D /* Privacy.pbobjc.m */,
-				8D5BA30025CB08B800755F7D /* Users.pbobjc.h */,
-				8D5BA30125CB08B800755F7D /* Stickers.pbobjc.h */,
-				8D5BA30225CB08B800755F7D /* Registration.pbobjc.m */,
-				8D5BA30325CB08B800755F7D /* EventBus.pbrpc.m */,
-				8D5BA30425CB08B800755F7D /* Reactions.pbrpc.h */,
-				8D5BA30525CB08B800755F7D /* EventBus.pbobjc.h */,
-				8D5BA30625CB08B800755F7D /* RawApi.pbrpc.m */,
-				8D5BA30725CB08B800755F7D /* Clickroad.pbrpc.m */,
-				8D5BA30825CB08B800755F7D /* ConfigSync.pbrpc.m */,
-				8D5BA30925CB08B800755F7D /* Miscellaneous.pbobjc.h */,
-				8D5BA30A25CB08B800755F7D /* MediaAndFiles.pbrpc.h */,
-				8D5BA30B25CB08B800755F7D /* Messaging.pbobjc.m */,
-				8D5BA30C25CB08B800755F7D /* Crypto.pbobjc.m */,
-				8D5BA30D25CB08B800755F7D /* Stickers.pbrpc.m */,
-				8D5BA30E25CB08B800755F7D /* GatewayService.pbobjc.m */,
-				8D5BA30F25CB08B800755F7D /* Integrations.pbrpc.h */,
-				8D5BA31025CB08B800755F7D /* Crypto.pbrpc.h */,
-				8D5BA31125CB08B800755F7D /* Presence.pbobjc.m */,
-				8D5BA31225CB08B800755F7D /* Groups.pbobjc.m */,
-				8D5BA31325CB08B800755F7D /* Contacts.pbobjc.h */,
-				8D5BA31425CB08B800755F7D /* Integrations.pbobjc.m */,
-				8D5BA31525CB08B800755F7D /* Authentication.pbrpc.h */,
-				8D5BA31625CB08B800755F7D /* ConfigSync.pbobjc.m */,
-				8D5BA31725CB08B800755F7D /* Scalapb.pbobjc.m */,
-				8D5BA31825CB08B800755F7D /* Permissions.pbrpc.h */,
-				8D5BA31925CB08B800755F7D /* Authentication.pbobjc.h */,
-				8D5BA31A25CB08B800755F7D /* Counters.pbobjc.h */,
-				8D5BA31B25CB08B800755F7D /* MediaAndFiles.pbobjc.h */,
-				8D5BA31C25CB08B800755F7D /* Profile.pbobjc.m */,
-				8D5BA31D25CB08B800755F7D /* Permissions.pbobjc.m */,
-				8D5BA31E25CB08B800755F7D /* Messaging.pbrpc.m */,
-				8D5BA31F25CB08B800755F7D /* Profile.pbrpc.m */,
-				8D5BA32025CB08B800755F7D /* Privacy.pbrpc.h */,
-				8D5BA32125CB08B800755F7D /* Users.pbrpc.m */,
-				8D5BA32225CB08B800755F7D /* Presence.pbrpc.h */,
-				8D5BA32325CB08B800755F7D /* SequenceAndUpdates.pbobjc.m */,
-				8D5BA32425CB08B800755F7D /* Miniappsregistry.pbrpc.h */,
-				8D5BA32525CB08B800755F7D /* PushContent.pbobjc.m */,
-				8D5BA32625CB08B800755F7D /* Obsolete.pbobjc.h */,
-				8D5BA32725CB08B800755F7D /* Reactions.pbobjc.m */,
-				8D5BA32825CB08B800755F7D /* DeviceInfo.pbrpc.h */,
-				8D5BA32925CB08B800755F7D /* Push.pbrpc.m */,
-				8D5BA32A25CB08B800755F7D /* Search.pbrpc.h */,
-				8D5BA32B25CB08B800755F7D /* Registration.pbrpc.m */,
-				8D5BA32C25CB08B800755F7D /* Miniappsregistry.pbobjc.m */,
-				8D5BA32D25CB08B800755F7D /* Threads.pbobjc.m */,
-				8D5BA32E25CB08B800755F7D /* DeviceInfo.pbobjc.m */,
-				8D5BA32F25CB08B800755F7D /* HTTP.pbobjc.m */,
-				8D5BA33025CB08B800755F7D /* Contacts.pbrpc.m */,
-				8D5BA33125CB08B800755F7D /* Clickroad.pbobjc.h */,
-				8D5BA33225CB08B800755F7D /* Spaces.pbobjc.h */,
-				8D5BA33325CB08B800755F7D /* Annotations.pbobjc.m */,
-				8D5BA33425CB08B800755F7D /* Peers.pbobjc.m */,
-				8D5BA33525CB08B800755F7D /* Obsolete.pbrpc.m */,
-				8D5BA33625CB08B800755F7D /* Descriptor.pbobjc.m */,
-				8D5BA33725CB08B800755F7D /* Groups.pbrpc.m */,
-				8D5BA33825CB08B800755F7D /* Spaces.pbrpc.h */,
-				8D5BA33925CB08B800755F7D /* WebRtc.pbobjc.h */,
-				8D5BA33A25CB08B800755F7D /* Definitions.pbobjc.m */,
-			);
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		905051DB27A91EB73A64F72F /* Pods */ = {
@@ -501,73 +97,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D5BA38825CB08B800755F7D /* Reactions.pbrpc.h in Headers */,
-				8D5BA38525CB08B800755F7D /* Stickers.pbobjc.h in Headers */,
-				8D5BA37625CB08B800755F7D /* Obsolete.pbrpc.h in Headers */,
-				8D5BA36725CB08B800755F7D /* PushContent.pbobjc.h in Headers */,
-				8D5BA35B25CB08B800755F7D /* GatewayService.pbobjc.h in Headers */,
-				8D5BA36025CB08B800755F7D /* Miniappsregistry.pbobjc.h in Headers */,
-				8D5BA36A25CB08B800755F7D /* Users.pbrpc.h in Headers */,
-				8D5BA36F25CB08B800755F7D /* Permissions.pbobjc.h in Headers */,
-				8D5BA39D25CB08B900755F7D /* Authentication.pbobjc.h in Headers */,
-				8D5BA35225CB08B800755F7D /* ConfigSync.pbobjc.h in Headers */,
-				8D5BA34425CB08B800755F7D /* Registration.pbobjc.h in Headers */,
-				8D5BA36825CB08B800755F7D /* SequenceAndUpdates.pbobjc.h in Headers */,
-				8D5BA34525CB08B800755F7D /* Push.pbobjc.h in Headers */,
-				8D5BA38E25CB08B900755F7D /* MediaAndFiles.pbrpc.h in Headers */,
-				8D5BA33F25CB08B800755F7D /* Clickroad.pbrpc.h in Headers */,
-				8D5BA37D25CB08B800755F7D /* SequenceAndUpdates.pbrpc.h in Headers */,
-				8D5BA38925CB08B800755F7D /* EventBus.pbobjc.h in Headers */,
-				8D5BA37C25CB08B800755F7D /* HTTP.pbobjc.h in Headers */,
-				8D5BA3B525CB08B900755F7D /* Clickroad.pbobjc.h in Headers */,
-				8D5BA34225CB08B800755F7D /* EventBus.pbrpc.h in Headers */,
-				8D5BA39325CB08B900755F7D /* Integrations.pbrpc.h in Headers */,
-				8D5BA36125CB08B800755F7D /* Push.pbrpc.h in Headers */,
-				8D5BA34025CB08B800755F7D /* RawApi.pbrpc.h in Headers */,
-				8D5BA3AA25CB08B900755F7D /* Obsolete.pbobjc.h in Headers */,
-				8D5BA35C25CB08B800755F7D /* Stickers.pbrpc.h in Headers */,
-				8D5BA35D25CB08B800755F7D /* Crypto.pbobjc.h in Headers */,
-				8D5BA34B25CB08B800755F7D /* Search.pbobjc.h in Headers */,
-				8D5BA37725CB08B800755F7D /* Peers.pbobjc.h in Headers */,
-				8D5BA37B25CB08B800755F7D /* Contacts.pbrpc.h in Headers */,
-				8D5BA33C25CB08B800755F7D /* Messaging.pbobjc.h in Headers */,
 				8D5BA12A25CADA8200755F7D /* DialogGRPC.h in Headers */,
-				8D5BA3AE25CB08B900755F7D /* Search.pbrpc.h in Headers */,
-				8D5BA3BC25CB08B900755F7D /* Spaces.pbrpc.h in Headers */,
-				8D5BA37825CB08B800755F7D /* Annotations.pbobjc.h in Headers */,
-				8D5BA35E25CB08B800755F7D /* Threads.pbobjc.h in Headers */,
-				8D5BA39F25CB08B900755F7D /* MediaAndFiles.pbobjc.h in Headers */,
-				8D5BA3A425CB08B900755F7D /* Privacy.pbrpc.h in Headers */,
-				8D5BA3A625CB08B900755F7D /* Presence.pbrpc.h in Headers */,
-				8D5BA35425CB08B800755F7D /* Integrations.pbobjc.h in Headers */,
-				8D5BA36C25CB08B800755F7D /* Profile.pbrpc.h in Headers */,
-				8D5BA39725CB08B900755F7D /* Contacts.pbobjc.h in Headers */,
-				8D5BA3A825CB08B900755F7D /* Miniappsregistry.pbrpc.h in Headers */,
-				8D5BA35725CB08B800755F7D /* Presence.pbobjc.h in Headers */,
-				8D5BA38425CB08B800755F7D /* Users.pbobjc.h in Headers */,
-				8D5BA37525CB08B800755F7D /* Descriptor.pbobjc.h in Headers */,
-				8D5BA34625CB08B800755F7D /* Privacy.pbobjc.h in Headers */,
-				8D5BA37025CB08B800755F7D /* Profile.pbobjc.h in Headers */,
-				8D5BA35025CB08B800755F7D /* Scalapb.pbobjc.h in Headers */,
-				8D5BA39E25CB08B900755F7D /* Counters.pbobjc.h in Headers */,
-				8D5BA37E25CB08B800755F7D /* Threads.pbrpc.h in Headers */,
-				8D5BA39925CB08B900755F7D /* Authentication.pbrpc.h in Headers */,
-				8D5BA35F25CB08B800755F7D /* DeviceInfo.pbobjc.h in Headers */,
-				8D5BA3AC25CB08B900755F7D /* DeviceInfo.pbrpc.h in Headers */,
-				8D5BA37125CB08B800755F7D /* Definitions.pbobjc.h in Headers */,
-				8D5BA3B625CB08B900755F7D /* Spaces.pbobjc.h in Headers */,
-				8D5BA35825CB08B800755F7D /* Groups.pbobjc.h in Headers */,
-				8D5BA34925CB08B800755F7D /* WebRtc.pbrpc.h in Headers */,
-				8D5BA34A25CB08B800755F7D /* RawApi.pbobjc.h in Headers */,
-				8D5BA39C25CB08B900755F7D /* Permissions.pbrpc.h in Headers */,
-				8D5BA3BD25CB08B900755F7D /* WebRtc.pbobjc.h in Headers */,
-				8D5BA37425CB08B800755F7D /* Groups.pbrpc.h in Headers */,
-				8D5BA36E25CB08B800755F7D /* Messaging.pbrpc.h in Headers */,
-				8D5BA33E25CB08B800755F7D /* ConfigSync.pbrpc.h in Headers */,
-				8D5BA39425CB08B900755F7D /* Crypto.pbrpc.h in Headers */,
-				8D5BA36625CB08B800755F7D /* Reactions.pbobjc.h in Headers */,
-				8D5BA38D25CB08B900755F7D /* Miscellaneous.pbobjc.h in Headers */,
-				8D5BA36325CB08B800755F7D /* Registration.pbrpc.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,7 +113,6 @@
 				8D5BA12125CADA8200755F7D /* Sources */,
 				8D5BA12225CADA8200755F7D /* Frameworks */,
 				8D5BA12325CADA8200755F7D /* Resources */,
-				0647E1A6CEB36A64FB307294 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -637,23 +166,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0647E1A6CEB36A64FB307294 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DialogGRPC/Pods-DialogGRPC-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DialogGRPC/Pods-DialogGRPC-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DialogGRPC/Pods-DialogGRPC-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2680CEC9C2B52B8045E3B4C7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -683,72 +195,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D5BA3BB25CB08B900755F7D /* Groups.pbrpc.m in Sources */,
-				8D5BA3A025CB08B900755F7D /* Profile.pbobjc.m in Sources */,
-				8D5BA38B25CB08B800755F7D /* Clickroad.pbrpc.m in Sources */,
-				8D5BA35925CB08B800755F7D /* Crypto.pbrpc.m in Sources */,
-				8D5BA3B425CB08B900755F7D /* Contacts.pbrpc.m in Sources */,
-				8D5BA37925CB08B800755F7D /* Clickroad.pbobjc.m in Sources */,
-				8D5BA39B25CB08B900755F7D /* Scalapb.pbobjc.m in Sources */,
-				8D5BA34725CB08B800755F7D /* Stickers.pbobjc.m in Sources */,
-				8D5BA36925CB08B800755F7D /* Miniappsregistry.pbrpc.m in Sources */,
-				8D5BA39025CB08B900755F7D /* Crypto.pbobjc.m in Sources */,
-				8D5BA36225CB08B800755F7D /* Search.pbrpc.m in Sources */,
-				8D5BA37F25CB08B800755F7D /* Search.pbobjc.m in Sources */,
-				8D5BA34C25CB08B800755F7D /* SequenceAndUpdates.pbrpc.m in Sources */,
-				8D5BA38F25CB08B900755F7D /* Messaging.pbobjc.m in Sources */,
-				8D5BA36425CB08B800755F7D /* DeviceInfo.pbrpc.m in Sources */,
-				8D5BA3AB25CB08B900755F7D /* Reactions.pbobjc.m in Sources */,
-				8D5BA37A25CB08B800755F7D /* Spaces.pbobjc.m in Sources */,
-				8D5BA38625CB08B800755F7D /* Registration.pbobjc.m in Sources */,
-				8D5BA3A525CB08B900755F7D /* Users.pbrpc.m in Sources */,
-				8D5BA3B925CB08B900755F7D /* Obsolete.pbrpc.m in Sources */,
-				8D5BA34E25CB08B800755F7D /* MediaAndFiles.pbobjc.m in Sources */,
-				8D5BA35625CB08B800755F7D /* Contacts.pbobjc.m in Sources */,
-				8D5BA35525CB08B800755F7D /* Authentication.pbrpc.m in Sources */,
-				8D5BA34F25CB08B800755F7D /* Counters.pbobjc.m in Sources */,
-				8D5BA36B25CB08B800755F7D /* Presence.pbrpc.m in Sources */,
-				8D5BA3B125CB08B900755F7D /* Threads.pbobjc.m in Sources */,
-				8D5BA37225CB08B800755F7D /* WebRtc.pbobjc.m in Sources */,
-				8D5BA39525CB08B900755F7D /* Presence.pbobjc.m in Sources */,
-				8D5BA3AF25CB08B900755F7D /* Registration.pbrpc.m in Sources */,
-				8D5BA3B225CB08B900755F7D /* DeviceInfo.pbobjc.m in Sources */,
-				8D5BA34D25CB08B800755F7D /* Threads.pbrpc.m in Sources */,
-				8D5BA38025CB08B800755F7D /* RawApi.pbobjc.m in Sources */,
-				8D5BA34125CB08B800755F7D /* EventBus.pbobjc.m in Sources */,
-				8D5BA34325CB08B800755F7D /* Reactions.pbrpc.m in Sources */,
-				8D5BA3A725CB08B900755F7D /* SequenceAndUpdates.pbobjc.m in Sources */,
-				8D5BA3A925CB08B900755F7D /* PushContent.pbobjc.m in Sources */,
-				8D5BA39625CB08B900755F7D /* Groups.pbobjc.m in Sources */,
-				8D5BA38C25CB08B900755F7D /* ConfigSync.pbrpc.m in Sources */,
-				8D5BA39825CB08B900755F7D /* Integrations.pbobjc.m in Sources */,
-				8D5BA3B325CB08B900755F7D /* HTTP.pbobjc.m in Sources */,
-				8D5BA39A25CB08B900755F7D /* ConfigSync.pbobjc.m in Sources */,
-				8D5BA33B25CB08B800755F7D /* MediaAndFiles.pbrpc.m in Sources */,
-				8D5BA3B825CB08B900755F7D /* Peers.pbobjc.m in Sources */,
-				8D5BA3A225CB08B900755F7D /* Messaging.pbrpc.m in Sources */,
-				8D5BA3BA25CB08B900755F7D /* Descriptor.pbobjc.m in Sources */,
-				8D5BA3BE25CB08B900755F7D /* Definitions.pbobjc.m in Sources */,
-				8D5BA35A25CB08B800755F7D /* Integrations.pbrpc.m in Sources */,
-				8D5BA38125CB08B800755F7D /* WebRtc.pbrpc.m in Sources */,
-				8D5BA38725CB08B800755F7D /* EventBus.pbrpc.m in Sources */,
-				8D5BA3A325CB08B900755F7D /* Profile.pbrpc.m in Sources */,
-				8D5BA39125CB08B900755F7D /* Stickers.pbrpc.m in Sources */,
-				8D5BA35325CB08B800755F7D /* Authentication.pbobjc.m in Sources */,
-				8D5BA33D25CB08B800755F7D /* Miscellaneous.pbobjc.m in Sources */,
-				8D5BA3B025CB08B900755F7D /* Miniappsregistry.pbobjc.m in Sources */,
-				8D5BA38325CB08B800755F7D /* Privacy.pbobjc.m in Sources */,
-				8D5BA3AD25CB08B900755F7D /* Push.pbrpc.m in Sources */,
-				8D5BA3A125CB08B900755F7D /* Permissions.pbobjc.m in Sources */,
-				8D5BA3B725CB08B900755F7D /* Annotations.pbobjc.m in Sources */,
-				8D5BA35125CB08B800755F7D /* Permissions.pbrpc.m in Sources */,
-				8D5BA36D25CB08B800755F7D /* Privacy.pbrpc.m in Sources */,
-				8D5BA38225CB08B800755F7D /* Push.pbobjc.m in Sources */,
-				8D5BA39225CB08B900755F7D /* GatewayService.pbobjc.m in Sources */,
-				8D5BA38A25CB08B800755F7D /* RawApi.pbrpc.m in Sources */,
-				8D5BA37325CB08B800755F7D /* Spaces.pbrpc.m in Sources */,
-				8D5BA34825CB08B800755F7D /* Users.pbobjc.m in Sources */,
-				8D5BA36525CB08B800755F7D /* Obsolete.pbobjc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

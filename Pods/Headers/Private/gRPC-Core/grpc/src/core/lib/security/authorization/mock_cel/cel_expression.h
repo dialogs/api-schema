@@ -1,1 +1,0 @@
-../../../../../../../../../../gRPC-Core/src/core/lib/security/authorization/mock_cel/cel_expression.h

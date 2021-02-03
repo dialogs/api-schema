@@ -1,1 +1,0 @@
-../../../../../../../../../../../../gRPC-Core/src/core/ext/upbdefs-generated/envoy/config/core/v3/substitution_format_string.upbdefs.h

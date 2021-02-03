@@ -1,1 +1,0 @@
-../../../../../../../gRPC-Core/third_party/re2/re2/stringpiece.h
