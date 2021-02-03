@@ -4,50 +4,50 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>BoringSSL-GRPC.xcscheme</key>
+		<key>BoringSSL-GRPC.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>Pods-DialogGRPC.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Protobuf.xcscheme</key>
+		<key>Protobuf.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>abseil.xcscheme</key>
+		<key>abseil.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>gRPC-Core.xcscheme</key>
+		<key>gRPC-Core.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>gRPC-ProtoRPC.xcscheme</key>
+		<key>gRPC-ProtoRPC.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>gRPC-RxLibrary.xcscheme</key>
+		<key>gRPC-RxLibrary.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>gRPC-gRPCCertificates.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>gRPC.xcscheme</key>
+		<key>gRPC.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
