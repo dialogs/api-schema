@@ -348,14 +348,6 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.14):
     - BoringSSL-GRPC/Interface (= 0.0.14)
   - BoringSSL-GRPC/Interface (0.0.14)
-  - Dialog-gRPC-Objc (1.65.0):
-    - Dialog-gRPC-Objc/Messages (= 1.65.0)
-    - Dialog-gRPC-Objc/Services (= 1.65.0)
-  - Dialog-gRPC-Objc/Messages (1.65.0):
-    - Protobuf
-  - Dialog-gRPC-Objc/Services (1.65.0):
-    - Dialog-gRPC-Objc/Messages
-    - gRPC-ProtoRPC
   - gRPC-Core (1.35.0):
     - gRPC-Core/Implementation (= 1.35.0)
     - gRPC-Core/Interface (= 1.35.0)
@@ -409,7 +401,8 @@ PODS:
   - Protobuf (3.14.0)
 
 DEPENDENCIES:
-  - Dialog-gRPC-Objc (from `https://github.com/dialogs/api-schema.git`, branch `feature/objc_support`)
+  - gRPC-ProtoRPC
+  - Protobuf
 
 SPEC REPOS:
   trunk:
@@ -421,26 +414,15 @@ SPEC REPOS:
     - gRPC-RxLibrary
     - Protobuf
 
-EXTERNAL SOURCES:
-  Dialog-gRPC-Objc:
-    :branch: feature/objc_support
-    :git: https://github.com/dialogs/api-schema.git
-
-CHECKOUT OPTIONS:
-  Dialog-gRPC-Objc:
-    :commit: d7e256d7265425a45619f55cc1314c5a9df3219a
-    :git: https://github.com/dialogs/api-schema.git
-
 SPEC CHECKSUMS:
   abseil: 1e1630cfaceb6f2f6d49c3659e83932095e42b30
   BoringSSL-GRPC: 63bef04e04730659f5125c3f27d72df324f68f59
-  Dialog-gRPC-Objc: 00f5ab8c820d62d33fe115a56008c871f124ce5b
   gRPC: ab8da669d12626ced4915dad4c9edda44d3c1f8f
   gRPC-Core: 690c99cd72962fee45e61354bbc131ead9b97722
   gRPC-ProtoRPC: edd604fabd0d7001c42c7c6ced04ae2671f461a4
   gRPC-RxLibrary: fa135dc6a2df281dfc117b47a40b8e8c43bf41db
   Protobuf: 0cde852566359049847168e51bd1c690e0f70056
 
-PODFILE CHECKSUM: fbe76f185fcfa56a8b611f74a0d6a5119cb015d1
+PODFILE CHECKSUM: 4ecc29a20e7f6c3ab7e58f219f19a5f9d2bf9a1a
 
 COCOAPODS: 1.10.0
