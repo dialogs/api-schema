@@ -309,6 +309,11 @@
       "default": "",
       "title": "Discover URL for mini apps"
     },
+    "miniApps.todoListId": {
+      "type": "string",
+      "default": "",
+      "title": "Todo List mini app id (stringifyed format)"
+    },
     "isSwipeBackEnabled": {
       "type": "boolean",
       "title": "Activates swipe(left to right) between fragments which means back button click",
