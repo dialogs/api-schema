@@ -606,6 +606,8 @@ message UpdateMessage {
      /// Message id of previos message from current conversation
      UUIDValue previous_mid = 11 [(dlg).log="visible"];
      google.protobuf.Int64Value prev_message_date = 15; // interval start
+     /// counter clock of the unread messages
+     int64 unread_counter_clock = 18 [(dlg).log="visible"];
      /// counter of the unread messages
      google.protobuf.Int32Value counter = 12 [(dlg).log="visible"];
      /// date of my own read
@@ -638,12 +640,13 @@ message UpdateMessageSent {
     /// Previous message id in current conversation
     UUIDValue prev_mid = 5 [(dlg).log="visible"];
     /// counter of unread messages
+    int64 unread_counter_clock = 10 [(dlg).log="visible"];
     google.protobuf.Int32Value unread_counter = 6 [(dlg).log="visible"];
     google.protobuf.Int64Value myReadDate = 7 [(dlg).log="visible"];
     oneof attach {
-         ReferencedMessages forward = 8 [(dlg).log="visible"];
-         ReferencedMessages reply = 9 [(dlg).log="visible"];
-     }
+        ReferencedMessages forward = 8 [(dlg).log="visible"];
+        ReferencedMessages reply = 9 [(dlg).log="visible"];
+    }
 }
 
 // Update about message received
@@ -665,8 +668,11 @@ message UpdateMessageRead {
 // Update about message read by me
 message UpdateMessageReadByMe {
     Peer peer = 1 [(dlg).log="visible"];
-    /// when message was read
+    /// date of the read message
     int64 start_date = 2 [(dlg).log="visible"];
+
+    /// when message was read
+    int64 unread_counter_clock = 4 [(dlg).log="visible"];
     /// counter of unread messages
     google.protobuf.Int32Value unread_counter = 3 [(dlg).log="visible"];
 }
@@ -912,6 +918,7 @@ message DialogIndex {
 // data data related to dialog itself
 message DialogListEntry {
     Peer peer = 1 [(dlg).log="visible"]; /// Peer of conversation
+    int64 unread_counter_clock = 12 [(dlg).log="visible"];
     int32 unread_count = 2 [(dlg).log="visible"];
     int64 my_read_date = 3 [(dlg).log="visible"];
     int64 last_message_date = 4 [(dlg).log="visible"];

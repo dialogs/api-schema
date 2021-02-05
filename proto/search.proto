@@ -51,6 +51,7 @@ message SimpleMessageSearchCondition {
     SearchContentType type = 3; // content message type to search
     SearchDirection search_direction = 4; // search direction gt/lt
     google.protobuf.Int64Value date_from = 5; // search message from
+    Peer sender = 6; // only search messages from specific sender
 }
 
 /// Search among contacts/groups/users
