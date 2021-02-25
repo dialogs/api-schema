@@ -228,6 +228,10 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
                 </li>
               
                 <li>
+                  <a href="#dialog.RequestApplyExternalSessionAuth"><span class="badge">M</span>RequestApplyExternalSessionAuth</a>
+                </li>
+              
+                <li>
                   <a href="#dialog.RequestChangePassword"><span class="badge">M</span>RequestChangePassword</a>
                 </li>
               
@@ -3457,6 +3461,13 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
               </tr>
             
               <tr>
+                <td>ApplyExternalSessionAuth</td>
+                <td><a href="#dialog.RequestApplyExternalSessionAuth">RequestApplyExternalSessionAuth</a></td>
+                <td><a href="#dialog.ResponseAuth">ResponseAuth</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
                 <td>StartAuthTransaction</td>
                 <td><a href="#dialog.RequestStartAuthTransaction">RequestStartAuthTransaction</a></td>
                 <td><a href="#dialog.ResponseStartAuthTransaction">ResponseStartAuthTransaction</a></td>
@@ -3724,6 +3735,29 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
                 <tr>
                   <td>peer</td>
                   <td><a href="#dialog.Peer">Peer</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dialog.RequestApplyExternalSessionAuth">RequestApplyExternalSessionAuth</h3>
+        <p>Apply external session to authorize user</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>session_id</td>
+                  <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -27032,21 +27066,30 @@ for extenrnal networks. </p></td>
                   <td>p2p</td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>load data about user in p2p conversation </p></td>
                 </tr>
               
                 <tr>
                   <td>group_member</td>
                   <td><a href="#dialog.Peer">Peer</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>load data about group member by group peer
+if requested user and client are both group members </p></td>
                 </tr>
               
                 <tr>
                   <td>contact</td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>load data about user if this user is in the client's contacts </p></td>
+                </tr>
+              
+                <tr>
+                  <td>message_sender</td>
+                  <td><a href="#dialog.UUIDValue">UUIDValue</a></td>
+                  <td></td>
+                  <td><p>load data about group message sender by messageId
+if this message is accessible for the client </p></td>
                 </tr>
               
             </tbody>

@@ -9,6 +9,7 @@
     - [ForceReloadDialogs](#dialog.ForceReloadDialogs)
     - [ForceReloadField](#dialog.ForceReloadField)
     - [ForceReloadHistory](#dialog.ForceReloadHistory)
+    - [RequestApplyExternalSessionAuth](#dialog.RequestApplyExternalSessionAuth)
     - [RequestChangePassword](#dialog.RequestChangePassword)
     - [RequestCompleteOAuth2](#dialog.RequestCompleteOAuth2)
     - [RequestGetAuthSessions](#dialog.RequestGetAuthSessions)
@@ -910,6 +911,21 @@ peer the peer whose history should be reloaded
 
 
 
+<a name="dialog.RequestApplyExternalSessionAuth"></a>
+
+### RequestApplyExternalSessionAuth
+Apply external session to authorize user
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| session_id | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="dialog.RequestChangePassword"></a>
 
 ### RequestChangePassword
@@ -1512,6 +1528,7 @@ Holder of session
 | StartCertificateAuth | [RequestStartCertificateAuth](#dialog.RequestStartCertificateAuth) | [ResponseAuth](#dialog.ResponseAuth) |  |
 | StartTokenAuth | [RequestStartTokenAuth](#dialog.RequestStartTokenAuth) | [ResponseAuth](#dialog.ResponseAuth) | Start token auth authorization (actual for bots) |
 | StartUsernameAuth | [RequestStartUsernameAuth](#dialog.RequestStartUsernameAuth) | [ResponseStartUsernameAuth](#dialog.ResponseStartUsernameAuth) | Start login/password authorization process |
+| ApplyExternalSessionAuth | [RequestApplyExternalSessionAuth](#dialog.RequestApplyExternalSessionAuth) | [ResponseAuth](#dialog.ResponseAuth) |  |
 | StartAuthTransaction | [RequestStartAuthTransaction](#dialog.RequestStartAuthTransaction) | [ResponseStartAuthTransaction](#dialog.ResponseStartAuthTransaction) |  |
 | ValidateCode | [RequestValidateCode](#dialog.RequestValidateCode) | [ResponseAuth](#dialog.ResponseAuth) | Validate code received by phone or email Returns error if user does not exist |
 | ResendCode | [RequestResendCode](#dialog.RequestResendCode) | [ResponseVoid](#dialog.ResponseVoid) | Resend code if you don&#39;t receive it with first attempt |
@@ -11789,9 +11806,10 @@ Loading Full User information
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | user_peer | [Peer](#dialog.Peer) |  |  |
-| p2p | [bool](#bool) |  |  |
-| group_member | [Peer](#dialog.Peer) |  |  |
-| contact | [bool](#bool) |  |  |
+| p2p | [bool](#bool) |  | load data about user in p2p conversation |
+| group_member | [Peer](#dialog.Peer) |  | load data about group member by group peer if requested user and client are both group members |
+| contact | [bool](#bool) |  | load data about user if this user is in the client&#39;s contacts |
+| message_sender | [UUIDValue](#dialog.UUIDValue) |  | load data about group message sender by messageId if this message is accessible for the client |
 
 
 
