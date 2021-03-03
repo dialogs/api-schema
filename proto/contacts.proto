@@ -153,6 +153,29 @@ message UpdateContactsRemoved {
     repeated int32 uids = 1 [(dlg).log="compact"];
 }
 
+message RequestUploadContacts {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+
+    message PhoneContact {
+        // hash of phone number in format: name-of-hash-function:hashed-phone-number
+        // name of the hash function is optional (if not present, the default function will be used)
+        string phone_hash = 1;
+        // name of contact as is on the device
+        string contact_name = 2;
+    }
+
+    // some stable device identifier
+    string device_id = 1;
+    // list of hashed phone contacts from the device
+    repeated PhoneContact phone_contacts = 2;
+}
+
+message ResponseUploadContacts {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    // mapping phone hashes to id of users that are already present in the system
+    map<string, int32> present_users_by_phone = 1;
+}
+
 service Contacts {
     /// Import contacts and wait while query is not finished
     rpc ImportContacts (RequestImportContacts) returns (ResponseImportContacts) {
@@ -190,6 +213,13 @@ service Contacts {
     rpc SearchContacts (RequestSearchContacts) returns (ResponseSearchContacts) {
         option (google.api.http) = {
             post: "/v1/grpc/Contacts/SearchContacts"
+            body: "*"
+        };
+    }
+    /// Upload client's contacts and check which ones are already present in the system
+    rpc UploadContacts (RequestUploadContacts) returns (ResponseUploadContacts) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Contacts/UploadContacts"
             body: "*"
         };
     }
