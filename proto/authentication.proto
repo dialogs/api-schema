@@ -134,6 +134,13 @@ message ResponseStartUsernameAuth {
     bool is_registered = 2; /// Deprecated
 }
 
+// Apply external session to authorize user
+message RequestApplyExternalSessionAuth {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    string session_id = 1 [(dlg).log="visible"];
+}
+
+
 // Start Authentication/Authorization via external oAuth2/OpenID SSO Provider
 message RequestStartAuthTransaction {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
@@ -412,6 +419,12 @@ service Authentication {
     rpc StartUsernameAuth (RequestStartUsernameAuth) returns (ResponseStartUsernameAuth) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/StartUsernameAuth"
+            body: "*"
+        };
+    }
+    rpc ApplyExternalSessionAuth (RequestApplyExternalSessionAuth) returns (ResponseAuth) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/ApplyExternalSessionAuth"
             body: "*"
         };
     }

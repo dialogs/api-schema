@@ -175,9 +175,16 @@ message RequestLoadUserData {
     message Claim {
         Peer user_peer = 1 [(dlg).log="visible"];
         oneof kind {
+            // load data about user in p2p conversation
             bool p2p = 2 [(dlg).log="visible"];
+            // load data about group member by group peer
+            // if requested user and client are both group members
             Peer group_member = 3 [(dlg).log="visible"];
+            // load data about user if this user is in the client's contacts
             bool contact = 4 [(dlg).log="visible"];
+            // load data about group message sender by messageId
+            // if this message is accessible for the client
+            UUIDValue message_sender = 5 [(dlg).log="visible"];
         }
     }
     repeated Claim claims = 1 [(dlg).log="visible"];
