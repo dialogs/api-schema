@@ -1262,6 +1262,10 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
                 </li>
               
                 <li>
+                  <a href="#dialog.HistoryMessageLight"><span class="badge">M</span>HistoryMessageLight</a>
+                </li>
+              
+                <li>
                   <a href="#dialog.ImageMedia"><span class="badge">M</span>ImageMedia</a>
                 </li>
               
@@ -1354,6 +1358,10 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
                 </li>
               
                 <li>
+                  <a href="#dialog.RequestCountForeignMessages"><span class="badge">M</span>RequestCountForeignMessages</a>
+                </li>
+              
+                <li>
                   <a href="#dialog.RequestDeleteChat"><span class="badge">M</span>RequestDeleteChat</a>
                 </li>
               
@@ -1414,6 +1422,10 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
                 </li>
               
                 <li>
+                  <a href="#dialog.RequestLoadHistoryLight"><span class="badge">M</span>RequestLoadHistoryLight</a>
+                </li>
+              
+                <li>
                   <a href="#dialog.RequestMessageRead"><span class="badge">M</span>RequestMessageRead</a>
                 </li>
               
@@ -1470,6 +1482,10 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
                 </li>
               
                 <li>
+                  <a href="#dialog.ResponseCountForeignMessages"><span class="badge">M</span>ResponseCountForeignMessages</a>
+                </li>
+              
+                <li>
                   <a href="#dialog.ResponseDialogListDifference"><span class="badge">M</span>ResponseDialogListDifference</a>
                 </li>
               
@@ -1515,6 +1531,10 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
               
                 <li>
                   <a href="#dialog.ResponseLoadHistory"><span class="badge">M</span>ResponseLoadHistory</a>
+                </li>
+              
+                <li>
+                  <a href="#dialog.ResponseLoadHistoryLight"><span class="badge">M</span>ResponseLoadHistoryLight</a>
                 </li>
               
                 <li>
@@ -2408,6 +2428,14 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
                   <a href="#dialog.reactions.Reactions"><span class="badge">S</span>Reactions</a>
                 </li>
               
+              
+                <li>
+                  <a href="#dialog.reactions.GetMessageReactionsRequest"><span class="badge">M</span>GetMessageReactionsRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#dialog.reactions.GetMessageReactionsResponse"><span class="badge">M</span>GetMessageReactionsResponse</a>
+                </li>
               
                 <li>
                   <a href="#dialog.reactions.GetReactionsRequest"><span class="badge">M</span>GetReactionsRequest</a>
@@ -11190,6 +11218,20 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
               </tr>
             
               <tr>
+                <td>LoadHistoryLight</td>
+                <td><a href="#dialog.RequestLoadHistoryLight">RequestLoadHistoryLight</a></td>
+                <td><a href="#dialog.ResponseLoadHistoryLight">ResponseLoadHistoryLight</a></td>
+                <td><p>Load conversation history</p></td>
+              </tr>
+            
+              <tr>
+                <td>CountForeignMessages</td>
+                <td><a href="#dialog.RequestCountForeignMessages">RequestCountForeignMessages</a></td>
+                <td><a href="#dialog.ResponseCountForeignMessages">ResponseCountForeignMessages</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
                 <td>HistoryDifference</td>
                 <td><a href="#dialog.RequestHistoryDifference">RequestHistoryDifference</a></td>
                 <td><a href="#dialog.ResponseHistoryDifference">ResponseHistoryDifference</a></td>
@@ -12092,6 +12134,78 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
 
         
       
+        <h3 id="dialog.HistoryMessageLight">HistoryMessageLight</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>sender_uid</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>message_id</td>
+                  <td><a href="#dialog.UUIDValue">UUIDValue</a></td>
+                  <td></td>
+                  <td><p>Message id generated by server </p></td>
+                </tr>
+              
+                <tr>
+                  <td>date</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>message</td>
+                  <td><a href="#dialog.MessageContent">MessageContent</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>forward</td>
+                  <td><a href="#dialog.ReferencedMessages">ReferencedMessages</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>reply</td>
+                  <td><a href="#dialog.ReferencedMessages">ReferencedMessages</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>edited_at</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>random_id</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
         <h3 id="dialog.ImageMedia">ImageMedia</h3>
         <p>Image media</p><p>image image</p>
 
@@ -12903,6 +13017,36 @@ Can be empty if messageId is present and message is in current peer. </p></td>
 
         
       
+        <h3 id="dialog.RequestCountForeignMessages">RequestCountForeignMessages</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>peer</td>
+                  <td><a href="#dialog.Peer">Peer</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>from_date</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
         <h3 id="dialog.RequestDeleteChat">RequestDeleteChat</h3>
         <p>Deleting of conversation (also leave group for group conversations)</p>
 
@@ -13336,6 +13480,50 @@ Can be empty if messageId is present and message is in current peer. </p></td>
                   <td>optimizations</td>
                   <td><a href="#dialog.UpdateOptimization">UpdateOptimization</a></td>
                   <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dialog.RequestLoadHistoryLight">RequestLoadHistoryLight</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>peer</td>
+                  <td><a href="#dialog.Peer">Peer</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>date</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>load_mode</td>
+                  <td><a href="#dialog.ListLoadMode">ListLoadMode</a></td>
+                  <td></td>
+                  <td><p>forward, backward or both </p></td>
+                </tr>
+              
+                <tr>
+                  <td>limit</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
                   <td><p> </p></td>
                 </tr>
               
@@ -13842,6 +14030,36 @@ Can be empty if messageId is present and message is in current peer. </p></td>
 
         
       
+        <h3 id="dialog.ResponseCountForeignMessages">ResponseCountForeignMessages</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>last_conversation_message_date</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>last conversation message date </p></td>
+                </tr>
+              
+                <tr>
+                  <td>count</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>counter of the messages between last conversation message (including it) and last returned in this response </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
         <h3 id="dialog.ResponseDialogListDifference">ResponseDialogListDifference</h3>
         <p>Contains dialogs that was change after from_clock</p>
 
@@ -14292,6 +14510,29 @@ Can be empty if messageId is present and message is in current peer. </p></td>
                   <td><a href="#int32">int32</a></td>
                   <td></td>
                   <td><p>counter of the messages between last conversation message (including it) and last returned in this response </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dialog.ResponseLoadHistoryLight">ResponseLoadHistoryLight</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>history</td>
+                  <td><a href="#dialog.HistoryMessageLight">HistoryMessageLight</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
                 </tr>
               
             </tbody>
@@ -21009,6 +21250,13 @@ Can be empty if messageId is present and message is in current peer. </p></td>
               </tr>
             
               <tr>
+                <td>GetMessageReactions</td>
+                <td><a href="#dialog.reactions.GetMessageReactionsRequest">GetMessageReactionsRequest</a></td>
+                <td><a href="#dialog.reactions.GetMessageReactionsResponse">GetMessageReactionsResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
                 <td>MessageSetReaction</td>
                 <td><a href="#dialog.reactions.RequestSetMessageReaction">RequestSetMessageReaction</a></td>
                 <td><a href="#google.protobuf.Empty">.google.protobuf.Empty</a></td>
@@ -21026,6 +21274,59 @@ Can be empty if messageId is present and message is in current peer. </p></td>
         </table>
       
 
+      
+        <h3 id="dialog.reactions.GetMessageReactionsRequest">GetMessageReactionsRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>peer</td>
+                  <td><a href="#dialog.Peer">dialog.Peer</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>message_ids</td>
+                  <td><a href="#dialog.UUIDValue">dialog.UUIDValue</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dialog.reactions.GetMessageReactionsResponse">GetMessageReactionsResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>messageReactions</td>
+                  <td><a href="#dialog.reactions.MessageReactions">MessageReactions</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
       
         <h3 id="dialog.reactions.GetReactionsRequest">GetReactionsRequest</h3>
         <p></p>
