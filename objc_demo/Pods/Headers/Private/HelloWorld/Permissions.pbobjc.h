@@ -1,1 +1,0 @@
-../../../HelloWorld/Permissions.pbobjc.h

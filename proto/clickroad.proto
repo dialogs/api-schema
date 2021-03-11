@@ -52,6 +52,7 @@ message TrackMetric {
     TrackSocial social = 6;
     TrackError error = 7;
   }
+  int64 deduplication_id = 8;
 }
 
 message RequestTrackEvent {

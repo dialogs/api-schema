@@ -4,22 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>!ProtoCompiler-gRPCPlugin.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>!ProtoCompiler.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>BoringSSL-GRPC.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>HelloWorld.xcscheme</key>
+		<key>Dialog-gRPC-Objc.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

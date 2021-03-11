@@ -1,0 +1,55 @@
+{
+  "name": "Dialog-gRPC-Objc",
+  "version": "1.65.0",
+  "license": "Apache License, Version 2.0",
+  "authors": {
+    "gRPC contributors": "grpc-io@googlegroups.com"
+  },
+  "homepage": "https://grpc.io/",
+  "summary": "Dialog gRPC access library",
+  "source": {
+    "git": "https://github.com/grpc/grpc.git"
+  },
+  "platforms": {
+    "ios": "7.1",
+    "osx": "10.9"
+  },
+  "prepare_command": "mkdir -p Pods/Dialog-gRPC-Objc\nobjc_dependency/protoc         --plugin=protoc-gen-grpc=objc_dependency/grpc_objective_c_plugin         --objc_out=Pods/Dialog-gRPC-Objc         --grpc_out=Client=true,Server=false:Pods/Dialog-gRPC-Objc         -I include         -I proto         -I objc_dependency         proto/*.proto include/descriptor.proto include/scalapb.proto include/annotations.proto include/http.proto",
+  "pod_target_xcconfig": {
+    "GCC_PREPROCESSOR_DEFINITIONS": "$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1",
+    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES"
+  },
+  "subspecs": [
+    {
+      "name": "Messages",
+      "source_files": [
+        "Pods/Dialog-gRPC-Objc/*.pbobjc.{h,m}",
+        "Pods/Dialog-gRPC-Objc/**/*.pbobjc.{h,m}"
+      ],
+      "header_mappings_dir": "Pods/Dialog-gRPC-Objc",
+      "requires_arc": false,
+      "dependencies": {
+        "Protobuf": [
+
+        ]
+      }
+    },
+    {
+      "name": "Services",
+      "source_files": [
+        "Pods/Dialog-gRPC-Objc/*.pbrpc.{h,m}",
+        "Pods/Dialog-gRPC-Objc/**/*.pbrpc.{h,m}"
+      ],
+      "header_mappings_dir": "Pods/Dialog-gRPC-Objc",
+      "requires_arc": true,
+      "dependencies": {
+        "gRPC-ProtoRPC": [
+
+        ],
+        "Dialog-gRPC-Objc/Messages": [
+
+        ]
+      }
+    }
+  ]
+}

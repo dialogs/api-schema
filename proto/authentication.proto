@@ -97,6 +97,14 @@ message RequestStartAnonymousAuth {
     repeated string preferred_languages = 7 [(dlg).log="visible"];
 }
 
+message RequestStartCertificateAuth {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    string name = 1 [(dlg).log="visible"];
+    reserved 2,3,4,5;
+    google.protobuf.StringValue time_zone = 6 [(dlg).log="visible"];
+    repeated string preferred_languages = 7 [(dlg).log="visible"];
+}
+
 // Starting token-based login - to authorize bot
 message RequestStartTokenAuth {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
@@ -126,6 +134,28 @@ message ResponseStartUsernameAuth {
     bool is_registered = 2; /// Deprecated
 }
 
+// Apply external session to authorize user
+message RequestApplyExternalSessionAuth {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    string session_id = 1 [(dlg).log="visible"];
+}
+
+
+// Start Authentication/Authorization via external oAuth2/OpenID SSO Provider
+message RequestStartAuthTransaction {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+     /** Client timezone **/
+    google.protobuf.StringValue time_zone = 1 [(dlg).log="visible"];
+    /** First language from this array will be used for some notifications from server **/
+    repeated string preferred_languages = 2 [(dlg).log="visible"];
+}
+
+message ResponseStartAuthTransaction {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    /** Hash of authorization transaction **/
+    string transaction_hash = 1;
+}
+
 // Performing user sign in.
 message RequestValidateCode {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
@@ -149,20 +179,20 @@ message RequestValidatePassword {
     string password = 2 [(dlg).log="danger"];
 }
 
-// Loading OAuth2 Parameters - deprecated
+// Loading OAuth2 Parameters
 message RequestGetOAuth2Params {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     string transaction_hash = 1 [(dlg).log="danger"];
     string redirect_url = 2 [(dlg).log="visible"];
 }
 
-/// Deprecated
+/// Redirect url result
 message ResponseGetOAuth2Params {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
     string auth_url = 1;
 }
 
-// Complete OAuth2 Authentication - deprecated
+// Complete OAuth2 Authentication
 message RequestCompleteOAuth2 {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
     string transaction_hash = 1 [(dlg).log="danger"];
@@ -370,6 +400,14 @@ service Authentication {
             body: "*"
         };
     }
+
+    rpc StartCertificateAuth (RequestStartCertificateAuth) returns (ResponseAuth) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/StartCertificateAuth"
+            body: "*"
+        };
+    }
+
     /// Start token auth authorization (actual for bots)
     rpc StartTokenAuth (RequestStartTokenAuth) returns (ResponseAuth) {
         option (google.api.http) = {
@@ -381,6 +419,18 @@ service Authentication {
     rpc StartUsernameAuth (RequestStartUsernameAuth) returns (ResponseStartUsernameAuth) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/StartUsernameAuth"
+            body: "*"
+        };
+    }
+    rpc ApplyExternalSessionAuth (RequestApplyExternalSessionAuth) returns (ResponseAuth) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/ApplyExternalSessionAuth"
+            body: "*"
+        };
+    }
+    rpc StartAuthTransaction (RequestStartAuthTransaction) returns (ResponseStartAuthTransaction) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/RequestStartAuthTransaction"
             body: "*"
         };
     }
@@ -407,14 +457,14 @@ service Authentication {
             body: "*"
         };
     }
-    /// Deprecated
+    /// Get redirect url
     rpc GetOAuth2Params (RequestGetOAuth2Params) returns (ResponseGetOAuth2Params) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/GetOAuth2Params"
             body: "*"
         };
     }
-    /// Deprecated
+    /// Complete OAuth2 Authentication
     rpc CompleteOAuth2 (RequestCompleteOAuth2) returns (ResponseAuth) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/CompleteOAuth2"

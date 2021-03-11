@@ -5,6 +5,7 @@ package dialog;
 import "definitions.proto";
 
 option go_package = "dialog";
+option java_package = "im.dlg.grpc.services";
 
 message LocalizableString {
     string loc_key = 1;
@@ -22,6 +23,7 @@ message PushPeer {
     int32 id = 2;
     string str_id = 3;
 }
+
 
 enum PushEventType {
     CREATE = 0;

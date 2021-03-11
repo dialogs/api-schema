@@ -1,1 +1,0 @@
-../../../HelloWorld/Authentication.pbobjc.h

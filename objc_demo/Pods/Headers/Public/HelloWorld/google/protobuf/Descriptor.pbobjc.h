@@ -1,1 +1,0 @@
-../../../../../HelloWorld/google/protobuf/Descriptor.pbobjc.h

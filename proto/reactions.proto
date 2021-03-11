@@ -40,6 +40,15 @@ message GetReactionsResponse {
     bool next_available = 3;
 }
 
+message GetMessageReactionsRequest {
+    Peer peer = 1 [(dlg).required=true];
+    repeated UUIDValue message_ids = 2;
+}
+
+message GetMessageReactionsResponse {
+    repeated MessageReactions messageReactions = 1;
+}
+
 message RequestSetMessageReaction {
     Peer peer = 1;
     UUIDValue mid = 2;
@@ -54,6 +63,13 @@ message RequestRemoveMessageReaction {
 
 service Reactions {
     rpc GetReactions (GetReactionsRequest) returns (GetReactionsResponse) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Reactions/GetReactions"
+            body: "*"
+        };
+    }
+
+    rpc GetMessageReactions (GetMessageReactionsRequest) returns (GetMessageReactionsResponse) {
         option (google.api.http) = {
             post: "/v1/grpc/Reactions/GetReactions"
             body: "*"

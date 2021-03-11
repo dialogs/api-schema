@@ -33,7 +33,9 @@ import "users.proto";
 import "spaces.proto";
 import "reactions.proto";
 import "permissions.proto";
+import "events.proto";
 import "scalapb.proto";
+import "miniappsregistry.proto";
 
 option go_package = "dialog";
 option java_package = "im.dlg.grpc.services";
@@ -136,6 +138,7 @@ message UpdateSeqUpdate {
       reactions.MessageReactionsUpdate messageReactionsUpdate = 100;
       UpdatePermissionsChange updatePermissionsChange = 101;
       UpdateGroupTyping updateGroupTyping = 102;
+      UpdateDialogReadLaterChanged updateDialogReadLaterChanged = 103;
     }
 }
 
@@ -332,6 +335,8 @@ message PeersList {
 message WeakUpdateCommand {
     message ChangeMyOnline {
         bool online = 1;
+        int64 timeout = 2; /// offline after timeout
+        DeviceType device_type = 3;
     }
 
     message SubscribeToOnlines {
@@ -385,6 +390,8 @@ message WeakUpdateBox {
         UpdateMessageReadByMe message_read_by_me                 = 13;
         UpdateUserOnline user_online                             = 14;
         UpdateGroupTyping group_typing                           = 15;
+        UpdateMiniApp mini_app                                   = 16;
+        events.UpdateEvent event                                 = 17;
     }
 }
 

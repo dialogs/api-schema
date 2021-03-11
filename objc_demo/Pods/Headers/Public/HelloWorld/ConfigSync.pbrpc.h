@@ -1,1 +1,0 @@
-../../../HelloWorld/ConfigSync.pbrpc.h

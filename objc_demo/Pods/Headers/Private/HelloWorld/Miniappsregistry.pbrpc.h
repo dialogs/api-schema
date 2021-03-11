@@ -1,1 +1,0 @@
-../../../HelloWorld/Miniappsregistry.pbrpc.h

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D24997425FA3193000A5B7D /* Events.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24997025FA3193000A5B7D /* Events.pbobjc.m */; };
+		8D24997525FA3193000A5B7D /* Events.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D24997125FA3193000A5B7D /* Events.pbobjc.h */; };
+		8D24997625FA3193000A5B7D /* Events.pbrpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D24997225FA3193000A5B7D /* Events.pbrpc.h */; };
+		8D24997725FA3193000A5B7D /* Events.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24997325FA3193000A5B7D /* Events.pbrpc.m */; };
 		8D5BA12A25CADA8200755F7D /* DialogGRPC.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA12825CADA8200755F7D /* DialogGRPC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D5BA46725CB1B4100755F7D /* RawApi.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D5BA3E325CB1B3A00755F7D /* RawApi.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D5BA46825CB1B4100755F7D /* Messaging.pbrpc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BA3E425CB1B3A00755F7D /* Messaging.pbrpc.m */; };
@@ -145,6 +149,10 @@
 
 /* Begin PBXFileReference section */
 		4B2FE4B8107371DDED54CE77 /* Pods_DialogGRPC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DialogGRPC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D24997025FA3193000A5B7D /* Events.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Events.pbobjc.m; sourceTree = "<group>"; };
+		8D24997125FA3193000A5B7D /* Events.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Events.pbobjc.h; sourceTree = "<group>"; };
+		8D24997225FA3193000A5B7D /* Events.pbrpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Events.pbrpc.h; sourceTree = "<group>"; };
+		8D24997325FA3193000A5B7D /* Events.pbrpc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Events.pbrpc.m; sourceTree = "<group>"; };
 		8D5BA12525CADA8200755F7D /* DialogGRPC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DialogGRPC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5BA12825CADA8200755F7D /* DialogGRPC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DialogGRPC.h; sourceTree = "<group>"; };
 		8D5BA12925CADA8200755F7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -339,6 +347,10 @@
 		8D5BA12725CADA8200755F7D /* DialogGRPC */ = {
 			isa = PBXGroup;
 			children = (
+				8D24997125FA3193000A5B7D /* Events.pbobjc.h */,
+				8D24997025FA3193000A5B7D /* Events.pbobjc.m */,
+				8D24997225FA3193000A5B7D /* Events.pbrpc.h */,
+				8D24997325FA3193000A5B7D /* Events.pbrpc.m */,
 				8D5BA3E525CB1B3A00755F7D /* Annotations.pbobjc.h */,
 				8D5BA41E25CB1B3D00755F7D /* Annotations.pbobjc.m */,
 				8D5BA41F25CB1B3D00755F7D /* Authentication.pbobjc.h */,
@@ -507,8 +519,10 @@
 				8D5BA47C25CB1B4100755F7D /* Groups.pbrpc.h in Headers */,
 				8D5BA4D125CB1B4100755F7D /* Contacts.pbrpc.h in Headers */,
 				8D5BA4CC25CB1B4100755F7D /* Users.pbrpc.h in Headers */,
+				8D24997625FA3193000A5B7D /* Events.pbrpc.h in Headers */,
 				8D5BA49725CB1B4100755F7D /* Integrations.pbrpc.h in Headers */,
 				8D5BA49625CB1B4100755F7D /* Clickroad.pbrpc.h in Headers */,
+				8D24997525FA3193000A5B7D /* Events.pbobjc.h in Headers */,
 				8D5BA4C525CB1B4100755F7D /* Messaging.pbrpc.h in Headers */,
 				8D5BA48925CB1B4100755F7D /* PushContent.pbobjc.h in Headers */,
 				8D5BA48025CB1B4100755F7D /* Spaces.pbrpc.h in Headers */,
@@ -674,6 +688,7 @@
 				8D5BA4A225CB1B4100755F7D /* Annotations.pbobjc.m in Sources */,
 				8D5BA4DC25CB1B4100755F7D /* EventBus.pbobjc.m in Sources */,
 				8D5BA46F25CB1B4100755F7D /* Clickroad.pbobjc.m in Sources */,
+				8D24997425FA3193000A5B7D /* Events.pbobjc.m in Sources */,
 				8D5BA4CE25CB1B4100755F7D /* Profile.pbobjc.m in Sources */,
 				8D5BA46A25CB1B4100755F7D /* WebRtc.pbobjc.m in Sources */,
 				8D5BA4D525CB1B4100755F7D /* Counters.pbobjc.m in Sources */,
@@ -695,6 +710,7 @@
 				8D5BA4D625CB1B4100755F7D /* Search.pbobjc.m in Sources */,
 				8D5BA48225CB1B4100755F7D /* Spaces.pbobjc.m in Sources */,
 				8D5BA4E625CB1B4100755F7D /* Reactions.pbobjc.m in Sources */,
+				8D24997725FA3193000A5B7D /* Events.pbrpc.m in Sources */,
 				8D5BA49A25CB1B4100755F7D /* Presence.pbrpc.m in Sources */,
 				8D5BA4B125CB1B4100755F7D /* RawApi.pbrpc.m in Sources */,
 				8D5BA4E025CB1B4100755F7D /* MediaAndFiles.pbobjc.m in Sources */,

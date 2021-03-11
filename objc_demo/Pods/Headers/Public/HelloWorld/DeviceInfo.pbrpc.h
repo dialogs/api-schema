@@ -1,1 +1,0 @@
-../../../HelloWorld/DeviceInfo.pbrpc.h

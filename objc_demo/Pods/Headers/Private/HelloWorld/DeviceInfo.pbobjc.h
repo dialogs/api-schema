@@ -1,1 +1,0 @@
-../../../HelloWorld/DeviceInfo.pbobjc.h

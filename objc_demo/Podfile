@@ -5,5 +5,5 @@ install! 'cocoapods', :deterministic_uuids => false
 
 target 'HelloWorld' do
   # Depend on the generated HelloWorld library.
-  pod 'HelloWorld', :path => '.'
+  pod 'Dialog-gRPC-Objc', :path => '../.'
 end

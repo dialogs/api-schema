@@ -1,9 +1,13 @@
 syntax = "proto3";
 
+import "empty.proto";
 import "wrappers.proto";
 import "definitions.proto";
 
 package dialog;
+
+option go_package = "dialog";
+option java_package = "im.dlg.grpc.services";
 
 // Defines the type of the app. Currently only WebView supported, but more types can be added in future.
 enum AppType {
@@ -13,6 +17,8 @@ enum AppType {
 }
 
 message MiniApp {
+    reserved 8, 9;
+
     // unique identifier of the app
     UUIDValue id = 1;
     // type of the app
@@ -27,23 +33,40 @@ message MiniApp {
     string icon = 6;
     // link to this app
     string link = 7;
-    // additional data stored in json format
-    google.protobuf.StringValue json_content = 8;
-    // creation date/time in millis
-    int64 created_at_ts = 9;
     // update date/time in millis
     int64 modified_at_ts = 10;
     // specifies if this app enabled and user can use it, ot not
     bool is_enabled = 11;
+    // supported locales
+    map <string, string> locales = 12;
+    // application-level permissions
+    repeated string permissions = 13;
+}
+
+// App update
+message UpdateMiniApp {
+    enum AppLifecycle {
+        APPLIFECYCLE_CREATED  = 0;
+        APPLIFECYCLE_UPDATED  = 1;
+        APPLIFECYCLE_ENABLED  = 2;
+        APPLIFECYCLE_DISABLED = 3;
+        APPLIFECYCLE_DELETED  = 4;
+    }
+    AppLifecycle app_lifecycle = 1;
+    dialog.MiniApp app_data = 2;
+    int64 prev_clock = 3;
 }
 
 // Request to get list of mini-apps
 message GetAppsRequest {
+    // return only apps created/modified since given clock
+    int64 from_clock = 1;
 }
 
 // List of the mini-app
 message GetAppsResponse {
     repeated MiniApp apps = 1;
+    int64 clock = 2;
 }
 
 // Findig mini-app by id
@@ -56,7 +79,56 @@ message FindAppResponse {
     MiniApp app = 1;
 }
 
+// Issue JWT token for third-party applications
+message IssueAccessTokenRequest {
+    UUIDValue app_id = 1;
+}
+
+message AccessTokenResponse {
+    string access_token = 1;
+}
+
+message GetExtensionsResponse {
+    repeated ExtensionPoint message_extensions = 1;
+    repeated ExtensionPoint chat_extensions = 2;
+}
+
+message ExtensionPoint {
+    UUIDValue app_id = 1;
+    string action = 2;
+    string label = 3;
+    oneof conditions {
+        MessageConditions message_conditions = 4;
+        GroupConditions group_conditions = 5;
+    }
+}
+
+message MessageConditions {
+    message MessageCondition {
+        message DocumentCondition {
+            bool is_image = 1;
+            bool is_video = 2;
+            bool is_audio = 3;
+            repeated string mime_type = 4;
+        }
+        string text_message = 1;
+        DocumentCondition document_message = 2;
+    }
+    repeated MessageCondition message_condition = 1;
+}
+
+message GroupConditions {
+    message GroupCondition {
+        string group_type = 1;
+        string visibility = 2;
+        repeated string permission = 3;
+    }
+    repeated GroupCondition group_condition = 1;
+}
+
 service ClientsMiniAppsRegistry {
     rpc FindApp (FindAppRequest) returns (FindAppResponse);
     rpc GetApps (GetAppsRequest) returns (GetAppsResponse);
+    rpc GetExtensions (google.protobuf.Empty) returns (GetExtensionsResponse);
+    rpc IssueAccessToken (IssueAccessTokenRequest) returns (AccessTokenResponse);
 }

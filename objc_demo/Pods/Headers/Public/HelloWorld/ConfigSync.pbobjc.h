@@ -1,1 +1,0 @@
-../../../HelloWorld/ConfigSync.pbobjc.h

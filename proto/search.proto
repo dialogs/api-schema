@@ -51,6 +51,7 @@ message SimpleMessageSearchCondition {
     SearchContentType type = 3; // content message type to search
     SearchDirection search_direction = 4; // search direction gt/lt
     google.protobuf.Int64Value date_from = 5; // search message from
+    Peer sender = 6; // only search messages from specific sender
 }
 
 /// Search among contacts/groups/users
@@ -184,6 +185,7 @@ message MessageSearchResult {
     int32 sender_id = 4 [(dlg).log="visible"];
     MessageContent content = 5 [(dlg).log="visible"];
     UUIDValue mid = 6 [(dlg).log="visible"];
+    repeated string highlight_tokens = 7 [(dlg).log="visible"];
 }
 
 // Message Search result container
@@ -283,6 +285,15 @@ message ResponseGetRecommendations {
     repeated OutPeer peers = 1;
 }
 
+message RequestGetPromotedPeers {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+}
+
+message ResponseGetPromotedPeers {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    repeated UserOutPeer user_peers = 1;
+    repeated GroupOutPeer group_peers = 2;
+}
 
 service Search {
     /// Search among groups/users/contacts
@@ -352,4 +363,12 @@ service Search {
             body: "*"
         };
     }
+
+    rpc GetPromotedPeers (RequestGetPromotedPeers) returns (ResponseGetPromotedPeers) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Search/GetDiscovery"
+            body: "*"
+        };
+    }
+
 }

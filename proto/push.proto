@@ -67,6 +67,18 @@ message RequestUnregisterApplePushToken {
     string token = 1 [(dlg).log="hidden"];
 }
 
+// Registering Avrora Push Token
+message RequestRegisterAvroraPushToken {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    string token = 1 [(dlg).log="hidden"];
+}
+
+// Unregister Avrora Push token
+message RequestUnregisterAvroraPushToken {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    string token = 1 [(dlg).log="hidden"];
+}
+
 service Push {
     rpc RegisterGooglePush (RequestRegisterGooglePush) returns (ResponseVoid) {
         option (google.api.http) = {
@@ -113,6 +125,18 @@ service Push {
     rpc UnregisterApplePushToken (RequestUnregisterApplePushToken) returns (ResponseVoid) {
         option (google.api.http) = {
             post: "/v1/grpc/Push/UnregisterApplePushToken"
+            body: "*"
+        };
+    }
+    rpc RegisterAvroraPushToken (RequestRegisterAvroraPushToken) returns (ResponseVoid) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Push/RegisterAvroraPushToken"
+            body: "*"
+        };
+    }
+    rpc UnregisterAvroraPushToken (RequestUnregisterAvroraPushToken) returns (ResponseVoid) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Push/UnregisterAvroraPushToken"
             body: "*"
         };
     }

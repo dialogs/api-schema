@@ -1,9 +1,4 @@
 PODS:
-  - "!ProtoCompiler (3.13.0)":
-    - Protobuf (~> 3.0)
-  - "!ProtoCompiler-gRPCPlugin (1.32.0)":
-    - "!ProtoCompiler (= 3.13.0)"
-    - gRPC-ProtoRPC (= 1.32.0)
   - abseil/algorithm/algorithm (1.20200225.0):
     - abseil/base/config
   - abseil/algorithm/container (1.20200225.0):
@@ -316,6 +311,14 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.12):
     - BoringSSL-GRPC/Interface (= 0.0.12)
   - BoringSSL-GRPC/Interface (0.0.12)
+  - Dialog-gRPC-Objc (1.65.0):
+    - Dialog-gRPC-Objc/Messages (= 1.65.0)
+    - Dialog-gRPC-Objc/Services (= 1.65.0)
+  - Dialog-gRPC-Objc/Messages (1.65.0):
+    - Protobuf
+  - Dialog-gRPC-Objc/Services (1.65.0):
+    - Dialog-gRPC-Objc/Messages
+    - gRPC-ProtoRPC
   - gRPC-Core (1.32.0):
     - gRPC-Core/Implementation (= 1.32.0)
     - gRPC-Core/Interface (= 1.32.0)
@@ -363,26 +366,13 @@ PODS:
     - gRPC/Interface-Legacy (= 1.32.0)
   - gRPC/Interface-Legacy (1.32.0):
     - gRPC-RxLibrary/Interface (= 1.32.0)
-  - HelloWorld (0.0.1):
-    - "!ProtoCompiler-gRPCPlugin (~> 1.0)"
-    - HelloWorld/Messages (= 0.0.1)
-    - HelloWorld/Services (= 0.0.1)
-  - HelloWorld/Messages (0.0.1):
-    - "!ProtoCompiler-gRPCPlugin (~> 1.0)"
-    - Protobuf
-  - HelloWorld/Services (0.0.1):
-    - "!ProtoCompiler-gRPCPlugin (~> 1.0)"
-    - gRPC-ProtoRPC
-    - HelloWorld/Messages
   - Protobuf (3.13.0)
 
 DEPENDENCIES:
-  - HelloWorld (from `.`)
+  - Dialog-gRPC-Objc (from `../.`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - "!ProtoCompiler"
-    - "!ProtoCompiler-gRPCPlugin"
     - abseil
     - BoringSSL-GRPC
     - gRPC
@@ -392,21 +382,19 @@ SPEC REPOS:
     - Protobuf
 
 EXTERNAL SOURCES:
-  HelloWorld:
-    :path: "."
+  Dialog-gRPC-Objc:
+    :path: "../."
 
 SPEC CHECKSUMS:
-  "!ProtoCompiler": 5d2653f7510f8c4a15ebf03ad1516c3684fb68dd
-  "!ProtoCompiler-gRPCPlugin": a1e04dd6087e82e6c137eb3b58994d0ffa82bada
   abseil: 4fcdce446caa49368e0f5ba328cff93326c72a49
   BoringSSL-GRPC: 0cd95890148852684de1b0eaabd54f299a00b129
+  Dialog-gRPC-Objc: 00f5ab8c820d62d33fe115a56008c871f124ce5b
   gRPC: 9f6be4f675ef68e319e8626f7d9d3ea032967552
   gRPC-Core: 513194cf993ff0ec0f95accf7f9c663a0cc15da9
   gRPC-ProtoRPC: edf9a20c8c43945f073037b499545f3845ec74d6
   gRPC-RxLibrary: 82958ff4e5b7c498fa3332638d15afb4bfac7227
-  HelloWorld: 7215299a98b000615d6bfa86af7b2482034d80a0
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
 
-PODFILE CHECKSUM: b5070b87e920bc8791cc8117af8b8c4aa606e1af
+PODFILE CHECKSUM: fedc937e9468b33efca1ddffa6cbea35925deb8b
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.0
