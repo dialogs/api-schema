@@ -150,6 +150,7 @@ message RequestGetIdToken {
 // Get Id Token for external system
 message ResponseGetIdToken {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    /** */
     string token = 1;
     /** Unix time stamp **/
     int64 expiration_date = 2;
