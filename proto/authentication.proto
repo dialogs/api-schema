@@ -153,7 +153,6 @@ message ResponseGetIdToken {
     string token = 1;
     /** Unix time stamp **/
     int64 expiration_date = 2;
-
 }
 
 // Start Authentication/Authorization via external oAuth2/OpenID SSO Provider
