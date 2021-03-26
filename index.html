@@ -244,6 +244,10 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
                 </li>
               
                 <li>
+                  <a href="#dialog.RequestGetIdToken"><span class="badge">M</span>RequestGetIdToken</a>
+                </li>
+              
+                <li>
                   <a href="#dialog.RequestGetOAuth2Params"><span class="badge">M</span>RequestGetOAuth2Params</a>
                 </li>
               
@@ -329,6 +333,10 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
               
                 <li>
                   <a href="#dialog.ResponseGetAuthSessions"><span class="badge">M</span>ResponseGetAuthSessions</a>
+                </li>
+              
+                <li>
+                  <a href="#dialog.ResponseGetIdToken"><span class="badge">M</span>ResponseGetIdToken</a>
                 </li>
               
                 <li>
@@ -517,6 +525,10 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
                 </li>
               
                 <li>
+                  <a href="#dialog.RequestDeferredImportContacts.PhoneContact"><span class="badge">M</span>RequestDeferredImportContacts.PhoneContact</a>
+                </li>
+              
+                <li>
                   <a href="#dialog.RequestGetContacts"><span class="badge">M</span>RequestGetContacts</a>
                 </li>
               
@@ -558,6 +570,10 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
               
                 <li>
                   <a href="#dialog.UpdateContactsAdded"><span class="badge">M</span>UpdateContactsAdded</a>
+                </li>
+              
+                <li>
+                  <a href="#dialog.UpdateContactsAdded.UsersByPhoneEntry"><span class="badge">M</span>UpdateContactsAdded.UsersByPhoneEntry</a>
                 </li>
               
                 <li>
@@ -3496,6 +3512,13 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
               </tr>
             
               <tr>
+                <td>GetIdToken</td>
+                <td><a href="#dialog.RequestGetIdToken">RequestGetIdToken</a></td>
+                <td><a href="#dialog.ResponseGetIdToken">ResponseGetIdToken</a></td>
+                <td><p>Get Id Token for external system</p></td>
+              </tr>
+            
+              <tr>
                 <td>StartAuthTransaction</td>
                 <td><a href="#dialog.RequestStartAuthTransaction">RequestStartAuthTransaction</a></td>
                 <td><a href="#dialog.ResponseStartAuthTransaction">ResponseStartAuthTransaction</a></td>
@@ -3859,6 +3882,29 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
         <h3 id="dialog.RequestGetAuthSessions">RequestGetAuthSessions</h3>
         <p>Getting of all active user's authentication sessions</p>
 
+        
+
+        
+      
+        <h3 id="dialog.RequestGetIdToken">RequestGetIdToken</h3>
+        <p>Get Id Token for external system</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>service</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>service alias token is intended for * </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
         
 
         
@@ -4616,6 +4662,36 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
                   <td><a href="#dialog.AuthSession">AuthSession</a></td>
                   <td>repeated</td>
                   <td><p>Active user's sessions </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dialog.ResponseGetIdToken">ResponseGetIdToken</h3>
+        <p>Get Id Token for external system</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>expiration_date</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Unix time stamp * </p></td>
                 </tr>
               
             </tbody>
@@ -5838,7 +5914,7 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
         
       
         <h3 id="dialog.RequestDeferredImportContacts">RequestDeferredImportContacts</h3>
-        <p>Importing phones and emails for building contact list</p><p>Import evaluated lazily, response does not contain any info</p><p>Maximum amount of items for import per method call equals to 100.</p>
+        <p>Importing hashed phones and contact names for building contact list</p><p>Import evaluated lazily, response does not contain any info</p><p>Maximum amount of items for import per method call equals to 100.</p>
 
         
           <table class="field-table">
@@ -5848,17 +5924,48 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
             <tbody>
               
                 <tr>
-                  <td>phones</td>
-                  <td><a href="#dialog.PhoneToImport">PhoneToImport</a></td>
-                  <td>repeated</td>
-                  <td><p> </p></td>
+                  <td>device_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>some stable device identifier </p></td>
                 </tr>
               
                 <tr>
-                  <td>emails</td>
-                  <td><a href="#dialog.EmailToImport">EmailToImport</a></td>
+                  <td>phone_contacts</td>
+                  <td><a href="#dialog.RequestDeferredImportContacts.PhoneContact">RequestDeferredImportContacts.PhoneContact</a></td>
                   <td>repeated</td>
-                  <td><p> </p></td>
+                  <td><p>list of hashed phone contacts from the device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dialog.RequestDeferredImportContacts.PhoneContact">RequestDeferredImportContacts.PhoneContact</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>phone_hash</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>hash of phone number in format: name-of-hash-function:hashed-phone-number
+name of the hash function is optional (if not present, the default function will be used) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>contact_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name of contact as is on the device </p></td>
                 </tr>
               
             </tbody>
@@ -6205,6 +6312,43 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
                   <td><a href="#google.protobuf.StringValue">google.protobuf.StringValue</a></td>
                   <td></td>
                   <td><p>Id of the task that finished </p></td>
+                </tr>
+              
+                <tr>
+                  <td>users_by_phone</td>
+                  <td><a href="#dialog.UpdateContactsAdded.UsersByPhoneEntry">UpdateContactsAdded.UsersByPhoneEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>mapping phone hashes to id of users that are already present in the system </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dialog.UpdateContactsAdded.UsersByPhoneEntry">UpdateContactsAdded.UsersByPhoneEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
                 </tr>
               
             </tbody>

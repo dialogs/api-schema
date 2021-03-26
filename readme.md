@@ -13,6 +13,7 @@
     - [RequestChangePassword](#dialog.RequestChangePassword)
     - [RequestCompleteOAuth2](#dialog.RequestCompleteOAuth2)
     - [RequestGetAuthSessions](#dialog.RequestGetAuthSessions)
+    - [RequestGetIdToken](#dialog.RequestGetIdToken)
     - [RequestGetOAuth2Params](#dialog.RequestGetOAuth2Params)
     - [RequestResendCode](#dialog.RequestResendCode)
     - [RequestSendAuthCallObsolete](#dialog.RequestSendAuthCallObsolete)
@@ -35,6 +36,7 @@
     - [RequestValidatePassword](#dialog.RequestValidatePassword)
     - [ResponseAuth](#dialog.ResponseAuth)
     - [ResponseGetAuthSessions](#dialog.ResponseGetAuthSessions)
+    - [ResponseGetIdToken](#dialog.ResponseGetIdToken)
     - [ResponseGetOAuth2Params](#dialog.ResponseGetOAuth2Params)
     - [ResponseGetSelf](#dialog.ResponseGetSelf)
     - [ResponseSendAuthCodeObsolete](#dialog.ResponseSendAuthCodeObsolete)
@@ -83,6 +85,7 @@
     - [PhoneToImport](#dialog.PhoneToImport)
     - [RequestAddContact](#dialog.RequestAddContact)
     - [RequestDeferredImportContacts](#dialog.RequestDeferredImportContacts)
+    - [RequestDeferredImportContacts.PhoneContact](#dialog.RequestDeferredImportContacts.PhoneContact)
     - [RequestGetContacts](#dialog.RequestGetContacts)
     - [RequestImportContacts](#dialog.RequestImportContacts)
     - [RequestRemoveContact](#dialog.RequestRemoveContact)
@@ -94,6 +97,7 @@
     - [UpdateContactRegistered](#dialog.UpdateContactRegistered)
     - [UpdateContactsAddTaskSuspended](#dialog.UpdateContactsAddTaskSuspended)
     - [UpdateContactsAdded](#dialog.UpdateContactsAdded)
+    - [UpdateContactsAdded.UsersByPhoneEntry](#dialog.UpdateContactsAdded.UsersByPhoneEntry)
     - [UpdateContactsRemoved](#dialog.UpdateContactsRemoved)
   
     - [Contacts](#dialog.Contacts)
@@ -975,6 +979,21 @@ Getting of all active user&#39;s authentication sessions
 
 
 
+<a name="dialog.RequestGetIdToken"></a>
+
+### RequestGetIdToken
+Get Id Token for external system
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| service | [string](#string) |  | service alias token is intended for * |
+
+
+
+
+
+
 <a name="dialog.RequestGetOAuth2Params"></a>
 
 ### RequestGetOAuth2Params
@@ -1337,6 +1356,22 @@ Authentication result
 
 
 
+<a name="dialog.ResponseGetIdToken"></a>
+
+### ResponseGetIdToken
+Get Id Token for external system
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| token | [string](#string) |  |  |
+| expiration_date | [int64](#int64) |  | Unix time stamp * |
+
+
+
+
+
+
 <a name="dialog.ResponseGetOAuth2Params"></a>
 
 ### ResponseGetOAuth2Params
@@ -1536,6 +1571,7 @@ Holder of session
 | StartTokenAuth | [RequestStartTokenAuth](#dialog.RequestStartTokenAuth) | [ResponseAuth](#dialog.ResponseAuth) | Start token auth authorization (actual for bots) |
 | StartUsernameAuth | [RequestStartUsernameAuth](#dialog.RequestStartUsernameAuth) | [ResponseStartUsernameAuth](#dialog.ResponseStartUsernameAuth) | Start login/password authorization process |
 | ApplyExternalSessionAuth | [RequestApplyExternalSessionAuth](#dialog.RequestApplyExternalSessionAuth) | [ResponseAuth](#dialog.ResponseAuth) |  |
+| GetIdToken | [RequestGetIdToken](#dialog.RequestGetIdToken) | [ResponseGetIdToken](#dialog.ResponseGetIdToken) | Get Id Token for external system |
 | StartAuthTransaction | [RequestStartAuthTransaction](#dialog.RequestStartAuthTransaction) | [ResponseStartAuthTransaction](#dialog.ResponseStartAuthTransaction) |  |
 | ValidateCode | [RequestValidateCode](#dialog.RequestValidateCode) | [ResponseAuth](#dialog.ResponseAuth) | Validate code received by phone or email Returns error if user does not exist |
 | ResendCode | [RequestResendCode](#dialog.RequestResendCode) | [ResponseVoid](#dialog.ResponseVoid) | Resend code if you don&#39;t receive it with first attempt |
@@ -1983,15 +2019,31 @@ Adding contact to contact list
 <a name="dialog.RequestDeferredImportContacts"></a>
 
 ### RequestDeferredImportContacts
-Importing phones and emails for building contact list
+Importing hashed phones and contact names for building contact list
 Import evaluated lazily, response does not contain any info
 Maximum amount of items for import per method call equals to 100.
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| phones | [PhoneToImport](#dialog.PhoneToImport) | repeated |  |
-| emails | [EmailToImport](#dialog.EmailToImport) | repeated |  |
+| device_id | [string](#string) |  | some stable device identifier |
+| phone_contacts | [RequestDeferredImportContacts.PhoneContact](#dialog.RequestDeferredImportContacts.PhoneContact) | repeated | list of hashed phone contacts from the device |
+
+
+
+
+
+
+<a name="dialog.RequestDeferredImportContacts.PhoneContact"></a>
+
+### RequestDeferredImportContacts.PhoneContact
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| phone_hash | [string](#string) |  | hash of phone number in format: name-of-hash-function:hashed-phone-number name of the hash function is optional (if not present, the default function will be used) |
+| contact_name | [string](#string) |  | name of contact as is on the device |
 
 
 
@@ -2176,6 +2228,23 @@ Update about contacts added
 | ----- | ---- | ----- | ----------- |
 | uids | [int32](#int32) | repeated | User ids of the registered contacts |
 | task_id | [google.protobuf.StringValue](#google.protobuf.StringValue) |  | Id of the task that finished |
+| users_by_phone | [UpdateContactsAdded.UsersByPhoneEntry](#dialog.UpdateContactsAdded.UsersByPhoneEntry) | repeated | mapping phone hashes to id of users that are already present in the system |
+
+
+
+
+
+
+<a name="dialog.UpdateContactsAdded.UsersByPhoneEntry"></a>
+
+### UpdateContactsAdded.UsersByPhoneEntry
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [int32](#int32) |  |  |
 
 
 
