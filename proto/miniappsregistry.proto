@@ -6,6 +6,9 @@ import "definitions.proto";
 
 package dialog;
 
+option go_package = "dialog";
+option java_package = "im.dlg.grpc.services";
+
 // Defines the type of the app. Currently only WebView supported, but more types can be added in future.
 enum AppType {
     UNKNOWN = 0;

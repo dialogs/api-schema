@@ -5,8 +5,10 @@ package dialog;
 import "google/protobuf/wrappers.proto";
 
 option go_package = "dialog";
+option java_package = "im.dlg.grpc.services";
 option objc_class_prefix = "API";
 option swift_prefix="API";
+
 
 // Updates
 
