@@ -4844,6 +4844,8 @@ File message
 | mime_type | [string](#string) |  |  |
 | thumb | [FastThumb](#dialog.FastThumb) |  | optional thumb of file. JPEG less that 90x90 with 60-70 quality. |
 | ext | [DocumentEx](#dialog.DocumentEx) |  |  |
+| caption | [google.protobuf.StringValue](#google.protobuf.StringValue) |  |  |
+| mentions | [Mention](#dialog.Mention) | repeated |  |
 
 
 
