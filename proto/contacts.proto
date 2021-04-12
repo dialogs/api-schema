@@ -109,6 +109,19 @@ message ResponseGetContacts {
     repeated UserOutPeer user_peers = 3;
 }
 
+// Fetch registered contacts by hashed phone numbers
+message RequestFetchRegisteredContactsByPhones {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    // get registered contacts only for requested hashed phones (for all if empty)
+    repeated string for_phones = 1;
+}
+
+message ResponseFetchRegisteredContactsByPhones {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    // phone_hash -> registered user peer
+    map<string, UserOutPeer> contacts = 1;
+}
+
 // Removing contact from contact list
 message RequestRemoveContact {
     option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
@@ -187,6 +200,12 @@ service Contacts {
     rpc GetContacts (RequestGetContacts) returns (ResponseGetContacts) {
         option (google.api.http) = {
             post: "/v1/grpc/Contacts/GetContacts"
+            body: "*"
+        };
+    }
+    rpc FetchRegisteredPhoneContactsByPhones (RequestFetchRegisteredContactsByPhones) returns (ResponseFetchRegisteredContactsByPhones) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Contacts/FetchRegisteredPhoneContactsByPhones"
             body: "*"
         };
     }
