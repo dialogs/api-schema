@@ -107,6 +107,7 @@ message ResponseGetContacts {
 
     bool is_not_changed = 2;
     repeated UserOutPeer user_peers = 3;
+    map<string, int32> users_by_phone = 4;
 }
 
 // Removing contact from contact list
