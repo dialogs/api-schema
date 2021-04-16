@@ -553,6 +553,10 @@ drawDiagram("title%20%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%B
                 </li>
               
                 <li>
+                  <a href="#dialog.ResponseGetContacts.UsersByPhoneEntry"><span class="badge">M</span>ResponseGetContacts.UsersByPhoneEntry</a>
+                </li>
+              
+                <li>
                   <a href="#dialog.ResponseImportContacts"><span class="badge">M</span>ResponseImportContacts</a>
                 </li>
               
@@ -6145,6 +6149,43 @@ name of the hash function is optional (if not present, the default function will
                   <td>user_peers</td>
                   <td><a href="#dialog.UserOutPeer">UserOutPeer</a></td>
                   <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>users_by_phone</td>
+                  <td><a href="#dialog.ResponseGetContacts.UsersByPhoneEntry">ResponseGetContacts.UsersByPhoneEntry</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dialog.ResponseGetContacts.UsersByPhoneEntry">ResponseGetContacts.UsersByPhoneEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
                   <td><p> </p></td>
                 </tr>
               

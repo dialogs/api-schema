@@ -92,6 +92,7 @@
     - [RequestSearchContacts](#dialog.RequestSearchContacts)
     - [ResponseDeferredImportContacts](#dialog.ResponseDeferredImportContacts)
     - [ResponseGetContacts](#dialog.ResponseGetContacts)
+    - [ResponseGetContacts.UsersByPhoneEntry](#dialog.ResponseGetContacts.UsersByPhoneEntry)
     - [ResponseImportContacts](#dialog.ResponseImportContacts)
     - [ResponseSearchContacts](#dialog.ResponseSearchContacts)
     - [UpdateContactRegistered](#dialog.UpdateContactRegistered)
@@ -2144,6 +2145,23 @@ Searching contacts by user&#39;s query
 | ----- | ---- | ----- | ----------- |
 | is_not_changed | [bool](#bool) |  |  |
 | user_peers | [UserOutPeer](#dialog.UserOutPeer) | repeated |  |
+| users_by_phone | [ResponseGetContacts.UsersByPhoneEntry](#dialog.ResponseGetContacts.UsersByPhoneEntry) | repeated |  |
+
+
+
+
+
+
+<a name="dialog.ResponseGetContacts.UsersByPhoneEntry"></a>
+
+### ResponseGetContacts.UsersByPhoneEntry
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [int32](#int32) |  |  |
 
 
 
