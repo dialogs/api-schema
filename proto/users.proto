@@ -293,6 +293,16 @@ message ResponseLoadFullUsers {
     repeated FullUser full_users = 1;
 }
 
+message RequestLoadBotPeer {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    string shortname = 1;
+}
+
+message ResponseLoadBotPeer {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcResponse";
+    OutPeer peer = 1;
+}
+
 service Users {
     rpc EditUserLocalName (RequestEditUserLocalName) returns (ResponseSeq) {
         option (google.api.http) = {
@@ -310,6 +320,13 @@ service Users {
     rpc LoadUserData (RequestLoadUserData) returns (ResponseLoadUserData) {
         option (google.api.http) = {
             post: "/v1/grpc/Users/LoadUserData"
+            body: "*"
+        };
+    }
+
+    rpc LoadBotPeer (RequestLoadBotPeer) returns (ResponseLoadBotPeer) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Users/LoadBotPeer"
             body: "*"
         };
     }
