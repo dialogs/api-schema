@@ -92,14 +92,13 @@
     - [RequestSearchContacts](#dialog.RequestSearchContacts)
     - [ResponseDeferredImportContacts](#dialog.ResponseDeferredImportContacts)
     - [ResponseGetContacts](#dialog.ResponseGetContacts)
-    - [ResponseGetContacts.UsersByPhoneEntry](#dialog.ResponseGetContacts.UsersByPhoneEntry)
     - [ResponseImportContacts](#dialog.ResponseImportContacts)
     - [ResponseSearchContacts](#dialog.ResponseSearchContacts)
     - [UpdateContactRegistered](#dialog.UpdateContactRegistered)
     - [UpdateContactsAddTaskSuspended](#dialog.UpdateContactsAddTaskSuspended)
     - [UpdateContactsAdded](#dialog.UpdateContactsAdded)
-    - [UpdateContactsAdded.UsersByPhoneEntry](#dialog.UpdateContactsAdded.UsersByPhoneEntry)
     - [UpdateContactsRemoved](#dialog.UpdateContactsRemoved)
+    - [UserPhoneHashContact](#dialog.UserPhoneHashContact)
   
     - [Contacts](#dialog.Contacts)
   
@@ -2145,23 +2144,7 @@ Searching contacts by user&#39;s query
 | ----- | ---- | ----- | ----------- |
 | is_not_changed | [bool](#bool) |  |  |
 | user_peers | [UserOutPeer](#dialog.UserOutPeer) | repeated |  |
-| users_by_phone | [ResponseGetContacts.UsersByPhoneEntry](#dialog.ResponseGetContacts.UsersByPhoneEntry) | repeated |  |
-
-
-
-
-
-
-<a name="dialog.ResponseGetContacts.UsersByPhoneEntry"></a>
-
-### ResponseGetContacts.UsersByPhoneEntry
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| key | [string](#string) |  |  |
-| value | [int32](#int32) |  |  |
+| phone_contacts | [UserPhoneHashContact](#dialog.UserPhoneHashContact) | repeated |  |
 
 
 
@@ -2246,23 +2229,7 @@ Update about contacts added
 | ----- | ---- | ----- | ----------- |
 | uids | [int32](#int32) | repeated | User ids of the registered contacts |
 | task_id | [google.protobuf.StringValue](#google.protobuf.StringValue) |  | Id of the task that finished |
-| users_by_phone | [UpdateContactsAdded.UsersByPhoneEntry](#dialog.UpdateContactsAdded.UsersByPhoneEntry) | repeated | mapping phone hashes to id of users that are already present in the system |
-
-
-
-
-
-
-<a name="dialog.UpdateContactsAdded.UsersByPhoneEntry"></a>
-
-### UpdateContactsAdded.UsersByPhoneEntry
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| key | [string](#string) |  |  |
-| value | [int32](#int32) |  |  |
+| phone_contacts | [UserPhoneHashContact](#dialog.UserPhoneHashContact) | repeated |  |
 
 
 
@@ -2278,6 +2245,23 @@ Update about contacts removed
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | uids | [int32](#int32) | repeated |  |
+
+
+
+
+
+
+<a name="dialog.UserPhoneHashContact"></a>
+
+### UserPhoneHashContact
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [int32](#int32) |  |  |
+| phone_hash | [string](#string) |  |  |
+| name | [string](#string) |  |  |
 
 
 
