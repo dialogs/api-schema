@@ -445,6 +445,12 @@
       "description": "if true = external phone calls are enable for users",
       "default": false
     },
+    "calls.presentCallWithoutVoipEnabled": {
+      "type": "boolean",
+      "title": "Enable presenting call without VoIP-push",
+      "description": "if true = incoming call interface will be presented as soon as new call's gRPC model reaches device (without waiting for VoIP-push)",
+      "default": false
+    },
     "calls.history.isFeatureEnabled": {
       "type": "boolean",
       "title": "Enable calls history feature",
