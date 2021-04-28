@@ -298,6 +298,22 @@
       "title": "Max recipients for forwarding",
       "default": 20
     },
+    "miniApps.isEnabled": {
+      "type": "boolean",
+      "title": "Activates mini-apps functionality",
+      "default": false,
+      "description": "if true = discover is opened in sidebar and can activate mini-apps"
+    },
+    "miniApps.discoverUrl": {
+      "type": "string",
+      "default": "",
+      "title": "Discover URL for mini apps"
+    },
+    "miniApps.todoListId": {
+      "type": "string",
+      "default": "",
+      "title": "Todo List mini app id (stringifyed format)"
+    },
     "isSwipeBackEnabled": {
       "type": "boolean",
       "title": "Activates swipe(left to right) between fragments which means back button click",
