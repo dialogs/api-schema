@@ -260,6 +260,11 @@
       "title": "Time gap in milliseconds to break bubble message group",
       "default": 300000
     },
+    "chat.folders.isEnabled": {
+      "type": "boolean",
+      "title": "if true = folders in chat are enable for users",
+      "default": true
+    },
     "badges.menu.dialogs": {
       "type": "boolean",
       "title": "Activates budges in chat",
