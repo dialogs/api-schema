@@ -457,6 +457,12 @@
       "description": "if true = the call history screen is enabled for users, otherwise the placeholder will be shown",
       "default": true
     },
+    "calls.history.isSearchAvailable": {
+      "type": "boolean",
+      "title": "Enable calls history search screen",
+      "description": "if true = the call history search screen is enabled for users",
+      "default": true
+    },
     "calls.isScreenSharingEnabled": {
       "type": "boolean",
       "title": "Enable screen sharing in calls",
