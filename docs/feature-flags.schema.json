@@ -421,6 +421,11 @@
       "title": "Enabling markdown in user profile",
       "default": true
     },
+    "markdown.inPushEnabled": {
+      "type": "boolean",
+      "title": "Enabling markdown in push notifications",
+      "default": false
+    },
     "calls.isEnabled": {
       "type": "boolean",
       "title": "Enable calls",
