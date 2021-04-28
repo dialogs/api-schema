@@ -130,6 +130,11 @@
       "title": "Custom profile schema",
       "default": null
     },
+    "userProfile.customProfile.firstNameKey": {
+        "type": "string",
+        "title": "Key of first name in user custom profile",
+        "default": null
+    },
     "groups.isProfileEditEnabled": {
       "type": "boolean",
       "title": "User can edit group profile or not",
