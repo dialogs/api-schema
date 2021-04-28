@@ -372,6 +372,11 @@
       "title": "Defines the order for global search results. (If true -  users first)",
       "default": false
     },
+    "search.maxSymbols": {
+      "type": "integer",
+      "title": "Number of max symbols in chat search",
+      "default": 200
+    },,
     "search.users.secondaryInfo.customProfileKey": {
       "type": "string",
       "title": "Defines key for user data custom profile.",
