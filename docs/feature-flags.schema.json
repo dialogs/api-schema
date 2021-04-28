@@ -12,6 +12,12 @@
       "title": "Discover web-view URL",
       "default": null
     },
+    "miniapp.url": {
+      "type": "string",
+      "title": "Mini app's default URL",
+      "default": null,
+      "description": "If not null change discover URL to mini app URL"
+    },
     "contacts.isEnabled": {
       "type": "boolean",
       "title": "Enable contacts",
