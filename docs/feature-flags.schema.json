@@ -44,6 +44,11 @@
       "title": "User must obligatory setup pass code after resume app or success authorization",
       "default": false
     },
+    "password.needsChange": {
+     "type": "boolean",
+     "title": "Force user to change password upon first authentication",
+     "default": "false"
+    },
     "isMultifactorauthActive": {
       "type": "boolean",
       "title": "Activates Multifactorauth",
