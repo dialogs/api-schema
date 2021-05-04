@@ -1366,6 +1366,8 @@ typedef GPB_ENUM(DocumentMessage_FieldNumber) {
   DocumentMessage_FieldNumber_MimeType = 5,
   DocumentMessage_FieldNumber_Thumb = 6,
   DocumentMessage_FieldNumber_Ext = 8,
+  DocumentMessage_FieldNumber_Caption = 9,
+  DocumentMessage_FieldNumber_MentionsArray = 10,
 };
 
 /**
@@ -1391,6 +1393,14 @@ GPB_FINAL @interface DocumentMessage : GPBMessage
 @property(nonatomic, readwrite, strong, null_resettable) DocumentEx *ext;
 /** Test to see if @c ext has been set. */
 @property(nonatomic, readwrite) BOOL hasExt;
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBStringValue *caption;
+/** Test to see if @c caption has been set. */
+@property(nonatomic, readwrite) BOOL hasCaption;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<Mention*> *mentionsArray;
+/** The number of items in @c mentionsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger mentionsArray_Count;
 
 @end
 

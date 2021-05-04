@@ -415,6 +415,41 @@ GPB_FINAL @interface RequestApplyExternalSessionAuth : GPBMessage
 
 @end
 
+#pragma mark - RequestGetIdToken
+
+typedef GPB_ENUM(RequestGetIdToken_FieldNumber) {
+  RequestGetIdToken_FieldNumber_Service = 1,
+};
+
+/**
+ * Get Id Token for external system
+ **/
+GPB_FINAL @interface RequestGetIdToken : GPBMessage
+
+/** * service alias token is intended for * */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *service;
+
+@end
+
+#pragma mark - ResponseGetIdToken
+
+typedef GPB_ENUM(ResponseGetIdToken_FieldNumber) {
+  ResponseGetIdToken_FieldNumber_Token = 1,
+  ResponseGetIdToken_FieldNumber_ExpirationDate = 2,
+};
+
+/**
+ * Get Id Token for external system
+ **/
+GPB_FINAL @interface ResponseGetIdToken : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *token;
+
+/** * Unix time stamp * */
+@property(nonatomic, readwrite) int64_t expirationDate;
+
+@end
+
 #pragma mark - RequestStartAuthTransaction
 
 typedef GPB_ENUM(RequestStartAuthTransaction_FieldNumber) {

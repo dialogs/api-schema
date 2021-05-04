@@ -301,6 +301,39 @@
              responseClass:[ResponseAuth class]];
 }
 
+#pragma mark GetIdToken(RequestGetIdToken) returns (ResponseGetIdToken)
+
+/**
+ * Get Id Token for external system
+ *
+ * This method belongs to a set of APIs that have been deprecated. Using the v2 API is recommended.
+ */
+- (void)getIdTokenWithRequest:(RequestGetIdToken *)request handler:(void(^)(ResponseGetIdToken *_Nullable response, NSError *_Nullable error))handler{
+  [[self RPCToGetIdTokenWithRequest:request handler:handler] start];
+}
+// Returns a not-yet-started RPC object.
+/**
+ * Get Id Token for external system
+ *
+ * This method belongs to a set of APIs that have been deprecated. Using the v2 API is recommended.
+ */
+- (GRPCProtoCall *)RPCToGetIdTokenWithRequest:(RequestGetIdToken *)request handler:(void(^)(ResponseGetIdToken *_Nullable response, NSError *_Nullable error))handler{
+  return [self RPCToMethod:@"GetIdToken"
+            requestsWriter:[GRXWriter writerWithValue:request]
+             responseClass:[ResponseGetIdToken class]
+        responsesWriteable:[GRXWriteable writeableWithSingleHandler:handler]];
+}
+/**
+ * Get Id Token for external system
+ */
+- (GRPCUnaryProtoCall *)getIdTokenWithMessage:(RequestGetIdToken *)message responseHandler:(id<GRPCProtoResponseHandler>)handler callOptions:(GRPCCallOptions *_Nullable)callOptions {
+  return [self RPCToMethod:@"GetIdToken"
+                   message:message
+           responseHandler:handler
+               callOptions:callOptions
+             responseClass:[ResponseGetIdToken class]];
+}
+
 #pragma mark StartAuthTransaction(RequestStartAuthTransaction) returns (ResponseStartAuthTransaction)
 
 - (void)startAuthTransactionWithRequest:(RequestStartAuthTransaction *)request handler:(void(^)(ResponseStartAuthTransaction *_Nullable response, NSError *_Nullable error))handler{

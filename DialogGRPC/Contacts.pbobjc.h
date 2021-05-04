@@ -30,9 +30,11 @@ CF_EXTERN_C_BEGIN
 @class EmailToImport;
 @class GPBStringValue;
 @class PhoneToImport;
+@class RequestDeferredImportContacts_PhoneContact;
 @class UUIDValue;
 @class User;
 @class UserOutPeer;
+@class UserPhoneHashContact;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -95,6 +97,24 @@ GPB_FINAL @interface EmailToImport : GPBMessage
 
 @end
 
+#pragma mark - UserPhoneHashContact
+
+typedef GPB_ENUM(UserPhoneHashContact_FieldNumber) {
+  UserPhoneHashContact_FieldNumber_UserId = 1,
+  UserPhoneHashContact_FieldNumber_PhoneHash = 2,
+  UserPhoneHashContact_FieldNumber_Name = 3,
+};
+
+GPB_FINAL @interface UserPhoneHashContact : GPBMessage
+
+@property(nonatomic, readwrite) int32_t userId;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *phoneHash;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *name;
+
+@end
+
 #pragma mark - RequestImportContacts
 
 typedef GPB_ENUM(RequestImportContacts_FieldNumber) {
@@ -151,24 +171,44 @@ GPB_FINAL @interface ResponseImportContacts : GPBMessage
 #pragma mark - RequestDeferredImportContacts
 
 typedef GPB_ENUM(RequestDeferredImportContacts_FieldNumber) {
-  RequestDeferredImportContacts_FieldNumber_PhonesArray = 1,
-  RequestDeferredImportContacts_FieldNumber_EmailsArray = 2,
+  RequestDeferredImportContacts_FieldNumber_DeviceId = 3,
+  RequestDeferredImportContacts_FieldNumber_PhoneContactsArray = 4,
 };
 
 /**
- * Importing phones and emails for building contact list
+ * Importing hashed phones and contact names for building contact list
  * Import evaluated lazily, response does not contain any info
  * Maximum amount of items for import per method call equals to 100.
  **/
 GPB_FINAL @interface RequestDeferredImportContacts : GPBMessage
 
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<PhoneToImport*> *phonesArray;
-/** The number of items in @c phonesArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger phonesArray_Count;
+/** some stable device identifier */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *deviceId;
 
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<EmailToImport*> *emailsArray;
-/** The number of items in @c emailsArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger emailsArray_Count;
+/** list of hashed phone contacts from the device */
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RequestDeferredImportContacts_PhoneContact*> *phoneContactsArray;
+/** The number of items in @c phoneContactsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger phoneContactsArray_Count;
+
+@end
+
+#pragma mark - RequestDeferredImportContacts_PhoneContact
+
+typedef GPB_ENUM(RequestDeferredImportContacts_PhoneContact_FieldNumber) {
+  RequestDeferredImportContacts_PhoneContact_FieldNumber_PhoneHash = 1,
+  RequestDeferredImportContacts_PhoneContact_FieldNumber_ContactName = 2,
+};
+
+GPB_FINAL @interface RequestDeferredImportContacts_PhoneContact : GPBMessage
+
+/**
+ * hash of phone number in format: name-of-hash-function:hashed-phone-number
+ * name of the hash function is optional (if not present, the default function will be used)
+ **/
+@property(nonatomic, readwrite, copy, null_resettable) NSString *phoneHash;
+
+/** name of contact as is on the device */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *contactName;
 
 @end
 
@@ -213,6 +253,7 @@ GPB_FINAL @interface RequestGetContacts : GPBMessage
 typedef GPB_ENUM(ResponseGetContacts_FieldNumber) {
   ResponseGetContacts_FieldNumber_IsNotChanged = 2,
   ResponseGetContacts_FieldNumber_UserPeersArray = 3,
+  ResponseGetContacts_FieldNumber_PhoneContactsArray = 5,
 };
 
 GPB_FINAL @interface ResponseGetContacts : GPBMessage
@@ -222,6 +263,10 @@ GPB_FINAL @interface ResponseGetContacts : GPBMessage
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<UserOutPeer*> *userPeersArray;
 /** The number of items in @c userPeersArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger userPeersArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<UserPhoneHashContact*> *phoneContactsArray;
+/** The number of items in @c phoneContactsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger phoneContactsArray_Count;
 
 @end
 
@@ -337,6 +382,7 @@ GPB_FINAL @interface UpdateContactRegistered : GPBMessage
 typedef GPB_ENUM(UpdateContactsAdded_FieldNumber) {
   UpdateContactsAdded_FieldNumber_UidsArray = 1,
   UpdateContactsAdded_FieldNumber_TaskId = 4,
+  UpdateContactsAdded_FieldNumber_PhoneContactsArray = 6,
 };
 
 /**
@@ -353,6 +399,10 @@ GPB_FINAL @interface UpdateContactsAdded : GPBMessage
 @property(nonatomic, readwrite, strong, null_resettable) GPBStringValue *taskId;
 /** Test to see if @c taskId has been set. */
 @property(nonatomic, readwrite) BOOL hasTaskId;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<UserPhoneHashContact*> *phoneContactsArray;
+/** The number of items in @c phoneContactsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger phoneContactsArray_Count;
 
 @end
 

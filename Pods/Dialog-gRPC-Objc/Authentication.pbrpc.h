@@ -17,6 +17,7 @@
 @class RequestChangePassword;
 @class RequestCompleteOAuth2;
 @class RequestGetAuthSessions;
+@class RequestGetIdToken;
 @class RequestGetOAuth2Params;
 @class RequestResendCode;
 @class RequestSendAuthCallObsolete;
@@ -39,6 +40,7 @@
 @class RequestValidatePassword;
 @class ResponseAuth;
 @class ResponseGetAuthSessions;
+@class ResponseGetIdToken;
 @class ResponseGetOAuth2Params;
 @class ResponseGetSelf;
 @class ResponseSendAuthCodeObsolete;
@@ -119,6 +121,13 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark ApplyExternalSessionAuth(RequestApplyExternalSessionAuth) returns (ResponseAuth)
 
 - (GRPCUnaryProtoCall *)applyExternalSessionAuthWithMessage:(RequestApplyExternalSessionAuth *)message responseHandler:(id<GRPCProtoResponseHandler>)handler callOptions:(GRPCCallOptions *_Nullable)callOptions;
+
+#pragma mark GetIdToken(RequestGetIdToken) returns (ResponseGetIdToken)
+
+/**
+ * Get Id Token for external system
+ */
+- (GRPCUnaryProtoCall *)getIdTokenWithMessage:(RequestGetIdToken *)message responseHandler:(id<GRPCProtoResponseHandler>)handler callOptions:(GRPCCallOptions *_Nullable)callOptions;
 
 #pragma mark StartAuthTransaction(RequestStartAuthTransaction) returns (ResponseStartAuthTransaction)
 
@@ -353,6 +362,23 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)applyExternalSessionAuthWithRequest:(RequestApplyExternalSessionAuth *)request handler:(void(^)(ResponseAuth *_Nullable response, NSError *_Nullable error))handler;
 
 - (GRPCProtoCall *)RPCToApplyExternalSessionAuthWithRequest:(RequestApplyExternalSessionAuth *)request handler:(void(^)(ResponseAuth *_Nullable response, NSError *_Nullable error))handler;
+
+
+#pragma mark GetIdToken(RequestGetIdToken) returns (ResponseGetIdToken)
+
+/**
+ * Get Id Token for external system
+ *
+ * This method belongs to a set of APIs that have been deprecated. Using the v2 API is recommended.
+ */
+- (void)getIdTokenWithRequest:(RequestGetIdToken *)request handler:(void(^)(ResponseGetIdToken *_Nullable response, NSError *_Nullable error))handler;
+
+/**
+ * Get Id Token for external system
+ *
+ * This method belongs to a set of APIs that have been deprecated. Using the v2 API is recommended.
+ */
+- (GRPCProtoCall *)RPCToGetIdTokenWithRequest:(RequestGetIdToken *)request handler:(void(^)(ResponseGetIdToken *_Nullable response, NSError *_Nullable error))handler;
 
 
 #pragma mark StartAuthTransaction(RequestStartAuthTransaction) returns (ResponseStartAuthTransaction)

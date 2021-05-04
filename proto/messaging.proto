@@ -384,6 +384,8 @@ message DocumentMessage {
     /// optional thumb of file. JPEG less that 90x90 with 60-70 quality.
     FastThumb thumb = 6 [(dlg).log="compact"];
     DocumentEx ext = 8 [(dlg).log="compact"];
+    google.protobuf.StringValue caption = 9 [(dlg).log="hidden"];
+    repeated Mention mentions = 10 [(dlg).log="visible"];
 }
 
 message DocumentEx {

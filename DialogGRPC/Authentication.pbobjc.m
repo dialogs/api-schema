@@ -936,6 +936,107 @@ typedef struct RequestApplyExternalSessionAuth__storage_ {
 
 @end
 
+#pragma mark - RequestGetIdToken
+
+@implementation RequestGetIdToken
+
+@dynamic service;
+
+typedef struct RequestGetIdToken__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *service;
+} RequestGetIdToken__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "service",
+        .dataTypeSpecific.clazz = Nil,
+        .number = RequestGetIdToken_FieldNumber_Service,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RequestGetIdToken__storage_, service),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RequestGetIdToken class]
+                                     rootClass:[AuthenticationRoot class]
+                                          file:AuthenticationRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RequestGetIdToken__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - ResponseGetIdToken
+
+@implementation ResponseGetIdToken
+
+@dynamic token;
+@dynamic expirationDate;
+
+typedef struct ResponseGetIdToken__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *token;
+  int64_t expirationDate;
+} ResponseGetIdToken__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "token",
+        .dataTypeSpecific.clazz = Nil,
+        .number = ResponseGetIdToken_FieldNumber_Token,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(ResponseGetIdToken__storage_, token),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "expirationDate",
+        .dataTypeSpecific.clazz = Nil,
+        .number = ResponseGetIdToken_FieldNumber_ExpirationDate,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(ResponseGetIdToken__storage_, expirationDate),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldClearHasIvarOnZero),
+        .dataType = GPBDataTypeInt64,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[ResponseGetIdToken class]
+                                     rootClass:[AuthenticationRoot class]
+                                          file:AuthenticationRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ResponseGetIdToken__storage_)
+                                         flags:(GPBDescriptorInitializationFlags)(GPBDescriptorInitializationFlag_UsesClassRefs | GPBDescriptorInitializationFlag_Proto3OptionalKnown)];
+    #if defined(DEBUG) && DEBUG
+      NSAssert(descriptor == nil, @"Startup recursed!");
+    #endif  // DEBUG
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - RequestStartAuthTransaction
 
 @implementation RequestStartAuthTransaction

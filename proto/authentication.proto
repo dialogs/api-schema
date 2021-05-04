@@ -140,6 +140,20 @@ message RequestApplyExternalSessionAuth {
     string session_id = 1 [(dlg).log="visible"];
 }
 
+// Get Id Token for external system
+message RequestGetIdToken {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+     /** service alias token is intended for **/
+    string service = 1;
+}
+
+// Get Id Token for external system
+message ResponseGetIdToken {
+    option (scalapb.message).extends = "im.dlg.grpc.GrpcRequest";
+    string token = 1;
+    /** Unix time stamp **/
+    int64 expiration_date = 2;
+}
 
 // Start Authentication/Authorization via external oAuth2/OpenID SSO Provider
 message RequestStartAuthTransaction {
@@ -428,6 +442,15 @@ service Authentication {
             body: "*"
         };
     }
+
+    // Get Id Token for external system
+    rpc GetIdToken (RequestGetIdToken) returns (ResponseGetIdToken) {
+        option (google.api.http) = {
+            post: "/v1/grpc/Authentication/RequestGetIdToken"
+            body: "*"
+        };
+    }
+
     rpc StartAuthTransaction (RequestStartAuthTransaction) returns (ResponseStartAuthTransaction) {
         option (google.api.http) = {
             post: "/v1/grpc/Authentication/RequestStartAuthTransaction"

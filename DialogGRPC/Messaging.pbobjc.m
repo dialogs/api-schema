@@ -3256,6 +3256,8 @@ typedef struct ServiceExChatRestored__storage_ {
 @dynamic mimeType;
 @dynamic hasThumb, thumb;
 @dynamic hasExt, ext;
+@dynamic hasCaption, caption;
+@dynamic mentionsArray, mentionsArray_Count;
 
 typedef struct DocumentMessage__storage_ {
   uint32_t _has_storage_[1];
@@ -3264,6 +3266,8 @@ typedef struct DocumentMessage__storage_ {
   NSString *mimeType;
   FastThumb *thumb;
   DocumentEx *ext;
+  GPBStringValue *caption;
+  NSMutableArray *mentionsArray;
   int64_t fileId;
   int64_t accessHash;
 } DocumentMessage__storage_;
@@ -3335,6 +3339,24 @@ typedef struct DocumentMessage__storage_ {
         .hasIndex = 6,
         .offset = (uint32_t)offsetof(DocumentMessage__storage_, ext),
         .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "caption",
+        .dataTypeSpecific.clazz = GPBObjCClass(GPBStringValue),
+        .number = DocumentMessage_FieldNumber_Caption,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(DocumentMessage__storage_, caption),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "mentionsArray",
+        .dataTypeSpecific.clazz = GPBObjCClass(Mention),
+        .number = DocumentMessage_FieldNumber_MentionsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(DocumentMessage__storage_, mentionsArray),
+        .flags = GPBFieldRepeated,
         .dataType = GPBDataTypeMessage,
       },
     };
