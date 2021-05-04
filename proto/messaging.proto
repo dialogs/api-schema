@@ -972,6 +972,7 @@ message DialogListEntry {
     int64 last_update_of_message_date = 9;
     int64 last_reaction_date = 10;
     bool read_later = 11;
+    string dialogType = 13;
 
     DialogData data = 8 [(dlg).log="visible"];
 }
